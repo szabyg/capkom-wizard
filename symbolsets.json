@@ -1,0 +1,11 @@
+{
+    "default": {
+        "baseUri": "",
+        "nameformat": "{symbolId}-{size}.png",
+        "sizeMap": {
+            "small": "25x25",
+            "medium": "50x50",
+            "large": "100x100"
+        }
+    }
+}

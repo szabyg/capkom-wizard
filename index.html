@@ -1,0 +1,50 @@
+<html>
+<head>
+    <title>CapKom Wizard</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" href="lib/jquery/jquery-ui.min.css" />
+
+    <script type="text/javascript" src="lib/jquery/jquery-1.5.1.js"></script>
+    <script type="text/javascript" src="lib/jquery/jquery-ui.1.9m5.js"></script>
+    <script type="text/javascript" src="lib/underscore-min.js"></script>
+    <script type="text/javascript" src="lib/backbone.js"></script>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <script type="text/javascript" src="lib/wizard.js"></script>
+    <script type="text/javascript" src="lib/stages.js"></script>
+    <script type="text/javascript" src="lib/profile.js"></script>
+    <script type="text/javascript" src="lib/navigation.js"></script>
+
+    <style>
+        section {
+            width: 80%;
+            height: 80%;
+        }
+        nav ol li {
+            display: inline;
+        }
+        .fontsize-small  { font-size: 10px;}
+        .fontsize-medium { font-size: 14px;}
+        .fontsize-large  { font-size: 20px;}
+    </style>
+</head>
+<body>
+    <header>
+        <img class="logo" src="symbols/Capkom_Logo.gif"/>
+        <nav>
+            <ol class="stages">
+                <li><a href="#welcome">Willkommen</a></li>
+                <li><a href="#welcome">Schriftgröße</a></li>
+            </ol>
+        </nav>
+    </header>
+    <section>
+        <img class="stage-image"/>
+        <div class="stage"></div>
+    </section>
+    <footer>
+        <button id="nextButton" alt="Weiter">Weiter</button>
+    </footer>
+</body>
+</html>
