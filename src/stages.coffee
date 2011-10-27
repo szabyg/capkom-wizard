@@ -11,7 +11,6 @@ Capkom.stages =
             Ich möchte Euch nun ein paar Fragen zur Bedienung des Kunstportals stellen. <br/>
             Dies wird nur einige Minuten in Anspruch nehmen.
             """
-        route: ""
 
     "createuser":
         title: "Benutzer anlegen"
@@ -73,18 +72,23 @@ Capkom.stages =
         image: "symbols/ueberMich.gif"
         html: """
             Wie sollen Informationen dargestellt werden?<br/>
-            Text / 
 
             <input type='radio' name='e2r' id='e2r-alone'/>
-            <label for='e2r-alone'>Einfache Sprache</label>
-            Text + Symbol []
+            <label for='e2r-alone'>Text</label>
             <input type='radio' name='e2r' id='e2r-alone'/>
-            <label for='e2r-both'>Einfache Sprache und Symbole</label>
+            <label for='e2r-both'>Text + Symbole</label>
+            <br/><br/>
+            Audio:
+            <input type='checkbox' name='audio' id='audioButton'/>
+            <label for='audioButton'>[Audio-Symbol]</label>
         """
+        script: (element) ->
+            jQuery('input[name=e2r]').buttonset()
+            jQuery('input[name=audio]').button()
 
     "symbolset":
         title: "Symbolsatz"
-        image: "symbols/ueberMich.gif"
+        image: "http://www.fongia.com/varie/varie/snoopy2.gif"
         html: """
             Welche Art der Symbole gefällt Dir am besten?<br/>
             Du kannst Dir später auch Deine eigenen Symbole schaffen, indem Du eigene Bilder oder Fotos hochlädst.
@@ -94,9 +98,12 @@ Capkom.order = [
     "welcome"
     "fontsize"
     "theme"
-    "symbolsize"
-    "e2r"
+
+    # TODO implement dependent stages
+    "e2r" # TODO add audio question
     "symbolset"
+    "symbolsize"
+
     "createuser"
 ]
 
