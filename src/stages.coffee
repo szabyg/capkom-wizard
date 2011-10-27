@@ -2,7 +2,7 @@ Capkom = window.Capkom ?= {}
 
 Capkom.stages =
     "welcome":
-        title: "Capkom Profilerstellung Wizard"
+        title: "Capkom Profil Wizard"
         image: "http://www.greeting-cards-4u.com/tubes/CharlyBrown/snoopy.gif"
         html: 
             """
@@ -16,8 +16,10 @@ Capkom.stages =
         title: "Benutzer anlegen"
         image: "symbols/ueberMich.gif"
         html: """
-            Benutzername: <input id=''/><br/>
-            Password: <input id=''/>
+            <table>
+                <tr><td>Benutzername:</td><td><input id=''/></td></tr>
+                <tr><td>Password:</td><td><input type='password' id=''/></td></tr>
+            </table>
         """
 
     "fontsize":
@@ -45,8 +47,8 @@ Capkom.stages =
                 Capkom.profile.fontsize = e.target.id.replace "fontsize-", ""
 
     "theme":
-        title: "Bildschirm design"
-        image: "symbols/ueberMich.gif"
+        title: "Design"
+        image: "http://www.balloonmaniacs.com/images/snoopygraduateballoon.jpg"
         html: """
             Bitte bestimme nun das Bildschirmdesign.<br/>
             Wähle dazu jenes Design, das Dir am besten gefällt.<br/><br/>
@@ -61,7 +63,7 @@ Capkom.stages =
 
     "symbolsize":
         title: "Symbolgröße"
-        image: "symbols/ueberMich.gif"
+        image: "http://i.fonts2u.com/sn/mp1_snoopy-dings_1.png"
         html: """
             Die CAPKOM-Kunstplattform beinhaltet viele Symbole.<br/>
             Wie groß sollen die Symbole sein?
@@ -69,7 +71,7 @@ Capkom.stages =
 
     "e2r":
         title: "Sprache/Symbolunterstützt"
-        image: "symbols/ueberMich.gif"
+        image: "http://www.ecartooes.com/img/snoopy/peanuts_snoopy_11.jpg"
         html: """
             Wie sollen Informationen dargestellt werden?<br/>
 
@@ -88,7 +90,7 @@ Capkom.stages =
 
     "symbolset":
         title: "Symbolsatz"
-        image: "http://www.fongia.com/varie/varie/snoopy2.gif"
+        image: "http://www.gelsenkirchener-geschichten.de/userpix/1208/1208_snoopy006_3.gif"
         html: """
             Welche Art der Symbole gefällt Dir am besten?<br/>
             Du kannst Dir später auch Deine eigenen Symbole schaffen, indem Du eigene Bilder oder Fotos hochlädst.

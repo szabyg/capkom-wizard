@@ -1,0 +1,109 @@
+<!DOCTYPE html>  <html> <head>   <title>stages.coffee</title>   <meta http-equiv="content-type" content="text/html; charset=UTF-8">   <link rel="stylesheet" media="all" href="docco.css" /> </head> <body>   <div id="container">     <div id="background"></div>            <div id="jump_to">         Jump To &hellip;         <div id="jump_wrapper">           <div id="jump_page">                                           <a class="source" href="navigation.html">                 navigation.coffee               </a>                                           <a class="source" href="profile.html">                 profile.coffee               </a>                                           <a class="source" href="stages.html">                 stages.coffee               </a>                                           <a class="source" href="wizard.html">                 wizard.coffee               </a>                        </div>         </div>       </div>          <table cellpadding="0" cellspacing="0">       <thead>         <tr>           <th class="docs">             <h1>               stages.coffee             </h1>           </th>           <th class="code">           </th>         </tr>       </thead>       <tbody>                               <tr id="section-1">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-1">&#182;</a>               </div>                            </td>             <td class="code">               <div class="highlight"><pre><span class="nv">Capkom = </span><span class="nb">window</span><span class="p">.</span><span class="nx">Capkom</span> <span class="o">?=</span> <span class="p">{}</span>
+
+<span class="nv">Capkom.stages =</span>
+    <span class="s2">&quot;welcome&quot;</span><span class="o">:</span>
+        <span class="nv">title: </span><span class="s2">&quot;Capkom Profil Wizard&quot;</span>
+        <span class="nv">image: </span><span class="s2">&quot;http://www.greeting-cards-4u.com/tubes/CharlyBrown/snoopy.gif&quot;</span>
+        <span class="nv">html: </span>
+            <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            Willkommen zum Kunstportal CAPKOM!&lt;br/&gt;&lt;br/&gt;</span>
+<span class="s2">            Hallo, ich heiße Wizi. &lt;br/&gt;</span>
+<span class="s2">            Ich möchte Euch nun ein paar Fragen zur Bedienung des Kunstportals stellen. &lt;br/&gt;</span>
+<span class="s2">            Dies wird nur einige Minuten in Anspruch nehmen.</span>
+<span class="s2">            &quot;&quot;&quot;</span>
+
+    <span class="s2">&quot;createuser&quot;</span><span class="o">:</span>
+        <span class="nv">title: </span><span class="s2">&quot;Benutzer anlegen&quot;</span>
+        <span class="nv">image: </span><span class="s2">&quot;symbols/ueberMich.gif&quot;</span>
+        <span class="nv">html: </span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            &lt;table&gt;</span>
+<span class="s2">                &lt;tr&gt;&lt;td&gt;Benutzername:&lt;/td&gt;&lt;td&gt;&lt;input id=&#39;&#39;/&gt;&lt;/td&gt;&lt;/tr&gt;</span>
+<span class="s2">                &lt;tr&gt;&lt;td&gt;Password:&lt;/td&gt;&lt;td&gt;&lt;input type=&#39;password&#39; id=&#39;&#39;/&gt;&lt;/td&gt;&lt;/tr&gt;</span>
+<span class="s2">            &lt;/table&gt;</span>
+<span class="s2">        &quot;&quot;&quot;</span>
+
+    <span class="s2">&quot;fontsize&quot;</span><span class="o">:</span>
+        <span class="nv">title: </span><span class="s2">&quot;Schriftgröße&quot;</span>
+        <span class="nv">image: </span><span class="s2">&quot;http://www.thepartyanimal-blog.org/wp-content/uploads/2010/09/Halloween-Snoopy5.jpg&quot;</span>
+        <span class="nv">html:</span>
+            <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            Welche Schriftgröße ist für Dich am angenehmsten?&lt;br/&gt;&lt;br/&gt;</span>
+<span class="s2">            &lt;div class=&#39;fontsize&#39;&gt;</span>
+<span class="s2">                &lt;input type=&#39;radio&#39; name=&#39;fontsize&#39; id=&#39;fontsize-small&#39; /&gt;</span>
+<span class="s2">                &lt;label for=&#39;fontsize-small&#39; class=&#39;fontsize-small&#39;&gt;AAA&lt;/label&gt;</span>
+
+<span class="s2">                &lt;input type=&#39;radio&#39; name=&#39;fontsize&#39; id=&#39;fontsize-medium&#39; /&gt;</span>
+<span class="s2">                &lt;label for=&#39;fontsize-medium&#39; class=&#39;fontsize-medium&#39;&gt;AAA&lt;/label&gt;</span>
+
+<span class="s2">                &lt;input type=&#39;radio&#39; name=&#39;fontsize&#39; id=&#39;fontsize-large&#39; /&gt;</span>
+<span class="s2">                &lt;label for=&#39;fontsize-large&#39; class=&#39;fontsize-large&#39;&gt;AAA&lt;/label&gt;</span>
+<span class="s2">            &lt;/div&gt;</span>
+<span class="s2">            &quot;&quot;&quot;</span>
+        <span class="nv">script: </span><span class="nf">(element) -&gt;</span>
+            <span class="nx">jQuery</span><span class="p">(</span><span class="s2">&quot;#fontsize-#{Capkom.profile.fontsize}&quot;</span><span class="p">).</span><span class="nx">attr</span> <span class="s2">&quot;checked&quot;</span><span class="p">,</span> <span class="s2">&quot;checked&quot;</span>
+            <span class="nx">jQuery</span><span class="p">(</span><span class="s2">&quot;.fontsize&quot;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">buttonset</span><span class="p">()</span>
+            <span class="p">.</span><span class="nx">change</span> <span class="nf">(e) -&gt;</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s2">&quot;fontsize change&quot;</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">id</span>
+                <span class="nv">Capkom.profile.fontsize = </span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">id</span><span class="p">.</span><span class="nx">replace</span> <span class="s2">&quot;fontsize-&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span>
+
+    <span class="s2">&quot;theme&quot;</span><span class="o">:</span>
+        <span class="nv">title: </span><span class="s2">&quot;Design&quot;</span>
+        <span class="nv">image: </span><span class="s2">&quot;http://www.balloonmaniacs.com/images/snoopygraduateballoon.jpg&quot;</span>
+        <span class="nv">html: </span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            Bitte bestimme nun das Bildschirmdesign.&lt;br/&gt;</span>
+<span class="s2">            Wähle dazu jenes Design, das Dir am besten gefällt.&lt;br/&gt;&lt;br/&gt;</span>
+<span class="s2">            &lt;span id=&#39;themeselector&#39;&gt;&lt;/span&gt;</span>
+<span class="s2">        &quot;&quot;&quot;</span>
+        <span class="nv">script: </span><span class="nf">(element) -&gt;</span>
+            <span class="nx">jQuery</span><span class="p">(</span><span class="s2">&quot;#themeselector&quot;</span><span class="p">,</span> <span class="nx">element</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">themeswitcher</span>
+                <span class="nv">width: </span><span class="mi">300</span>
+                <span class="nv">onSelect: </span><span class="nf">(theme) -&gt;</span>
+                    <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s2">&quot;selected theme&quot;</span><span class="p">,</span> <span class="nx">theme</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">,</span> <span class="err">@</span>
+
+    <span class="s2">&quot;symbolsize&quot;</span><span class="o">:</span>
+        <span class="nv">title: </span><span class="s2">&quot;Symbolgröße&quot;</span>
+        <span class="nv">image: </span><span class="s2">&quot;http://i.fonts2u.com/sn/mp1_snoopy-dings_1.png&quot;</span>
+        <span class="nv">html: </span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            Die CAPKOM-Kunstplattform beinhaltet viele Symbole.&lt;br/&gt;</span>
+<span class="s2">            Wie groß sollen die Symbole sein?</span>
+<span class="s2">        &quot;&quot;&quot;</span>
+
+    <span class="s2">&quot;e2r&quot;</span><span class="o">:</span>
+        <span class="nv">title: </span><span class="s2">&quot;Sprache/Symbolunterstützt&quot;</span>
+        <span class="nv">image: </span><span class="s2">&quot;http://www.ecartooes.com/img/snoopy/peanuts_snoopy_11.jpg&quot;</span>
+        <span class="nv">html: </span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            Wie sollen Informationen dargestellt werden?&lt;br/&gt;</span>
+
+<span class="s2">            &lt;input type=&#39;radio&#39; name=&#39;e2r&#39; id=&#39;e2r-alone&#39;/&gt;</span>
+<span class="s2">            &lt;label for=&#39;e2r-alone&#39;&gt;Text&lt;/label&gt;</span>
+<span class="s2">            &lt;input type=&#39;radio&#39; name=&#39;e2r&#39; id=&#39;e2r-alone&#39;/&gt;</span>
+<span class="s2">            &lt;label for=&#39;e2r-both&#39;&gt;Text + Symbole&lt;/label&gt;</span>
+<span class="s2">            &lt;br/&gt;&lt;br/&gt;</span>
+<span class="s2">            Audio:</span>
+<span class="s2">            &lt;input type=&#39;checkbox&#39; name=&#39;audio&#39; id=&#39;audioButton&#39;/&gt;</span>
+<span class="s2">            &lt;label for=&#39;audioButton&#39;&gt;[Audio-Symbol]&lt;/label&gt;</span>
+<span class="s2">        &quot;&quot;&quot;</span>
+        <span class="nv">script: </span><span class="nf">(element) -&gt;</span>
+            <span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;input[name=e2r]&#39;</span><span class="p">).</span><span class="nx">buttonset</span><span class="p">()</span>
+            <span class="nx">jQuery</span><span class="p">(</span><span class="s1">&#39;input[name=audio]&#39;</span><span class="p">).</span><span class="nx">button</span><span class="p">()</span>
+
+    <span class="s2">&quot;symbolset&quot;</span><span class="o">:</span>
+        <span class="nv">title: </span><span class="s2">&quot;Symbolsatz&quot;</span>
+        <span class="nv">image: </span><span class="s2">&quot;http://www.gelsenkirchener-geschichten.de/userpix/1208/1208_snoopy006_3.gif&quot;</span>
+        <span class="nv">html: </span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            Welche Art der Symbole gefällt Dir am besten?&lt;br/&gt;</span>
+<span class="s2">            Du kannst Dir später auch Deine eigenen Symbole schaffen, indem Du eigene Bilder oder Fotos hochlädst.</span>
+<span class="s2">        &quot;&quot;&quot;</span>
+
+<span class="nv">Capkom.order = </span><span class="p">[</span>
+    <span class="s2">&quot;welcome&quot;</span>
+    <span class="s2">&quot;fontsize&quot;</span>
+    <span class="s2">&quot;theme&quot;</span></pre></div>             </td>           </tr>                               <tr id="section-2">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-2">&#182;</a>               </div>               <p>TODO implement dependent stages</p>             </td>             <td class="code">               <div class="highlight"><pre>    <span class="s2">&quot;e2r&quot;</span> <span class="c1"># TODO add audio question</span>
+    <span class="s2">&quot;symbolset&quot;</span>
+    <span class="s2">&quot;symbolsize&quot;</span>
+
+    <span class="s2">&quot;createuser&quot;</span>
+<span class="p">]</span>
+
+</pre></div>             </td>           </tr>                </tbody>     </table>   </div> </body> </html> 
