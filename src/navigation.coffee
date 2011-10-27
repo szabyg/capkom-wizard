@@ -10,6 +10,10 @@ Capkom.RouterClass = Backbone.Router.extend
             @route route, stagename, -> _.defer ->
                 locRoute = window.location.hash
                 stagename = Capkom.getStagename()
+                if Capkom.order.indexOf(stagename) is 0
+                    jQuery("#prevButton").hide()
+                else
+                    jQuery("#prevButton").show()
                 newStage = Capkom.stages[stagename]
 
                 # Fill in all template parts and initialize the interaction

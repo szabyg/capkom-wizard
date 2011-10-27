@@ -3,25 +3,30 @@ Capkom = window.Capkom ?= {}
 Capkom.stages =
     "welcome":
         title: "Capkom Profilerstellung Wizard"
-        image: "symbols/ueberMich.gif"
+        image: "http://www.greeting-cards-4u.com/tubes/CharlyBrown/snoopy.gif"
         html: 
             """
-                Willkommen zum CapKom Kunstportal!<br/>
-                [Beschreibung der nächsten Schritte...]
+            Willkommen zum Kunstportal CAPKOM!<br/><br/>
+            Hallo, ich heiße Wizi. <br/>
+            Ich möchte Euch nun ein paar Fragen zur Bedienung des Kunstportals stellen. <br/>
+            Dies wird nur einige Minuten in Anspruch nehmen.
             """
         route: ""
 
     "createuser":
         title: "Benutzer anlegen"
+        image: "symbols/ueberMich.gif"
         html: """
-            Benutzername: <input id=''/>
+            Benutzername: <input id=''/><br/>
+            Password: <input id=''/>
         """
 
     "fontsize":
         title: "Schriftgröße"
-        image: "fontsize.gif"
+        image: "http://www.thepartyanimal-blog.org/wp-content/uploads/2010/09/Halloween-Snoopy5.jpg"
         html:
             """
+            Welche Schriftgröße ist für Dich am angenehmsten?<br/><br/>
             <div class='fontsize'>
                 <input type='radio' name='fontsize' id='fontsize-small' />
                 <label for='fontsize-small' class='fontsize-small'>AAA</label>
@@ -41,9 +46,12 @@ Capkom.stages =
                 Capkom.profile.fontsize = e.target.id.replace "fontsize-", ""
 
     "theme":
-        title: "Theme"
+        title: "Bildschirm design"
+        image: "symbols/ueberMich.gif"
         html: """
-            <div id='themeselector'></div>
+            Bitte bestimme nun das Bildschirmdesign.<br/>
+            Wähle dazu jenes Design, das Dir am besten gefällt.<br/><br/>
+            <span id='themeselector'></span>
         """
         script: (element) ->
             jQuery("#themeselector", element)
@@ -53,30 +61,42 @@ Capkom.stages =
                     console.info "selected theme", theme, arguments, @
 
     "symbolsize":
-        title: "sdfg"
+        title: "Symbolgröße"
+        image: "symbols/ueberMich.gif"
         html: """
-            Symbolsize
+            Die CAPKOM-Kunstplattform beinhaltet viele Symbole.<br/>
+            Wie groß sollen die Symbole sein?
         """
 
     "e2r":
-        title: "EasyToRead"
+        title: "Sprache/Symbolunterstützt"
+        image: "symbols/ueberMich.gif"
         html: """
-            Not yet implemented...
+            Wie sollen Informationen dargestellt werden?<br/>
+            Text / 
+
+            <input type='radio' name='e2r' id='e2r-alone'/>
+            <label for='e2r-alone'>Einfache Sprache</label>
+            Text + Symbol []
+            <input type='radio' name='e2r' id='e2r-alone'/>
+            <label for='e2r-both'>Einfache Sprache und Symbole</label>
         """
 
     "symbolset":
-        title: "Symolsatz"
+        title: "Symbolsatz"
+        image: "symbols/ueberMich.gif"
         html: """
-            Not yet implemented...
+            Welche Art der Symbole gefällt Dir am besten?<br/>
+            Du kannst Dir später auch Deine eigenen Symbole schaffen, indem Du eigene Bilder oder Fotos hochlädst.
         """
 
 Capkom.order = [
     "welcome"
     "fontsize"
-    "createuser"
     "theme"
     "symbolsize"
     "e2r"
     "symbolset"
+    "createuser"
 ]
 

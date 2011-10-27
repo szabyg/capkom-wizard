@@ -32,4 +32,15 @@ jQuery(document).ready -> _.defer ->
         next = Capkom.order[ Capkom.order.indexOf(from) + 1 ]
         # Navigate to the next stage if there is one..
         Capkom.router.navigate next, true if next isnt undefined
+    jQuery("#prevButton").button()
+    .click ->
+        # the actual hash
+        from = Capkom.getStagename()
+        # the next hash based on the order
+        next = Capkom.order[ Capkom.order.indexOf(from) - 1 ]
+        
+        # Navigate to the next stage if there is one..
+        Capkom.router.navigate next, true if next isnt undefined
+
+    jQuery("nav a").button()
 
