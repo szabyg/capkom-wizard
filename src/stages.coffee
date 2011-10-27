@@ -43,8 +43,11 @@ Capkom.stages =
     "theme":
         title: "Theme"
         html: """
-            Not yet implemented...
+            <div id='themeselector'></div>
         """
+        script: (element) ->
+            jQuery("#themeselector", element)
+            .themeswitcher()
 
 
     "symbolsize":
@@ -68,6 +71,10 @@ Capkom.stages =
 Capkom.order = [
     "welcome"
     "fontsize"
+    "createuser"
+    "theme"
     "symbolsize"
+    "e2r"
+    "symbolset"
 ]
 

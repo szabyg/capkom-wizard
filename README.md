@@ -1,5 +1,5 @@
 # CapKom Wizard 
-for creating a user profile for a platform for cognitive disabled users.
+for creating a user profile for a platform for users with cognitive disabilities.
 
 ## Goals
 
