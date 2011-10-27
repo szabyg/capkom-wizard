@@ -19,6 +19,10 @@ jQuery(document).ready -> _.defer ->
     Capkom.router = new Capkom.RouterClass
     do Backbone.history.start
 
+    # Initialize panel view
+    jQuery("section").accordion
+        autoHeight: false
+
     # Initialize NEXT button
     jQuery("#nextButton").button()
     .click ->

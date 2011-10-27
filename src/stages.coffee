@@ -47,8 +47,10 @@ Capkom.stages =
         """
         script: (element) ->
             jQuery("#themeselector", element)
-            .themeswitcher()
-
+            .themeswitcher
+                width: 300
+                onSelect: (theme) ->
+                    console.info "selected theme", theme, arguments, @
 
     "symbolsize":
         title: "sdfg"

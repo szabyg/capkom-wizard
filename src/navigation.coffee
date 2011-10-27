@@ -11,8 +11,16 @@ Capkom.RouterClass = Backbone.Router.extend
                 locRoute = window.location.hash
                 stagename = Capkom.getStagename()
                 newStage = Capkom.stages[stagename]
-                jQuery(".stage").html newStage.html
-                jQuery(".stage-image").attr "src", newStage.image
-                
-                newStage.script jQuery(".stage") if newStage.script
+
+                # Fill in all template parts and initialize the interaction
+                jQuery(".stage-title").html newStage.title
+                jQuery(".stage-content").html newStage.html
+                if newStage.image
+                    jQuery(".stage-image")
+                    .show()
+                    .attr "src", newStage.image
+                else
+                    jQuery(".stage-image")
+                    .hide()
+                newStage.script jQuery(".stage-content") if newStage.script
 
