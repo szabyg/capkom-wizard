@@ -2,11 +2,7 @@ Capkom = window.Capkom ?= {}
 
 # Name of the actual stage
 Capkom.getStagename = ->
-    result = null
-    locRoute = window.location.hash.replace /^#/, ""
-    _(Capkom.stages).find (stage, routename) ->
-        result = routename if stage.route is locRoute or routename is locRoute
-    result
+    window.location.hash.replace /^#/, ""
 
 # Load default profile from a backend servlet
 jQuery.get "./default-profile.json", (profile) ->
@@ -27,20 +23,22 @@ jQuery(document).ready -> _.defer ->
     jQuery("#nextButton").button()
     .click ->
         # the actual hash
-        from = Capkom.getStagename()
+        from = Capkom.stages[Capkom.getStagename()]
         # the next hash based on the order
-        next = Capkom.order[ Capkom.order.indexOf(from) + 1 ]
+        stages = Capkom.getStages()
+        next = stages[ stages.indexOf(from) + 1 ]
         # Navigate to the next stage if there is one..
-        Capkom.router.navigate next, true if next isnt undefined
+        Capkom.router.navigate next.name, true if next isnt undefined
     # Initialize Previous button
     jQuery("#prevButton").button()
     .click ->
         # the actual hash
-        from = Capkom.getStagename()
-        # the next hash based on the order
-        next = Capkom.order[ Capkom.order.indexOf(from) - 1 ]
+        from = Capkom.stages[Capkom.getStagename()]
+        # the previous hash based on the order
+        stages = Capkom.getStages()
+        next = stages[ stages.indexOf(from) - 1 ]
         # Navigate to the next stage if there is one..
-        Capkom.router.navigate next, true if next isnt undefined
+        Capkom.router.navigate next.name, true if next isnt undefined
 
     # Initialize navigation bar
     do Capkom.initNav
