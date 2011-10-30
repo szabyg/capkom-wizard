@@ -8,8 +8,8 @@ Capkom.initNav = ->
     # Create an entry for each stage
     for i, stage of Capkom.getStages()
         jQuery("nav").append jQuery """
-            <input type='radio' name='capkom-wizard-nav' id='#{stage.name}'/>
-            <label for='#{stage.name}'>#{1 + Number i}. #{stage.title}</label>
+            <input type='radio' name='capkom-wizard-nav' id='nav-#{stage.name}'/>
+            <label for='nav-#{stage.name}'>#{1 + Number i}. #{stage.title}</label>
         """
     # Activate the current stage
     jQuery("input##{Capkom.getStagename()}").attr "checked", "checked"
@@ -21,10 +21,6 @@ Capkom.initNav = ->
 
 # Define routes
 Capkom.RouterClass = Backbone.Router.extend
-    routes:
-        "": "startpage"
-    startpage: ->
-        @navigate Capkom.order[0], true
     initialize: (options) ->
         for i, stage of Capkom.getStages()
             @route stage.name, stage.name, -> _.defer ->

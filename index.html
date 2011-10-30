@@ -9,6 +9,7 @@
     <script type="text/javascript" src="lib/jquery/jquery-ui.1.9m5.js"></script>
     <script type="text/javascript" src="lib/underscore-min.js"></script>
     <script type="text/javascript" src="lib/backbone.js"></script>
+    <script type="text/javascript" src="lib/jquery/themeswitcher.js"></script>
 
     <link rel="stylesheet" href="css/style.css" />
     <script type="text/javascript" src="lib/wizard.js"></script>
@@ -16,9 +17,10 @@
     <script type="text/javascript" src="lib/profile.js"></script>
     <script type="text/javascript" src="lib/navigation.js"></script>
 
+
     <style>
         .logo {
-            padding: 15px;
+            padding: 0.4em;
         }
         section {
             width: 80%;
@@ -28,18 +30,20 @@
         }
         #nextButton, #prevButton { 
             position: absolute;
-            margin: 15px 5px;
+            margin: 1em 0.3em;
         }
         #nextButton {
-            right: 0px;
+            right: 0;
         }
-        .fontsize-small  { font-size: 10px;}
-        .fontsize-medium { font-size: 14px;}
-        .fontsize-large  { font-size: 20px;}
+        label img.choose-button {
+            height: 30px;
+        }
+        .fontsize-small  { font-size: 15px;}
+        .fontsize-medium { font-size: 20px;}
+        .fontsize-large  { font-size: 25px;}
     </style>
 </head>
 <body>
-    <script type="text/javascript" src="http://jqueryui.com/themeroller/themeswitchertool/"></script>
     <header>
         <a href="#"><img class="logo" src="symbols/Capkom_Logo.gif"/></a>
         <nav>

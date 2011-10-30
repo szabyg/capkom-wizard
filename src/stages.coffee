@@ -44,21 +44,22 @@ Capkom.stages =
             Welche Schriftgröße ist für Dich am angenehmsten?<br/><br/>
             <div class='fontsize'>
                 <input type='radio' name='fontsize' id='fontsize-small' />
-                <label for='fontsize-small' ><span class='fontsize-small'>AAA</span></label>
+                <label for='fontsize-small' ><span class='fontsize-small choose-button'>AAA</span></label>
 
                 <input type='radio' name='fontsize' id='fontsize-medium' />
-                <label for='fontsize-medium'><span class='fontsize-medium'>AAA</span></label>
+                <label for='fontsize-medium'><span class='fontsize-medium choose-button'>AAA</span></label>
 
                 <input type='radio' name='fontsize' id='fontsize-large' />
                 <label for='fontsize-large' ><span class='fontsize-large'>AAA</span></label>
             </div>
             """
         script: (element) ->
-            jQuery("#fontsize-#{Capkom.profile.fontsize}").attr "checked", "checked"
+            jQuery("#fontsize-#{Capkom.profile.get 'fontsize'}").attr "checked", "checked"
             jQuery(".fontsize", element).buttonset()
             .change (e) ->
-                console.info "fontsize change", arguments, e.target.id
-                Capkom.profile.fontsize = e.target.id.replace "fontsize-", ""
+                Capkom.profile.set 'fontsize': e.target.id.replace "fontsize-", ""
+                jQuery("body").removeClass "fontsize-small fontsize-medium fontsize-large"
+                jQuery("body").addClass e.target.id
 
     # Definition of the theme selection screen
     "theme":
@@ -81,7 +82,7 @@ Capkom.stages =
         title: "Symbolgröße"
         # only show it if symbols are turned on
         condition: (profile) ->
-            profile.useSymbols
+            profile.get "useSymbols"
         image: "http://i.fonts2u.com/sn/mp1_snoopy-dings_1.png"
         html: """
             Die CAPKOM-Kunstplattform beinhaltet viele Symbole.<br/>
@@ -105,7 +106,9 @@ Capkom.stages =
             <label for='audioButton'>[Audio-Symbol]</label>
         """
         script: (element) ->
-            jQuery('#e2r-alone, #e2r-both').button()
+            jQuery('#e2r-alone, #e2r-both')
+            .button()
+            .click Capkom.
             jQuery('input[name=audio]').button()
 
     # Definition of the symbolset selection screen
@@ -113,7 +116,7 @@ Capkom.stages =
         title: "Symbolsatz"
         # only show it if symbols are turned on
         condition: (profile) ->
-            profile.useSymbols
+            profile.get "useSymbols"
         image: "http://www.gelsenkirchener-geschichten.de/userpix/1208/1208_snoopy006_3.gif"
         html: """
             Welche Art der Symbole gefällt Dir am besten?<br/>
@@ -127,3 +130,4 @@ Capkom.getStages = ->
         stage
     res = _(res).filter (stage) ->
         true unless stage.condition?(Capkom.profile) is false
+
