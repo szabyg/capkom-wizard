@@ -7,5 +7,6 @@
     "bgcolor": "#fff",
     "useE2r": true,
     "useAudio": true,
-    "customSymbolsets": []
+    "customSymbolsets": [],
+    "theme": "South Street"
 }

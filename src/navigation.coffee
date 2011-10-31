@@ -4,7 +4,9 @@ Capkom = window.Capkom ?= {}
 # Initializing navigation bar
 Capkom.initNav = ->
     # Initialize NEXT button
-    jQuery("#nextButton").button()
+    jQuery("#nextButton").button
+        icons:
+            secondary: "ui-icon-arrowthick-1-e"
     .click ->
         # the actual hash
         from = Capkom.stages[Capkom.getStagename()]
@@ -15,7 +17,9 @@ Capkom.initNav = ->
         Capkom.router.navigate next.name, true if next isnt undefined
 
     # Initialize Previous button
-    jQuery("#prevButton").button()
+    jQuery("#prevButton").button
+        icons:
+            primary: "ui-icon-arrowthick-1-w"
     .click ->
         # the actual hash
         from = Capkom.stages[Capkom.getStagename()]

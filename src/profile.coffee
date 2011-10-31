@@ -6,20 +6,31 @@ Capkom.profile.bind "change:fontsize", (profile, fontsize) ->
     jQuery("body").removeClass "fontsize-small fontsize-medium fontsize-large"
     jQuery("body").addClass "fontsize-#{fontsize}"
 
+Capkom.profile.bind "change:theme", (profile, theme) ->
+    $.cookie "jquery-ui-theme", theme
+    $("#bgThemeActivator").themeswitcher();
+
 Capkom.profile.bind "change", (profile) ->
-    console.info "profile change", arguments
     profile.save()
 
+# TODO Implement some storage
 Backbone.sync = (method, model) ->
-    console.log method, model
+    localStorage.profile = JSON.stringify model.toJSON()
+    console.info "profile saved:", localStorage.profile
 
 Capkom.loadProfile = (callback) ->
-    # Load default profile from a backend servlet
-    jQuery.get "./default-profile.json", (profile) -> _.defer ->
+    setProfile = (profile) -> 
         # make sure profile is a json object
         if typeof profile is "string"
             profile = JSON.parse profile
         Capkom.defaultProfile = profile
         Capkom.profile.set profile
         callback?()
+
+    if localStorage.profile
+        setProfile localStorage.profile
+    else
+        # Load default profile from a backend servlet
+        jQuery.get "./default-profile.json", (profile) -> _.defer ->
+            setProfile profile
 

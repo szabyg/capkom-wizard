@@ -61,8 +61,10 @@ Capkom.stages =
             jQuery("#themeselector", element)
             .themeswitcher
                 width: 300
-                onSelect: (theme) ->
-                    console.info "selected theme", theme, arguments, @
+                buttonHeight: 30
+                onSelect: ->
+                    Capkom.profile.set
+                        "theme": $.cookie("jquery-ui-theme")
 
     "channels":
         title: "Sprache/Symbolunterstützt"
@@ -139,7 +141,7 @@ Capkom.stages =
         title: "Benutzer anlegen"
         image: "symbols/ueberMich.gif"
         html: """
-            <table>
+            <table class='ui-widget-content'>
                 <tr><td>Benutzername:</td><td><input id=''/></td></tr>
                 <tr><td>Password:</td><td><input type='password' id=''/></td></tr>
             </table>
