@@ -79,12 +79,14 @@ Capkom.stages =
             <label for='audioButton'>[Audio-Symbol]</label>
         """
         script: (element) ->
+            # activate the buttons according to the profile
             if Capkom.profile.get "useSymbols"
                 jQuery("#e2r-both").attr "checked", "checked"
             else
                 jQuery("#e2r-alone").attr "checked", "checked"
             jQuery('#e2r-alone, #e2r-both')
             .button()
+            # Handle click event, change profile
             .click ->
                 state = @id.replace "e2r-", ""
                 switch state
@@ -97,10 +99,12 @@ Capkom.stages =
                             useE2r: true
                             useSymbols: true
 
+            # Set button state according to the profile
             if Capkom.profile.get "useAudio"
                 jQuery("#audioButton").attr "checked", "checked"
             jQuery('input[name=audio]')
             .button()
+            # Handle click event
             .click ->
                 useAudio = jQuery( @ ).attr "checked"
                 Capkom.profile.set 
@@ -141,11 +145,13 @@ Capkom.stages =
             </table>
         """
 
+# Get an array of stage objects in the configured order.
 Capkom.getStages = ->
     res = for i, stagename of Capkom.order
         stage = Capkom.stages[stagename]
         stage.name = stagename
         stage
+    # Filter out the dependent and not-to-show stages based on `stage.condition`
     res = _(res).filter (stage) ->
         true unless stage.condition?(Capkom.profile) is false
 

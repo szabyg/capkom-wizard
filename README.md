@@ -1,10 +1,14 @@
 # CapKom Wizard 
-for creating a user profile for a platform for users with cognitive disabilities.
+A tool for creating a user profile for a platform for users with cognitive disabilities.
+
+## Goals
+* The wizard is made to be the profile creating "entry test" for a community portal for art enabling collaboration for people with cognitive difficulties.
+
 
 ## Dependencies
-* jQuery 1.5
-* jQuery UI 1.9m5
-* Backbone.js
+* jQuery + jQuery UI 1.9m5 - Basic UI widget set providing in-browser Accessibility, Themeability and Usability.
+* Backbone.js - A model-view-controller framework for the client-side.
+* Underscore.js - Javascript 1.9 added functionalities in older browsers.
 
 ## Development
 Run the following command to keep compiling the coffeescript into javascript. It needs coffeescript installed to run.
