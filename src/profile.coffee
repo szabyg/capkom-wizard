@@ -16,6 +16,9 @@ Backbone.sync = (method, model) ->
 Capkom.loadProfile = (callback) ->
     # Load default profile from a backend servlet
     jQuery.get "./default-profile.json", (profile) -> _.defer ->
+        # make sure profile is a json object
+        if typeof profile is "string"
+            profile = JSON.parse profile
         Capkom.defaultProfile = profile
         Capkom.profile.set profile
         callback?()
