@@ -17,27 +17,6 @@ jQuery(document).ready -> _.defer ->
         jQuery("section").accordion
             autoHeight: false
 
-        # Initialize NEXT button
-        jQuery("#nextButton").button()
-        .click ->
-            # the actual hash
-            from = Capkom.stages[Capkom.getStagename()]
-            # the next hash based on the order
-            stages = Capkom.getStages()
-            next = stages[ stages.indexOf(from) + 1 ]
-            # Navigate to the next stage if there is one..
-            Capkom.router.navigate next.name, true if next isnt undefined
-        # Initialize Previous button
-        jQuery("#prevButton").button()
-        .click ->
-            # the actual hash
-            from = Capkom.stages[Capkom.getStagename()]
-            # the previous hash based on the order
-            stages = Capkom.getStages()
-            next = stages[ stages.indexOf(from) - 1 ]
-            # Navigate to the next stage if there is one..
-            Capkom.router.navigate next.name, true if next isnt undefined
-
         # Initialize navigation bar
         do Capkom.initNav
 

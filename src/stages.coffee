@@ -5,7 +5,7 @@ Capkom.order = [
     "welcome"
     "fontsize"
     "theme"
-    "e2r"
+    "channels"
     "symbolset"
     "symbolsize"
     "createuser"
@@ -23,17 +23,6 @@ Capkom.stages =
             Ich möchte Euch nun ein paar Fragen zur Bedienung des Kunstportals stellen. <br/>
             Dies wird nur einige Minuten in Anspruch nehmen.
             """
-
-    # Definition of the user creation screen
-    "createuser":
-        title: "Benutzer anlegen"
-        image: "symbols/ueberMich.gif"
-        html: """
-            <table>
-                <tr><td>Benutzername:</td><td><input id=''/></td></tr>
-                <tr><td>Password:</td><td><input type='password' id=''/></td></tr>
-            </table>
-        """
 
     # Definition of the font size setting screen
     "fontsize":
@@ -58,8 +47,6 @@ Capkom.stages =
             jQuery(".fontsize", element).buttonset()
             .change (e) ->
                 Capkom.profile.set 'fontsize': e.target.id.replace "fontsize-", ""
-                jQuery("body").removeClass "fontsize-small fontsize-medium fontsize-large"
-                jQuery("body").addClass e.target.id
 
     # Definition of the theme selection screen
     "theme":
@@ -77,21 +64,7 @@ Capkom.stages =
                 onSelect: (theme) ->
                     console.info "selected theme", theme, arguments, @
 
-    # Definition of the symbol size selection screen
-    "symbolsize":
-        title: "Symbolgröße"
-        # only show it if symbols are turned on
-        condition: (profile) ->
-            profile.get "useSymbols"
-        image: "http://i.fonts2u.com/sn/mp1_snoopy-dings_1.png"
-        html: """
-            Die CAPKOM-Kunstplattform beinhaltet viele Symbole.<br/>
-            Wie groß sollen die Symbole sein?
-        """
-
-    # Definition of the welcome screen
-    # TODO add audio question
-    "e2r":
+    "channels":
         title: "Sprache/Symbolunterstützt"
         image: "http://www.ecartooes.com/img/snoopy/peanuts_snoopy_11.jpg"
         html: """
@@ -106,10 +79,32 @@ Capkom.stages =
             <label for='audioButton'>[Audio-Symbol]</label>
         """
         script: (element) ->
+            if Capkom.profile.get "useSymbols"
+                jQuery("#e2r-both").attr "checked", "checked"
+            else
+                jQuery("#e2r-alone").attr "checked", "checked"
             jQuery('#e2r-alone, #e2r-both')
             .button()
-            .click Capkom.
-            jQuery('input[name=audio]').button()
+            .click ->
+                state = @id.replace "e2r-", ""
+                switch state
+                    when "alone"
+                        Capkom.profile.set
+                            useE2r: true
+                            useSymbols: false
+                    when "both"
+                        Capkom.profile.set
+                            useE2r: true
+                            useSymbols: true
+
+            if Capkom.profile.get "useAudio"
+                jQuery("#audioButton").attr "checked", "checked"
+            jQuery('input[name=audio]')
+            .button()
+            .click ->
+                useAudio = jQuery( @ ).attr "checked"
+                Capkom.profile.set 
+                    "useAudio": useAudio
 
     # Definition of the symbolset selection screen
     "symbolset":
@@ -121,6 +116,29 @@ Capkom.stages =
         html: """
             Welche Art der Symbole gefällt Dir am besten?<br/>
             Du kannst Dir später auch Deine eigenen Symbole schaffen, indem Du eigene Bilder oder Fotos hochlädst.
+        """
+
+    # Definition of the symbol size selection screen
+    "symbolsize":
+        title: "Symbolgröße"
+        # only show it if symbols are turned on
+        condition: (profile) ->
+            profile.get "useSymbols"
+        image: "http://i.fonts2u.com/sn/mp1_snoopy-dings_1.png"
+        html: """
+            Die CAPKOM-Kunstplattform beinhaltet viele Symbole.<br/>
+            Wie groß sollen die Symbole sein?
+        """
+
+    # Definition of the user creation screen
+    "createuser":
+        title: "Benutzer anlegen"
+        image: "symbols/ueberMich.gif"
+        html: """
+            <table>
+                <tr><td>Benutzername:</td><td><input id=''/></td></tr>
+                <tr><td>Password:</td><td><input type='password' id=''/></td></tr>
+            </table>
         """
 
 Capkom.getStages = ->
