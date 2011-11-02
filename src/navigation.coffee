@@ -4,10 +4,10 @@ Capkom = window.Capkom ?= {}
 # Initializing navigation bar
 Capkom.initNav = ->
     # Initialize NEXT button
-    jQuery("#nextButton").button
-        icons:
-            secondary: "ui-icon-arrowthick-1-e"
-    .click ->
+    jQuery("#nextButton").button()
+#        icons:
+#            secondary: "ui-icon-arrowthick-1-e"
+    .click (e) ->
         # the actual hash
         from = Capkom.stages[Capkom.getStagename()]
         # the next hash based on the order
@@ -15,12 +15,13 @@ Capkom.initNav = ->
         next = stages[ stages.indexOf(from) + 1 ]
         # Navigate to the next stage if there is one..
         Capkom.router.navigate next.name, true if next isnt undefined
+        do e.stopImmediatePropagation
 
     # Initialize Previous button
-    jQuery("#prevButton").button
-        icons:
-            primary: "ui-icon-arrowthick-1-w"
-    .click ->
+    jQuery("#prevButton").button()
+#        icons:
+#            primary: "ui-icon-arrowthick-1-w"
+    .click (e) ->
         # the actual hash
         from = Capkom.stages[Capkom.getStagename()]
         # the previous hash based on the order
@@ -28,6 +29,7 @@ Capkom.initNav = ->
         next = stages[ stages.indexOf(from) - 1 ]
         # Navigate to the next stage if there is one..
         Capkom.router.navigate next.name, true if next isnt undefined
+        do e.stopImmediatePropagation
 
     # Empty the bar
     jQuery("nav").html ""
@@ -54,7 +56,7 @@ Capkom.RouterClass = Backbone.Router.extend
     initialize: (opts) ->
         for i, stage of Capkom.getStages()
             # Initialize a route and define how it's handled
-            @route stage.name, stage.name, -> _.defer ->
+            @route stage.name, stage.name, -> 
                 locRoute = window.location.hash
                 stagename = Capkom.getStagename()
                 if Capkom.order.indexOf(stagename) is 0

@@ -154,7 +154,10 @@ Capkom.stages =
         html: """
             <table class='ui-widget-content'>
                 <tr><td>Benutzername:</td><td><input id=''/></td></tr>
-                <tr><td>Password:</td><td><input type='password' id=''/></td></tr>
+                <tr><td>Kennwort:</td><td><input type='password' id=''/></td></tr>
+                <tr><td>Kennwort wiederholen:</td><td><input type='password' id=''/></td></tr>
+                <tr><td></td><td></td></tr>
+                <tr><td>Was noch?</td><td></td></tr>
             </table>
         """
 
