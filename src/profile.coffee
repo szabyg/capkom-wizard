@@ -14,6 +14,21 @@ Capkom.profile.bind "change:theme", (profile, theme) ->
     $.cookie "jquery-ui-theme", theme
     $("#bgThemeActivator").themeswitcher();
 
+# Turn the audio On/Off
+Capkom.profile.bind "change:useAudio", (profile, audio) ->
+    if audio
+        jQuery(".audioButton").show()
+    else
+        jQuery(".audioButton").hide()
+
+# Turn the symbols On/Off
+Capkom.profile.bind "change:useSymbols", (profile, audio) ->
+    if audio
+        jQuery(".symbol").show()
+    else
+        jQuery(".symbol").hide()
+
+
 # Any change will be saved automatically by the Backbone.sync method
 Capkom.profile.bind "change", (profile) ->
     profile.save()

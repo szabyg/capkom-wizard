@@ -14,11 +14,8 @@ A tool for creating a user profile for a platform for users with cognitive disab
 Run the following command to keep compiling the coffeescript into javascript. It needs coffeescript installed to run.
 coffee -c -w -o lib src/*.coffee
 
-To generate documentation automatically run the following command. It needs docco installed.
-docco src/*.coffee
-
 ## Documentation
-Install and run docco for compiling the documentation like this:
+To generate documentation automatically run the following command. It needs docco installed.
 docco src/*.coffee
 
 ## License

@@ -31,6 +31,10 @@
         nav ol li {
             display: inline;
         }
+        .audioButton {
+            padding-bottom: 2em;
+            display: block;
+        }
         #nextButton, #prevButton { 
             position: absolute;
             margin: 1em 0.3em;
@@ -57,7 +61,10 @@
         <h1><a class="stage-title"></a></h1>
         <div>
             <div style="float:left"><img width="200" class="stage-image" alt="Wizard Bild" /></div>
-            <span style="float:left; padding: 5px 15px;" class="stage-content"></span>
+            <div style="float:left; padding: 5px 15px;">
+                <a href="javascript:alert('sprich!');return false;"><img src="symbols/speaker.png" width="30" class="audioButton" alt="Sprache"/></a>
+                <span class="stage-content"></span>
+            </div>
         </div>
     </section>
     <footer>
@@ -69,6 +76,8 @@
             <a href="https://github.com/szabyg/capkom-wizard" target="_blank">Source code</a>
             -
             <a href="docs" target="_blank">Source code documentation</a>
+            -
+            <a href="javascript:localStorage.clear();window.location.reload()">Profil löschen</a>
         </div>
     </footer>
     <div style="display:none;" id="bgThemeActivator"></div>

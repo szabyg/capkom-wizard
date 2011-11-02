@@ -14,7 +14,7 @@ Capkom.order = [
 Capkom.stages =
     # Definition of the welcome screen
     "welcome":
-        title: "Capkom Profil Wizard"
+        title: "Capkom Profil Wizard <img src='symbols/symbol.gif' class='symbol' width='18' alt='Symbole'/>"
         image: "http://www.greeting-cards-4u.com/tubes/CharlyBrown/snoopy.gif"
         html: 
             """
@@ -26,7 +26,7 @@ Capkom.stages =
 
     # Definition of the font size setting screen
     "fontsize":
-        title: "Schriftgröße"
+        title: "Schriftgröße <img src='symbols/symbol.gif' class='symbol' width='18' alt='Symbole'/>"
         image: "http://www.thepartyanimal-blog.org/wp-content/uploads/2010/09/Halloween-Snoopy5.jpg"
         html:
             """
@@ -50,7 +50,7 @@ Capkom.stages =
 
     # Definition of the theme selection screen
     "theme":
-        title: "Design"
+        title: "Design <img src='symbols/symbol.gif' class='symbol' width='18' alt='Symbole'/>"
         image: "http://www.balloonmaniacs.com/images/snoopygraduateballoon.jpg"
         html: """
             Bitte bestimme nun das Bildschirmdesign.<br/>
@@ -67,18 +67,21 @@ Capkom.stages =
                         "theme": $.cookie("jquery-ui-theme")
 
     "channels":
-        title: "Sprache/Symbolunterstützt"
+        title: 'Sprache/Symbole <img src="symbols/speaker.png" width="14" alt="Sprache"/>'
         image: "http://www.ecartooes.com/img/snoopy/peanuts_snoopy_11.jpg"
         html: """
-            Wie sollen Informationen dargestellt werden?<br/>
+            Wie sollen Informationen dargestellt werden?<br/><br/>
             <input type='radio' name='e2r' id='e2r-alone'/>
             <label for='e2r-alone'>Text</label>
             <input type='radio' name='e2r' id='e2r-both'/>
-            <label for='e2r-both'>Text + Symbole</label>
+            <label for='e2r-both'>Text + Symbole <img src='symbols/symbol.gif' width='18' alt='Symbole'/></label>
             <br/><br/>
-            Audio:
-            <input type='checkbox' name='audio' id='audioButton'/>
-            <label for='audioButton'>[Audio-Symbol]</label>
+            Sprachausgabe:<br/><br/>
+            <input type='radio' name='useAudio' id='audio-on'/>
+            <label for='audio-on'><img src='symbols/Gnome-Audio-Volume-Medium-64.png' width='64' alt='Symbole'/></label>
+            <input type='radio' name='useAudio' id='audio-off'/>
+            <label for='audio-off'><img src='symbols/Gnome-Audio-Volume-Muted-64.png' width='64' alt='Symbole'/></label>
+
         """
         script: (element) ->
             # activate the buttons according to the profile
@@ -103,18 +106,26 @@ Capkom.stages =
 
             # Set button state according to the profile
             if Capkom.profile.get "useAudio"
-                jQuery("#audioButton").attr "checked", "checked"
-            jQuery('input[name=audio]')
+                jQuery("#audio-on").attr "checked", "checked"
+            else
+                jQuery("#audio-off").attr "checked", "checked"
+
+            jQuery('#audio-on, #audio-off')
             .button()
-            # Handle click event
+            # Handle click event, change profile
             .click ->
-                useAudio = jQuery( @ ).attr "checked"
-                Capkom.profile.set 
-                    "useAudio": useAudio
+                state = @id.replace "audio-", ""
+                switch state
+                    when "on"
+                        Capkom.profile.set
+                            useAudio: true
+                    when "off"
+                        Capkom.profile.set
+                            useAudio: false
 
     # Definition of the symbolset selection screen
     "symbolset":
-        title: "Symbolsatz"
+        title: "Symbolsatz <img src='symbols/symbol.gif' class='symbol' width='18' alt='Symbole'/>"
         # only show it if symbols are turned on
         condition: (profile) ->
             profile.get "useSymbols"
@@ -126,7 +137,7 @@ Capkom.stages =
 
     # Definition of the symbol size selection screen
     "symbolsize":
-        title: "Symbolgröße"
+        title: "Symbolgröße <img src='symbols/symbol.gif' class='symbol' width='18' alt='Symbole'/>"
         # only show it if symbols are turned on
         condition: (profile) ->
             profile.get "useSymbols"
@@ -138,7 +149,7 @@ Capkom.stages =
 
     # Definition of the user creation screen
     "createuser":
-        title: "Benutzer anlegen"
+        title: "Benutzer anlegen <img src='symbols/symbol.gif' class='symbol' width='18' alt='Symbole'/>"
         image: "symbols/ueberMich.gif"
         html: """
             <table class='ui-widget-content'>
