@@ -4,9 +4,9 @@ Capkom = window.Capkom ?= {}
 # Initializing navigation bar
 Capkom.initNav = ->
     # Initialize NEXT button
-    jQuery("#nextButton").button()
-#        icons:
-#            secondary: "ui-icon-arrowthick-1-e"
+    jQuery("#nextButton").button
+        icons:
+            secondary: "ui-icon-arrowthick-1-e"
     .click (e) ->
         # the actual hash
         from = Capkom.stages[Capkom.getStagename()]
@@ -18,9 +18,9 @@ Capkom.initNav = ->
         do e.stopImmediatePropagation
 
     # Initialize Previous button
-    jQuery("#prevButton").button()
-#        icons:
-#            primary: "ui-icon-arrowthick-1-w"
+    jQuery("#prevButton").button
+        icons:
+            primary: "ui-icon-arrowthick-1-w"
     .click (e) ->
         # the actual hash
         from = Capkom.stages[Capkom.getStagename()]
