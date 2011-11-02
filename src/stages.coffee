@@ -9,6 +9,7 @@ Capkom.order = [
     "symbolset"
     "symbolsize"
     "createuser"
+    "goodbye"
 ]
 
 Capkom.stages =
@@ -125,7 +126,7 @@ Capkom.stages =
 
     # Definition of the symbolset selection screen
     "symbolset":
-        title: "Symbolsatz <img src='symbols/symbol.gif' class='symbol' width='18' alt='Symbole'/>"
+        title: "<label symbol-id='symbolset'>Symbolsatz <img src='symbols/symbol.gif' class='symbol' width='18' alt='Symbole'/></label>"
         # only show it if symbols are turned on
         condition: (profile) ->
             profile.get "useSymbols"
@@ -160,6 +161,19 @@ Capkom.stages =
                 <tr><td>Was noch?</td><td></td></tr>
             </table>
         """
+    "goodbye":
+        title: "Ende <img src='symbols/symbol.gif' class='symbol' width='18' alt='Symbole'/>"
+        image: "http://www.slowtrav.com/blog/teachick/snoopy_thankyou_big.gif"
+        html: """
+            Vielen Dank für Deine Zeit! <br/>
+            Dein Profil enthält nun folgende Informationen:<br/><br/>
+            <div id="profile"></div>
+        """
+        script: (el) ->
+            jQuery("#profile", el).html 
+                JSON.stringify(Capkom.profile.toJSON())
+                .replace(/,"/g, ',<br/>"')
+                .replace(/^{|}$/g, "")
 
 # Get an array of stage objects in the configured order.
 Capkom.getStages = ->

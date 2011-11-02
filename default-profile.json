@@ -3,8 +3,6 @@
     "symbolsize": "medium",
     "useSymbols": true,
     "symbolset": "default",
-    "fontcolor": "#000",
-    "bgcolor": "#fff",
     "useE2r": true,
     "useAudio": true,
     "customSymbolsets": [],
