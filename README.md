@@ -12,7 +12,13 @@ A tool for creating a user profile for a platform for users with cognitive disab
 
 ## Development
 Run the following command to keep compiling the coffeescript into javascript. It needs coffeescript installed to run.
-coffee -c -w -o lib src/*.coffee
+
+    coffee -c -w -o lib src/*.coffee
+
+or on linux systems alternatively
+
+    cd src
+    watch -n 1 coffee -c -o ../lib/ *.coffee
 
 ## Documentation
 To generate documentation automatically run the following command. It needs docco installed.

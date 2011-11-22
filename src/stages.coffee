@@ -1,3 +1,4 @@
+# This module defines the wizard stages.
 Capkom = window.Capkom ?= {}
 
 # Defining in which order the wizard stages will follow
@@ -17,6 +18,14 @@ Capkom.stages =
     "welcome":
         title: "Capkom Profil Wizard <img src='symbols/symbol.gif' class='symbol' width='18' alt='Symbole'/>"
         image: "http://www.greeting-cards-4u.com/tubes/CharlyBrown/snoopy.gif"
+        speech:
+            """
+            Willkommen zum Kunstportal CAPKOM!
+            Hallo, ich heisse Wizi.
+            Ich möchte Euch nun ein paar Fragen zur Bedienung des Kunstportals stellen.
+            Dies wird nur einige Minuten in Anspruch nehmen.
+            """
+
         html: 
             """
             Willkommen zum Kunstportal CAPKOM!<br/><br/>
@@ -29,6 +38,7 @@ Capkom.stages =
     "fontsize":
         title: "Schriftgröße <img src='symbols/symbol.gif' class='symbol' width='18' alt='Symbole'/>"
         image: "http://www.thepartyanimal-blog.org/wp-content/uploads/2010/09/Halloween-Snoopy5.jpg"
+        speech: "Welche Schriftgröße ist für Dich am angenehmsten?"
         html:
             """
             Welche Schriftgröße ist für Dich am angenehmsten?<br/><br/>
@@ -53,6 +63,7 @@ Capkom.stages =
     "theme":
         title: "Design <img src='symbols/symbol.gif' class='symbol' width='18' alt='Symbole'/>"
         image: "http://www.balloonmaniacs.com/images/snoopygraduateballoon.jpg"
+        speech: "Bitte bestimme nun das Bildschirmdesign. Wähle dazu jenes Design, das Dir am besten gefällt."
         html: """
             Bitte bestimme nun das Bildschirmdesign.<br/>
             Wähle dazu jenes Design, das Dir am besten gefällt.<br/><br/>
@@ -70,6 +81,7 @@ Capkom.stages =
     "channels":
         title: 'Sprache/Symbole <img src="symbols/speaker.png" width="14" alt="Sprache"/>'
         image: "http://www.ecartooes.com/img/snoopy/peanuts_snoopy_11.jpg"
+        speech: "Wie sollen Informationen dargestellt werden? Mit oder ohne Symbolen? Mit oder ohne Sprachausgabe?"
         html: """
             Wie sollen Informationen dargestellt werden?<br/><br/>
             <input type='radio' name='e2r' id='e2r-alone'/>
@@ -131,6 +143,7 @@ Capkom.stages =
         condition: (profile) ->
             profile.get "useSymbols"
         image: "http://www.gelsenkirchener-geschichten.de/userpix/1208/1208_snoopy006_3.gif"
+        speech: "Welche Art der Symbole gefällt Dir am besten?"
         html: """
             Welche Art der Symbole gefällt Dir am besten?<br/>
             Du kannst Dir später auch Deine eigenen Symbole schaffen, indem Du eigene Bilder oder Fotos hochlädst.
@@ -147,6 +160,7 @@ Capkom.stages =
             Die CAPKOM-Kunstplattform beinhaltet viele Symbole.<br/>
             Wie groß sollen die Symbole sein?
         """
+        speech: "Wie groß sollen die Symbole sein?"
 
     # Definition of the user creation screen
     "createuser":
@@ -171,9 +185,10 @@ Capkom.stages =
         """
         script: (el) ->
             jQuery("#profile", el).html 
-                JSON.stringify(Capkom.profile.toJSON())
-                .replace(/,"/g, ',<br/>"')
-                .replace(/^{|}$/g, "")
+            JSON.stringify(Capkom.profile.toJSON())
+            .replace(/,"/g, ',<br/>"')
+            .replace(/^{|}$/g, "")
+            .replace(/":/g, '": ')
 
 # Get an array of stage objects in the configured order.
 Capkom.getStages = ->

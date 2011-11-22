@@ -1,7 +1,4 @@
-# Initialize Capkom object
-Capkom = window.Capkom ?= {}
-
-# Initializing navigation bar
+# This module initializes the navigation bar and its interaction.
 Capkom.initNav = ->
     # Initialize NEXT button
     jQuery("#nextButton").button
@@ -12,7 +9,7 @@ Capkom.initNav = ->
         from = Capkom.stages[Capkom.getStagename()]
         # the next hash based on the order
         stages = Capkom.getStages()
-        next = stages[ stages.indexOf(from) + 1 ]
+        next = stages[ _.indexOf(stages, (from)) + 1 ]
         # Navigate to the next stage if there is one..
         Capkom.router.navigate next.name, true if next isnt undefined
         do e.stopImmediatePropagation
@@ -26,7 +23,7 @@ Capkom.initNav = ->
         from = Capkom.stages[Capkom.getStagename()]
         # the previous hash based on the order
         stages = Capkom.getStages()
-        next = stages[ stages.indexOf(from) - 1 ]
+        next = stages[ _.indexOf(stages, (from)) - 1 ]
         # Navigate to the next stage if there is one..
         Capkom.router.navigate next.name, true if next isnt undefined
         do e.stopImmediatePropagation
@@ -78,6 +75,10 @@ Capkom.RouterClass = Backbone.Router.extend
                 else
                     jQuery(".stage-image")
                     .hide()
+                if newStage.speech
+                    Capkom.speech.say newStage.speech
+                else
+                    do Capkom.speech.clear
 
                 # Run the initialisation script defined for the stage
                 newStage.script jQuery(".stage-content") if newStage.script

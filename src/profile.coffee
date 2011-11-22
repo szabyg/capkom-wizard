@@ -1,27 +1,29 @@
+# This module declares the actions to execute when the profile changes.
+
 # Capkom.Profile is a backbone model
 Capkom.Profile = Backbone.Model.extend()
 
 # Capkom.profile contains the profile parameters and takes care of event handling
 Capkom.profile = new Capkom.Profile
 
-# Changing fontsize effects the body getting the CSS class fontsize-[small|medium|large]
+# Changing `fontsize` effects the body getting the CSS class `fontsize-[small|medium|large]`
 Capkom.profile.bind "change:fontsize", (profile, fontsize) ->
     jQuery("body").removeClass "fontsize-small fontsize-medium fontsize-large"
     jQuery("body").addClass "fontsize-#{fontsize}"
 
-# Changing the theme
+# Changing the `theme` parameter
 Capkom.profile.bind "change:theme", (profile, theme) ->
     $.cookie "jquery-ui-theme", theme
     $("#bgThemeActivator").themeswitcher();
 
-# Turn the audio On/Off
+# Turn the `useAudio` parameter on/off (true/false)
 Capkom.profile.bind "change:useAudio", (profile, audio) ->
     if audio
         jQuery(".audioButton").show()
     else
         jQuery(".audioButton").hide()
 
-# Turn the symbols On/Off
+# Turn the `useSymbols` parameter on/off (true/false)
 Capkom.profile.bind "change:useSymbols", (profile, audio) ->
     if audio
         jQuery(".symbol").show()
@@ -40,6 +42,7 @@ Backbone.sync = (method, model) ->
     localStorage.profile = JSON.stringify model.toJSON()
     console.info "profile saved:", localStorage.profile
 
+# Method for initialisation:
 # Load the profile and call the callback
 Capkom.loadProfile = (callback) ->
     # When the profile json is loaded, here we can set it
