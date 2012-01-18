@@ -7,21 +7,17 @@ jQuery(document).ready -> _.defer ->
         # Start hash routing
         Capkom.router = new Capkom.RouterClass
         # Instantiate Speech module
-        Capkom.speech = new Capkom.Speech
-        unless Backbone.history.start()
-            Capkom.router.navigate Capkom.order[0], true
+#        Capkom.speech = new Capkom.Speech
+
+#        unless Backbone.history.start()
+#            Capkom.router.navigate Capkom.order[0], true
 
         # Initialize panel view
-        jQuery("section").accordion
-            autoHeight: false
+#        jQuery("section").accordion
+#            autoHeight: false
 
         # Initialize navigation bar
         do Capkom.initNav
-
-    # Initiallizing the audio button
-    # When clicking, repeat the last text
-    jQuery(".audioButton").bind "click", ->
-        Capkom.speech.repeat()
 
 # Getter for the name of the actual stage.
 Capkom.getStagename = ->

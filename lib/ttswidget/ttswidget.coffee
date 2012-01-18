@@ -34,6 +34,7 @@ jQuery.widget "capkom.ttswidget",
         @dialog = jQuery """
             <div id='ttswidget-dialog' title='#{@options.dialogTitle}'>
                 #{@_getText()}
+                <br/>
                 <audio id='ttswidget-audio' onerror='console.error(this)' controls='controls' style='' src='#{@_makeLink()}' type='audio/ogg'>Your browser does not support the audio tag.</audio>
             </div>
         """
@@ -41,11 +42,18 @@ jQuery.widget "capkom.ttswidget",
         @dialog.dialog
             close: =>
                 @_cleanup()
+            hide: "fade"
+            width: "30%"
         @audioElement = jQuery("#ttswidget-audio")[0]
         @audioElement.onabort = () ->
             console.error attributes
         @audioElement.load()
         @audioElement.play()
+        @audioElement.addEventListener 'ended', =>
+            setTimeout =>
+                @_cleanup()
+            , 500
+
     _cleanup: ->
         jQuery("#ttswidget-dialog").dialog("destroy").remove()
     _getText: ->
@@ -138,5 +146,4 @@ jQuery.widget "capkom.ttswidget",
             "AUDIO=WAVE_FILE"
         ]
         res = uri + params.join '&'
-        console.log res
         res

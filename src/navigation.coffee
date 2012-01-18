@@ -31,56 +31,24 @@ Capkom.initNav = ->
     # Empty the bar
     jQuery("nav").html ""
 
-    # Create an entry for each stage
-    for i, stage of Capkom.getStages()
-        jQuery("nav").append jQuery """
-            <input type='radio' name='capkom-wizard-nav' id='nav-#{stage.name}'/>
-            <label for='nav-#{stage.name}'>#{1 + Number i}. #{stage.title}</label>
+    _renderStageTitle = (stage) ->
         """
+            <li><a class="stage-title" href="##{stage.name}">#{stage.title}</a></li>
+        """
+    _renderStage = (stage) ->
+        """
+            <div id="#{stage.name}">
+                <div style="float:left;"><img width="200" class="stage-image #{stage.image ? '': 'hidden'}" alt="Wizard Bild" src="#{stage.image}" /></div>
+                <div style="float:left; padding: 5px 15px;">
+                    <span class="stage-content tts" lang="de" tts="#{stage.speech}">#{stage.html}</span>
+                </div>
+            </div>
+        """ # "
 
-    # Activate the current stage
-    jQuery("input#nav-#{Capkom.getStagename()}").attr "checked", "checked"
+    for i, stage of Capkom.getStages()
+        jQuery(".stages .titles").append jQuery(_renderStageTitle(stage))
+        el = jQuery(_renderStage(stage)).appendTo jQuery(".stages")
+        stage.script jQuery(".stage-content", el) if stage.script
+    jQuery(".stages").tabs()
 
-    # Initialize jQuery UI buttonset
-    do jQuery("nav").buttonset
-
-    # Initialize click event handler
-    jQuery("nav input").click ->
-        Capkom.router.navigate @id.replace("nav-",""), true
-
-# Dynamically define routes based on the defined wizard stages
-Capkom.RouterClass = Backbone.Router.extend
-    initialize: (opts) ->
-        for i, stage of Capkom.getStages()
-            # Initialize a route and define how it's handled
-            @route stage.name, stage.name, -> 
-                locRoute = window.location.hash
-                stagename = Capkom.getStagename()
-                if Capkom.order.indexOf(stagename) is 0
-                    jQuery("#prevButton").hide()
-                else
-                    jQuery("#prevButton").show()
-                newStage = Capkom.stages[stagename]
-
-                # Fill in all "template parts" and initialize the interaction
-                # title and raw html
-                jQuery(".stage-title").html newStage.title
-                jQuery(".stage-content").html newStage.html
-
-                # Show the corresponding image or hide the tag if no image is defined
-                if newStage.image
-                    jQuery(".stage-image")
-                    .show()
-                    .attr "src", newStage.image
-                else
-                    jQuery(".stage-image")
-                    .hide()
-                if newStage.speech
-                    Capkom.speech.say newStage.speech
-                else
-                    do Capkom.speech.clear
-
-                # Run the initialisation script defined for the stage
-                newStage.script jQuery(".stage-content") if newStage.script
-                do Capkom.initNav
 

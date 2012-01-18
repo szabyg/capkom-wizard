@@ -19,9 +19,9 @@ Capkom.profile.bind "change:theme", (profile, theme) ->
 # Turn the `useAudio` parameter on/off (true/false)
 Capkom.profile.bind "change:useAudio", (profile, audio) ->
     if audio
-        jQuery(".audioButton").show()
+        jQuery(".tts").ttswidget()
     else
-        jQuery(".audioButton").hide()
+        jQuery(".tts").ttswidget("destroy")
 
 # Turn the `useSymbols` parameter on/off (true/false)
 Capkom.profile.bind "change:useSymbols", (profile, audio) ->

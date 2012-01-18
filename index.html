@@ -10,12 +10,13 @@
     <script type="text/javascript" src="lib/jquery/jquery-ui.1.9m5.js"></script>
     <script type="text/javascript" src="lib/underscore-min.js"></script>
     <script type="text/javascript" src="lib/backbone.js"></script>
+
+    <script type="text/javascript" src="lib/ttswidget/ttswidget.js"></script>
     <script type="text/javascript" src="lib/jquery/themeswitcher.js"></script>
     <script type="text/javascript" src="lib/json-serialization.js"></script>
 
     <link rel="stylesheet" href="css/style.css" />
     <script type="text/javascript" src="lib/wizard.js"></script>
-    <script type="text/javascript" src="lib/speech.js"></script>
     <script type="text/javascript" src="lib/stages.js"></script>
     <script type="text/javascript" src="lib/profile.js"></script>
     <script type="text/javascript" src="lib/navigation.js"></script>
@@ -34,10 +35,6 @@
         nav ol li {
             display: inline;
         }
-        .audioButton {
-            padding-bottom: 2em;
-            display: block;
-        }
         #nextButton, #prevButton { 
             position: absolute;
             margin: 1em 0.3em;
@@ -51,6 +48,18 @@
         .fontsize-small  { font-size: 15px;}
         .fontsize-medium { font-size: 20px;}
         .fontsize-large  { font-size: 25px;}
+        .hidden { display: none; }
+
+        button.ui-button-icon-only .ui-icon {
+            width: 22px;
+            height: 22px;
+            margin-left: -11px;
+            margin-top: -11px;
+        }
+        .ui-icon-speaker {
+            background-image: url(lib/ttswidget/speaker22.png) !important;
+        }
+
     </style>
 </head>
 <body>
@@ -60,15 +69,16 @@
             <ol class="stages"></ol>
         </nav>
     </header>
-    <section>
-        <h1><a class="stage-title"></a></h1>
-        <div>
-            <div style="float:left"><img width="200" class="stage-image" alt="Wizard Bild" /></div>
-            <div style="float:left; padding: 5px 15px;">
-                <a href="javascript:void(0);"><img src="symbols/speaker.png" width="30" class="audioButton" alt="Sprache"/></a>
-                <span class="stage-content"></span>
-            </div>
-        </div>
+    <section class="stages">
+        <ul class="titles"></ul>
+<!--        <h1><a class="stage-title"></a></h1>-->
+<!--        <div>-->
+<!--            <div style="float:left"><img width="200" class="stage-image" alt="Wizard Bild" /></div>-->
+<!--            <div style="float:left; padding: 5px 15px;">-->
+<!--                <a href="javascript:void(0);"><img src="symbols/speaker.png" width="30" class="audioButton" alt="Sprache"/></a>-->
+<!--                <span class="stage-content"></span>-->
+<!--            </div>-->
+<!--        </div>-->
     </section>
     <footer>
         <button id="prevButton" alt="Zurück">Zurück</button>
