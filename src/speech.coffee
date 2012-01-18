@@ -3,6 +3,7 @@
 class Capkom.Speech
     constructor: (options) ->
         @options = _.extend @options, options
+
     # Default parameters defined (to be extended if necessary)
     options:
         maryBaseUri: "http://dev.iks-project.eu/mary"
@@ -59,7 +60,7 @@ class Capkom.Speech
             "effect_Rate_parameters=" + encodeURI "durScale:1.5;"
             "effect_Rate_default=Default"
             "effect_Rate_help=Help"
-            "effect_Robot_selected=" + @options.robotSelected ? "on" : ""
+            "effect_Robot_selected=" + (@options.robotSelected ? "on" : "")
             "effect_Robot_parameters=" + encodeURI "amount:100.0;"
             "effect_Robot_default=Default"
             "effect_Robot_help=Help"
