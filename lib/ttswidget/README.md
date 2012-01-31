@@ -26,8 +26,11 @@ The language for reading the text. MARY must support the language.
 ### backendUri (optional)
 Backend base URI.
 
-### iconUri
-Defines the uri to the icon. Default: `./speaker.png`
+### iconClass
+Defines the css class for the button icon. Default: `ui-icon-speaker`
+
+### spinnerUri
+Defines the uri to the spinner icon. Default: `css/spinner.gif`
 
 ### dialogTitle
 Default: `TTS widget`
@@ -42,3 +45,10 @@ backends as well. Default: "MARY"
 
 ### gender
 `male` or `female`.
+
+## Development
+To edit the coffeescript and do instant compilation I use the following command:
+
+    $ coffee -w -c ttswidgecoffee
+
+This keeps watching the file for changes and shows compilation errors as well.

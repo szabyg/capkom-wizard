@@ -3,10 +3,12 @@ jQuery.widget "capkom.ttswidget",
         language: "de"
         backendUri: "http://dev.iks-project.eu/mary"
         backendType: "MARY"
-        iconUri: "./speaker.gif"
+        iconClass: "ui-icon-speaker"
+        spinnerUri: "spinner.gif"
         dialogTitle: "TTS widget"
         defaultText: "No text found"
         buttonLabel: "Speak"
+        errorMsg: "Error loading audio."
     _init: ->
     _create: ->
         # Add button to the element
@@ -15,11 +17,11 @@ jQuery.widget "capkom.ttswidget",
         @button.css "top", "0"
         @button.css "right", "0"
         @button.css "margin", "8px"
-        @button.appendTo @element
+        @button.prependTo @element
         @button.button
             text: false
             icons:
-                primary: "ui-icon-speaker"
+                primary: @options.iconClass
         @button.click =>
             @prepare()
             @talk()
@@ -34,25 +36,39 @@ jQuery.widget "capkom.ttswidget",
         @dialog = jQuery """
             <div id='ttswidget-dialog' title='#{@options.dialogTitle}'>
                 #{@_getText()}
-                <br/>
+                <br/><br/>
                 <audio id='ttswidget-audio' onerror='console.error(this)' controls='controls' style='' src='#{@_makeLink()}' type='audio/ogg'>Your browser does not support the audio tag.</audio>
+                <img class='spinner' src='#{@options.spinnerUri}'/>
             </div>
         """
         @dialog.appendTo jQuery("body")
         @dialog.dialog
             close: =>
-                @_cleanup()
+                setTimeout =>
+                    @_cleanup()
+                , 500
             hide: "fade"
-            width: "30%"
+            width: "500"
         @audioElement = jQuery("#ttswidget-audio")[0]
         @audioElement.onabort = () ->
             console.error attributes
         @audioElement.load()
         @audioElement.play()
-        @audioElement.addEventListener 'ended', =>
+        jQuery(@audioElement).bind 'playing', =>
+            jQuery(".spinner", @dialog).hide()
+        jQuery(@audioElement).bind 'ended', =>
+            @dialog.dialog "close"
             setTimeout =>
                 @_cleanup()
             , 500
+        jQuery(@audioElement).bind 'error', (e) =>
+            errorHtml = """
+            <br/>
+            <div style="color: red">
+                <span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>#{@options.errorMsg}
+            </div>
+            """
+            @dialog.append errorHtml
 
     _cleanup: ->
         jQuery("#ttswidget-dialog").dialog("destroy").remove()
