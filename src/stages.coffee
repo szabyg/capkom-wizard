@@ -9,20 +9,19 @@ Capkom.order = [
     "channels"
     "symbolset"
     "symbolsize"
-    "createuser"
     "goodbye"
 ]
 
 Capkom.stages =
     # Definition of the welcome screen
     "welcome":
-        title: "Capkom Profil Wizard <img src='symbols/symbol.gif' class='symbol' width='18' alt='Symbole'/>"
+        title: "Willkommen <img src='symbols/symbol.gif' class='symbol' width='18' alt='Symbole'/>"
         image: "http://www.greeting-cards-4u.com/tubes/CharlyBrown/snoopy.gif"
         speech:
             """
             Willkommen zum Kunstportal CAPKOM!
             Hallo, ich heisse Wizi.
-            Ich möchte Euch nun ein paar Fragen zur Bedienung des Kunstportals stellen.
+            Ich möchte euch nun ein paar Fragen zur Bedienung des Kunstportals stellen.
             Dies wird nur einige Minuten in Anspruch nehmen.
             """
 
@@ -30,7 +29,7 @@ Capkom.stages =
             """
             Willkommen zum Kunstportal CAPKOM!<br/><br/>
             Hallo, ich heiße Wizi. <br/>
-            Ich möchte Euch nun ein paar Fragen zur Bedienung des Kunstportals stellen. <br/>
+            Ich möchte euch nun ein paar Fragen zur Bedienung des Kunstportals stellen. <br/>
             Dies wird nur einige Minuten in Anspruch nehmen.
             """
 
@@ -38,10 +37,10 @@ Capkom.stages =
     "fontsize":
         title: "Schriftgröße <img src='symbols/symbol.gif' class='symbol' width='18' alt='Symbole'/>"
         image: "http://www.thepartyanimal-blog.org/wp-content/uploads/2010/09/Halloween-Snoopy5.jpg"
-        speech: "Welche Schriftgröße ist für Dich am angenehmsten?"
+        speech: "Welche Schriftgröße ist für dich am angenehmsten?"
         html:
             """
-            Welche Schriftgröße ist für Dich am angenehmsten?<br/><br/>
+            Welche Schriftgröße ist für dich am angenehmsten?<br/><br/>
             <div class='fontsize'>
                 <input type='radio' name='fontsize' id='fontsize-small' />
                 <label for='fontsize-small' ><span class='fontsize-small choose-button'>AAA</span></label>
@@ -63,31 +62,32 @@ Capkom.stages =
     "theme":
         title: "Design <img src='symbols/symbol.gif' class='symbol' width='18' alt='Symbole'/>"
         image: "http://www.balloonmaniacs.com/images/snoopygraduateballoon.jpg"
-        speech: "Bitte bestimme nun das Bildschirmdesign. Wähle dazu jenes Design, das Dir am besten gefällt."
+        speech: "Bitte bestimme nun das Bildschirmdesign. Wähle dazu jenes Design, das dir am besten gefällt."
         html: """
             Bitte bestimme nun das Bildschirmdesign.<br/>
-            Wähle dazu jenes Design, das Dir am besten gefällt.<br/><br/>
+            Wähle dazu jenes Design, das dir am besten gefällt.<br/><br/>
             <span id='themeselector'></span>
         """
         script: (element) ->
             jQuery("#themeselector", element)
             .themeswitcher
-                width: 300
+                #width: "17em"
+                width: "5em"
                 buttonHeight: 30
                 onSelect: ->
                     Capkom.profile.set
                         "theme": $.cookie("jquery-ui-theme")
 
     "channels":
-        title: 'Sprache/Symbole <img src="symbols/speaker.png" width="14" alt="Sprache"/>'
+        title: 'Sprache/Symbole <img src="lib/ttswidget/speaker22.png" width="22" alt="Sprache"/>'
         image: "http://www.ecartooes.com/img/snoopy/peanuts_snoopy_11.jpg"
         speech: "Wie sollen Informationen dargestellt werden? Mit oder ohne Symbolen? Mit oder ohne Sprachausgabe?"
         html: """
             Wie sollen Informationen dargestellt werden?<br/><br/>
-            <input type='radio' name='e2r' id='e2r-alone'/>
-            <label for='e2r-alone'>Text</label>
             <input type='radio' name='e2r' id='e2r-both'/>
             <label for='e2r-both'>Text + Symbole <img src='symbols/symbol.gif' width='18' alt='Symbole'/></label>
+            <input type='radio' name='e2r' id='e2r-alone'/>
+            <label for='e2r-alone'>Text</label>
             <br/><br/>
             Sprachausgabe:<br/><br/>
             <input type='radio' name='useAudio' id='audio-on'/>
@@ -139,17 +139,21 @@ Capkom.stages =
     # Definition of the symbolset selection screen
     "symbolset":
         title: "<label symbol-id='symbolset'>Symbolsatz <img src='symbols/symbol.gif' class='symbol' width='18' alt='Symbole'/></label>"
-        # only show it if symbols are turned on
+        ###
+         only show it if symbols are turned on
+        ###
         condition: (profile) ->
             profile.get "useSymbols"
         image: "http://www.gelsenkirchener-geschichten.de/userpix/1208/1208_snoopy006_3.gif"
-        speech: "Welche Art der Symbole gefällt Dir am besten?"
+        speech: "Welche Art der Symbole gefällt dir am besten?"
         html: """
-            Welche Art der Symbole gefällt Dir am besten?<br/>
-            Du kannst Dir später auch Deine eigenen Symbole schaffen, indem Du eigene Bilder oder Fotos hochlädst.
+            Welche Art der Symbole gefällt dir am besten?<br/>
+            Du kannst dir später auch Deine eigenen Symbole schaffen, indem du eigene Bilder oder Fotos hochlädst.
         """
 
-    # Definition of the symbol size selection screen
+    ###
+     Definition of the symbol size selection screen
+    ###
     "symbolsize":
         title: "Symbolgröße <img src='symbols/symbol.gif' class='symbol' width='18' alt='Symbole'/>"
         # only show it if symbols are turned on
@@ -162,41 +166,65 @@ Capkom.stages =
         """
         speech: "Wie groß sollen die Symbole sein?"
 
-    # Definition of the user creation screen
-    "createuser":
-        title: "Benutzer anlegen <img src='symbols/symbol.gif' class='symbol' width='18' alt='Symbole'/>"
-        image: "symbols/ueberMich.gif"
-        html: """
-            <table class='ui-widget-content'>
-                <tr><td>Benutzername:</td><td><input id=''/></td></tr>
-                <tr><td>Kennwort:</td><td><input type='password' id=''/></td></tr>
-                <tr><td>Kennwort wiederholen:</td><td><input type='password' id=''/></td></tr>
-                <tr><td></td><td></td></tr>
-                <tr><td>Was noch?</td><td></td></tr>
-            </table>
-        """
     "goodbye":
         title: "Ende <img src='symbols/symbol.gif' class='symbol' width='18' alt='Symbole'/>"
         image: "http://www.slowtrav.com/blog/teachick/snoopy_thankyou_big.gif"
         html: """
-            Vielen Dank für Deine Zeit! <br/>
+            Vielen Dank für deine Zeit! <br/>
             Dein Profil enthält nun folgende Informationen:<br/><br/>
             <div id="profile"></div>
         """
         script: (el) ->
-            jQuery("#profile", el).html 
-            JSON.stringify(Capkom.profile.toJSON())
-            .replace(/,"/g, ',<br/>"')
-            .replace(/^{|}$/g, "")
-            .replace(/":/g, '": ')
+            jQuery("#profile", el).html JSON.stringify(Capkom.profile.toJSON())
+                .replace(/,"/g, ',<br/>"')
+                .replace(/^{|}$/g, "")
+                .replace(/":/g, '": ')
 
-# Get an array of stage objects in the configured order.
+###
+Get an array of stage objects in the configured order.
+###
 Capkom.getStages = ->
     res = for i, stagename of Capkom.order
         stage = Capkom.stages[stagename]
         stage.name = stagename
         stage
-    # Filter out the dependent and not-to-show stages based on `stage.condition`
+
+    ### 
+    Filter out the dependent and not-to-show stages based on `stage.condition`
+    ###
     res = _(res).filter (stage) ->
         true unless stage.condition?(Capkom.profile) is false
+Capkom.showStages = (el) ->
+    if Capkom.uiLoaded
+        stages = @getStages()
+        stageNames = _.map stages, (stage) ->
+            stage.name
+        anchors = jQuery(".stages").find("ul.titles").children()
+
+        ###
+        Remove not necessary tabs
+        ###
+        for i in [0..anchors.length-1].reverse()
+            anchor = anchors[i]
+            anchorName = jQuery(anchor).find("a").attr("hash").replace /^#/, ""
+            ### anchorName not in stageNames? ###
+            if _.indexOf(stageNames, anchorName) is -1
+    #            el.tabs "remove", i
+                jQuery(".stages").find("[href=##{anchorName}]").parent().hide()
+
+        ###
+        Return the current anchorNames
+        ###
+        anchorNames = -> _.map anchors, (anchor) ->
+            jQuery(anchor).find("a").attr("hash").replace /^#/, ""
+
+        ###
+        Add new tabs
+        ###
+        for stage, i in stages
+            an = anchorNames()
+            if _.indexOf(an, stage.name) is -1
+                el.append Capkom.renderStage stage, jQuery(".stages"), i
+                el.tabs("add", "##{stage.name}", stage.title, i)
+            $(".stages").find("[href=##{stage.name}]").parent().show()
 

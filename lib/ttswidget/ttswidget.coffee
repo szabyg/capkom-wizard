@@ -22,9 +22,11 @@ jQuery.widget "capkom.ttswidget",
             text: false
             icons:
                 primary: @options.iconClass
-        @button.click =>
+        @button.click (e) =>
+            e.preventDefault()
             @prepare()
             @talk()
+            false
     _destroy: ->
         @_cleanup()
         jQuery(@button)

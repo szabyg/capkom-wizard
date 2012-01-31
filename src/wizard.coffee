@@ -1,21 +1,19 @@
 # This is the central module initializing all the other depending modules.
 Capkom = window.Capkom ?= {}
+Capkom.test = ->
+    console.info "called"
+    false
 
 # Startup wizard
 jQuery(document).ready -> _.defer ->
+    jQuery('#loadingDiv')
+    .ajaxStart(->
+        jQuery(this).show()
+    )
+    .ajaxStop ->
+        jQuery(this).hide()
+
     Capkom.loadProfile ->
-        # Start hash routing
-        Capkom.router = new Capkom.RouterClass
-        # Instantiate Speech module
-#        Capkom.speech = new Capkom.Speech
-
-#        unless Backbone.history.start()
-#            Capkom.router.navigate Capkom.order[0], true
-
-        # Initialize panel view
-#        jQuery("section").accordion
-#            autoHeight: false
-
         # Initialize navigation bar
         do Capkom.initNav
 
@@ -23,4 +21,18 @@ jQuery(document).ready -> _.defer ->
 Capkom.getStagename = ->
     window.location.hash.replace /^#/, ""
 
+Capkom.updateTTS = ->
+    if Capkom.uiLoaded
+        if Capkom.profile.get "useAudio"
+            jQuery(".tts").ttswidget
+                spinnerUri: "css/spinner.gif"
+        else
+            jQuery(":capkom-ttswidget").ttswidget("destroy")
+
+Capkom.updateSymbols = ->
+    if Capkom.uiLoaded
+        if Capkom.profile.get "useSymbols"
+            jQuery(".symbol").show()
+        else
+            jQuery(".symbol").hide()
 

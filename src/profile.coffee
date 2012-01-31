@@ -18,18 +18,12 @@ Capkom.profile.bind "change:theme", (profile, theme) ->
 
 # Turn the `useAudio` parameter on/off (true/false)
 Capkom.profile.bind "change:useAudio", (profile, audio) ->
-    if audio
-        jQuery(".tts").ttswidget()
-    else
-        jQuery(".tts").ttswidget("destroy")
+    Capkom.updateTTS()
 
 # Turn the `useSymbols` parameter on/off (true/false)
-Capkom.profile.bind "change:useSymbols", (profile, audio) ->
-    if audio
-        jQuery(".symbol").show()
-    else
-        jQuery(".symbol").hide()
-
+Capkom.profile.bind "change:useSymbols", (profile, useSymbols) ->
+    Capkom.showStages jQuery ".stages"
+    Capkom.updateSymbols()
 
 # Any change will be saved automatically by the Backbone.sync method
 Capkom.profile.bind "change", (profile) ->
