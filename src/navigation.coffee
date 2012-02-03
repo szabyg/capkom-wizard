@@ -4,7 +4,7 @@ Capkom.initNav = ->
     jQuery("nav").html ""
 
     _renderStageTitle = (stage) ->
-        "<li><a class='stage-title' href='##{stage.name}'>#{stage.title}</a></li>"
+        "<li><a class='stage-title capkom-label' symbolId='#{stage.name}' href='##{stage.name}'>#{stage.title}</a></li>"
 
     for i, stage of Capkom.getStages()
         jQuery(".stages .titles").append jQuery(_renderStageTitle(stage))

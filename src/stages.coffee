@@ -15,7 +15,7 @@ Capkom.order = [
 Capkom.stages =
     # Definition of the welcome screen
     "welcome":
-        title: "Willkommen <img src='symbols/symbol.gif' class='symbol' width='18' alt='Symbole'/>"
+        title: "Willkommen"
         image: "http://www.greeting-cards-4u.com/tubes/CharlyBrown/snoopy.gif"
         speech:
             """
@@ -35,7 +35,7 @@ Capkom.stages =
 
     # Definition of the font size setting screen
     "fontsize":
-        title: "Schriftgröße <img src='symbols/symbol.gif' class='symbol' width='18' alt='Symbole'/>"
+        title: "Schriftgröße"
         image: "http://www.thepartyanimal-blog.org/wp-content/uploads/2010/09/Halloween-Snoopy5.jpg"
         speech: "Welche Schriftgröße ist für dich am angenehmsten?"
         html:
@@ -60,7 +60,7 @@ Capkom.stages =
 
     # Definition of the theme selection screen
     "theme":
-        title: "Design <img src='symbols/symbol.gif' class='symbol' width='18' alt='Symbole'/>"
+        title: "Design"
         image: "http://www.balloonmaniacs.com/images/snoopygraduateballoon.jpg"
         speech: "Bitte bestimme nun das Bildschirmdesign. Wähle dazu jenes Design, das dir am besten gefällt."
         html: """
@@ -138,7 +138,7 @@ Capkom.stages =
 
     # Definition of the symbolset selection screen
     "symbolset":
-        title: "<label symbol-id='symbolset'>Symbolsatz <img src='symbols/symbol.gif' class='symbol' width='18' alt='Symbole'/></label>"
+        title: "<label symbol-id='symbolset'>Symbolsatz</label>"
         ###
          only show it if symbols are turned on
         ###
@@ -155,7 +155,7 @@ Capkom.stages =
      Definition of the symbol size selection screen
     ###
     "symbolsize":
-        title: "Symbolgröße <img src='symbols/symbol.gif' class='symbol' width='18' alt='Symbole'/>"
+        title: "Symbolgröße"
         # only show it if symbols are turned on
         condition: (profile) ->
             profile.get "useSymbols"
@@ -164,11 +164,11 @@ Capkom.stages =
             Die CAPKOM-Kunstplattform beinhaltet viele Symbole.<br/>
             Wie groß sollen die Symbole sein?
         """
-        speech: "Wie groß sollen die Symbole sein?"
 
     "goodbye":
-        title: "Ende <img src='symbols/symbol.gif' class='symbol' width='18' alt='Symbole'/>"
+        title: "Ende"
         image: "http://www.slowtrav.com/blog/teachick/snoopy_thankyou_big.gif"
+        speech: "Dein Profil enthält nun Informationen, die ich jetzt trotzdem nicht vorlesen werde, weil sie für dich keinen Sinn machen würden."
         html: """
             Vielen Dank für deine Zeit! <br/>
             Dein Profil enthält nun folgende Informationen:<br/><br/>

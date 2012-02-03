@@ -31,6 +31,8 @@ Capkom.updateTTS = ->
 
 Capkom.updateSymbols = ->
     if Capkom.uiLoaded
+        jQuery('.capkom-label').capkomSymbol
+            profile: Capkom.profile
         if Capkom.profile.get "useSymbols"
             jQuery(".symbol").show()
         else

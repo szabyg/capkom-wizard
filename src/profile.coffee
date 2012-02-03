@@ -1,3 +1,6 @@
+# Initialize Capkom object
+Capkom = window.Capkom ?= {}
+
 # This module declares the actions to execute when the profile changes.
 
 # Capkom.Profile is a backbone model
@@ -18,12 +21,12 @@ Capkom.profile.bind "change:theme", (profile, theme) ->
 
 # Turn the `useAudio` parameter on/off (true/false)
 Capkom.profile.bind "change:useAudio", (profile, audio) ->
-    Capkom.updateTTS()
+    Capkom.updateTTS?()
 
 # Turn the `useSymbols` parameter on/off (true/false)
 Capkom.profile.bind "change:useSymbols", (profile, useSymbols) ->
-    Capkom.showStages jQuery ".stages"
-    Capkom.updateSymbols()
+    Capkom.showStages? jQuery ".stages"
+    Capkom.updateSymbols?()
 
 # Any change will be saved automatically by the Backbone.sync method
 Capkom.profile.bind "change", (profile) ->
