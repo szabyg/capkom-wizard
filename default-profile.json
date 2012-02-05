@@ -2,7 +2,7 @@
     "fontsize": "medium",
     "symbolsize": "medium",
     "useSymbols": true,
-    "symbolset": "default",
+    "symbolSet": "default",
     "useE2r": true,
     "useAudio": true,
     "customSymbolsets": [],

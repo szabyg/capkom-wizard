@@ -149,7 +149,33 @@ Capkom.stages =
         html: """
             Welche Art der Symbole gefällt dir am besten?<br/>
             Du kannst dir später auch Deine eigenen Symbole schaffen, indem du eigene Bilder oder Fotos hochlädst.
+            <div class='symbolset-symbols'></div>
         """
+        script: (element) ->
+            symbolSets = _.filter Capkom.symbolSets.sets, (symbolSet) ->
+                symbolSet.hasSymbol "mainSymbol"
+            console.info symbolSets
+            for symbolSet in symbolSets
+                html = """
+                    <input type='radio' class='symbolset-selector #{symbolSet.name}' name='symbolset' value='#{symbolSet.name}' id='symbolset-#{symbolSet.name}'/>
+                    <label for='symbolset-#{symbolSet.name}'>
+                        <img src='#{symbolSet.getSymbolUri("mainSymbol", "large")}'/>
+                    </label>
+                """
+                jQuery(html)
+                .appendTo('.symbolset-symbols', element)
+
+            symbolSetName = Capkom.profile.get 'symbolSet'
+            jQuery('.symbolset-selector', element)
+            .filter(".#{symbolSetName}").attr("checked", "checked").end()
+            .button().click ->
+                console.log 'click'
+                Capkom.profile.set
+                    symbolSet: jQuery(@).val()
+            # Mark current profile selection as active
+            jQuery(".symbolset-symbols .symbolset-mainSymbol", element)
+            .find(".#{symbolSet}").addClass('selected').end()
+            .button()
 
     ###
      Definition of the symbol size selection screen

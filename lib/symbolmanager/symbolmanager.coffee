@@ -33,7 +33,7 @@ jQuery.widget "Capkom.capkomSymbol"
     # figure our the symbol uri
     _getSymbolUri: (profile, sets) ->
         # ranking of symbolsets. the first symbolset having the symbol will be chosen.
-        preferredSet = @options.symbolSets[profile.get('symbolset')]
+        preferredSet = @options.symbolSets[profile.get('symbolSet')]
         symbolSetRanking = _.union [preferredSet], sets.sets
         # detect the symbolset that has the symbol
         symbolSet = _.detect symbolSetRanking, (symbolSet) =>
