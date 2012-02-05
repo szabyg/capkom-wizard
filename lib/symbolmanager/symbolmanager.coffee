@@ -5,7 +5,7 @@ Capkom.capkomSymbol =
 jQuery.widget "Capkom.capkomSymbol"
     options:
         profile: Capkom.profile
-        symbolSets: Capkom.symbolsets
+        symbolSets: Capkom.symbolSets
         symbolId: "default"
         uriPrefix: ""
     _create: ->
@@ -33,27 +33,16 @@ jQuery.widget "Capkom.capkomSymbol"
     # figure our the symbol uri
     _getSymbolUri: (profile, sets) ->
         # ranking of symbolsets. the first symbolset having the symbol will be chosen.
-        symbolSetRanking = _.union [profile.get('symbolset')], sets.sets
+        preferredSet = @options.symbolSets[profile.get('symbolset')]
+        symbolSetRanking = _.union [preferredSet], sets.sets
         # detect the symbolset that has the symbol
-        symbolSetName = _.detect symbolSetRanking, (setName) =>
-            symbolSet = sets[setName]
-            symbolName = @symbolId
-            symbolName = @_applyMapping @symbolId, symbolSet.nameMap if symbolSet.nameMap
-            true if _.indexOf(symbolSet.symbols, symbolName) isnt -1
-        unless symbolSetName
+        symbolSet = _.detect symbolSetRanking, (symbolSet) =>
+            symbolSet.hasSymbol @symbolId
+        unless symbolSet
             console.error "No symbolset found for #{@symbolId}"
             return ""
-        # selected symbolset
-        symbolSet = sets[symbolSetName]
         # selected symbolsize
         symbolSize = profile.get('symbolsize') or 'medium'
 
-        # nameformat: "Capkom_{symbolId}-{size}.gif"
-        imageName = symbolSet.nameFormat
-        .replace("{symbolId}", @_applyMapping @symbolId, symbolSet.nameMap)
-        .replace("{size}", @_applyMapping symbolSize, symbolSet.sizeMap)
-        symbolUri = @options.uriPrefix + symbolSet.baseUri + imageName
+        symbolUri = @options.uriPrefix + symbolSet.getSymbolUri @symbolId, symbolSize
 
-    # replace mapped strings
-    _applyMapping: (str, mapping) ->
-        mapping[str] or str
