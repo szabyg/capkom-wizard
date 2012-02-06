@@ -1,5 +1,5 @@
 # Initialize Capkom object
-Capkom = window.Capkom ?= {}
+Capkom = this.Capkom ?= {}
 
 # This module declares the actions to execute when the profile changes.
 

@@ -1,5 +1,5 @@
 # Initialize Capkom object
-Capkom = window.Capkom ?= {}
+Capkom = this.Capkom ?= {}
 
 # Adds a symbol to a Capkom UI. Depending on the profile and the symbolset 
 # the symbol can come from different symbolsets and have different sizes.

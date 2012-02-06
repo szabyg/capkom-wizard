@@ -1,5 +1,5 @@
 # This module defines the wizard stages.
-Capkom = window.Capkom ?= {}
+Capkom = this.Capkom ?= {}
 
 # Defining in which order the wizard stages will follow
 Capkom.order = [

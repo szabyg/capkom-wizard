@@ -1,4 +1,4 @@
-Capkom = window.Capkom ?= {}
+Capkom = this.Capkom ?= {}
 Capkom.symbolSets ?= {}
 Capkom.symbolSets.sets ?= []
 

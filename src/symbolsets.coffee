@@ -1,5 +1,5 @@
 # Initialize Capkom object
-Capkom = window.Capkom ?= {}
+Capkom = this.Capkom ?= {}
 
 new Capkom.Symbolset
     name: "default"

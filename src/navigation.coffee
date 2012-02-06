@@ -16,9 +16,6 @@ Capkom.initNav = ->
 
     Capkom.uiLoaded = true
 
-    Capkom.updateTTS()
-    Capkom.updateSymbols()
-
 Capkom.renderStage = (stage, tabsEl, index) ->
     _renderStage = (stage) ->
         """

@@ -1,11 +1,24 @@
+# Capkom Wizard is freely distributable under the MIT license.
+
+# Author: [Szaby Gruenwald](https://github.com/szabyg) ([Salzburg Research Forschungsgesellschaft mbH](http://www.salzburgresearch.at/))
+# 
 # This is the central module initializing all the other depending modules.
-Capkom = window.Capkom ?= {}
-Capkom.test = ->
-    console.info "called"
-    false
+
+Capkom = this.Capkom ?= {}
 
 # Startup wizard
 jQuery(document).ready -> _.defer ->
+    # Load the profile and when it's done initialize the wizard UI
+    Capkom.loadProfile ->
+        # Initialize navigation bar
+        do Capkom.initNav
+        # Initialize tts widgets
+        Capkom.updateTTS()
+        # Initialize capkomSymbol widgets
+        jQuery('.capkom-label').capkomSymbol
+            profile: Capkom.profile
+
+    # Init the #loadingDiv element
     jQuery('#loadingDiv')
     .ajaxStart(->
         jQuery(this).show()
@@ -13,14 +26,11 @@ jQuery(document).ready -> _.defer ->
     .ajaxStop ->
         jQuery(this).hide()
 
-    Capkom.loadProfile ->
-        # Initialize navigation bar
-        do Capkom.initNav
-
 # Getter for the name of the actual stage.
 Capkom.getStagename = ->
     window.location.hash.replace /^#/, ""
 
+# initialize or destroy tts widget depending on the profile state
 Capkom.updateTTS = ->
     if Capkom.uiLoaded
         if Capkom.profile.get "useAudio"
@@ -29,12 +39,4 @@ Capkom.updateTTS = ->
         else
             jQuery(":capkom-ttswidget").ttswidget("destroy")
 
-Capkom.updateSymbols = ->
-    if Capkom.uiLoaded
-        jQuery('.capkom-label').capkomSymbol
-            profile: Capkom.profile
-        if Capkom.profile.get "useSymbols"
-            jQuery(".symbol").show()
-        else
-            jQuery(".symbol").hide()
 
