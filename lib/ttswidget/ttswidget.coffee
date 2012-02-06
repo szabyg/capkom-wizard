@@ -24,7 +24,6 @@ jQuery.widget "capkom.ttswidget",
                 primary: @options.iconClass
         @button.click (e) =>
             e.preventDefault()
-            @prepare()
             @talk()
             false
     _destroy: ->
@@ -35,6 +34,7 @@ jQuery.widget "capkom.ttswidget",
     prepare: ->
         @_cleanup()
     talk: ->
+        @prepare()
         @dialog = jQuery """
             <div id='ttswidget-dialog' title='#{@options.dialogTitle}'>
                 #{@_getText()}
@@ -108,11 +108,13 @@ jQuery.widget "capkom.ttswidget",
 
     # Internal method for implementing the audio uri.
     _makeLink: () ->
+        _encodeURI = (str) ->
+            encodeURI(str).replace /'/g, "%27"
         text = @_getText()
         uri = @options.backendUri + "/process?"
         params = @preset(@_getLang(), @_getGender())
         .concat [
-            "INPUT_TYPE=TEXT&OUTPUT_TYPE=AUDIO&INPUT_TEXT=#{encodeURIComponent text}"
+            "INPUT_TYPE=TEXT&OUTPUT_TYPE=AUDIO&INPUT_TEXT=#{_encodeURI text}"
             "OUTPUT_TEXT="
             "effect_Volume_selected="
             "effect_Volume_parameters=" + encodeURI "amount:2.0;"

@@ -51,10 +51,40 @@
         <div class="tts" lang="de">
             Spricht auch deutsch.
         </div>
+        <textarea id="tts-test" cols="60" rows="10">
+Test a text
+        </textarea><br/>
+        <select name="lang" id="lang">
+            <option value="en">english</option>
+            <option value="de">deutsch</option>
+        </select>
+        <br/>
+        <select name="gender" id="gender">
+            <option value="male">male</option>
+            <option value="female">female</option>
+        </select>
+        <br/>
+        <button id="ttstest-button">Say</button>
     </section>
     <div style="display:none;" id="bgThemeActivator"></div>
     <script>
-        
+        (function($){
+            $(document).ready(function(){
+                $('#ttstest-button')
+                .button()
+                .click(function(){
+                    console.log(123);
+                    var span = $('<span>')
+                    .attr('tts', $('#tts-test').val())
+                    .attr('gender', $('#gender').val())
+                    .attr('lang', $('#lang').val());
+                    console.log(span);
+                    span
+                    .ttswidget()
+                    .ttswidget('talk')
+                })
+            });
+        })(jQuery);
     </script>
 </body>
 </html>
