@@ -2,6 +2,9 @@ Capkom = window.Capkom ?= {}
 Capkom.symbolSets ?= {}
 Capkom.symbolSets.sets ?= []
 
+###
+Generic 
+###
 class Capkom.Symbolset
     constructor: (@options) ->
         @nameMap = options.nameMap

@@ -1,8 +1,6 @@
 # Initialize Capkom object
 Capkom = window.Capkom ?= {}
 
-#Capkom.symbolSets = []
-#Capkom.symbolSets.push 
 new Capkom.Symbolset
     name: "default"
     baseUri: "symbols/free1/"
@@ -71,12 +69,3 @@ new Capkom.Symbolset
         "Suche"
     ]
 
-#    symbols: [
-#        "default"
-#        "welcome"
-#        "symbolset"
-#        "symbolsize"
-#        "event"
-#        "friends"
-#        "search"
-#    ]

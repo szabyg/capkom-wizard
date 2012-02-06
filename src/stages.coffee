@@ -188,8 +188,29 @@ Capkom.stages =
         image: "http://i.fonts2u.com/sn/mp1_snoopy-dings_1.png"
         html: """
             Die CAPKOM-Kunstplattform beinhaltet viele Symbole.<br/>
-            Wie groß sollen die Symbole sein?
+            Wie groß sollen die Symbole sein? <br/><br/>
+            <div class='symbolsize-symbols'>
+                <input type='radio' name='symbolsize' id='symbolsize-small' />
+                <label for='symbolsize-small' ><span class='symbolsize-small choose-button'>
+                    <img src='symbols/ui/symbolsize25.png' title='klein'/>
+                </span></label>
+
+                <input type='radio' name='symbolsize' id='symbolsize-medium' />
+                <label for='symbolsize-medium'><span class='symbolsize-medium choose-button'>
+                    <img src='symbols/ui/symbolsize50.png' title='mittel'/>
+                </span></label>
+
+                <input type='radio' name='symbolsize' id='symbolsize-large' />
+                <label for='symbolsize-large' ><span class='symbolsize-large'>
+                    <img src='symbols/ui/symbolsize100.png' title='groß'/>
+                </span></label>
+            </div>
         """
+        script: (element) ->
+            jQuery("#symbolsize-#{Capkom.profile.get 'symbolsize'}").attr "checked", "checked"
+            jQuery(".symbolsize-symbols", element).buttonset()
+            .change (e) ->
+                Capkom.profile.set 'symbolsize': e.target.id.replace "symbolsize-", ""
 
     "goodbye":
         title: "Ende"
