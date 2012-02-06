@@ -85,16 +85,19 @@ Capkom.stages =
         html: """
             Wie sollen Informationen dargestellt werden?<br/><br/>
             <input type='radio' name='e2r' id='e2r-both'/>
-            <label for='e2r-both' class='capkom-label' symbolId='text-with-symbols'>Text + Symbole</label>
+            <label for='e2r-both' class='capkom-label' symbolId='text-with-symbols' donthidesymbol='true'>Text + Symbole</label>
             <input type='radio' name='e2r' id='e2r-alone'/>
-            <label for='e2r-alone' class='capkom-label' symbolId='text-only'>Text</label>
+            <label for='e2r-alone' class='capkom-label' symbolId='text-only' donthidesymbol='true'>Text</label>
             <br/><br/>
-            Sprachausgabe:<br/><br/>
+            <span symbolId='tts' class='capkom-label'>Sprachausgabe</span>:<br/><br/>
             <input type='radio' name='useAudio' id='audio-on'/>
-            <label for='audio-on'><img src='symbols/Gnome-Audio-Volume-Medium-64.png' width='64' alt='Symbole'/></label>
+            <label for='audio-on'>
+                <img src='symbols/Gnome-Audio-Volume-Medium-64.png' width='64' alt='Sprachausgabe an'/>
+            </label>
             <input type='radio' name='useAudio' id='audio-off'/>
-            <label for='audio-off'><img src='symbols/Gnome-Audio-Volume-Muted-64.png' width='64' alt='Symbole'/></label>
-
+            <label for='audio-off'>
+                <img src='symbols/Gnome-Audio-Volume-Muted-64.png' width='64' alt='Keine Sprachausgabe'/>
+            </label>
         """
         script: (element) ->
             # activate the buttons according to the profile

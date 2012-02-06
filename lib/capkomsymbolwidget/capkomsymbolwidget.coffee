@@ -32,7 +32,7 @@ jQuery.widget "Capkom.capkomSymbol"
         # Add symbol markup at the end of this.element
         @symbol = jQuery '<img class="capkom-symbol" style="padding-right:5px;vertical-align:middle;display:none;"/>&nbsp;'
         @symbol.prependTo @element
-        @symbol = jQuery 'img', @element
+        @symbol = jQuery 'img.capkom-symbol', @element
         @symbol.hide()
         # display:inline;
         @_profileChange @options.profile
@@ -47,7 +47,7 @@ jQuery.widget "Capkom.capkomSymbol"
         # figure out which symbol to show and show it
         symbolUri = @_getSymbolUri profile, @options.symbolSets
         @symbol.attr 'src', symbolUri
-        if profile.get 'useSymbols'
+        if profile.get('useSymbols') or @element.attr('donthidesymbol')
             @symbol.show()
         else
             @symbol.hide()

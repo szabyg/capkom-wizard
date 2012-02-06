@@ -71,16 +71,19 @@
         <span class="nv">html: </span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">            Wie sollen Informationen dargestellt werden?&lt;br/&gt;&lt;br/&gt;</span>
 <span class="s2">            &lt;input type=&#39;radio&#39; name=&#39;e2r&#39; id=&#39;e2r-both&#39;/&gt;</span>
-<span class="s2">            &lt;label for=&#39;e2r-both&#39; class=&#39;capkom-label&#39; symbolId=&#39;text-with-symbols&#39;&gt;Text + Symbole&lt;/label&gt;</span>
+<span class="s2">            &lt;label for=&#39;e2r-both&#39; class=&#39;capkom-label&#39; symbolId=&#39;text-with-symbols&#39; donthidesymbol=&#39;true&#39;&gt;Text + Symbole&lt;/label&gt;</span>
 <span class="s2">            &lt;input type=&#39;radio&#39; name=&#39;e2r&#39; id=&#39;e2r-alone&#39;/&gt;</span>
-<span class="s2">            &lt;label for=&#39;e2r-alone&#39; class=&#39;capkom-label&#39; symbolId=&#39;text-only&#39;&gt;Text&lt;/label&gt;</span>
+<span class="s2">            &lt;label for=&#39;e2r-alone&#39; class=&#39;capkom-label&#39; symbolId=&#39;text-only&#39; donthidesymbol=&#39;true&#39;&gt;Text&lt;/label&gt;</span>
 <span class="s2">            &lt;br/&gt;&lt;br/&gt;</span>
-<span class="s2">            Sprachausgabe:&lt;br/&gt;&lt;br/&gt;</span>
+<span class="s2">            &lt;span symbolId=&#39;tts&#39; class=&#39;capkom-label&#39;&gt;Sprachausgabe&lt;/span&gt;:&lt;br/&gt;&lt;br/&gt;</span>
 <span class="s2">            &lt;input type=&#39;radio&#39; name=&#39;useAudio&#39; id=&#39;audio-on&#39;/&gt;</span>
-<span class="s2">            &lt;label for=&#39;audio-on&#39;&gt;&lt;img src=&#39;symbols/Gnome-Audio-Volume-Medium-64.png&#39; width=&#39;64&#39; alt=&#39;Symbole&#39;/&gt;&lt;/label&gt;</span>
+<span class="s2">            &lt;label for=&#39;audio-on&#39;&gt;</span>
+<span class="s2">                &lt;img src=&#39;symbols/Gnome-Audio-Volume-Medium-64.png&#39; width=&#39;64&#39; alt=&#39;Sprachausgabe an&#39;/&gt;</span>
+<span class="s2">            &lt;/label&gt;</span>
 <span class="s2">            &lt;input type=&#39;radio&#39; name=&#39;useAudio&#39; id=&#39;audio-off&#39;/&gt;</span>
-<span class="s2">            &lt;label for=&#39;audio-off&#39;&gt;&lt;img src=&#39;symbols/Gnome-Audio-Volume-Muted-64.png&#39; width=&#39;64&#39; alt=&#39;Symbole&#39;/&gt;&lt;/label&gt;</span>
-
+<span class="s2">            &lt;label for=&#39;audio-off&#39;&gt;</span>
+<span class="s2">                &lt;img src=&#39;symbols/Gnome-Audio-Volume-Muted-64.png&#39; width=&#39;64&#39; alt=&#39;Keine Sprachausgabe&#39;/&gt;</span>
+<span class="s2">            &lt;/label&gt;</span>
 <span class="s2">        &quot;&quot;&quot;</span>
         <span class="nv">script: </span><span class="nf">(element) -&gt;</span></pre></div>             </td>           </tr>                               <tr id="section-7">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-7">&#182;</a>               </div>               <p>activate the buttons according to the profile</p>             </td>             <td class="code">               <div class="highlight"><pre>            <span class="k">if</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">get</span> <span class="s2">&quot;useSymbols&quot;</span>
                 <span class="nx">jQuery</span><span class="p">(</span><span class="s2">&quot;#e2r-both&quot;</span><span class="p">).</span><span class="nx">attr</span> <span class="s2">&quot;checked&quot;</span><span class="p">,</span> <span class="s2">&quot;checked&quot;</span>

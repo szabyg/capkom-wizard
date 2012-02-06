@@ -1,8 +1,5 @@
-# This module initializes the navigation bar and its interaction.
+# This module initializes the jQuery UI tabs element and its interaction.
 Capkom.initNav = ->
-    # Empty the bar
-    jQuery("nav").html ""
-
     _renderStageTitle = (stage) ->
         "<li><a class='stage-title capkom-label' symbolId='#{stage.name}' href='##{stage.name}'>#{stage.title}</a></li>"
 
