@@ -5,10 +5,10 @@ Capkom = window.Capkom ?= {}
 Capkom.order = [
     "welcome"
     "fontsize"
+    "symbolsize"
     "theme"
     "channels"
     "symbolset"
-    "symbolsize"
     "goodbye"
 ]
 
@@ -207,9 +207,11 @@ Capkom.stages =
             </div>
         """
         script: (element) ->
+            # Mark currently selected size
             jQuery("#symbolsize-#{Capkom.profile.get 'symbolsize'}").attr "checked", "checked"
             jQuery(".symbolsize-symbols", element).buttonset()
             .change (e) ->
+                # On change, change profile
                 Capkom.profile.set 'symbolsize': e.target.id.replace "symbolsize-", ""
 
     "goodbye":
@@ -222,10 +224,13 @@ Capkom.stages =
             <div id="profile"></div>
         """
         script: (el) ->
-            jQuery("#profile", el).html JSON.stringify(Capkom.profile.toJSON())
+            profileText = -> JSON.stringify(Capkom.profile.toJSON())
                 .replace(/,"/g, ',<br/>"')
                 .replace(/^{|}$/g, "")
                 .replace(/":/g, '": ')
+            Capkom.profile.bind "change", (profile) ->
+                jQuery("#goodbye #profile").html profileText()
+            jQuery("#profile", el).html profileText()
 
 ###
 Get an array of stage objects in the configured order.

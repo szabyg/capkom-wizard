@@ -9,10 +9,14 @@ jQuery.widget "Capkom.capkomSymbol"
         symbolId: "default"
         uriPrefix: ""
     _create: ->
+        @options.symbolSets ?= Capkom.symbolSets
         @symbolId = @element.attr "symbolId" or @options.symbolId
         # Add symbol markup at the end of this.element
-        @symbol = jQuery '<img class="capkom-symbol" style="padding-right:5px;vertical-align:middle;"/>&nbsp;'
-        @symbol.hide().prependTo @element
+        @symbol = jQuery '<img class="capkom-symbol" style="padding-right:5px;vertical-align:middle;display:none;"/>&nbsp;'
+        @symbol.prependTo @element
+        @symbol = jQuery 'img', @element
+        @symbol.hide()
+        # display:inline;
         @_profileChange @options.profile
         _profileChange = (profile) =>
             @_profileChange.apply @, [profile]

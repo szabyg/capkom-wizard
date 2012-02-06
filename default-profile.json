@@ -1,10 +1,9 @@
 {
-    "fontsize": "medium",
+    "fontsize":   "medium",
     "symbolsize": "medium",
     "useSymbols": true,
-    "symbolSet": "default",
-    "useE2r": true,
-    "useAudio": true,
-    "customSymbolsets": [],
-    "theme": "UI lightness"
+    "symbolSet":  "default",
+    "useE2r":     true,
+    "useAudio":   true,
+    "theme":      "UI lightness"
 }

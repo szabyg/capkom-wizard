@@ -3,31 +3,39 @@ Capkom.symbolSets ?= {}
 Capkom.symbolSets.sets ?= []
 
 ###
-Generic 
+Generic symbol set class
 ###
 class Capkom.Symbolset
     constructor: (@options) ->
-        @nameMap = options.nameMap
+        # Name of the set
         @name = options.name
-        @baseUri = options.baseUri
-        @nameFormat = options.nameFormat
-        @sizeMap = options.sizeMap
+        # [plain string-string mapping object] 
+        # Mapping from symbol IDs to image naming
         @nameMap = options.nameMap
+        # [string] Location of the symbol set
+        @baseUri = options.baseUri
+        # [string] Name format of the files (e.g. "{symbolId}{size}.png" or "{size}/{symbolId}.png")
+        @nameFormat = options.nameFormat
+        # [plain string-string mapping object] 
+        # Mapping from "small", "medium", "large" to however the symbol set uses sizes
+        @sizeMap = options.sizeMap
+        # [Array of Strings] List of provided symbols
         @symbols = options.symbols
 
         Capkom.symbolSets[options.name] = @
         Capkom.symbolSets.sets.push @
 
+    # Get full Uri symbol for `symbolId` in the given `symbolSize`
     getSymbolUri: (symbolId, symbolSize) ->
-        # nameformat: "Capkom_{symbolId}-{size}.gif"
         imageName = @nameFormat
         .replace("{symbolId}", @_applyMapping symbolId, @nameMap)
         .replace("{size}", @_applyMapping symbolSize, @sizeMap)
-        symbolUri = @baseUri + imageName
+        return @baseUri + imageName
 
-    hasSymbol: (sName) ->
-        symbolName = @_applyMapping sName, @nameMap if @nameMap
-        true if _.indexOf(@symbols, symbolName) isnt -1
+    # return `true` if the symbol set has a symbol for given symbol Id
+    hasSymbol: (symbolId) ->
+        symbolName = @_applyMapping symbolId, @nameMap if @nameMap
+        true if _.contains @symbols, symbolName
 
     # replace mapped strings
     _applyMapping: (str, mapping) ->
