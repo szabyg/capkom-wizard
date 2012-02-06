@@ -22,7 +22,8 @@ or on linux systems alternatively
 
 ## Documentation
 To generate documentation automatically run the following command. It needs docco installed.
-docco src/*.coffee
+
+    docco src/*.coffee lib/ttswidget/ttswidget.coffee lib/capkomsymbolwidget/capkomsymbolwidget.coffee
 
 ## License
 CapKom Wizard is free software under the MIT License.
