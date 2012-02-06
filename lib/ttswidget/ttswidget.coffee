@@ -1,15 +1,47 @@
+# ttswidget is a jQuery UI widget, creating a Text-To-Seech button at the beginning of a DOM element.
+# Pressing the button will open up a dialog box showing the read text and a player control UI
+# for pausing or stopping the audio.
+# Usage:
+#
+#    <div class="tts" lang="en">
+#        Normally the text content of the element is taken.
+#    </div>
+#    <div class="tts" tts="This is set as tts attribute of the .tts element.">
+#        Except you set the tts argument of the element.
+#    </div>
+#
+#    jQuery(".tts").ttswidget({
+#        gender: "male"
+#    });
+# This will instantiate buttons for reading the texts. If the DOM element has a 
+# `tts` attribute, it will be read instead of the text content of the element.
+# The `lang` attribute specifies the language of interpretation. If no language
+# is defined the default language is used. (see at `options`)
+
 jQuery.widget "capkom.ttswidget",
+    # Options:
     options:
+        # Default language of text interpretaion. This can be overridden by setting
+        # the `lang` attribute of the element.
         language: "de"
+        # The used backend URI
         backendUri: "http://dev.iks-project.eu/mary"
+        # Type of the used backend.
         backendType: "MARY"
+        # UI icon class to be used for the button
         iconClass: "ui-icon-speaker"
+        # Spinner icon to be shown when still loading
         spinnerUri: "spinner.gif"
+        # Dialog title
         dialogTitle: "TTS widget"
+        # Default text to be read in case no text is found
         defaultText: "No text found"
+        # The button title to be set. This is not shown but if a screen reader
+        # would read it, it is shown.
         buttonLabel: "Speak"
+        # The error message when something goes wrong loading the audio.
         errorMsg: "Error loading audio."
-    _init: ->
+
     _create: ->
         # Add button to the element
         @button = jQuery "<button class='tts-button'>#{@options.buttonLabel}</button>"
