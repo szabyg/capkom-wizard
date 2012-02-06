@@ -17,6 +17,8 @@ new Capkom.Symbolset
         welcome: "Willkommen-home"
         theme: "design"
         channels: "Sprache-Symbole"
+        "text-with-symbols": "Text+Symbole"
+        "text-only": "Text"
         symbolset: "Symbole"
         goodbye: "ende"
     symbols: [

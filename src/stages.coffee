@@ -85,9 +85,9 @@ Capkom.stages =
         html: """
             Wie sollen Informationen dargestellt werden?<br/><br/>
             <input type='radio' name='e2r' id='e2r-both'/>
-            <label for='e2r-both'>Text + Symbole <img src='symbols/symbol.gif' width='18' alt='Symbole'/></label>
+            <label for='e2r-both' class='capkom-label' symbolId='text-with-symbols'>Text + Symbole</label>
             <input type='radio' name='e2r' id='e2r-alone'/>
-            <label for='e2r-alone'>Text</label>
+            <label for='e2r-alone' class='capkom-label' symbolId='text-only'>Text</label>
             <br/><br/>
             Sprachausgabe:<br/><br/>
             <input type='radio' name='useAudio' id='audio-on'/>
@@ -258,7 +258,7 @@ Capkom.showStages = (el) ->
         ###
         for i in [0..anchors.length-1].reverse()
             anchor = anchors[i]
-            anchorName = jQuery(anchor).find("a").attr("hash").replace /^#/, ""
+            anchorName = jQuery(anchor).find("a").attr("href").replace /^#/, ""
             ### anchorName not in stageNames? ###
             if _.indexOf(stageNames, anchorName) is -1
     #            el.tabs "remove", i
@@ -268,7 +268,7 @@ Capkom.showStages = (el) ->
         Return the current anchorNames
         ###
         anchorNames = -> _.map anchors, (anchor) ->
-            jQuery(anchor).find("a").attr("hash").replace /^#/, ""
+            jQuery(anchor).find("a").attr("href").replace /^#/, ""
 
         ###
         Add new tabs
