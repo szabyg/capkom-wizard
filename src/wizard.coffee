@@ -36,6 +36,7 @@ Capkom.updateTTS = ->
         if Capkom.profile.get "useAudio"
             jQuery(".tts").ttswidget
                 spinnerUri: "css/spinner.gif"
+                dialogTitle: "Sprechblase"
         else
             jQuery(":capkom-ttswidget").ttswidget("destroy")
 
