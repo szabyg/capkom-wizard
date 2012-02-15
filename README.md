@@ -31,3 +31,4 @@ CapKom Wizard is free software under the MIT License.
 ## Copyright
 Author(s): Szaby Grünwald, Salzburg Research
 Developed for the [CapKom Project](http://cap-kom.utilo.eu/)
+The Capkom Symbolset under /symbols/capkom is owned by [Utilo KG](http://www.utilo.eu/) and not freely usable.
