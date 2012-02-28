@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="lib/jquery/jquery-ui.min.css" />
 
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="lib/ttswidget/ttswidget.css" />
 
     <script type="text/javascript" src="lib/jquery/jquery-1.7.1.js"></script>
     <script type="text/javascript" src="lib/jquery/jquery-ui.1.9m5.js"></script>
@@ -28,6 +29,36 @@
 <!--    <script type="text/javascript" src="lib/stages.js"></script>-->
 <!--    <script type="text/javascript" src="lib/profile.js"></script>-->
 <!--    <script type="text/javascript" src="lib/navigation.js"></script>-->
+    <script type="text/javascript">
+        // Reference implementation of Backbone.sync for saving 
+        Backbone.sync = function(method, entity, options){
+            // Store profile in localStorage
+            localStorage.profile = JSON.stringify(entity.toJSON());
+
+            var backendBaseUri = "http://www.online-atelier.com/OnlineAtelier/home/capkom?callback=?";
+//            var backendBaseUri = "http://localhost:3000/?callback=?";
+//            var backendBaseUri = "test.json";
+            switch(method){
+                case 'create':
+                    var jqXHR = jQuery.ajax({
+                        url: backendBaseUri,
+                        data: {
+                            json: JSON.stringify(Capkom.profile)
+                        },
+                        dataType: 'json',
+                        success: function(res){
+                            console.info("successful GET:", res);
+                            options.success(entity);
+                        },
+                        error: function(jqXHR, textStatus, errorThrown){
+                            console.error("couldn't save to ", backendBaseUri, arguments);
+                        }
+                    });
+                    console.info("jqXHR", jqXHR);
+            }
+            console.info(entity, arguments);
+        };
+    </script>
 
     <style>
         /* Reset styles */
@@ -65,14 +96,14 @@
         .hidden { display: none; }
         .symbolset-symbols, .symbolsize-symbols { padding: 15px; }
 
+        .ui-icon-speaker {
+            background-image: url(lib/ttswidget/speaker22.png) !important;
+        }
         button.ui-button-icon-only.tts-button .ui-icon {
             width: 22px;
             height: 22px;
             margin-left: -11px;
             margin-top: -11px;
-        }
-        .ui-icon-speaker {
-            background-image: url(lib/ttswidget/speaker22.png) !important;
         }
         #loadingDiv {
             position: absolute;
