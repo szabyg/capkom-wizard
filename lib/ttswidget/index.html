@@ -4,9 +4,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
+    <link rel="stylesheet" href="ttswidget.css" />
     <link rel="stylesheet" href="../jquery/jquery-ui.min.css" />
 
-    <script type="text/javascript" src="../jquery/jquery-1.5.1.js"></script>
+    <script type="text/javascript" src="../jquery/jquery-1.7.1.js"></script>
     <script type="text/javascript" src="../jquery/jquery-ui.1.9m5.js"></script>
     <script type="text/javascript" src="../underscore-min.js"></script>
     <script type="text/javascript" src="../backbone.js"></script>
@@ -24,6 +25,12 @@
     </script>
 
     <style>
+        section {
+            max-width: 500px;
+        }
+        section div {
+            padding: 14px;
+        }
         button.ui-button-icon-only .ui-icon {
             width: 22px;
             height: 22px;
@@ -49,7 +56,7 @@
             Except you set the tts argument of the element.
         </div>
         <div class="tts" lang="de">
-            Spricht auch deutsch.
+            Spricht natürlich auch deutsch.
         </div>
         <textarea id="tts-test" cols="60" rows="10">
 Test a text
