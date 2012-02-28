@@ -194,26 +194,56 @@ Capkom.stages =
             Wie groß sollen die Symbole sein? <br/><br/>
             <div class='symbolsize-symbols'>
                 <input type='radio' name='symbolsize' id='symbolsize-small' />
-                <label for='symbolsize-small' ><span class='symbolsize-small choose-button'>
-                    <img src='symbols/ui/symbolsize25.png' title='klein'/>
+                <label for='symbolsize-small' ><span class='symbolsize-small choose-button' title='klein'>
+                    klein
                 </span></label>
 
                 <input type='radio' name='symbolsize' id='symbolsize-medium' />
                 <label for='symbolsize-medium'><span class='symbolsize-medium choose-button'>
-                    <img src='symbols/ui/symbolsize50.png' title='mittel'/>
+                    mittelgroß
                 </span></label>
 
                 <input type='radio' name='symbolsize' id='symbolsize-large' />
                 <label for='symbolsize-large' ><span class='symbolsize-large'>
-                    <img src='symbols/ui/symbolsize100.png' title='groß'/>
+                    groß
                 </span></label>
             </div>
         """
         script: (element) ->
             # Mark currently selected size
             jQuery("#symbolsize-#{Capkom.profile.get 'symbolsize'}").attr "checked", "checked"
-            jQuery(".symbolsize-symbols", element).buttonset()
-            .change (e) ->
+            buttonset = jQuery(".symbolsize-symbols", element)
+            buttonset.find('#symbolsize-small')
+            .button(
+                text: false
+                icons:
+                    secondary: 'ui-icon-symbol-small'
+            )
+            .button('widget').css
+                width: "55px"
+                height: "55px"
+            buttonset.find('#symbolsize-medium')
+            .button(
+                text: false
+                icons:
+                    secondary: 'ui-icon-symbol-medium'
+            )
+            .button('widget').css
+                width: "80px"
+                height: "80px"
+            buttonset.find('#symbolsize-large')
+            .button(
+                text: false
+                icons:
+                    secondary: 'ui-icon-symbol-large'
+            )
+            .button('widget').css
+                width: "130px"
+                height: "130px"
+            buttonset = buttonset.buttonset()
+            buttonset.click (e) ->
+                console.info e
+            buttonset.change (e) ->
                 # On change, change profile
                 Capkom.profile.set 'symbolsize': e.target.id.replace "symbolsize-", ""
 
