@@ -43,47 +43,48 @@ would read it, it is shown.</p>             </td>             <td class="code"> 
         <span class="k">if</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">msie</span>
             <span class="nv">audioSnippet = </span><span class="s">&quot;&quot;&quot;</span>
 <span class="s">            &lt;OBJECT id=&#39;playera&#39; height=&#39;60&#39; width=&#39;230&#39; classid=&#39;clsid:22D6F312-B0F6-11D0-94AB-0080C74C7E95&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;AutoStart&#39; VALUE=&#39;True&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;Balance&#39; VALUE=&#39;False&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;DisplaySize&#39; VALUE=&#39;True&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;Filename&#39; VALUE=&#39;</span><span class="si">#{</span><span class="nx">@_makeLink</span><span class="p">()</span><span class="si">}</span><span class="s">&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;Mute&#39; VALUE=&#39;False&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;SelectionStart&#39; VALUE=&#39;False&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;SelectionEnd&#39; VALUE=&#39;False&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;SendPlayStateChangeEvents&#39; VALUE=&#39;True&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;ShowControls&#39; VALUE=&#39;True&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;ShowAudioControls&#39; VALUE=&#39;True&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;ShowDisplay&#39; VALUE=&#39;False&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;ShowPositionControls&#39; VALUE=&#39;False&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;Volume&#39; VALUE=&#39;1&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;AudioStream&#39; VALUE=&#39;False&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;AutoSize&#39; VALUE=&#39;True&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;AnimationAtStart&#39; VALUE=&#39;False&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;AllowScan&#39; VALUE=&#39;False&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;AllowChangeDisplaySize&#39; VALUE=&#39;False&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;AutoRewind&#39; VALUE=&#39;True&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;BaseURL&#39; VALUE=&#39;&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;BufferingTime&#39; VALUE=&#39;5&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;CaptioningID&#39; VALUE=&#39;&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;ClickToPlay&#39; VALUE=&#39;True&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;CursorType&#39; VALUE=&#39;0&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;CurrentPosition&#39; VALUE=&#39;True&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;CurrentMarker&#39; VALUE=&#39;True&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;DefaultFrame&#39; VALUE=&#39;mainframe&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;DisplayBackColor&#39; VALUE=&#39;True&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;DisplayForeColor&#39; VALUE=&#39;16777215&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;DisplayMode&#39; VALUE=&#39;1&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;Enabled&#39; VALUE=&#39;-1&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;EnableContextMenu&#39; VALUE=&#39;False&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;EnablePositionControls&#39; VALUE=&#39;False&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;EnableFullScreenControls&#39; VALUE=&#39;False&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;EnableTracker&#39; VALUE=&#39;False&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;InvokeURLs&#39; VALUE=&#39;False&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;Language&#39; VALUE=&#39;False&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;PlayCount&#39; VALUE=&#39;1&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;PreviewMode&#39; VALUE=&#39;False&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;ShowStatusBar&#39; VALUE=&#39;False&#39;&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;TransparentAtStart&#39; VALUE=&#39;False&#39;&gt;</span>
+<span class="s">                &lt;embed src=&#39;</span><span class="si">#{</span><span class="nx">@_makeLink</span><span class="p">()</span><span class="si">}</span><span class="s">&#39; name=&#39;playera&#39; width=&#39;230&#39; height=&#39;60&#39; pluginspage=&#39;http://www.microsoft.com/windows/windowsmedia/&#39; type=&#39;application/x-mplayer2&#39; autoplay=&#39;true&#39; showcontrols=&#39;1&#39; fullScreen=&#39;false&#39; DisplaySize=&#39;0&#39; autostart=&#39;true&#39; controls=&#39;All&#39; controller=&#39;true&#39;&gt;&lt;/embed&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;AutoStart&#39; VALUE=&#39;True&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;Balance&#39; VALUE=&#39;False&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;DisplaySize&#39; VALUE=&#39;True&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;Filename&#39; VALUE=&#39;</span><span class="si">#{</span><span class="nx">@_makeLink</span><span class="p">()</span><span class="si">}</span><span class="s">&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;Mute&#39; VALUE=&#39;False&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;SelectionStart&#39; VALUE=&#39;False&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;SelectionEnd&#39; VALUE=&#39;False&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;SendPlayStateChangeEvents&#39; VALUE=&#39;True&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;ShowControls&#39; VALUE=&#39;True&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;ShowAudioControls&#39; VALUE=&#39;True&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;ShowDisplay&#39; VALUE=&#39;False&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;ShowPositionControls&#39; VALUE=&#39;False&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;Volume&#39; VALUE=&#39;1&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;AudioStream&#39; VALUE=&#39;False&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;AutoSize&#39; VALUE=&#39;True&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;AnimationAtStart&#39; VALUE=&#39;False&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;AllowScan&#39; VALUE=&#39;False&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;AllowChangeDisplaySize&#39; VALUE=&#39;False&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;AutoRewind&#39; VALUE=&#39;True&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;BaseURL&#39; VALUE=&#39;&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;BufferingTime&#39; VALUE=&#39;5&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;CaptioningID&#39; VALUE=&#39;&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;ClickToPlay&#39; VALUE=&#39;True&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;CursorType&#39; VALUE=&#39;0&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;CurrentPosition&#39; VALUE=&#39;True&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;CurrentMarker&#39; VALUE=&#39;True&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;DefaultFrame&#39; VALUE=&#39;mainframe&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;DisplayBackColor&#39; VALUE=&#39;True&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;DisplayForeColor&#39; VALUE=&#39;True&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;DisplayMode&#39; VALUE=&#39;1&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;Enabled&#39; VALUE=&#39;-1&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;EnableContextMenu&#39; VALUE=&#39;False&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;EnablePositionControls&#39; VALUE=&#39;False&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;EnableFullScreenControls&#39; VALUE=&#39;False&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;EnableTracker&#39; VALUE=&#39;False&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;InvokeURLs&#39; VALUE=&#39;False&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;Language&#39; VALUE=&#39;False&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;PlayCount&#39; VALUE=&#39;1&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;PreviewMode&#39; VALUE=&#39;False&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;ShowStatusBar&#39; VALUE=&#39;False&#39;/&gt;</span>
+<span class="s">                &lt;PARAM NAME=&#39;TransparentAtStart&#39; VALUE=&#39;False&#39;/&gt;</span>
 <span class="s">            &lt;/OBJECT&gt;</span>
 <span class="s">            &quot;&quot;&quot;</span>
         <span class="k">else</span>
@@ -109,7 +110,7 @@ would read it, it is shown.</p>             </td>             <td class="code"> 
                 <span class="p">,</span> <span class="mi">500</span>
             <span class="nv">hide: </span><span class="s">&quot;fade&quot;</span>
             <span class="nv">width: </span><span class="s">&quot;500&quot;</span>
-        <span class="k">if</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">msie</span>
+        <span class="k">if</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">msie</span> <span class="o">and</span> <span class="kc">no</span>
             <span class="nb">document</span><span class="p">.</span><span class="nx">playera</span><span class="p">.</span><span class="nx">attachEvent</span> <span class="s">&quot;EndOfStream&quot;</span><span class="p">,</span> <span class="p">(</span><span class="nx">state</span><span class="p">)</span> <span class="o">=&gt;</span>
                 <span class="nx">@dialog</span><span class="p">.</span><span class="nx">dialog</span> <span class="s">&quot;close&quot;</span>
                 <span class="nx">setTimeout</span> <span class="o">=&gt;</span>

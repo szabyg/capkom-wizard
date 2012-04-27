@@ -67,47 +67,48 @@ jQuery.widget "capkom.ttswidget",
         if jQuery.browser.msie
             audioSnippet = """
             <OBJECT id='playera' height='60' width='230' classid='clsid:22D6F312-B0F6-11D0-94AB-0080C74C7E95'>
-                <PARAM NAME='AutoStart' VALUE='True'>
-                <PARAM NAME='Balance' VALUE='False'>
-                <PARAM NAME='DisplaySize' VALUE='True'>
-                <PARAM NAME='Filename' VALUE='#{@_makeLink()}'>
-                <PARAM NAME='Mute' VALUE='False'>
-                <PARAM NAME='SelectionStart' VALUE='False'>
-                <PARAM NAME='SelectionEnd' VALUE='False'>
-                <PARAM NAME='SendPlayStateChangeEvents' VALUE='True'>
-                <PARAM NAME='ShowControls' VALUE='True'>
-                <PARAM NAME='ShowAudioControls' VALUE='True'>
-                <PARAM NAME='ShowDisplay' VALUE='False'>
-                <PARAM NAME='ShowPositionControls' VALUE='False'>
-                <PARAM NAME='Volume' VALUE='1'>
-                <PARAM NAME='AudioStream' VALUE='False'>
-                <PARAM NAME='AutoSize' VALUE='True'>
-                <PARAM NAME='AnimationAtStart' VALUE='False'>
-                <PARAM NAME='AllowScan' VALUE='False'>
-                <PARAM NAME='AllowChangeDisplaySize' VALUE='False'>
-                <PARAM NAME='AutoRewind' VALUE='True'>
-                <PARAM NAME='BaseURL' VALUE=''>
-                <PARAM NAME='BufferingTime' VALUE='5'>
-                <PARAM NAME='CaptioningID' VALUE=''>
-                <PARAM NAME='ClickToPlay' VALUE='True'>
-                <PARAM NAME='CursorType' VALUE='0'>
-                <PARAM NAME='CurrentPosition' VALUE='True'>
-                <PARAM NAME='CurrentMarker' VALUE='True'>
-                <PARAM NAME='DefaultFrame' VALUE='mainframe'>
-                <PARAM NAME='DisplayBackColor' VALUE='True'>
-                <PARAM NAME='DisplayForeColor' VALUE='16777215'>
-                <PARAM NAME='DisplayMode' VALUE='1'>
-                <PARAM NAME='Enabled' VALUE='-1'>
-                <PARAM NAME='EnableContextMenu' VALUE='False'>
-                <PARAM NAME='EnablePositionControls' VALUE='False'>
-                <PARAM NAME='EnableFullScreenControls' VALUE='False'>
-                <PARAM NAME='EnableTracker' VALUE='False'>
-                <PARAM NAME='InvokeURLs' VALUE='False'>
-                <PARAM NAME='Language' VALUE='False'>
-                <PARAM NAME='PlayCount' VALUE='1'>
-                <PARAM NAME='PreviewMode' VALUE='False'>
-                <PARAM NAME='ShowStatusBar' VALUE='False'>
-                <PARAM NAME='TransparentAtStart' VALUE='False'>
+                <embed src='#{@_makeLink()}' name='playera' width='230' height='60' pluginspage='http://www.microsoft.com/windows/windowsmedia/' type='application/x-mplayer2' autoplay='true' showcontrols='1' fullScreen='false' DisplaySize='0' autostart='true' controls='All' controller='true'></embed>
+                <PARAM NAME='AutoStart' VALUE='True'/>
+                <PARAM NAME='Balance' VALUE='False'/>
+                <PARAM NAME='DisplaySize' VALUE='True'/>
+                <PARAM NAME='Filename' VALUE='#{@_makeLink()}'/>
+                <PARAM NAME='Mute' VALUE='False'/>
+                <PARAM NAME='SelectionStart' VALUE='False'/>
+                <PARAM NAME='SelectionEnd' VALUE='False'/>
+                <PARAM NAME='SendPlayStateChangeEvents' VALUE='True'/>
+                <PARAM NAME='ShowControls' VALUE='True'/>
+                <PARAM NAME='ShowAudioControls' VALUE='True'/>
+                <PARAM NAME='ShowDisplay' VALUE='False'/>
+                <PARAM NAME='ShowPositionControls' VALUE='False'/>
+                <PARAM NAME='Volume' VALUE='1'/>
+                <PARAM NAME='AudioStream' VALUE='False'/>
+                <PARAM NAME='AutoSize' VALUE='True'/>
+                <PARAM NAME='AnimationAtStart' VALUE='False'/>
+                <PARAM NAME='AllowScan' VALUE='False'/>
+                <PARAM NAME='AllowChangeDisplaySize' VALUE='False'/>
+                <PARAM NAME='AutoRewind' VALUE='True'/>
+                <PARAM NAME='BaseURL' VALUE=''/>
+                <PARAM NAME='BufferingTime' VALUE='5'/>
+                <PARAM NAME='CaptioningID' VALUE=''/>
+                <PARAM NAME='ClickToPlay' VALUE='True'/>
+                <PARAM NAME='CursorType' VALUE='0'/>
+                <PARAM NAME='CurrentPosition' VALUE='True'/>
+                <PARAM NAME='CurrentMarker' VALUE='True'/>
+                <PARAM NAME='DefaultFrame' VALUE='mainframe'/>
+                <PARAM NAME='DisplayBackColor' VALUE='True'/>
+                <PARAM NAME='DisplayForeColor' VALUE='True'/>
+                <PARAM NAME='DisplayMode' VALUE='1'/>
+                <PARAM NAME='Enabled' VALUE='-1'/>
+                <PARAM NAME='EnableContextMenu' VALUE='False'/>
+                <PARAM NAME='EnablePositionControls' VALUE='False'/>
+                <PARAM NAME='EnableFullScreenControls' VALUE='False'/>
+                <PARAM NAME='EnableTracker' VALUE='False'/>
+                <PARAM NAME='InvokeURLs' VALUE='False'/>
+                <PARAM NAME='Language' VALUE='False'/>
+                <PARAM NAME='PlayCount' VALUE='1'/>
+                <PARAM NAME='PreviewMode' VALUE='False'/>
+                <PARAM NAME='ShowStatusBar' VALUE='False'/>
+                <PARAM NAME='TransparentAtStart' VALUE='False'/>
             </OBJECT>
             """
         else
@@ -133,7 +134,7 @@ jQuery.widget "capkom.ttswidget",
                 , 500
             hide: "fade"
             width: "500"
-        if jQuery.browser.msie
+        if jQuery.browser.msie and no
             document.playera.attachEvent "EndOfStream", (state) =>
                 @dialog.dialog "close"
                 setTimeout =>

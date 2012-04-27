@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
     <title>CapKom Wizard</title>
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="ttswidget.css" />
     <link rel="stylesheet" href="../jquery/jquery-ui.min.css" />
 
+    <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script>
     <script type="text/javascript" src="../jquery/jquery-1.7.1.js"></script>
     <script type="text/javascript" src="../jquery/jquery-ui.1.9m5.js"></script>
     <script type="text/javascript" src="../underscore-min.js"></script>

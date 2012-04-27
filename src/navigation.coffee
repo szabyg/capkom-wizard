@@ -26,8 +26,14 @@ Capkom.renderStage = (stage, tabsEl, index) ->
                         <span class="stage-content tts" lang="de">#{stage.html}</span>
                     </div>
                     <div class="buttons">
-                        <button class="prevButton" alt="Zurück">Zurück</button>
-                        <button class="nextButton" alt="Weiter">Weiter</button>
+                        <button class="prevButton" alt="Zurück">
+                            <i class="icon-arrow-left"></i>
+                            Zurück
+                        </button>
+                        <button class="nextButton" alt="Weiter">
+                            Weiter
+                            <i class="icon-arrow-right"/>
+                        </button>
                     </div>
                 </td></tr></table>
             </div>
