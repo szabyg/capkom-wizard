@@ -191,7 +191,7 @@ jQuery.widget "capkom.ttswidget",
                     "VOICE=dfki-prudence"
                 ]
         res = presets["#{lang}-#{gender}"]
-        console?.error "There's no TTS preset defined for #{lang} and #{gender}." unless res
+        console.error "There's no TTS preset defined for #{lang} and #{gender}." unless res
         return res or presets["de-female"]
 
     # Internal method for implementing the audio uri.
