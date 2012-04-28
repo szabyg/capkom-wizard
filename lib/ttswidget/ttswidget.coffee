@@ -134,7 +134,7 @@ jQuery.widget "capkom.ttswidget",
                 , 500
             hide: "fade"
             width: "500"
-        if jQuery.browser.msie and no
+        if jQuery.browser.msie # and no
             document.playera.attachEvent "EndOfStream", (state) =>
                 @dialog.dialog "close"
                 setTimeout =>
