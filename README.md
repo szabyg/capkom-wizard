@@ -9,6 +9,7 @@ A tool for creating a user profile for a platform for users with cognitive disab
 * jQuery + jQuery UI 1.9m5 - Basic UI widget set providing in-browser Accessibility, Themeability and Usability.
 * Backbone.js - A model-view-controller framework for the client-side.
 * Underscore.js - Javascript 1.9 added functionalities in older browsers.
+* Using Font Awesome - http://fortawesome.github.com/Font-Awesome
 
 ## Development
 Run the following command to keep compiling the coffeescript into javascript. It needs coffeescript installed to run.

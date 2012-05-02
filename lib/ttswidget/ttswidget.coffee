@@ -17,6 +17,7 @@
 # `tts` attribute, it will be read instead of the text content of the element.
 # The `lang` attribute specifies the language of interpretation. If no language
 # is defined the default language is used. (see at `options`)
+# Using Font Awesome - http://fortawesome.github.com/Font-Awesome
 
 jQuery.widget "capkom.ttswidget",
     # Options:
@@ -29,7 +30,7 @@ jQuery.widget "capkom.ttswidget",
         # Type of the used backend.
         backendType: "MARY"
         # UI icon class to be used for the button
-        iconClass: "ui-icon-speaker"
+#        iconClass: "ui-icon-speaker"
         # Spinner icon to be shown when still loading
         spinnerUri: "spinner.gif"
         # Dialog title
@@ -44,12 +45,12 @@ jQuery.widget "capkom.ttswidget",
 
     _create: ->
         # Add button to the element
-        @button = jQuery "<button class='tts-button'>#{@options.buttonLabel}</button>"
+        @button = jQuery "<button class='tts-button' alt='#{@options.buttonLabel}'><i class='icon-arrow-right'/></button>"
         @button.prependTo @element
         @button.button
-            text: false
-            icons:
-                primary: @options.iconClass
+            text: true
+#            icons:
+#                primary: @options.iconClass
         @button.click (e) =>
             e.preventDefault()
             @talk()
@@ -66,49 +67,16 @@ jQuery.widget "capkom.ttswidget",
         audioSnippet = null
         if jQuery.browser.msie
             audioSnippet = """
-            <OBJECT id='playera' height='60' width='230' classid='clsid:22D6F312-B0F6-11D0-94AB-0080C74C7E95'>
-                <embed src='#{@_makeLink()}' name='playera' width='230' height='60' pluginspage='http://www.microsoft.com/windows/windowsmedia/' type='application/x-mplayer2' autoplay='true' showcontrols='1' fullScreen='false' DisplaySize='0' autostart='true' controls='All' controller='true'></embed>
+            <OBJECT id='playera' height='40' width='230' classid='clsid:22D6F312-B0F6-11D0-94AB-0080C74C7E95'>
+                <embed src='#{@_makeLink()}' name='playera' width='230' height='40' pluginspage='http://www.microsoft.com/windows/windowsmedia/' type='application/x-mplayer2' autoplay='true' showcontrols='1' fullScreen='false' DisplaySize='0' autostart='true' controls='All' controller='true'></embed>
                 <PARAM NAME='AutoStart' VALUE='True'/>
-                <PARAM NAME='Balance' VALUE='False'/>
-                <PARAM NAME='DisplaySize' VALUE='True'/>
                 <PARAM NAME='Filename' VALUE='#{@_makeLink()}'/>
                 <PARAM NAME='Mute' VALUE='False'/>
-                <PARAM NAME='SelectionStart' VALUE='False'/>
-                <PARAM NAME='SelectionEnd' VALUE='False'/>
                 <PARAM NAME='SendPlayStateChangeEvents' VALUE='True'/>
                 <PARAM NAME='ShowControls' VALUE='True'/>
                 <PARAM NAME='ShowAudioControls' VALUE='True'/>
-                <PARAM NAME='ShowDisplay' VALUE='False'/>
-                <PARAM NAME='ShowPositionControls' VALUE='False'/>
                 <PARAM NAME='Volume' VALUE='1'/>
-                <PARAM NAME='AudioStream' VALUE='False'/>
                 <PARAM NAME='AutoSize' VALUE='True'/>
-                <PARAM NAME='AnimationAtStart' VALUE='False'/>
-                <PARAM NAME='AllowScan' VALUE='False'/>
-                <PARAM NAME='AllowChangeDisplaySize' VALUE='False'/>
-                <PARAM NAME='AutoRewind' VALUE='True'/>
-                <PARAM NAME='BaseURL' VALUE=''/>
-                <PARAM NAME='BufferingTime' VALUE='5'/>
-                <PARAM NAME='CaptioningID' VALUE=''/>
-                <PARAM NAME='ClickToPlay' VALUE='True'/>
-                <PARAM NAME='CursorType' VALUE='0'/>
-                <PARAM NAME='CurrentPosition' VALUE='True'/>
-                <PARAM NAME='CurrentMarker' VALUE='True'/>
-                <PARAM NAME='DefaultFrame' VALUE='mainframe'/>
-                <PARAM NAME='DisplayBackColor' VALUE='True'/>
-                <PARAM NAME='DisplayForeColor' VALUE='True'/>
-                <PARAM NAME='DisplayMode' VALUE='1'/>
-                <PARAM NAME='Enabled' VALUE='-1'/>
-                <PARAM NAME='EnableContextMenu' VALUE='False'/>
-                <PARAM NAME='EnablePositionControls' VALUE='False'/>
-                <PARAM NAME='EnableFullScreenControls' VALUE='False'/>
-                <PARAM NAME='EnableTracker' VALUE='False'/>
-                <PARAM NAME='InvokeURLs' VALUE='False'/>
-                <PARAM NAME='Language' VALUE='False'/>
-                <PARAM NAME='PlayCount' VALUE='1'/>
-                <PARAM NAME='PreviewMode' VALUE='False'/>
-                <PARAM NAME='ShowStatusBar' VALUE='False'/>
-                <PARAM NAME='TransparentAtStart' VALUE='False'/>
             </OBJECT>
             """
         else
