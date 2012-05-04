@@ -11,7 +11,8 @@ Capkom.profile = new Capkom.Profile
 
 # Changing `fontsize` effects the body getting the CSS class `fontsize-[small|medium|large]`
 Capkom.profile.bind "change:fontsize", (profile, fontsize) ->
-    jQuery("body").removeClass "fontsize-small fontsize-medium fontsize-large"
+    for i in [1..8]
+        jQuery("body").removeClass "fontsize-s#{i}"
     jQuery("body").addClass "fontsize-#{fontsize}"
 
 # Changing the `theme` parameter

@@ -1,6 +1,7 @@
 appFiles  = [
     'lib/ttswidget/ttswidget.coffee'
     'lib/capkomsymbolwidget/capkomsymbolwidget.coffee'
+    'src/fontsizewidget.coffee'
 
     'src/symbolset.coffee'
     'src/symbolsets.coffee'

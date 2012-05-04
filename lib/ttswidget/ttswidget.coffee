@@ -45,7 +45,7 @@ jQuery.widget "capkom.ttswidget",
 
     _create: ->
         # Add button to the element
-        @button = jQuery "<button class='tts-button' alt='#{@options.buttonLabel}'><i class='icon-arrow-right'/></button>"
+        @button = jQuery "<button class='tts-button' alt='#{@options.buttonLabel}'><i class='icon-volume-up'/></button>"
         @button.prependTo @element
         @button.button
             text: true

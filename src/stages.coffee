@@ -41,22 +41,13 @@ Capkom.stages =
         html:
             """
             Welche Schriftgröße ist für dich am angenehmsten?<br/><br/>
-            <div class='fontsize'>
-                <input type='radio' name='fontsize' id='fontsize-small' />
-                <label for='fontsize-small' ><span class='fontsize-small choose-button'>AAA</span></label>
-
-                <input type='radio' name='fontsize' id='fontsize-medium' />
-                <label for='fontsize-medium'><span class='fontsize-medium choose-button'>AAA</span></label>
-
-                <input type='radio' name='fontsize' id='fontsize-large' />
-                <label for='fontsize-large' ><span class='fontsize-large'>AAA</span></label>
-            </div>
+            <div class='fontsize'></div>
             """
         script: (element) ->
-            jQuery("#fontsize-#{Capkom.profile.get 'fontsize'}").attr "checked", "checked"
-            jQuery(".fontsize", element).buttonset()
-            .change (e) ->
-                Capkom.profile.set 'fontsize': e.target.id.replace "fontsize-", ""
+            jQuery(".fontsize").fontsize
+                value: Number Capkom.profile.get('fontsize').replace("s", "")
+                change: (val) ->
+                    Capkom.profile.set 'fontsize': "s#{val}"
 
     # Definition of the theme selection screen
     "theme":
