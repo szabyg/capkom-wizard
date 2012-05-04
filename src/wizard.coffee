@@ -41,3 +41,9 @@ Capkom.updateTTS = ->
             jQuery(":capkom-ttswidget").ttswidget("destroy")
 
 
+unless @console
+    @console = 
+        debug: ->
+        info: ->
+        log: ->
+        error: ->
