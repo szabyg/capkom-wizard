@@ -19,9 +19,17 @@ Capkom.profile.bind "change:fontsize", (profile, fontsize) ->
 
 # Changing the `theme` parameter
 Capkom.profile.bind "change:theme", (profile, theme) ->
+    td = {}
+    # The theme details go to the profile for non-jqueryui-theme clients.
     themeDetails = Capkom.themeMap[theme]
-    unless profile.get('themeDetails') is themeDetails
-        Capkom.profile.set 'themeDetails', themeDetails
+    console.info "before", themeDetails
+    # Remove properties ending with .png
+    _(themeDetails).each (v, k) ->
+        if typeof v isnt "string" or v.indexOf('.png') is -1
+            td[k] = v
+    console.info "after", td
+    unless profile.get('themeDetails') is td
+        Capkom.profile.set 'themeDetails', td
     $.cookie "jquery-ui-theme", theme
     $("#bgThemeActivator").themeswitcher();
 
