@@ -264,6 +264,9 @@ Capkom.getStages = ->
         stage = Capkom.stages[stagename]
         stage.name = stagename
         stage
+    res[0]._first = true
+    res[res.length-1]._last = true
+
 
     ### 
     Filter out the dependent and not-to-show stages based on `stage.condition`

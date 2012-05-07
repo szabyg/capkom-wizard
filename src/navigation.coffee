@@ -44,6 +44,8 @@ Capkom.renderStage = (stage, tabsEl, index) ->
     else
         el = jQuery( _renderStage stage ).appendTo tabsEl
     stage.script jQuery(".stage-content", el) if stage.script
+    if stage._first then jQuery(".prevButton", el).hide()
+    if stage._last then jQuery(".nextButton", el).hide()
     jQuery(".prevButton", el).button()
     .click =>
         newIndex = jQuery(".stages").find("ul.titles .ui-tabs-active").prev().index()
