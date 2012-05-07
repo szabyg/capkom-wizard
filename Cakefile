@@ -9,6 +9,7 @@ appFiles  = [
     'src/stages.coffee'
     'src/profile.coffee'
     'src/navigation.coffee'
+    'src/thememap.coffee'
 ]
 target = "lib/capkomwizard.js"
 

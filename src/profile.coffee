@@ -15,8 +15,13 @@ Capkom.profile.bind "change:fontsize", (profile, fontsize) ->
         jQuery("body").removeClass "fontsize-s#{i}"
     jQuery("body").addClass "fontsize-#{fontsize}"
 
+
+
 # Changing the `theme` parameter
 Capkom.profile.bind "change:theme", (profile, theme) ->
+    themeDetails = Capkom.themeMap[theme]
+    unless profile.get('themeDetails') is themeDetails
+        Capkom.profile.set 'themeDetails', themeDetails
     $.cookie "jquery-ui-theme", theme
     $("#bgThemeActivator").themeswitcher();
 
