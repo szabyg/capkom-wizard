@@ -241,7 +241,7 @@ Capkom.stages =
     "goodbye":
         title: "Ende"
         image: "http://www.slowtrav.com/blog/teachick/snoopy_thankyou_big.gif"
-        speech: "Dein Profil enthält nun Informationen, die ich jetzt trotzdem nicht vorlesen werde, weil sie für dich keinen Sinn machen würden."
+        speech: "Dein Profil enthält nun Informationen, die ich jetzt trotzdem nicht vorlesen werde, weil sie nur für die Entwickler da sind."
         html: """
             Vielen Dank für deine Zeit! <br/>
             Dein Profil enthält nun folgende Informationen:<br/><br/>

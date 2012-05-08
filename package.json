@@ -14,6 +14,7 @@
     },
     "docco_husky": {
         "output_dir": "docs",
-        "project_name": "Capkom Wizard"
+        "project_name": "Capkom Wizard",
+        "show_timestamp": false
     }
 }
