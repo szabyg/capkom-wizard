@@ -40,16 +40,16 @@
                         },
                         dataType: 'json',
                         success: function(res){
-                            console.info("successful GET:", res);
+                            Capkom.console.info("successful GET:", res);
                             options.success(entity);
                         },
                         error: function(jqXHR, textStatus, errorThrown){
-                            console.error("couldn't save to ", backendBaseUri, arguments);
+                            Capkom.console.error("couldn't save to ", backendBaseUri, arguments);
                         }
                     });
-                    console.info("jqXHR", jqXHR);
+                    Capkom.console.info("jqXHR", jqXHR);
             }
-            console.info(entity, arguments);
+            Capkom.console.info(entity, arguments);
         };
     </script>
 

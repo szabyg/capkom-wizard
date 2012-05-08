@@ -6,13 +6,24 @@
 
 Capkom = this.Capkom ?= {}
 
+# Make sure no console.info or .error calls on 
+if console
+    Capkom.console = console
+else
+    Capkom.console =
+        info: ->
+        error: ->
+        debug: ->
+
 # Register async process to be waited for.
 Capkom.waitForMe = ->
     @_wait ?= []
     i = @_wait.length
+    Capkom.console.debug "Waiting for ##{i}.."
     @_wait[i] = 
         ready: false
     ->
+        Capkom.console.debug "##{i} is ready"
         Capkom._wait[i].ready = true
         Capkom._oneDone()
 
