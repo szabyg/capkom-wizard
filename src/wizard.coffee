@@ -6,16 +6,6 @@
 
 Capkom = this.Capkom ?= {}
 
-# Make sure no console.info or .error calls on 
-if console
-    Capkom.console = console
-else
-    Capkom.console =
-        info: ->
-        error: ->
-        debug: ->
-        log: ->
-
 # Register async process to be waited for.
 Capkom.waitForMe = ->
     @_wait ?= []
@@ -65,6 +55,9 @@ jQuery(document).ready -> _.defer ->
         .ajaxStop ->
             jQuery(this).hide()
 
+#        Backbone.history.start
+#            pushState: true
+
 # Getter for the name of the actual stage.
 Capkom.getStagename = ->
     window.location.hash.replace /^#/, ""
@@ -79,10 +72,12 @@ Capkom.updateTTS = ->
         else
             jQuery(":capkom-ttswidget").ttswidget("destroy")
 
-
-unless @console
-    @console = 
-        debug: ->
+# Make sure no console.info or .error calls on 
+if console
+    Capkom.console = console
+else
+    @console = Capkom.console =
         info: ->
-        log: ->
         error: ->
+        log: ->
+

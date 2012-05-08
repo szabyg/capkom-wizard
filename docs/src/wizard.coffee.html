@@ -2,15 +2,7 @@
 </td><td class="code"><div class="highlight"><pre></pre></div></td></tr><tr id="section-2"><td class="docs"><div class="pilwrap"><a href="#section-2" class="pilcrow">&#182;</a></div><p>Author: <a href="https://github.com/szabyg">Szaby Gruenwald</a> (<a href="http://www.salzburgresearch.at/">Salzburg Research Forschungsgesellschaft mbH</a>)</p>
 
 <p>This is the central module initializing all the other depending modules.</p>
-</td><td class="code"><div class="highlight"><pre><span class="nv">Capkom = </span><span class="k">this</span><span class="p">.</span><span class="nx">Capkom</span> <span class="o">?=</span> <span class="p">{}</span></pre></div></td></tr><tr id="section-3"><td class="docs"><div class="pilwrap"><a href="#section-3" class="pilcrow">&#182;</a></div><p>Make sure no console.info or .error calls on </p>
-</td><td class="code"><div class="highlight"><pre><span class="k">if</span> <span class="nx">console</span>
-    <span class="nv">Capkom.console = </span><span class="nx">console</span>
-<span class="k">else</span>
-    <span class="nv">Capkom.console =</span>
-        <span class="nv">info: </span><span class="o">-&gt;</span>
-        <span class="nv">error: </span><span class="o">-&gt;</span>
-        <span class="nv">debug: </span><span class="o">-&gt;</span>
-        <span class="nv">log: </span><span class="o">-&gt;</span></pre></div></td></tr><tr id="section-4"><td class="docs"><div class="pilwrap"><a href="#section-4" class="pilcrow">&#182;</a></div><p>Register async process to be waited for.</p>
+</td><td class="code"><div class="highlight"><pre><span class="nv">Capkom = </span><span class="k">this</span><span class="p">.</span><span class="nx">Capkom</span> <span class="o">?=</span> <span class="p">{}</span></pre></div></td></tr><tr id="section-3"><td class="docs"><div class="pilwrap"><a href="#section-3" class="pilcrow">&#182;</a></div><p>Register async process to be waited for.</p>
 </td><td class="code"><div class="highlight"><pre><span class="nv">Capkom.waitForMe = </span><span class="o">-&gt;</span>
     <span class="nx">@_wait</span> <span class="o">?=</span> <span class="p">[]</span>
     <span class="nv">i = </span><span class="nx">@_wait</span><span class="p">.</span><span class="nx">length</span>
@@ -20,13 +12,13 @@
     <span class="o">-&gt;</span>
         <span class="nx">Capkom</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&quot;</span><span class="err">#</span><span class="si">#{</span><span class="nx">i</span><span class="si">}</span><span class="s"> is ready&quot;</span>
         <span class="nx">Capkom</span><span class="p">.</span><span class="nx">_wait</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nv">ready = </span><span class="kc">true</span>
-        <span class="nx">Capkom</span><span class="p">.</span><span class="nx">_oneDone</span><span class="p">()</span></pre></div></td></tr><tr id="section-5"><td class="docs"><div class="pilwrap"><a href="#section-5" class="pilcrow">&#182;</a></div><p>Register callback for being run once, when all async requests are finished</p>
+        <span class="nx">Capkom</span><span class="p">.</span><span class="nx">_oneDone</span><span class="p">()</span></pre></div></td></tr><tr id="section-4"><td class="docs"><div class="pilwrap"><a href="#section-4" class="pilcrow">&#182;</a></div><p>Register callback for being run once, when all async requests are finished</p>
 </td><td class="code"><div class="highlight"><pre><span class="nv">Capkom.once = </span><span class="nf">(cb) -&gt;</span>
     <span class="nx">@_once</span><span class="p">[</span><span class="nx">@_once</span><span class="p">.</span><span class="nx">length</span><span class="p">]</span> <span class="o">=</span>
         <span class="nv">done: </span><span class="kc">false</span>
         <span class="nv">cb: </span><span class="nx">cb</span>
     <span class="nx">@_oneDone</span><span class="p">()</span>
-<span class="nx">Capkom</span><span class="p">.</span><span class="nx">_once</span> <span class="o">?=</span> <span class="p">[]</span></pre></div></td></tr><tr id="section-6"><td class="docs"><div class="pilwrap"><a href="#section-6" class="pilcrow">&#182;</a></div><p>Trigger check of waiting async processes. If empty, run all waiting callbacks</p>
+<span class="nx">Capkom</span><span class="p">.</span><span class="nx">_once</span> <span class="o">?=</span> <span class="p">[]</span></pre></div></td></tr><tr id="section-5"><td class="docs"><div class="pilwrap"><a href="#section-5" class="pilcrow">&#182;</a></div><p>Trigger check of waiting async processes. If empty, run all waiting callbacks</p>
 </td><td class="code"><div class="highlight"><pre><span class="nv">Capkom._oneDone = </span><span class="o">-&gt;</span>
     <span class="nv">stillWaiting = </span><span class="nx">_</span><span class="p">(</span><span class="nx">@_wait</span><span class="p">).</span><span class="nx">detect</span> <span class="nf">(w) -&gt;</span> 
         <span class="o">not</span> <span class="nx">w</span><span class="p">.</span><span class="nx">ready</span>
@@ -34,20 +26,23 @@
         <span class="k">for</span> <span class="nx">once</span> <span class="k">in</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">_once</span>
             <span class="nx">unless</span> <span class="nx">once</span><span class="p">.</span><span class="nx">done</span>
                 <span class="nv">once.done = </span><span class="kc">true</span>
-                <span class="nx">once</span><span class="p">.</span><span class="nx">cb</span><span class="p">()</span></pre></div></td></tr><tr id="section-7"><td class="docs"><div class="pilwrap"><a href="#section-7" class="pilcrow">&#182;</a></div><p>Startup wizard</p>
+                <span class="nx">once</span><span class="p">.</span><span class="nx">cb</span><span class="p">()</span></pre></div></td></tr><tr id="section-6"><td class="docs"><div class="pilwrap"><a href="#section-6" class="pilcrow">&#182;</a></div><p>Startup wizard</p>
 </td><td class="code"><div class="highlight"><pre><span class="nx">jQuery</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span> <span class="o">-&gt;</span> <span class="nx">_</span><span class="p">.</span><span class="nx">defer</span> <span class="o">-&gt;</span>
-    <span class="nx">Capkom</span><span class="p">.</span><span class="nx">once</span> <span class="o">-&gt;</span></pre></div></td></tr><tr id="section-8"><td class="docs"><div class="pilwrap"><a href="#section-8" class="pilcrow">&#182;</a></div><p>Load the profile and when it's done initialize the wizard UI</p>
-</td><td class="code"><div class="highlight"><pre>        <span class="nx">Capkom</span><span class="p">.</span><span class="nx">loadProfile</span> <span class="o">-&gt;</span></pre></div></td></tr><tr id="section-9"><td class="docs"><div class="pilwrap"><a href="#section-9" class="pilcrow">&#182;</a></div><p>Initialize navigation bar</p>
-</td><td class="code"><div class="highlight"><pre>            <span class="nx">do</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">initNav</span></pre></div></td></tr><tr id="section-10"><td class="docs"><div class="pilwrap"><a href="#section-10" class="pilcrow">&#182;</a></div><p>Initialize tts widgets</p>
-</td><td class="code"><div class="highlight"><pre>            <span class="nx">Capkom</span><span class="p">.</span><span class="nx">updateTTS</span><span class="p">()</span></pre></div></td></tr><tr id="section-11"><td class="docs"><div class="pilwrap"><a href="#section-11" class="pilcrow">&#182;</a></div><p>Initialize capkomSymbol widgets</p>
+    <span class="nx">Capkom</span><span class="p">.</span><span class="nx">once</span> <span class="o">-&gt;</span></pre></div></td></tr><tr id="section-7"><td class="docs"><div class="pilwrap"><a href="#section-7" class="pilcrow">&#182;</a></div><p>Load the profile and when it's done initialize the wizard UI</p>
+</td><td class="code"><div class="highlight"><pre>        <span class="nx">Capkom</span><span class="p">.</span><span class="nx">loadProfile</span> <span class="o">-&gt;</span></pre></div></td></tr><tr id="section-8"><td class="docs"><div class="pilwrap"><a href="#section-8" class="pilcrow">&#182;</a></div><p>Initialize navigation bar</p>
+</td><td class="code"><div class="highlight"><pre>            <span class="nx">do</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">initNav</span></pre></div></td></tr><tr id="section-9"><td class="docs"><div class="pilwrap"><a href="#section-9" class="pilcrow">&#182;</a></div><p>Initialize tts widgets</p>
+</td><td class="code"><div class="highlight"><pre>            <span class="nx">Capkom</span><span class="p">.</span><span class="nx">updateTTS</span><span class="p">()</span></pre></div></td></tr><tr id="section-10"><td class="docs"><div class="pilwrap"><a href="#section-10" class="pilcrow">&#182;</a></div><p>Initialize capkomSymbol widgets</p>
 </td><td class="code"><div class="highlight"><pre>            <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.capkom-label&#39;</span><span class="p">).</span><span class="nx">capkomSymbol</span>
-                <span class="nv">profile: </span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span></pre></div></td></tr><tr id="section-12"><td class="docs"><div class="pilwrap"><a href="#section-12" class="pilcrow">&#182;</a></div><p>Init the #loadingDiv element</p>
+                <span class="nv">profile: </span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span></pre></div></td></tr><tr id="section-11"><td class="docs"><div class="pilwrap"><a href="#section-11" class="pilcrow">&#182;</a></div><p>Init the #loadingDiv element</p>
 </td><td class="code"><div class="highlight"><pre>        <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;#loadingDiv&#39;</span><span class="p">)</span>
         <span class="p">.</span><span class="nx">ajaxStart</span><span class="p">(</span><span class="o">-&gt;</span>
             <span class="nx">jQuery</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">show</span><span class="p">()</span>
         <span class="p">)</span>
         <span class="p">.</span><span class="nx">ajaxStop</span> <span class="o">-&gt;</span>
-            <span class="nx">jQuery</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">hide</span><span class="p">()</span></pre></div></td></tr><tr id="section-13"><td class="docs"><div class="pilwrap"><a href="#section-13" class="pilcrow">&#182;</a></div><p>Getter for the name of the actual stage.</p>
+            <span class="nx">jQuery</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">hide</span><span class="p">()</span></pre></div></td></tr><tr id="section-12"><td class="docs"><div class="pilwrap"><a href="#section-12" class="pilcrow">&#182;</a></div><pre><code>   Backbone.history.start
+       pushState: true
+</code></pre>
+</td><td class="code"><div class="highlight"><pre></pre></div></td></tr><tr id="section-13"><td class="docs"><div class="pilwrap"><a href="#section-13" class="pilcrow">&#182;</a></div><p>Getter for the name of the actual stage.</p>
 </td><td class="code"><div class="highlight"><pre><span class="nv">Capkom.getStagename = </span><span class="o">-&gt;</span>
     <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">hash</span><span class="p">.</span><span class="nx">replace</span> <span class="sr">/^#/</span><span class="p">,</span> <span class="s">&quot;&quot;</span></pre></div></td></tr><tr id="section-14"><td class="docs"><div class="pilwrap"><a href="#section-14" class="pilcrow">&#182;</a></div><p>initialize or destroy tts widget depending on the profile state</p>
 </td><td class="code"><div class="highlight"><pre><span class="nv">Capkom.updateTTS = </span><span class="o">-&gt;</span>
@@ -57,14 +52,13 @@
                 <span class="nv">spinnerUri: </span><span class="s">&quot;css/spinner.gif&quot;</span>
                 <span class="nv">dialogTitle: </span><span class="s">&quot;Sprechblase&quot;</span>
         <span class="k">else</span>
-            <span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;:capkom-ttswidget&quot;</span><span class="p">).</span><span class="nx">ttswidget</span><span class="p">(</span><span class="s">&quot;destroy&quot;</span><span class="p">)</span>
-
-
-<span class="nx">unless</span> <span class="nx">@console</span>
-    <span class="vi">@console = </span>
-        <span class="nv">debug: </span><span class="o">-&gt;</span>
+            <span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;:capkom-ttswidget&quot;</span><span class="p">).</span><span class="nx">ttswidget</span><span class="p">(</span><span class="s">&quot;destroy&quot;</span><span class="p">)</span></pre></div></td></tr><tr id="section-15"><td class="docs"><div class="pilwrap"><a href="#section-15" class="pilcrow">&#182;</a></div><p>Make sure no console.info or .error calls on </p>
+</td><td class="code"><div class="highlight"><pre><span class="k">if</span> <span class="nx">console</span>
+    <span class="nv">Capkom.console = </span><span class="nx">console</span>
+<span class="k">else</span>
+    <span class="vi">@console = </span><span class="nv">Capkom.console =</span>
         <span class="nv">info: </span><span class="o">-&gt;</span>
-        <span class="nv">log: </span><span class="o">-&gt;</span>
         <span class="nv">error: </span><span class="o">-&gt;</span>
+        <span class="nv">log: </span><span class="o">-&gt;</span>
 
 </pre></div></td></tr></tbody></table><div id="projectname"><a href="../index.html">Capkom Wizard</a></div></div></body></html>
