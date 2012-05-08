@@ -14,6 +14,7 @@ else
         info: ->
         error: ->
         debug: ->
+        log: ->
 
 # Register async process to be waited for.
 Capkom.waitForMe = ->
