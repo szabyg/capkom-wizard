@@ -20,11 +20,11 @@ else
 Capkom.waitForMe = ->
     @_wait ?= []
     i = @_wait.length
-    Capkom.console.debug "Waiting for ##{i}.."
+    Capkom.console.info "Waiting for ##{i}.."
     @_wait[i] = 
         ready: false
     ->
-        Capkom.console.debug "##{i} is ready"
+        Capkom.console.info "##{i} is ready"
         Capkom._wait[i].ready = true
         Capkom._oneDone()
 
