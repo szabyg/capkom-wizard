@@ -62,7 +62,7 @@ task 'build', 'Build single application file from source files', ->
                         invoke 'doc'
 
 task 'doc', 'Build documentation', ->
-    exec "docco #{appFiles.join ' '}", (err, stdout, stderr) ->
+    exec "docco-husky #{appFiles.join ' '}", (err, stdout, stderr) ->
         util.error strerr if stderr
         console.log stdout if stdout
 grrrr = (message = '') -> 

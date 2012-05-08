@@ -1,0 +1,58 @@
+<!DOCTYPE html><html><head><title>README</title><meta http-equiv="Content-Type" content="text/html" charset="UTF-8"><link rel="stylesheet" media="all" href="./docco.css"></head><body><div id="container"><div id="background"></div><div id="jump_to">Jump To &hellip;<div id="jump_wrapper"><div id="jump_page"><a href="./index.html" class="source"><span class="file_name">README</span></a><a href="./lib/capkomsymbolwidget/capkomsymbolwidget.coffee.html" class="source "><span class="base_path">lib / capkomsymbolwidget / </span><span class="file_name">capkomsymbolwidget.coffee</span></a><a href="./lib/ttswidget/ttswidget.coffee.html" class="source "><span class="base_path">lib / ttswidget / </span><span class="file_name">ttswidget.coffee</span></a><a href="./src/fontsizewidget.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">fontsizewidget.coffee</span></a><a href="./src/navigation.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">navigation.coffee</span></a><a href="./src/profile.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">profile.coffee</span></a><a href="./src/stages.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">stages.coffee</span></a><a href="./src/symbolset.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">symbolset.coffee</span></a><a href="./src/symbolsets.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">symbolsets.coffee</span></a><a href="./src/thememap.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">thememap.coffee</span></a><a href="./src/wizard.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">wizard.coffee</span></a></div></div></div><table cellpadding="0" cellspacing="0"><thead><tr><th class="docs"></th><th class="code"></th></tr></thead><tbody><tr id="section"><td class="docs"><h1>Capkom wizard
+</h1><p>Wizard to create a user profile for making the visualisation of a site accessible/usable/understandable for people with cognitive difficulties.</p><h3>Version</h3><p>0.2</p><h3>Author</h3><p><span class="gravatar"><img src="http://www.gravatar.com/avatar/225267813448c9526a9875cc98a95137"/><span>Szaby Grünwald &lt;szaby.gruenwald@salzburgresearch.at&gt;</span></span></p><h3>Dependencies </h3><ul><li><b>jquery </b><span>&gt;=1.5.0</span></li><li><b>jqueryui </b><span>1.9m5</span></li></ul><p><h3>Stats</h3><pre class="code_stats">
+http://cloc.sourceforge.net v 1.55  T=0.5 s (20.0 files/s, 3414.0 lines/s)
+-------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+-------------------------------------------------------------------------------
+CoffeeScript                    10             81            149           1477
+-------------------------------------------------------------------------------
+SUM:                            10             81            149           1477
+-------------------------------------------------------------------------------
+</pre></p></td><td id="content" class="code"><h1>CapKom Wizard</h1>
+
+<p>A tool for creating a user profile for a platform for users with cognitive disabilities.</p>
+
+<h2>Goals</h2>
+
+<ul>
+<li>The wizard is made to be the profile creating "entry test" for a community portal for art enabling collaboration for people with cognitive difficulties.</li>
+</ul>
+
+<h2>Dependencies</h2>
+
+<ul>
+<li>jQuery + jQuery UI 1.9m5 - Basic UI widget set providing in-browser Accessibility, Themeability and Usability.</li>
+<li>Backbone.js - A model-view-controller framework for the client-side.</li>
+<li>Underscore.js - Javascript 1.9 added functionalities in older browsers.</li>
+<li>Using Font Awesome - http://fortawesome.github.com/Font-Awesome</li>
+</ul>
+
+<h2>Development</h2>
+
+<p>Run the following command to keep compiling the coffeescript into javascript. It needs coffeescript installed to run.</p>
+
+<pre><code>coffee -c -w -o lib src/*.coffee
+</code></pre>
+
+<p>or on linux systems alternatively</p>
+
+<pre><code>cd src
+watch -n 1 coffee -c -o ../lib/ *.coffee
+</code></pre>
+
+<h2>Documentation</h2>
+
+<p>To generate documentation automatically run the following command. It needs docco installed.</p>
+
+<pre><code>docco src/*.coffee lib/ttswidget/ttswidget.coffee lib/capkomsymbolwidget/capkomsymbolwidget.coffee
+</code></pre>
+
+<h2>License</h2>
+
+<p>CapKom Wizard is free software under the MIT License.</p>
+
+<h2>Copyright</h2>
+
+<p>Author(s): Szaby Grünwald, Salzburg Research
+Developed for the <a href="http://cap-kom.utilo.eu/">CapKom Project</a>
+The Capkom Symbolset under /symbols/capkom is owned by <a href="http://www.utilo.eu/">Utilo KG</a> and not freely usable.</p>  </td></tr></tbody></table><div id="generated">generated Tue May 08 2012 13:59:05 GMT+0200 (CEST)  </div><div id="projectname"><a href="./index.html">Capkom Wizard</a></div></div></body></html>

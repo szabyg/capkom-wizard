@@ -1,0 +1,68 @@
+<!DOCTYPE html><html><head><title>symbolsets.coffee</title><meta http-equiv="Content-Type" content="text/html" charset="UTF-8"><link rel="stylesheet" media="all" href="../docco.css"></head><body><div id="container"><div id="background"></div><div id="jump_to">Jump To &hellip;<div id="jump_wrapper"><div id="jump_page"><a href="../index.html" class="source"><span class="file_name">README</span></a><a href="../lib/capkomsymbolwidget/capkomsymbolwidget.coffee.html" class="source "><span class="base_path">lib / capkomsymbolwidget / </span><span class="file_name">capkomsymbolwidget.coffee</span></a><a href="../lib/ttswidget/ttswidget.coffee.html" class="source "><span class="base_path">lib / ttswidget / </span><span class="file_name">ttswidget.coffee</span></a><a href="../src/fontsizewidget.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">fontsizewidget.coffee</span></a><a href="../src/navigation.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">navigation.coffee</span></a><a href="../src/profile.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">profile.coffee</span></a><a href="../src/stages.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">stages.coffee</span></a><a href="../src/symbolset.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">symbolset.coffee</span></a><a href="../src/symbolsets.coffee.html" class="source selected"><span class="base_path">src / </span><span class="file_name">symbolsets.coffee</span></a><a href="../src/thememap.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">thememap.coffee</span></a><a href="../src/wizard.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">wizard.coffee</span></a></div></div></div><table cellpadding="0" cellspacing="0"><thead><tr><th class="docs"><h1>symbolsets.coffee</h1><div class="filepath">src/</div></th><th class="code"></th></tr></thead><tbody><tr id="section-1"><td class="docs"><div class="pilwrap"><a href="#section-1" class="pilcrow">&#182;</a></div><p>Initialize Capkom object</p>
+</td><td class="code"><div class="highlight"><pre><span class="nv">Capkom = </span><span class="k">this</span><span class="p">.</span><span class="nx">Capkom</span> <span class="o">?=</span> <span class="p">{}</span>
+
+<span class="k">new</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">Symbolset</span>
+    <span class="nv">name: </span><span class="s">&quot;default&quot;</span>
+    <span class="nv">baseUri: </span><span class="s">&quot;symbols/free1/&quot;</span>
+    <span class="nv">nameFormat: </span><span class="s">&quot;{symbolId}{size}.png&quot;</span>
+    <span class="nv">sizeMap:</span></pre></div></td></tr><tr id="section-2"><td class="docs"><div class="pilwrap"><a href="#section-2" class="pilcrow">&#182;</a></div><h2>"25x25"</h2>
+</td><td class="code"><div class="highlight"><pre>        <span class="nv">small: </span><span class="s">&quot;25&quot;</span></pre></div></td></tr><tr id="section-3"><td class="docs"><div class="pilwrap"><a href="#section-3" class="pilcrow">&#182;</a></div><h2>"50x50"</h2>
+</td><td class="code"><div class="highlight"><pre>        <span class="nv">medium: </span><span class="s">&quot;50&quot;</span></pre></div></td></tr><tr id="section-4"><td class="docs"><div class="pilwrap"><a href="#section-4" class="pilcrow">&#182;</a></div><h2>"100x100"</h2>
+</td><td class="code"><div class="highlight"><pre>        <span class="nv">large: </span><span class="s">&quot;100&quot;</span>
+    <span class="nv">nameMap:</span>
+        <span class="nv">mainSymbol: </span><span class="s">&quot;Willkommen-home&quot;</span>
+        <span class="nv">welcome: </span><span class="s">&quot;Willkommen-home&quot;</span>
+        <span class="nv">theme: </span><span class="s">&quot;design&quot;</span>
+        <span class="nv">channels: </span><span class="s">&quot;Sprache-Symbole&quot;</span>
+        <span class="s">&quot;text-with-symbols&quot;</span><span class="o">:</span> <span class="s">&quot;Text+Symbole&quot;</span>
+        <span class="s">&quot;text-only&quot;</span><span class="o">:</span> <span class="s">&quot;Text&quot;</span>
+        <span class="nv">symbolset: </span><span class="s">&quot;Symbole&quot;</span>
+        <span class="nv">goodbye: </span><span class="s">&quot;ende&quot;</span>
+    <span class="nv">symbols: </span><span class="p">[</span>
+        <span class="s">&quot;back&quot;</span>
+        <span class="s">&quot;design&quot;</span>
+        <span class="s">&quot;ende&quot;</span>
+        <span class="s">&quot;fontsize&quot;</span>
+        <span class="s">&quot;Sprache-Symbole&quot;</span>
+        <span class="s">&quot;Symbole&quot;</span>
+        <span class="s">&quot;symbolsize&quot;</span>
+        <span class="s">&quot;Text&quot;</span>
+        <span class="s">&quot;Text+Symbole&quot;</span>
+        <span class="s">&quot;tts&quot;</span>
+        <span class="s">&quot;weiter&quot;</span>
+        <span class="s">&quot;Willkommen-home&quot;</span>
+    <span class="p">]</span>
+
+<span class="k">new</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">Symbolset</span>
+    <span class="nv">name: </span><span class="s">&quot;capkom&quot;</span>
+    <span class="nv">baseUri: </span><span class="s">&quot;symbols/capkom/&quot;</span>
+    <span class="nv">nameFormat: </span><span class="s">&quot;{size}/Capkom_{symbolId}.gif&quot;</span>
+    <span class="nv">sizeMap:</span></pre></div></td></tr><tr id="section-5"><td class="docs"><div class="pilwrap"><a href="#section-5" class="pilcrow">&#182;</a></div><h2>"25x25"</h2>
+</td><td class="code"><div class="highlight"><pre>        <span class="nv">small: </span><span class="s">&quot;small&quot;</span></pre></div></td></tr><tr id="section-6"><td class="docs"><div class="pilwrap"><a href="#section-6" class="pilcrow">&#182;</a></div><h2>"50x50"</h2>
+</td><td class="code"><div class="highlight"><pre>        <span class="nv">medium: </span><span class="s">&quot;medium&quot;</span></pre></div></td></tr><tr id="section-7"><td class="docs"><div class="pilwrap"><a href="#section-7" class="pilcrow">&#182;</a></div><h2>"100x100"</h2>
+</td><td class="code"><div class="highlight"><pre>        <span class="nv">large: </span><span class="s">&quot;big&quot;</span>
+    <span class="nv">nameMap:</span>
+        <span class="nv">mainSymbol: </span><span class="s">&quot;Profil_m&quot;</span>
+        <span class="nv">friends: </span><span class="s">&quot;Freunde&quot;</span>
+        <span class="nv">event: </span><span class="s">&quot;Event_m&quot;</span>
+        <span class="nv">profile: </span><span class="s">&quot;Profil_m&quot;</span>
+        <span class="nv">search: </span><span class="s">&quot;Suche&quot;</span>
+        <span class="nv">welcome: </span><span class="s">&quot;Profil_m&quot;</span>
+    <span class="nv">symbols: </span><span class="p">[</span>
+        <span class="s">&quot;Event_m&quot;</span>
+        <span class="s">&quot;Event_w&quot;</span>
+        <span class="s">&quot;Freunde&quot;</span>
+        <span class="s">&quot;Galerie&quot;</span>
+        <span class="s">&quot;Kalender&quot;</span>
+        <span class="s">&quot;Kuenstlergruppe&quot;</span>
+        <span class="s">&quot;Kuenstler_m&quot;</span>
+        <span class="s">&quot;Kuenstler_w&quot;</span>
+        <span class="s">&quot;Kunstwerk&quot;</span>
+        <span class="s">&quot;MeinKunstwerk_m&quot;</span>
+        <span class="s">&quot;MeinKunstwerk_w&quot;</span>
+        <span class="s">&quot;Profil_m&quot;</span>
+        <span class="s">&quot;Profil_w&quot;</span>
+        <span class="s">&quot;Suche&quot;</span>
+    <span class="p">]</span>
+
+</pre></div></td></tr></tbody></table><div id="generated">generated Tue May 08 2012 13:59:06 GMT+0200 (CEST)  </div><div id="projectname"><a href="../index.html">Capkom Wizard</a></div></div></body></html>
