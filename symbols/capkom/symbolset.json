@@ -1,0 +1,34 @@
+{
+    "name": "capkom",
+    "baseUri": "symbols/capkom/",
+    "nameFormat": "{size}/Capkom_{symbolId}.gif",
+    "sizeMap": {
+        "small": "small",
+        "medium": "medium",
+        "large": "big"
+    },
+    "nameMap": {
+        "mainSymbol": "Profil_m",
+        "friends": "Freunde",
+        "event": "Event_m",
+        "profile": "Profil_m",
+        "search": "Suche",
+        "welcome": "Profil_m"
+    },
+    "symbols": [
+        "Event_m",
+        "Event_w",
+        "Freunde",
+        "Galerie",
+        "Kalender",
+        "Kuenstlergruppe",
+        "Kuenstler_m",
+        "Kuenstler_w",
+        "Kunstwerk",
+        "MeinKunstwerk_m",
+        "MeinKunstwerk_w",
+        "Profil_m",
+        "Profil_w",
+        "Suche"
+    ]
+}

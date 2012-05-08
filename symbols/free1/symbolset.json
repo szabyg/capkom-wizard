@@ -1,0 +1,22 @@
+{
+  "type": "static",
+  "name": "default",
+  "baseUri": "symbols/free1/",
+  "nameFormat": "{symbolId}{size}.png",
+  "sizeMap": {
+    "small": "25",
+    "medium": "50",
+    "large": "100"
+  },
+  "nameMap": {
+    "mainSymbol": "Willkommen-home",
+    "welcome": "Willkommen-home",
+    "theme": "design",
+    "channels": "Sprache-Symbole",
+    "text-with-symbols": "Text+Symbole",
+    "text-only": "Text",
+    "symbolset": "Symbole",
+    "goodbye": "ende"
+  },
+  "symbols": ["back", "design", "ende", "fontsize", "Sprache-Symbole", "Symbole", "symbolsize", "Text", "Text+Symbole", "tts", "weiter", "Willkommen-home"]
+}

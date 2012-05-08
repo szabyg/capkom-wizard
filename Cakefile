@@ -4,8 +4,8 @@ appFiles  = [
     'src/fontsizewidget.coffee'
 
     'src/symbolset.coffee'
-    'src/symbolsets.coffee'
     'src/wizard.coffee'
+    'src/symbolsets.coffee'
     'src/stages.coffee'
     'src/profile.coffee'
     'src/navigation.coffee'
