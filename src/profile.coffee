@@ -49,7 +49,7 @@ Capkom.profile.bind "change", (profile) ->
 Backbone.sync = (method, model) ->
     # Reference implementation using localStorage
     localStorage.profile = JSON.stringify model.toJSON()
-    console?.info "profile saved:", localStorage.profile
+    Capkom.console.info "profile saved:", localStorage.profile
 
 # Method for initialisation:
 # Load the profile and call the callback

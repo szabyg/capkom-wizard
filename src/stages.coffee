@@ -148,7 +148,7 @@ Capkom.stages =
         script: (element) ->
             symbolSets = _.filter Capkom.symbolSets.sets, (symbolSet) ->
                 symbolSet.hasSymbol "mainSymbol"
-            console?.info symbolSets
+            Capkom.console.info symbolSets
             for symbolSet in symbolSets
                 html = """
                     <input type='radio' class='symbolset-selector #{symbolSet.name}' name='symbolset' value='#{symbolSet.name}' id='symbolset-#{symbolSet.name}'/>
@@ -163,7 +163,7 @@ Capkom.stages =
             jQuery('.symbolset-selector', element)
             .filter(".#{symbolSetName}").attr("checked", "checked").end()
             .button().click ->
-                console?.log 'click'
+                Capkom.console.log 'click'
                 Capkom.profile.set
                     symbolSet: jQuery(@).val()
             # Mark current profile selection as active
@@ -233,7 +233,7 @@ Capkom.stages =
                 height: "130px"
             buttonset = buttonset.buttonset()
             buttonset.click (e) ->
-                console?.info e
+                Capkom.console.info e
             buttonset.change (e) ->
                 # On change, change profile
                 Capkom.profile.set 'symbolsize': e.target.id.replace "symbolsize-", ""

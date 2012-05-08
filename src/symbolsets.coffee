@@ -11,7 +11,7 @@ loadSymbolset = (url) ->
             new Capkom.Symbolset res
             cb()
         error: (err) ->
-            console.error err
+            Capkom.console.error err
             cb()
 loadSymbolset "symbols/free1"
 loadSymbolset "symbols/capkom"

@@ -5,7 +5,7 @@ jQuery.widget "capkom.fontsize",
         value: 1
         styleClass: "fontsize-widget"
         change: (val) ->
-            console.info "fontsize value:", val
+            Capkom.console.info "fontsize value:", val
     _create: ->
         @element.addClass @options.styleClass
         for i in [@options.min..@options.max]
@@ -13,7 +13,7 @@ jQuery.widget "capkom.fontsize",
                 <input type='radio' name='fontsize' id='fontsize-s#{i}' />
                 <label for='fontsize-s#{i}' ><span class='fontsize-s#{i} choose-button'>AAA</span></label>
             """
-        console.log @element, "created."
+        Capkom.console.log @element, "created."
         @_setValue @options.value
         @buttonset = jQuery(@element).buttonset
             styleclass: "fontsize-buttons"
