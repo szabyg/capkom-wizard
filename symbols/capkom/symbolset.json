@@ -13,7 +13,22 @@
         "event": "Event_m",
         "profile": "Profil_m",
         "search": "Suche",
-        "welcome": "Profil_m"
+        "welcome": "Profil_m",
+        
+        "back": "Wizi_Zurueck",
+        "theme": "Wizi_Design", 
+        "ende": "Wizi_Ende", 
+        "fontsize": "Wizi_Schrift", 
+        "channels": "Wizi_SpracheSymbole", 
+        "Symbole": "Wizi_Symbol", 
+        "symbolset": "Wizi_Symbolsatz",
+        "symbolsize": "Wizi_Symbol",
+        "Text": "Wizi_Text",
+        "Text+Symbole": "Wizi_TextSymbol", 
+        "tts": "Wizi_Sprachausgabe", 
+        "weiter": "Wizi_Weiter", 
+        "Willkommen-home": "Wizi_Willkommen",
+        "goodbye": "Wizi_Ende"
     },
     "symbols": [
         "Event_m",
@@ -29,6 +44,22 @@
         "MeinKunstwerk_w",
         "Profil_m",
         "Profil_w",
-        "Suche"
+        "Suche",
+        "Wizi_Design",
+        "Wizi_Ende",
+        "Wizi_Schrift",
+        "Wizi_Sprachausgabe",
+        "Wizi_Spracheaus",
+        "Wizi_Sprache",
+        "Wizi_SpracheSymbole",
+        "Wizi_Symbol",
+        "Wizi_Symbolsatz",
+        "Wizi_Text",
+        "Wizi_TextSymbol",
+        "Wizi_Weiter",
+        "Wizi_Willkommen2",
+        "Wizi_Willkommen",
+        "Wizi_Zurueck"
+
     ]
 }
