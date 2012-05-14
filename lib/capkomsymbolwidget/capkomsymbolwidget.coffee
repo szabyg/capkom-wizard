@@ -23,12 +23,15 @@ jQuery.widget "Capkom.capkomSymbol"
         symbolSets: Capkom.symbolSets
         # If no symbolId is defined on a label use `default`
         symbolId: "default"
+        # For symbols with static size
+        symbolSize: null
         # For testing only, you can put an additional prefix before the symbol uri.
         # This makes sense if the symbolsets are defined relative to the page uri.
         uriPrefix: ""
     _create: ->
         @options.symbolSets ?= Capkom.symbolSets
         @symbolId = @element.attr "symbolId" or @options.symbolId
+        @symbolsize = @element.attr "symbolsize" or @options.symbolsize
         # Add symbol markup at the end of this.element
         @symbol = jQuery '<img class="capkom-symbol" style="padding-right:5px;vertical-align:middle;display:none;"/>&nbsp;'
         @symbol.prependTo @element
@@ -64,7 +67,7 @@ jQuery.widget "Capkom.capkomSymbol"
             console.error "No symbolset found for #{@symbolId}"
             return ""
         # selected symbolsize
-        symbolSize = profile.get('symbolsize') or 'medium'
+        symbolSize = @symbolsize or profile.get('symbolsize') or 'medium'
 
         symbolUri = @options.uriPrefix + symbolSet.getSymbolUri @symbolId, symbolSize
 

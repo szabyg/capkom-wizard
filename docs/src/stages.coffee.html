@@ -163,19 +163,19 @@
 <span class="s">            Wie groß sollen die Symbole sein? &lt;br/&gt;&lt;br/&gt;</span>
 <span class="s">            &lt;div class=&#39;symbolsize-symbols&#39;&gt;</span>
 <span class="s">                &lt;input type=&#39;radio&#39; name=&#39;symbolsize&#39; id=&#39;symbolsize-small&#39; /&gt;</span>
-<span class="s">                &lt;label for=&#39;symbolsize-small&#39; &gt;&lt;span class=&#39;symbolsize-small choose-button&#39; title=&#39;klein&#39;&gt;</span>
-<span class="s">                    klein</span>
-<span class="s">                &lt;/span&gt;&lt;/label&gt;</span>
+<span class="s">                &lt;label for=&#39;symbolsize-small&#39; class=&#39;capkom-label symbolsize-small&#39; </span>
+<span class="s">                        symbolId=&#39;symbol&#39; symbolsize=&#39;small&#39; donthidesymbol=&#39;true&#39; title=&#39;klein&#39;&gt;</span>
+<span class="s">                &lt;/label&gt;</span>
 
 <span class="s">                &lt;input type=&#39;radio&#39; name=&#39;symbolsize&#39; id=&#39;symbolsize-medium&#39; /&gt;</span>
-<span class="s">                &lt;label for=&#39;symbolsize-medium&#39;&gt;&lt;span class=&#39;symbolsize-medium choose-button&#39;&gt;</span>
-<span class="s">                    mittelgroß</span>
-<span class="s">                &lt;/span&gt;&lt;/label&gt;</span>
+<span class="s">                &lt;label for=&#39;symbolsize-medium&#39; class=&#39;capkom-label symbolsize-medium&#39; </span>
+<span class="s">                        symbolId=&#39;symbol&#39; symbolsize=&#39;medium&#39; donthidesymbol=&#39;true&#39; title=&#39;mittelgroß&#39;&gt;</span>
+<span class="s">                &lt;/label&gt;</span>
 
 <span class="s">                &lt;input type=&#39;radio&#39; name=&#39;symbolsize&#39; id=&#39;symbolsize-large&#39; /&gt;</span>
-<span class="s">                &lt;label for=&#39;symbolsize-large&#39; &gt;&lt;span class=&#39;symbolsize-large&#39;&gt;</span>
-<span class="s">                    groß</span>
-<span class="s">                &lt;/span&gt;&lt;/label&gt;</span>
+<span class="s">                &lt;label for=&#39;symbolsize-large&#39; class=&#39;capkom-label symbolsize-large&#39; </span>
+<span class="s">                        symbolId=&#39;symbol&#39; symbolsize=&#39;large&#39; donthidesymbol=&#39;true&#39; title=&#39;groß&#39;&gt;</span>
+<span class="s">                &lt;/label&gt;</span>
 <span class="s">            &lt;/div&gt;</span>
 <span class="s">        &quot;&quot;&quot;</span>
         <span class="nv">script: </span><span class="nf">(element) -&gt;</span></pre></div></td></tr><tr id="section-18"><td class="docs"><div class="pilwrap"><a href="#section-18" class="pilcrow">&#182;</a></div><p>Mark currently selected size</p>
@@ -184,31 +184,20 @@
             <span class="nx">buttonset</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s">&#39;#symbolsize-small&#39;</span><span class="p">)</span>
             <span class="p">.</span><span class="nx">button</span><span class="p">(</span>
                 <span class="nv">text: </span><span class="kc">false</span>
-                <span class="nv">icons:</span>
-                    <span class="nv">secondary: </span><span class="s">&#39;ui-icon-symbol-small&#39;</span>
             <span class="p">)</span>
-            <span class="p">.</span><span class="nx">button</span><span class="p">(</span><span class="s">&#39;widget&#39;</span><span class="p">).</span><span class="nx">css</span>
-                <span class="nv">width: </span><span class="s">&quot;55px&quot;</span>
-                <span class="nv">height: </span><span class="s">&quot;55px&quot;</span>
             <span class="nx">buttonset</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s">&#39;#symbolsize-medium&#39;</span><span class="p">)</span>
             <span class="p">.</span><span class="nx">button</span><span class="p">(</span>
                 <span class="nv">text: </span><span class="kc">false</span>
-                <span class="nv">icons:</span>
-                    <span class="nv">secondary: </span><span class="s">&#39;ui-icon-symbol-medium&#39;</span>
             <span class="p">)</span>
-            <span class="p">.</span><span class="nx">button</span><span class="p">(</span><span class="s">&#39;widget&#39;</span><span class="p">).</span><span class="nx">css</span>
-                <span class="nv">width: </span><span class="s">&quot;80px&quot;</span>
-                <span class="nv">height: </span><span class="s">&quot;80px&quot;</span>
             <span class="nx">buttonset</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s">&#39;#symbolsize-large&#39;</span><span class="p">)</span>
             <span class="p">.</span><span class="nx">button</span><span class="p">(</span>
                 <span class="nv">text: </span><span class="kc">false</span>
-                <span class="nv">icons:</span>
-                    <span class="nv">secondary: </span><span class="s">&#39;ui-icon-symbol-large&#39;</span>
             <span class="p">)</span>
-            <span class="p">.</span><span class="nx">button</span><span class="p">(</span><span class="s">&#39;widget&#39;</span><span class="p">).</span><span class="nx">css</span>
+            <span class="nv">buttonset = </span><span class="nx">buttonset</span><span class="p">.</span><span class="nx">buttonset</span><span class="p">()</span>
+            <span class="p">.</span><span class="nx">buttonset</span><span class="p">(</span><span class="s">&#39;widget&#39;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s">&#39;label&#39;</span><span class="p">).</span><span class="nx">css</span>
                 <span class="nv">width: </span><span class="s">&quot;130px&quot;</span>
                 <span class="nv">height: </span><span class="s">&quot;130px&quot;</span>
-            <span class="nv">buttonset = </span><span class="nx">buttonset</span><span class="p">.</span><span class="nx">buttonset</span><span class="p">()</span>
+
             <span class="nx">buttonset</span><span class="p">.</span><span class="nx">click</span> <span class="nf">(e) -&gt;</span>
                 <span class="nx">Capkom</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="nx">e</span>
             <span class="nx">buttonset</span><span class="p">.</span><span class="nx">change</span> <span class="nf">(e) -&gt;</span></pre></div></td></tr><tr id="section-19"><td class="docs"><div class="pilwrap"><a href="#section-19" class="pilcrow">&#182;</a></div><p>On change, change profile</p>

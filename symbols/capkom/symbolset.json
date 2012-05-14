@@ -21,6 +21,7 @@
         "fontsize": "Wizi_Schrift", 
         "channels": "Wizi_SpracheSymbole", 
         "Symbole": "Wizi_Symbol", 
+        "symbol": "Wizi_Symbol", 
         "symbolset": "Wizi_Symbolsatz",
         "symbolsize": "Wizi_Symbol",
         "Text": "Wizi_Text",

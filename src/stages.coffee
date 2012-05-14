@@ -185,19 +185,19 @@ Capkom.stages =
             Wie groß sollen die Symbole sein? <br/><br/>
             <div class='symbolsize-symbols'>
                 <input type='radio' name='symbolsize' id='symbolsize-small' />
-                <label for='symbolsize-small' ><span class='symbolsize-small choose-button' title='klein'>
-                    klein
-                </span></label>
+                <label for='symbolsize-small' class='capkom-label symbolsize-small' 
+                        symbolId='symbol' symbolsize='small' donthidesymbol='true' title='klein'>
+                </label>
 
                 <input type='radio' name='symbolsize' id='symbolsize-medium' />
-                <label for='symbolsize-medium'><span class='symbolsize-medium choose-button'>
-                    mittelgroß
-                </span></label>
+                <label for='symbolsize-medium' class='capkom-label symbolsize-medium' 
+                        symbolId='symbol' symbolsize='medium' donthidesymbol='true' title='mittelgroß'>
+                </label>
 
                 <input type='radio' name='symbolsize' id='symbolsize-large' />
-                <label for='symbolsize-large' ><span class='symbolsize-large'>
-                    groß
-                </span></label>
+                <label for='symbolsize-large' class='capkom-label symbolsize-large' 
+                        symbolId='symbol' symbolsize='large' donthidesymbol='true' title='groß'>
+                </label>
             </div>
         """
         script: (element) ->
@@ -207,31 +207,20 @@ Capkom.stages =
             buttonset.find('#symbolsize-small')
             .button(
                 text: false
-                icons:
-                    secondary: 'ui-icon-symbol-small'
             )
-            .button('widget').css
-                width: "55px"
-                height: "55px"
             buttonset.find('#symbolsize-medium')
             .button(
                 text: false
-                icons:
-                    secondary: 'ui-icon-symbol-medium'
             )
-            .button('widget').css
-                width: "80px"
-                height: "80px"
             buttonset.find('#symbolsize-large')
             .button(
                 text: false
-                icons:
-                    secondary: 'ui-icon-symbol-large'
             )
-            .button('widget').css
+            buttonset = buttonset.buttonset()
+            .buttonset('widget').find('label').css
                 width: "130px"
                 height: "130px"
-            buttonset = buttonset.buttonset()
+
             buttonset.click (e) ->
                 Capkom.console.info e
             buttonset.change (e) ->
