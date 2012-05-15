@@ -7,12 +7,12 @@
 
     <link rel="stylesheet" href="lib/jquery/jquery-ui.min.css" />
 
-	<link rel="stylesheet" href="css/foundation.css"/>
+	<!-- <link rel="stylesheet" href="css/foundation.css"/> -->
     <link rel="stylesheet" href="css/font-awesome.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="lib/ttswidget/ttswidget.css" />
 
-	<script type="text/javascript" src="lib/modernizr.foundation.js"></script>
+	<!-- <script type="text/javascript" src="lib/modernizr.foundation.js"></script> -->
     <script type="text/javascript" src="lib/jquery/jquery-1.7.1.js"></script>
     <script type="text/javascript" src="lib/jquery/jquery-ui.1.9m5.js"></script>
     <script type="text/javascript" src="lib/underscore-min.js"></script>
@@ -101,7 +101,17 @@
         }
 
         .hidden { display: none; }
-        .symbolset-symbols, .symbolsize-symbols { padding: 15px; }
+        .symbolset-symbols, .symbolsize-symbols { 
+            padding: 15px; 
+        }
+        .symbolset-symbols, .symbolsize-symbols, .symbolsize-symbols label {
+            vertical-align: middle;
+        }
+
+        
+        .symbolsize-symbols label .ui-button-text { 
+            vertical-align: middle;
+        }
 
         .ui-icon-speaker {
             background-image: url(lib/ttswidget/speaker22.png) !important;
@@ -125,6 +135,9 @@
             height: 50px;
             margin-left: -25px;
             margin-top: -25px;
+        }
+        .symbolsize-symbols label {
+            position: relative;
         }
         .stages #symbolsize .ui-icon-symbol-large {
             background-image: url(symbols/ui/symbolsize100.png) !important;

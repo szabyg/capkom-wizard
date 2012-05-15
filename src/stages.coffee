@@ -185,18 +185,19 @@ Capkom.stages =
             Wie groß sollen die Symbole sein? <br/><br/>
             <div class='symbolsize-symbols'>
                 <input type='radio' name='symbolsize' id='symbolsize-small' />
-                <label for='symbolsize-small' class='capkom-label symbolsize-small' 
-                        symbolId='symbol' symbolsize='small' donthidesymbol='true' title='klein'>
+                <label for='symbolsize-small'><span class='capkom-label symbolsize-small' 
+                        symbolId='symbol' symbolsize='small' donthidesymbol='true' title='klein'/>
                 </label>
 
                 <input type='radio' name='symbolsize' id='symbolsize-medium' />
-                <label for='symbolsize-medium' class='capkom-label symbolsize-medium' 
-                        symbolId='symbol' symbolsize='medium' donthidesymbol='true' title='mittelgroß'>
+                <label for='symbolsize-medium'><span class='capkom-label symbolsize-medium' 
+                        symbolId='symbol' symbolsize='medium' donthidesymbol='true' title='mittelgroß'/>
                 </label>
 
                 <input type='radio' name='symbolsize' id='symbolsize-large' />
-                <label for='symbolsize-large' class='capkom-label symbolsize-large' 
-                        symbolId='symbol' symbolsize='large' donthidesymbol='true' title='groß'>
+                <label for='symbolsize-large'>
+                    <span class='capkom-label symbolsize-large' 
+                        symbolId='symbol' symbolsize='large' donthidesymbol='true' title='groß'/>
                 </label>
             </div>
         """
@@ -204,22 +205,13 @@ Capkom.stages =
             # Mark currently selected size
             jQuery("#symbolsize-#{Capkom.profile.get 'symbolsize'}").attr "checked", "checked"
             buttonset = jQuery(".symbolsize-symbols", element)
-            buttonset.find('#symbolsize-small')
-            .button(
+            console.info buttonset.find("[name=symbolsize]").button
                 text: false
-            )
-            buttonset.find('#symbolsize-medium')
-            .button(
-                text: false
-            )
-            buttonset.find('#symbolsize-large')
-            .button(
-                text: false
-            )
             buttonset = buttonset.buttonset()
-            .buttonset('widget').find('label').css
-                width: "130px"
-                height: "130px"
+            buttonset.buttonset('widget').find('label')
+            .css
+                width: "160px"
+                height: "140px"
 
             buttonset.click (e) ->
                 Capkom.console.info e
