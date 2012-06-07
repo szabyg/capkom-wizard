@@ -1,20 +1,26 @@
 {
-    "name": "Capkom wizard",
-    "version": "0.2",
-    "description": "Wizard to create a user profile for making the visualisation of a site accessible/usable/understandable for people with cognitive difficulties.",
-    "url": "http://cap-kom.utilo.eu/",
-    "keywords": ["ui", "accessibility"],
-    "author": "Szaby Grünwald <szaby.gruenwald@salzburgresearch.at>",
-    "dependencies": {
-        "jquery": ">=1.5.0",
-        "jqueryui": "1.9m5"
-    },
-    "devDependencies":{
-        "docco-husky" : ">=0.3.0"
-    },
-    "docco_husky": {
-        "output_dir": "docs",
-        "project_name": "Capkom Wizard",
-        "show_timestamp": false
-    }
+  "name": "CapkomWizard",
+  "version": "0.2.0",
+  "description": "Wizard to create a user profile for making the visualisation of a site accessible/usable/understandable for people with cognitive difficulties.",
+  "url": "http://cap-kom.utilo.eu/",
+  "keywords": [
+    "ui",
+    "accessibility"
+  ],
+  "author": "Szaby Grünwald <szaby.gruenwald@salzburgresearch.at>",
+  "dependencies": {
+    "jquery": ">=1.5.0",
+    "mysql": "~0.9.6",
+    "jugglingdb": "~0.1.9",
+    "nodext": "~0.1.2",
+    "express": "~2.5.9"
+  },
+  "devDependencies": {
+    "docco-husky": ">=0.3.0"
+  },
+  "docco_husky": {
+    "output_dir": "docs",
+    "project_name": "Capkom Wizard",
+    "show_timestamp": false
+  }
 }

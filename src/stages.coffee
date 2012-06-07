@@ -205,7 +205,7 @@ Capkom.stages =
             # Mark currently selected size
             jQuery("#symbolsize-#{Capkom.profile.get 'symbolsize'}").attr "checked", "checked"
             buttonset = jQuery(".symbolsize-symbols", element)
-            console.info buttonset.find("[name=symbolsize]").button
+            Capkom.console.info buttonset.find("[name=symbolsize]").button
                 text: false
             buttonset = buttonset.buttonset()
             buttonset.buttonset('widget').find('label')
