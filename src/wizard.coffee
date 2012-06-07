@@ -73,10 +73,10 @@ Capkom.updateTTS = ->
             jQuery(":capkom-ttswidget").ttswidget("destroy")
 
 # Make sure no console.info or .error calls on 
-if console
+if window.console
     Capkom.console = console
 else
-    @console = Capkom.console =
+    Capkom.console = Capkom.console =
         info: ->
         error: ->
         log: ->
