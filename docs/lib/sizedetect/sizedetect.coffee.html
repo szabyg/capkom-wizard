@@ -33,17 +33,15 @@ size and to be informed about profile changes.</p>
 <span class="s">           &lt;/li&gt;</span>
 <span class="s">           &quot;&quot;&quot;</span>
         <span class="nx">res</span> <span class="o">+=</span> <span class="s">&quot;&lt;/ul&gt;&quot;</span>
+        <span class="nx">res</span> <span class="o">+=</span> <span class="s">&quot;&lt;p&gt;Minimum size resulted in </span><span class="si">#{</span><span class="nx">size</span><span class="si">}</span><span class="s">&lt;/p&gt;&quot;</span>
         <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;#results&#39;</span><span class="p">).</span><span class="nx">html</span> <span class="nx">res</span>
         <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;ideal size:&#39;</span><span class="p">,</span> <span class="nx">size</span><span class="p">,</span> <span class="s">&#39;detailed results:&#39;</span><span class="p">,</span> <span class="nx">details</span>
 
   <span class="nv">_create: </span><span class="o">-&gt;</span></pre></div></td></tr><tr id="section-5"><td class="docs"><div class="pilwrap"><a href="#section-5" class="pilcrow">&#182;</a></div><p>widget styling</p>
-</td><td class="code"><div class="highlight"><pre>    <span class="nx">@element</span><span class="p">.</span><span class="nx">css</span>
+</td><td class="code"><div class="highlight"><pre>    <span class="nx">@element</span><span class="p">.</span><span class="nx">addClass</span> <span class="s">&#39;sizedetect-container&#39;</span>
+    <span class="nx">@element</span><span class="p">.</span><span class="nx">css</span>
       <span class="nv">width: </span><span class="nb">window</span><span class="p">.</span><span class="nx">innerWidth</span> <span class="o">-</span> <span class="mi">30</span>
       <span class="nv">height: </span><span class="nb">window</span><span class="p">.</span><span class="nx">innerHeight</span> <span class="o">-</span> <span class="mi">30</span>
-      <span class="nv">position: </span><span class="s">&#39;absolute&#39;</span>
-      <span class="nv">top: </span><span class="mi">5</span>
-      <span class="nv">left: </span><span class="mi">5</span>
-      <span class="nv">border: </span><span class="s">&#39;3px solid #ccc&#39;</span>
     <span class="nx">@element</span><span class="p">.</span><span class="nx">append</span> <span class="s">&quot;&lt;div class=&#39;progressBar&#39;&gt;&lt;/div&gt;&quot;</span>
     <span class="vi">@progressBar = </span><span class="nx">@element</span><span class="p">.</span><span class="nx">find</span> <span class="s">&quot;.progressBar&quot;</span>
     <span class="nx">@progressBar</span><span class="p">.</span><span class="nx">css</span>
@@ -73,6 +71,13 @@ size and to be informed about profile changes.</p>
     <span class="vi">@moveTimeStat = </span><span class="k">new</span> <span class="nx">Stat</span>
     <span class="vi">@reactionTimeStat = </span><span class="k">new</span> <span class="nx">Stat</span></pre></div></td></tr><tr id="section-14"><td class="docs"><div class="pilwrap"><a href="#section-14" class="pilcrow">&#182;</a></div><p>everything set up, begin the game</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="nx">@_beginGame</span><span class="p">()</span>
+
+  <span class="nv">_destroy: </span><span class="o">-&gt;</span>
+    <span class="nx">@element</span><span class="p">.</span><span class="nx">html</span> <span class="s">&quot;&quot;</span>
+    <span class="nx">@element</span><span class="p">.</span><span class="nx">removeClass</span> <span class="s">&#39;sizedetect-container&#39;</span>
+    <span class="nx">@element</span><span class="p">.</span><span class="nx">css</span>
+      <span class="nv">width: </span><span class="s">&#39;auto&#39;</span>
+      <span class="nv">height: </span><span class="s">&#39;auto&#39;</span>
 
   <span class="nv">_beginGame: </span><span class="o">-&gt;</span>
     <span class="nv">level = </span><span class="mi">2</span>
@@ -141,10 +146,9 @@ size and to be informed about profile changes.</p>
   <span class="nv">finish: </span><span class="o">-&gt;</span>
     <span class="k">if</span> <span class="nx">@goodSize</span>
       <span class="nx">@options</span><span class="p">.</span><span class="nx">result</span> <span class="nx">@goodSize</span><span class="p">,</span> <span class="nx">@details</span>
-
-      <span class="nx">@destroy</span><span class="p">()</span>
     <span class="k">else</span>
       <span class="nx">alert</span> <span class="s">&quot;You cannot use the computer with your current devices. Consult with Platus.&quot;</span>
+    <span class="nx">@destroy</span><span class="p">()</span>
 
 
   <span class="nv">evaluateCurrentLevel: </span><span class="o">-&gt;</span>
@@ -155,11 +159,7 @@ size and to be informed about profile changes.</p>
       <span class="nv">moveTimeAverage: </span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span> <span class="nx">@moveTimeStat</span><span class="p">.</span><span class="nx">getAverage</span><span class="p">()</span>
       <span class="nv">reactionTimeStDev: </span><span class="nx">@reactionTimeStat</span><span class="p">.</span><span class="nx">getStandardDeviation</span><span class="p">()</span>
       <span class="nv">moveTimeStDev: </span><span class="nx">@moveTimeStat</span><span class="p">.</span><span class="nx">getStandardDeviation</span><span class="p">()</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;level finished&#39;</span><span class="p">,</span> <span class="nx">@level</span><span class="p">,</span> <span class="nx">@currentLevel</span>
-
-
-  <span class="nv">_destroy: </span><span class="o">-&gt;</span>
-    <span class="nx">@element</span><span class="p">.</span><span class="nx">html</span> <span class="s">&quot;&quot;</span></pre></div></td></tr><tr id="section-26"><td class="docs"><div class="pilwrap"><a href="#section-26" class="pilcrow">&#182;</a></div><p>Class for calculating simple statistical data</p>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;level finished&#39;</span><span class="p">,</span> <span class="nx">@level</span><span class="p">,</span> <span class="nx">@currentLevel</span></pre></div></td></tr><tr id="section-26"><td class="docs"><div class="pilwrap"><a href="#section-26" class="pilcrow">&#182;</a></div><p>Class for calculating simple statistical data</p>
 </td><td class="code"><div class="highlight"><pre><span class="k">class</span> <span class="nx">Stat</span>
   <span class="nv">constructor: </span><span class="nf">(opts) -&gt;</span>
     <span class="nv">options =</span>

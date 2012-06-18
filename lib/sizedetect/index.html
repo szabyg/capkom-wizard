@@ -13,11 +13,15 @@
     <script type="text/javascript" src="../json-serialization.js"></script>
 
     <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="sizedetect.css" />
     <script type="text/javascript" src="sizedetect.js"></script>
     <script type="text/javascript">
         jQuery(document).ready(function(){_.defer(function(){
-            jQuery("#demo").sizedetect({
-            });
+            jQuery("#start").button()
+                    .click(function(){
+                        jQuery("#demo").sizedetect({
+                        });
+                    });
         })});
     </script>
 
@@ -48,6 +52,7 @@
             <a href="../../docs/lib/sizedetect/sizedetect.coffee.html">documented source code</a> or
             <a href="https://github.com/szabyg/capkom-wizard/tree/gh-pages/lib/sizedetect">github</a>
         </p>
+        <button id="start">Start</button>
         <div id='demo'></div>
         <div id='results'></div>
     </section>

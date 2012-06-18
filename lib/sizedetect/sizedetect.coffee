@@ -36,25 +36,22 @@ jQuery.widget "Capkom.sizedetect"
            </li>
            """
         res += "</ul>"
+        res += "<p>Minimum size resulted in #{size}</p>"
         jQuery('#results').html res
         console.info 'ideal size:', size, 'detailed results:', details
 
   _create: ->
     # widget styling
+    @element.addClass 'sizedetect-container'
     @element.css
       width: window.innerWidth - 30
       height: window.innerHeight - 30
-      position: 'absolute'
-      top: 5
-      left: 5
-      border: '3px solid #ccc'
     @element.append "<div class='progressBar'></div>"
     @progressBar = @element.find ".progressBar"
     @progressBar.css
       'float': 'right'
       'width': '50%'
     @progressBar.progressbar()
-
 
     # Catchme button and functionality
     @element.append("<button class='catchme'>Catch me!</button>")
@@ -93,6 +90,13 @@ jQuery.widget "Capkom.sizedetect"
 
     # everything set up, begin the game
     @_beginGame()
+
+  _destroy: ->
+    @element.html ""
+    @element.removeClass 'sizedetect-container'
+    @element.css
+      width: 'auto'
+      height: 'auto'
 
   _beginGame: ->
     level = 2
@@ -174,10 +178,9 @@ jQuery.widget "Capkom.sizedetect"
   finish: ->
     if @goodSize
       @options.result @goodSize, @details
-
-      @destroy()
     else
       alert "You cannot use the computer with your current devices. Consult with Platus."
+    @destroy()
 
 
   evaluateCurrentLevel: ->
@@ -189,11 +192,6 @@ jQuery.widget "Capkom.sizedetect"
       reactionTimeStDev: @reactionTimeStat.getStandardDeviation()
       moveTimeStDev: @moveTimeStat.getStandardDeviation()
     console.info 'level finished', @level, @currentLevel
-
-
-  _destroy: ->
-    @element.html ""
-
 
 # Class for calculating simple statistical data
 class Stat
