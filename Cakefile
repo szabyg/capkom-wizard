@@ -1,15 +1,16 @@
 appFiles  = [
-    'lib/ttswidget/ttswidget.coffee'
-    'lib/capkomsymbolwidget/capkomsymbolwidget.coffee'
-    'src/fontsizewidget.coffee'
+  'lib/ttswidget/ttswidget.coffee'
+  'lib/sizedetect/sizedetect.coffee'
+  'lib/capkomsymbolwidget/capkomsymbolwidget.coffee'
+  'src/fontsizewidget.coffee'
 
-    'src/symbolset.coffee'
-    'src/wizard.coffee'
-    'src/symbolsets.coffee'
-    'src/stages.coffee'
-    'src/profile.coffee'
-    'src/navigation.coffee'
-    'src/thememap.coffee'
+  'src/symbolset.coffee'
+  'src/wizard.coffee'
+  'src/symbolsets.coffee'
+  'src/stages.coffee'
+  'src/profile.coffee'
+  'src/navigation.coffee'
+  'src/thememap.coffee'
 ]
 target = "lib/capkomwizard.js"
 

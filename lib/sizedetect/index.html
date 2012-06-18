@@ -1,0 +1,50 @@
+<html>
+<head>
+    <title>CapKom Wizard</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" href="../jquery/jquery-ui.min.css" />
+
+    <script type="text/javascript" src="../jquery/jquery-1.7.1.js"></script>
+    <script type="text/javascript" src="../jquery/jquery-ui.1.9m5.js"></script>
+    <script type="text/javascript" src="../underscore-min.js"></script>
+    <script type="text/javascript" src="../backbone.js"></script>
+    <script type="text/javascript" src="../json-serialization.js"></script>
+
+    <link rel="stylesheet" href="../../css/style.css" />
+    <script type="text/javascript" src="sizedetect.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function(){_.defer(function(){
+            jQuery("#demo").sizedetect({
+            });
+        })});
+    </script>
+
+    <style>
+        button.ui-button-icon-only .ui-icon {
+            width: 22px;
+            height: 22px;
+            margin-left: -11px;
+            margin-top: -11px;
+        }
+        .ui-icon-speaker {
+            background-image: url(speaker22.png) !important;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#"><img class="logo" alt="Capkom Logo" src="../../symbols/Capkom_Logo.gif"/></a>
+    </header>
+    <section>
+        <h1>CapkomSymbol widget</h1>
+        <h2>Demo</h2>
+        <div id='demo'></div>
+        <div id='results'></div>
+    </section>
+    <div style="display:none;" id="bgThemeActivator"></div>
+    <script>
+    </script>
+</body>
+</html>
