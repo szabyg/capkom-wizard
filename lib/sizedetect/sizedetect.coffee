@@ -76,7 +76,7 @@ jQuery.widget "Capkom.sizedetect"
         @notyetmoved = false
         @reactionTime = @reactionTimer.end()
         @moveTimer.start()
-        jQuery('#reactionTime').html(@reactionTime)
+        # jQuery('#reactionTime').html(@reactionTime)
 
     # display elements for debug info
     @element.append('<div id="moveTime"></div>')
@@ -132,7 +132,7 @@ jQuery.widget "Capkom.sizedetect"
     # If it's a successful click then register the reaction and move times
     if succeeded
       moveTime = @moveTimer.end()
-      jQuery('#moveTime').html(moveTime)
+      # jQuery('#moveTime').html(moveTime)
       @start = new Date().getTime()
       console.info 'success', @level, 'reactionTime:', @reactionTime, 'moveTime:', moveTime
 
