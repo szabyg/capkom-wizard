@@ -21,6 +21,7 @@ jQuery.widget "Capkom.sizedetect"
       # By default `Capkom.profile` is used for getting the selected symbolset,
       # size and to be informed about profile changes.
       profile: Capkom.profile
+      symbolLabel: "Catch me!"
       maxSize: 200
       minSize: 100
       result: (bestSize, details) ->
@@ -55,7 +56,7 @@ jQuery.widget "Capkom.sizedetect"
     @progressBar.progressbar()
 
     # Catchme button and functionality
-    @element.append("<button class='catchme'>Catch me!</button>")
+    @element.append("<button class='catchme'>#{@options.symbolLabel}</button>")
     @catchme = @element.find '.catchme'
     @console.info @catchme.button()
 
