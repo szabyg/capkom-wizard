@@ -23,7 +23,7 @@ jQuery.widget "Capkom.sizedetect"
       profile: Capkom.profile
       maxSize: 200
       minSize: 100
-      result: (size, details) ->
+      result: (bestSize, details) ->
         res = "<h2>Results</h2>"
         res += "Measured Sizes (these sizes depend from the screen size)"
         res += "<ul>"
@@ -36,16 +36,17 @@ jQuery.widget "Capkom.sizedetect"
            </li>
            """
         res += "</ul>"
-        res += "<p>Minimum size resulted in #{size}</p>"
+        res += "<p>Minimum size resulted in #{bestSize}</p>"
         jQuery('#results').html res
-        console.info 'ideal size:', size, 'detailed results:', details
+        @console.info 'ideal size:', size, 'detailed results:', details
 
   _create: ->
+    @_fixConsole()
     # widget styling
     @element.addClass 'sizedetect-container'
     @element.css
-      width: window.innerWidth - 30
-      height: window.innerHeight - 30
+      width: @getInnerWidth() - 30
+      height: @getInnerHeight() - 30
     @element.append "<div class='progressBar'></div>"
     @progressBar = @element.find ".progressBar"
     @progressBar.css
@@ -56,7 +57,7 @@ jQuery.widget "Capkom.sizedetect"
     # Catchme button and functionality
     @element.append("<button class='catchme'>Catch me!</button>")
     @catchme = @element.find '.catchme'
-    console.info @catchme.button()
+    @console.info @catchme.button()
 
     # correct click
     @catchme.click (e) =>
@@ -100,10 +101,9 @@ jQuery.widget "Capkom.sizedetect"
 
   _beginGame: ->
     level = 2
-    while Math.floor((Math.min window.innerWidth, window.innerHeight) / level) > @options.maxSize
+    while Math.floor((Math.min @getInnerWidth(), @getInnerHeight()) / level) > @options.maxSize
       level++
     @_newLevel level - 1
-    @notyetmoved = true
 
   _newLevel: (level) ->
     # Set up level specific things
@@ -111,7 +111,7 @@ jQuery.widget "Capkom.sizedetect"
       @finish()
     else
       @level = level
-      @size = Math.floor((Math.min window.innerWidth, window.innerHeight) / @level)
+      @size = Math.floor((Math.min @getInnerWidth(), @getInnerHeight()) / @level)
       @currentLevel = @details[@size.toString()] = []
       @progressBar.progressbar 'value', 0
       @catchme.css 'width', @size
@@ -119,14 +119,14 @@ jQuery.widget "Capkom.sizedetect"
       # Reset sensors, start stop watches
       @moveTimeStat.clear()
       @reactionTimeStat.clear()
-      console.info 'new level started with symbol size', @size
+      @console.info 'new level started with symbol size', @size
 
       # Begin level
       @_newPosition()
 
   _newPosition: ->
-    maxLeft = window.innerWidth - @size - 30
-    maxTop = window.innerHeight - @size - 30
+    maxLeft = @getInnerWidth() - @size - 30
+    maxTop = @getInnerHeight() - @size - 30
     @catchme.css 'left', Math.floor Math.random() * maxLeft
     @catchme.css 'top', Math.floor Math.random() * maxTop
     @notyetmoved = true
@@ -138,7 +138,7 @@ jQuery.widget "Capkom.sizedetect"
       moveTime = @moveTimer.end()
       # jQuery('#moveTime').html(moveTime)
       @start = new Date().getTime()
-      console.info 'success', @level, 'reactionTime:', @reactionTime, 'moveTime:', moveTime
+      @console.info 'success', @level, 'reactionTime:', @reactionTime, 'moveTime:', moveTime
 
       @currentLevel.push
         value: 1
@@ -148,7 +148,7 @@ jQuery.widget "Capkom.sizedetect"
       @moveTimeStat.add moveTime
     else
       # if click failed register failed click
-      console.info 'fail'
+      @console.info 'fail'
       @currentLevel.push 0
 
     # After 7 clicks start a new level or finish game depending the score
@@ -158,6 +158,7 @@ jQuery.widget "Capkom.sizedetect"
       if @currentLevel.score >= 0.5
         # High score --> New level
         @goodSize = @size
+        @console.info "goodSize is", @goodSize, @
         if @currentLevel.moveTimeAverage < 2000
           @_newLevel @level + 2
         else
@@ -167,7 +168,7 @@ jQuery.widget "Capkom.sizedetect"
         @finish()
     else
       progress = (@currentLevel.length / 7) * 100
-      console.info 'progress:', progress
+      @console.info 'progress:', progress
       @progressBar.progressbar 'value', Math.floor(progress)
       if succeeded
         # Next task, same level
@@ -177,11 +178,11 @@ jQuery.widget "Capkom.sizedetect"
 
   finish: ->
     if @goodSize
-      @options.result @goodSize, @details
+      @console.info 'goodSize', @goodSize, @
+      @options.result.apply @, [@goodSize, @details]
     else
       alert "You cannot use the computer with your current devices. Consult with Platus."
     @destroy()
-
 
   evaluateCurrentLevel: ->
     correct = _.filter(@currentLevel, (r) -> r.value is 1)
@@ -191,9 +192,33 @@ jQuery.widget "Capkom.sizedetect"
       moveTimeAverage: Math.round @moveTimeStat.getAverage()
       reactionTimeStDev: @reactionTimeStat.getStandardDeviation()
       moveTimeStDev: @moveTimeStat.getStandardDeviation()
-    console.info 'level finished', @level, @currentLevel
+    @console.info 'level finished', @level, @currentLevel
 
-# Class for calculating simple statistical data
+  getInnerWidth: ->
+    return jQuery(window).width()
+    if jQuery.browser.msie
+      screen.availWidth
+    else
+      window.innerWidth
+
+  getInnerHeight: ->
+    return jQuery(window).height()
+    if jQuery.browser.msie
+      screen.availHeight
+    else
+      window.innerHeight
+
+  _fixConsole: ->
+    if window.console
+      @console = console
+    else
+      @console =
+        info: ->
+        error: ->
+        log: ->
+
+
+    # Class for calculating simple statistical data
 class Stat
   constructor: (opts) ->
     options =
@@ -230,7 +255,7 @@ class Stat
 
 # Class for measuring time in milliseconds
 class StopWatch
-  constructor: (@error = -> console.error.apply console, arguments) ->
+  constructor: (@error = -> @console.error.apply @console, arguments) ->
     @elapsed = 0
     @status = 'idle'
   start: ->
