@@ -1,0 +1,52 @@
+<html>
+<head>
+    <title>CapKom Wizard</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" href="../jquery/jquery-ui.min.css" />
+
+    <script type="text/javascript" src="../jquery/jquery-1.7.1.js"></script>
+    <script type="text/javascript" src="../jquery/jquery-ui.1.9m5.js"></script>
+    <script type="text/javascript" src="../underscore-min.js"></script>
+    <script type="text/javascript" src="../backbone.js"></script>
+    <script type="text/javascript" src="../json-serialization.js"></script>
+
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="wordmatch.css" />
+    <script type="text/javascript" src="wordmatch.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function(){_.defer(function(){
+            jQuery("#start").button()
+                .click(function(){
+                    jQuery("#demo").wordmatch();
+                    jQuery("#start").hide();
+                });
+            jQuery("#demo").wordmatch();
+            jQuery("#start").hide();
+        })});
+    </script>
+
+    <style>
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#"><img class="logo" alt="Capkom Logo" src="../../symbols/Capkom_Logo.gif"/></a>
+    </header>
+    <section>
+        <h1>Word match widget</h1>
+        <p>
+            This widget is a play to figure out if a person can read simple words.
+            <a href="../../docs/lib/wordmatch/wordmatch.coffee.html">documented source code</a> or
+            <a href="https://github.com/szabyg/capkom-wizard/tree/gh-pages/lib/wordmatch">github</a>
+        </p>
+        <button id="start">Start</button>
+        <div id='demo'></div>
+        <div id='results'></div>
+    </section>
+    <div style="display:none;" id="bgThemeActivator"></div>
+    <script>
+    </script>
+</body>
+</html>

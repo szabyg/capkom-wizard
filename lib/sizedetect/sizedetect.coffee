@@ -24,6 +24,7 @@ jQuery.widget "Capkom.sizedetect"
       symbolLabel: "Catch me!"
       maxSize: 200
       minSize: 100
+      clickCount: 5
       result: (bestSize, details) ->
         res = "<h2>Results</h2>"
         res += "Measured Sizes (these sizes depend from the screen size)"
@@ -152,11 +153,11 @@ jQuery.widget "Capkom.sizedetect"
       @console.info 'fail'
       @currentLevel.push 0
 
-    # After 7 clicks start a new level or finish game depending the score
-    if @currentLevel.length >= 7
+    # After e.g. 5 clicks start a new level or finish game depending the score
+    if @currentLevel.length >= @options.clickCount
       # evaluate current level
       @evaluateCurrentLevel()
-      if @currentLevel.score >= 0.5
+      if @currentLevel.score >= 0
         # High score --> New level
         @goodSize = @size
         @console.info "goodSize is", @goodSize, @
@@ -168,7 +169,7 @@ jQuery.widget "Capkom.sizedetect"
         # Low score --> Finish
         @finish()
     else
-      progress = (@currentLevel.length / 7) * 100
+      progress = (@currentLevel.length / @options.clickCount) * 100
       @console.info 'progress:', progress
       @progressBar.progressbar 'value', Math.floor(progress)
       if succeeded
