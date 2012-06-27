@@ -147,6 +147,89 @@
                 <span class="nv">wordmatch: </span><span class="nx">res</span>
               <span class="nx">Capkom</span><span class="p">.</span><span class="nx">clickNext</span><span class="p">()</span>
               <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.wortspiel-area&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">wordmatch</span> <span class="s">&#39;destroy&#39;</span>
+            <span class="nv">questions: </span><span class="p">[</span>
+                <span class="nv">type: </span><span class="s">&#39;s2w&#39;</span> <span class="c1"># symbol to word</span>
+                <span class="nv">question: </span><span class="s">&#39;tree.jpg&#39;</span>
+                <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;Baum&#39;</span><span class="p">,</span> <span class="s">&#39;Haus&#39;</span><span class="p">,</span> <span class="s">&#39;Hose&#39;</span><span class="p">]</span>
+                <span class="nv">correct: </span><span class="s">&#39;Baum&#39;</span>
+            <span class="p">,</span>
+                <span class="nv">type: </span><span class="s">&#39;s2w&#39;</span> <span class="c1"># symbol to word</span>
+                <span class="nv">question: </span><span class="s">&#39;house.jpg&#39;</span>
+                <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;Baum&#39;</span><span class="p">,</span> <span class="s">&#39;Haus&#39;</span><span class="p">,</span> <span class="s">&#39;Hose&#39;</span><span class="p">]</span>
+                <span class="nv">correct: </span><span class="s">&#39;Haus&#39;</span>
+            <span class="p">,</span>
+                <span class="nv">type: </span><span class="s">&#39;s2w&#39;</span> <span class="c1"># symbol to word</span>
+                <span class="nv">question: </span><span class="s">&#39;pants.gif&#39;</span>
+                <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;Baum&#39;</span><span class="p">,</span> <span class="s">&#39;Haus&#39;</span><span class="p">,</span> <span class="s">&#39;Hose&#39;</span><span class="p">]</span>
+                <span class="nv">correct: </span><span class="s">&#39;Hose&#39;</span>
+            <span class="p">,</span>
+                <span class="nv">type: </span><span class="s">&#39;s2w&#39;</span>
+                <span class="nv">question: </span><span class="s">&#39;apfel.jpg&#39;</span>
+                <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;Apfel&#39;</span><span class="p">,</span> <span class="s">&#39;Hund&#39;</span><span class="p">,</span> <span class="s">&#39;Erdbeere&#39;</span><span class="p">]</span>
+                <span class="nv">correct: </span><span class="s">&#39;Apfel&#39;</span>
+            <span class="p">,</span>
+                <span class="nv">type: </span><span class="s">&#39;s2w&#39;</span> <span class="c1"># symbol to word</span>
+                <span class="nv">question: </span><span class="s">&#39;auto.jpg&#39;</span>
+                <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;Hund&#39;</span><span class="p">,</span> <span class="s">&#39;Erdbeere&#39;</span><span class="p">,</span> <span class="s">&#39;Auto&#39;</span><span class="p">]</span>
+                <span class="nv">correct: </span><span class="s">&#39;Auto&#39;</span>
+            <span class="p">,</span>
+                <span class="nv">type: </span><span class="s">&#39;s2w&#39;</span> <span class="c1"># symbol to word</span>
+                <span class="nv">question: </span><span class="s">&#39;ei.jpg&#39;</span>
+                <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;Auto&#39;</span><span class="p">,</span> <span class="s">&#39;Ei&#39;</span><span class="p">,</span> <span class="s">&#39;Haus&#39;</span><span class="p">]</span>
+                <span class="nv">correct: </span><span class="s">&#39;Ei&#39;</span>
+            <span class="p">,</span>
+                <span class="nv">type: </span><span class="s">&#39;s2w&#39;</span> <span class="c1"># symbol to word</span>
+                <span class="nv">question: </span><span class="s">&#39;rose.jpg&#39;</span>
+                <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;Rose&#39;</span><span class="p">,</span> <span class="s">&#39;Haus&#39;</span><span class="p">,</span> <span class="s">&#39;Ei&#39;</span><span class="p">]</span>
+                <span class="nv">correct: </span><span class="s">&#39;Rose&#39;</span>
+            <span class="p">,</span>
+                <span class="nv">type: </span><span class="s">&#39;s2w&#39;</span> <span class="c1"># symbol to word</span>
+                <span class="nv">question: </span><span class="s">&#39;erdbeere.jpg&#39;</span>
+                <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;Katze&#39;</span><span class="p">,</span> <span class="s">&#39;Erdbeere&#39;</span><span class="p">,</span> <span class="s">&#39;Auto&#39;</span><span class="p">]</span>
+                <span class="nv">correct: </span><span class="s">&#39;Erdbeere&#39;</span>
+            <span class="p">,</span>
+                <span class="nv">type: </span><span class="s">&#39;w2s&#39;</span> <span class="c1"># word to symbol</span>
+                <span class="nv">question: </span><span class="s">&#39;Baum&#39;</span>
+                <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;tree.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;pants.gif&#39;</span><span class="p">,</span> <span class="s">&#39;house.jpg&#39;</span><span class="p">]</span>
+                <span class="nv">correct: </span><span class="s">&#39;tree.jpg&#39;</span>
+            <span class="p">,</span>
+                <span class="nv">type: </span><span class="s">&#39;w2s&#39;</span> <span class="c1"># word to symbol</span>
+                <span class="nv">question: </span><span class="s">&#39;Haus&#39;</span>
+                <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;tree.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;pants.gif&#39;</span><span class="p">,</span> <span class="s">&#39;house.jpg&#39;</span><span class="p">]</span>
+                <span class="nv">correct: </span><span class="s">&#39;house.jpg&#39;</span>
+            <span class="p">,</span>
+                <span class="nv">type: </span><span class="s">&#39;w2s&#39;</span> <span class="c1"># word to symbol</span>
+                <span class="nv">question: </span><span class="s">&#39;Hose&#39;</span>
+                <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;tree.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;pants.gif&#39;</span><span class="p">,</span> <span class="s">&#39;house.jpg&#39;</span><span class="p">]</span>
+                <span class="nv">correct: </span><span class="s">&#39;pants.gif&#39;</span>
+            <span class="p">,</span>
+                <span class="nv">type: </span><span class="s">&#39;w2s&#39;</span> <span class="c1"># word to symbol</span>
+                <span class="nv">question: </span><span class="s">&#39;Apfel&#39;</span>
+                <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;cat.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;haus.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;apfel.jpg&#39;</span><span class="p">]</span>
+                <span class="nv">correct: </span><span class="s">&#39;apfel.jpg&#39;</span>
+            <span class="p">,</span>
+                <span class="nv">type: </span><span class="s">&#39;w2s&#39;</span> <span class="c1"># word to symbol</span>
+                <span class="nv">question: </span><span class="s">&#39;Auto&#39;</span>
+                <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;tree.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;pants.gif&#39;</span><span class="p">,</span> <span class="s">&#39;auto.jpg&#39;</span><span class="p">]</span>
+                <span class="nv">correct: </span><span class="s">&#39;auto.jpg&#39;</span>
+            <span class="p">,</span>
+                <span class="nv">type: </span><span class="s">&#39;w2s&#39;</span> <span class="c1"># word to symbol</span>
+                <span class="nv">question: </span><span class="s">&#39;Ei&#39;</span>
+                <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;ei.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;haus.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;katze.jpg&#39;</span><span class="p">]</span>
+                <span class="nv">correct: </span><span class="s">&#39;ei.jpg&#39;</span>
+            <span class="p">,</span>
+                <span class="nv">type: </span><span class="s">&#39;w2s&#39;</span> <span class="c1"># word to symbol</span>
+                <span class="nv">question: </span><span class="s">&#39;Katze&#39;</span>
+                <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;hund.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;katze.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;pants.gif&#39;</span><span class="p">]</span>
+                <span class="nv">correct: </span><span class="s">&#39;katze.jpg&#39;</span>
+            <span class="p">,</span>
+                <span class="nv">type: </span><span class="s">&#39;w2s&#39;</span> <span class="c1"># word to symbol</span>
+                <span class="nv">question: </span><span class="s">&#39;Schmetterling&#39;</span>
+                <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;hund.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;schmetterling.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;tree.jpg&#39;</span><span class="p">]</span>
+                <span class="nv">correct: </span><span class="s">&#39;schmetterling.jpg&#39;</span>
+            <span class="p">]</span>
+
+
       <span class="nv">show: </span><span class="nf">(element) -&gt;</span>
         <span class="nx">_</span><span class="p">.</span><span class="nx">defer</span> <span class="o">-&gt;</span>
           <span class="nx">Capkom</span><span class="p">.</span><span class="nx">timeout</span><span class="p">.</span><span class="nx">start</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-&gt;</span>

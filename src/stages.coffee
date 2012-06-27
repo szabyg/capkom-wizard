@@ -154,6 +154,89 @@ Capkom.stages =
                 wordmatch: res
               Capkom.clickNext()
               jQuery('.wortspiel-area', element).wordmatch 'destroy'
+            questions: [
+                type: 's2w' # symbol to word
+                question: 'tree.jpg'
+                choices: ['Baum', 'Haus', 'Hose']
+                correct: 'Baum'
+            ,
+                type: 's2w' # symbol to word
+                question: 'house.jpg'
+                choices: ['Baum', 'Haus', 'Hose']
+                correct: 'Haus'
+            ,
+                type: 's2w' # symbol to word
+                question: 'pants.gif'
+                choices: ['Baum', 'Haus', 'Hose']
+                correct: 'Hose'
+            ,
+                type: 's2w'
+                question: 'apfel.jpg'
+                choices: ['Apfel', 'Hund', 'Erdbeere']
+                correct: 'Apfel'
+            ,
+                type: 's2w' # symbol to word
+                question: 'auto.jpg'
+                choices: ['Hund', 'Erdbeere', 'Auto']
+                correct: 'Auto'
+            ,
+                type: 's2w' # symbol to word
+                question: 'ei.jpg'
+                choices: ['Auto', 'Ei', 'Haus']
+                correct: 'Ei'
+            ,
+                type: 's2w' # symbol to word
+                question: 'rose.jpg'
+                choices: ['Rose', 'Haus', 'Ei']
+                correct: 'Rose'
+            ,
+                type: 's2w' # symbol to word
+                question: 'erdbeere.jpg'
+                choices: ['Katze', 'Erdbeere', 'Auto']
+                correct: 'Erdbeere'
+            ,
+                type: 'w2s' # word to symbol
+                question: 'Baum'
+                choices: ['tree.jpg', 'pants.gif', 'house.jpg']
+                correct: 'tree.jpg'
+            ,
+                type: 'w2s' # word to symbol
+                question: 'Haus'
+                choices: ['tree.jpg', 'pants.gif', 'house.jpg']
+                correct: 'house.jpg'
+            ,
+                type: 'w2s' # word to symbol
+                question: 'Hose'
+                choices: ['tree.jpg', 'pants.gif', 'house.jpg']
+                correct: 'pants.gif'
+            ,
+                type: 'w2s' # word to symbol
+                question: 'Apfel'
+                choices: ['cat.jpg', 'haus.jpg', 'apfel.jpg']
+                correct: 'apfel.jpg'
+            ,
+                type: 'w2s' # word to symbol
+                question: 'Auto'
+                choices: ['tree.jpg', 'pants.gif', 'auto.jpg']
+                correct: 'auto.jpg'
+            ,
+                type: 'w2s' # word to symbol
+                question: 'Ei'
+                choices: ['ei.jpg', 'haus.jpg', 'katze.jpg']
+                correct: 'ei.jpg'
+            ,
+                type: 'w2s' # word to symbol
+                question: 'Katze'
+                choices: ['hund.jpg', 'katze.jpg', 'pants.gif']
+                correct: 'katze.jpg'
+            ,
+                type: 'w2s' # word to symbol
+                question: 'Schmetterling'
+                choices: ['hund.jpg', 'schmetterling.jpg', 'tree.jpg']
+                correct: 'schmetterling.jpg'
+            ]
+
+
       show: (element) ->
         _.defer ->
           Capkom.timeout.start 4, ->

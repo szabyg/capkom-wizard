@@ -25,7 +25,7 @@ jQuery.widget "Capkom.sizedetect"
       maxSize: 200
       minSize: 100
       clickCount: 5
-      timeout: 4
+      timeout: 40
       result: (bestSize, details) ->
         res = "<h2>Results</h2>"
         res += "Measured Sizes (these sizes depend from the screen size)"
@@ -68,6 +68,9 @@ jQuery.widget "Capkom.sizedetect"
 
       # width: @getInnerWidth() - 30
       # height: @getInnerHeight() - 30
+
+    @element.append "<div class='msg-dialog'></div>"
+    @messageArea = @element.find '.msg-dialog'
 
     @element.append "<div class='progressBar'></div>"
     @progressBar = @element.find ".progressBar"
@@ -130,21 +133,23 @@ jQuery.widget "Capkom.sizedetect"
   _newLevel: (level) ->
     # Set up level specific things
     if @size < @options.minSize
-      @finish()
+      @message "Fertig!", =>
+        @finish()
     else
-      @level = level
-      @size = Math.floor((Math.min @getInnerWidth(), @getInnerHeight()) / @level)
-      @currentLevel = @details[@size.toString()] = []
-      @progressBar.progressbar 'value', 0
-      @catchme.css 'width', @size
-      @catchme.css 'height', @size
-      # Reset sensors, start stop watches
-      @moveTimeStat.clear()
-      @reactionTimeStat.clear()
-      @console.info 'new level started with symbol size', @size
+      @message "Sehr gut, nächstes Level", ->
+        @level = level
+        @size = Math.floor((Math.min @getInnerWidth(), @getInnerHeight()) / @level)
+        @currentLevel = @details[@size.toString()] = []
+        @progressBar.progressbar 'value', 0
+        @catchme.css 'width', @size
+        @catchme.css 'height', @size
+        # Reset sensors, start stop watches
+        @moveTimeStat.clear()
+        @reactionTimeStat.clear()
+        @console.info 'new level started with symbol size', @size
 
-      # Begin level
-      @_newPosition()
+        # Begin level
+        @_newPosition()
 
   _newPosition: ->
     maxLeft = @getInnerWidth() - @size - 30
@@ -156,6 +161,16 @@ jQuery.widget "Capkom.sizedetect"
     @timeoutTimer = setTimeout =>
       @timeout()
     , @options.timeout * 1000
+
+  message: (msg, cb) ->
+    @messageArea.html(msg).dialog
+      hide: "fade"
+      close: =>
+        _.defer =>
+          @messageArea.dialog 'destroy'
+          cb()
+    afterWaiting = =>
+      @messageArea.dialog('close')
 
   timeout: ->
     @finish()

@@ -62,7 +62,10 @@ size and to be informed about profile changes.</p>
       <span class="s">&#39;z-index&#39;</span><span class="o">:</span> <span class="mi">100</span></pre></div></td></tr><tr id="section-6"><td class="docs"><div class="pilwrap"><a href="#section-6" class="pilcrow">&#182;</a></div><p>border: '1px red solid'</p>
 </td><td class="code"><div class="highlight"><pre></pre></div></td></tr><tr id="section-7"><td class="docs"><div class="pilwrap"><a href="#section-7" class="pilcrow">&#182;</a></div><p>width: @getInnerWidth() - 30
 height: @getInnerHeight() - 30</p>
-</td><td class="code"><div class="highlight"><pre>    <span class="nx">@element</span><span class="p">.</span><span class="nx">append</span> <span class="s">&quot;&lt;div class=&#39;progressBar&#39;&gt;&lt;/div&gt;&quot;</span>
+</td><td class="code"><div class="highlight"><pre>    <span class="nx">@element</span><span class="p">.</span><span class="nx">append</span> <span class="s">&quot;&lt;div class=&#39;msg-dialog&#39;&gt;&lt;/div&gt;&quot;</span>
+    <span class="vi">@messageArea = </span><span class="nx">@element</span><span class="p">.</span><span class="nx">find</span> <span class="s">&#39;.msg-dialog&#39;</span>
+
+    <span class="nx">@element</span><span class="p">.</span><span class="nx">append</span> <span class="s">&quot;&lt;div class=&#39;progressBar&#39;&gt;&lt;/div&gt;&quot;</span>
     <span class="vi">@progressBar = </span><span class="nx">@element</span><span class="p">.</span><span class="nx">find</span> <span class="s">&quot;.progressBar&quot;</span>
     <span class="nx">@progressBar</span><span class="p">.</span><span class="nx">css</span>
       <span class="s">&#39;float&#39;</span><span class="o">:</span> <span class="s">&#39;right&#39;</span>
@@ -105,18 +108,20 @@ height: 'auto'</p>
 
   <span class="nv">_newLevel: </span><span class="nf">(level) -&gt;</span></pre></div></td></tr><tr id="section-18"><td class="docs"><div class="pilwrap"><a href="#section-18" class="pilcrow">&#182;</a></div><p>Set up level specific things</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="k">if</span> <span class="nx">@size</span> <span class="o">&lt;</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">minSize</span>
-      <span class="nx">@finish</span><span class="p">()</span>
+      <span class="nx">@message</span> <span class="s">&quot;Fertig!&quot;</span><span class="p">,</span> <span class="o">=&gt;</span>
+        <span class="nx">@finish</span><span class="p">()</span>
     <span class="k">else</span>
-      <span class="vi">@level = </span><span class="nx">level</span>
-      <span class="vi">@size = </span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">((</span><span class="nb">Math</span><span class="p">.</span><span class="nx">min</span> <span class="nx">@getInnerWidth</span><span class="p">(),</span> <span class="nx">@getInnerHeight</span><span class="p">())</span> <span class="o">/</span> <span class="nx">@level</span><span class="p">)</span>
-      <span class="vi">@currentLevel = </span><span class="nx">@details</span><span class="p">[</span><span class="nx">@size</span><span class="p">.</span><span class="nx">toString</span><span class="p">()]</span> <span class="o">=</span> <span class="p">[]</span>
-      <span class="nx">@progressBar</span><span class="p">.</span><span class="nx">progressbar</span> <span class="s">&#39;value&#39;</span><span class="p">,</span> <span class="mi">0</span>
-      <span class="nx">@catchme</span><span class="p">.</span><span class="nx">css</span> <span class="s">&#39;width&#39;</span><span class="p">,</span> <span class="nx">@size</span>
-      <span class="nx">@catchme</span><span class="p">.</span><span class="nx">css</span> <span class="s">&#39;height&#39;</span><span class="p">,</span> <span class="nx">@size</span></pre></div></td></tr><tr id="section-19"><td class="docs"><div class="pilwrap"><a href="#section-19" class="pilcrow">&#182;</a></div><p>Reset sensors, start stop watches</p>
-</td><td class="code"><div class="highlight"><pre>      <span class="nx">@moveTimeStat</span><span class="p">.</span><span class="nx">clear</span><span class="p">()</span>
-      <span class="nx">@reactionTimeStat</span><span class="p">.</span><span class="nx">clear</span><span class="p">()</span>
-      <span class="nx">@console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;new level started with symbol size&#39;</span><span class="p">,</span> <span class="nx">@size</span></pre></div></td></tr><tr id="section-20"><td class="docs"><div class="pilwrap"><a href="#section-20" class="pilcrow">&#182;</a></div><p>Begin level</p>
-</td><td class="code"><div class="highlight"><pre>      <span class="nx">@_newPosition</span><span class="p">()</span>
+      <span class="nx">@message</span> <span class="s">&quot;Sehr gut, nächstes Level&quot;</span><span class="p">,</span> <span class="o">-&gt;</span>
+        <span class="vi">@level = </span><span class="nx">level</span>
+        <span class="vi">@size = </span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">((</span><span class="nb">Math</span><span class="p">.</span><span class="nx">min</span> <span class="nx">@getInnerWidth</span><span class="p">(),</span> <span class="nx">@getInnerHeight</span><span class="p">())</span> <span class="o">/</span> <span class="nx">@level</span><span class="p">)</span>
+        <span class="vi">@currentLevel = </span><span class="nx">@details</span><span class="p">[</span><span class="nx">@size</span><span class="p">.</span><span class="nx">toString</span><span class="p">()]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="nx">@progressBar</span><span class="p">.</span><span class="nx">progressbar</span> <span class="s">&#39;value&#39;</span><span class="p">,</span> <span class="mi">0</span>
+        <span class="nx">@catchme</span><span class="p">.</span><span class="nx">css</span> <span class="s">&#39;width&#39;</span><span class="p">,</span> <span class="nx">@size</span>
+        <span class="nx">@catchme</span><span class="p">.</span><span class="nx">css</span> <span class="s">&#39;height&#39;</span><span class="p">,</span> <span class="nx">@size</span></pre></div></td></tr><tr id="section-19"><td class="docs"><div class="pilwrap"><a href="#section-19" class="pilcrow">&#182;</a></div><p>Reset sensors, start stop watches</p>
+</td><td class="code"><div class="highlight"><pre>        <span class="nx">@moveTimeStat</span><span class="p">.</span><span class="nx">clear</span><span class="p">()</span>
+        <span class="nx">@reactionTimeStat</span><span class="p">.</span><span class="nx">clear</span><span class="p">()</span>
+        <span class="nx">@console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;new level started with symbol size&#39;</span><span class="p">,</span> <span class="nx">@size</span></pre></div></td></tr><tr id="section-20"><td class="docs"><div class="pilwrap"><a href="#section-20" class="pilcrow">&#182;</a></div><p>Begin level</p>
+</td><td class="code"><div class="highlight"><pre>        <span class="nx">@_newPosition</span><span class="p">()</span>
 
   <span class="nv">_newPosition: </span><span class="o">-&gt;</span>
     <span class="nv">maxLeft = </span><span class="nx">@getInnerWidth</span><span class="p">()</span> <span class="o">-</span> <span class="nx">@size</span> <span class="o">-</span> <span class="mi">30</span>
@@ -128,6 +133,16 @@ height: 'auto'</p>
     <span class="vi">@timeoutTimer = </span><span class="nx">setTimeout</span> <span class="o">=&gt;</span>
       <span class="nx">@timeout</span><span class="p">()</span>
     <span class="p">,</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">timeout</span> <span class="o">*</span> <span class="mi">1000</span>
+
+  <span class="nv">message: </span><span class="nf">(msg, cb) -&gt;</span>
+    <span class="nx">@messageArea</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="nx">msg</span><span class="p">).</span><span class="nx">dialog</span>
+      <span class="nv">hide: </span><span class="s">&quot;fade&quot;</span>
+      <span class="nv">close: </span><span class="o">=&gt;</span>
+        <span class="nx">_</span><span class="p">.</span><span class="nx">defer</span> <span class="o">=&gt;</span>
+          <span class="nx">@messageArea</span><span class="p">.</span><span class="nx">dialog</span> <span class="s">&#39;destroy&#39;</span>
+          <span class="nx">cb</span><span class="p">()</span>
+    <span class="nv">afterWaiting = </span><span class="o">=&gt;</span>
+      <span class="nx">@messageArea</span><span class="p">.</span><span class="nx">dialog</span><span class="p">(</span><span class="s">&#39;close&#39;</span><span class="p">)</span>
 
   <span class="nv">timeout: </span><span class="o">-&gt;</span>
     <span class="nx">@finish</span><span class="p">()</span>
