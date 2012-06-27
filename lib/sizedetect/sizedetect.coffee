@@ -69,9 +69,6 @@ jQuery.widget "Capkom.sizedetect"
       # width: @getInnerWidth() - 30
       # height: @getInnerHeight() - 30
 
-    @element.append "<div class='msg-dialog'></div>"
-    @messageArea = @element.find '.msg-dialog'
-
     @element.append "<div class='progressBar'></div>"
     @progressBar = @element.find ".progressBar"
     @progressBar.css
@@ -133,10 +130,8 @@ jQuery.widget "Capkom.sizedetect"
   _newLevel: (level) ->
     # Set up level specific things
     if @size < @options.minSize
-      # @message "Fertig!", =>
         @finish()
     else
-      # @message "Sehr gut, nächstes Level", ->
         @level = level
         @size = Math.floor((Math.min @getInnerWidth(), @getInnerHeight()) / @level)
         @currentLevel = @details[@size.toString()] = []
@@ -161,16 +156,6 @@ jQuery.widget "Capkom.sizedetect"
     @timeoutTimer = setTimeout =>
       @timeout()
     , @options.timeout * 1000
-
-  message: (msg, cb) ->
-    @messageArea.html(msg).dialog
-      hide: "fade"
-      close: =>
-        _.defer =>
-          @messageArea.dialog 'destroy'
-          cb()
-    afterWaiting = =>
-      @messageArea.dialog('close')
 
   timeout: ->
     @finish()
