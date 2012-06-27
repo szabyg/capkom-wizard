@@ -133,10 +133,10 @@ jQuery.widget "Capkom.sizedetect"
   _newLevel: (level) ->
     # Set up level specific things
     if @size < @options.minSize
-      @message "Fertig!", =>
+      # @message "Fertig!", =>
         @finish()
     else
-      @message "Sehr gut, nächstes Level", ->
+      # @message "Sehr gut, nächstes Level", ->
         @level = level
         @size = Math.floor((Math.min @getInnerWidth(), @getInnerHeight()) / @level)
         @currentLevel = @details[@size.toString()] = []
