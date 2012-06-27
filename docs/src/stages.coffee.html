@@ -1,9 +1,10 @@
-<!DOCTYPE html><html><head><title>stages.coffee</title><meta http-equiv="Content-Type" content="text/html" charset="UTF-8"><link rel="stylesheet" media="all" href="../docco.css"></head><body><div id="container"><div id="background"></div><div id="jump_to">Jump To &hellip;<div id="jump_wrapper"><div id="jump_page"><a href="../index.html" class="source"><span class="file_name">README</span></a><a href="../lib/capkomsymbolwidget/capkomsymbolwidget.coffee.html" class="source "><span class="base_path">lib / capkomsymbolwidget / </span><span class="file_name">capkomsymbolwidget.coffee</span></a><a href="../lib/sizedetect/sizedetect.coffee.html" class="source "><span class="base_path">lib / sizedetect / </span><span class="file_name">sizedetect.coffee</span></a><a href="../lib/ttswidget/ttswidget.coffee.html" class="source "><span class="base_path">lib / ttswidget / </span><span class="file_name">ttswidget.coffee</span></a><a href="../src/fontsizewidget.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">fontsizewidget.coffee</span></a><a href="../src/navigation.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">navigation.coffee</span></a><a href="../src/profile.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">profile.coffee</span></a><a href="../src/stages.coffee.html" class="source selected"><span class="base_path">src / </span><span class="file_name">stages.coffee</span></a><a href="../src/symbolset.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">symbolset.coffee</span></a><a href="../src/symbolsets.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">symbolsets.coffee</span></a><a href="../src/thememap.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">thememap.coffee</span></a><a href="../src/wizard.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">wizard.coffee</span></a></div></div></div><table cellpadding="0" cellspacing="0"><thead><tr><th class="docs"><h1>stages.coffee</h1><div class="filepath">src/</div></th><th class="code"></th></tr></thead><tbody><tr id="section-1"><td class="docs"><div class="pilwrap"><a href="#section-1" class="pilcrow">&#182;</a></div><p>This module defines the wizard stages.</p>
+<!DOCTYPE html><html><head><title>stages.coffee</title><meta http-equiv="Content-Type" content="text/html" charset="UTF-8"><link rel="stylesheet" media="all" href="../docco.css"></head><body><div id="container"><div id="background"></div><div id="jump_to">Jump To &hellip;<div id="jump_wrapper"><div id="jump_page"><a href="../index.html" class="source"><span class="file_name">README</span></a><a href="../lib/capkomsymbolwidget/capkomsymbolwidget.coffee.html" class="source "><span class="base_path">lib / capkomsymbolwidget / </span><span class="file_name">capkomsymbolwidget.coffee</span></a><a href="../lib/explain/explain.coffee.html" class="source "><span class="base_path">lib / explain / </span><span class="file_name">explain.coffee</span></a><a href="../lib/sizedetect/sizedetect.coffee.html" class="source "><span class="base_path">lib / sizedetect / </span><span class="file_name">sizedetect.coffee</span></a><a href="../lib/ttswidget/ttswidget.coffee.html" class="source "><span class="base_path">lib / ttswidget / </span><span class="file_name">ttswidget.coffee</span></a><a href="../lib/wordmatch/wordmatch.coffee.html" class="source "><span class="base_path">lib / wordmatch / </span><span class="file_name">wordmatch.coffee</span></a><a href="../src/fontsizewidget.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">fontsizewidget.coffee</span></a><a href="../src/navigation.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">navigation.coffee</span></a><a href="../src/profile.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">profile.coffee</span></a><a href="../src/stages.coffee.html" class="source selected"><span class="base_path">src / </span><span class="file_name">stages.coffee</span></a><a href="../src/symbolset.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">symbolset.coffee</span></a><a href="../src/symbolsets.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">symbolsets.coffee</span></a><a href="../src/thememap.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">thememap.coffee</span></a><a href="../src/wizard.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">wizard.coffee</span></a></div></div></div><table cellpadding="0" cellspacing="0"><thead><tr><th class="docs"><h1>stages.coffee</h1><div class="filepath">src/</div></th><th class="code"></th></tr></thead><tbody><tr id="section-1"><td class="docs"><div class="pilwrap"><a href="#section-1" class="pilcrow">&#182;</a></div><p>This module defines the wizard stages.</p>
 </td><td class="code"><div class="highlight"><pre><span class="nv">Capkom = </span><span class="k">this</span><span class="p">.</span><span class="nx">Capkom</span> <span class="o">?=</span> <span class="p">{}</span></pre></div></td></tr><tr id="section-2"><td class="docs"><div class="pilwrap"><a href="#section-2" class="pilcrow">&#182;</a></div><p>Defining in which order the wizard stages will follow</p>
 </td><td class="code"><div class="highlight"><pre><span class="nv">Capkom.order = </span><span class="p">[</span>
     <span class="s">&quot;welcome&quot;</span>
-    <span class="s">&quot;fontsize&quot;</span>
     <span class="s">&quot;symbolsize&quot;</span>
+    <span class="s">&quot;read&quot;</span>
+    <span class="s">&quot;fontsize&quot;</span>
     <span class="s">&quot;theme&quot;</span>
     <span class="s">&quot;channels&quot;</span>
     <span class="s">&quot;symbolset&quot;</span>
@@ -16,20 +17,143 @@
         <span class="nv">image: </span><span class="s">&quot;http://www.greeting-cards-4u.com/tubes/CharlyBrown/snoopy.gif&quot;</span>
         <span class="nv">speech:</span>
             <span class="s">&quot;&quot;&quot;</span>
-<span class="s">            Willkommen zum Kunstportal CAPKOM!</span>
-<span class="s">            Hallo, ich heisse Wizi.</span>
-<span class="s">            Ich möchte euch nun ein paar Fragen zur Bedienung des Kunstportals stellen.</span>
-<span class="s">            Dies wird nur einige Minuten in Anspruch nehmen.</span>
+<span class="s">            Willkommen im Online-Atelier! Hier bekommst du Hilfe beim Hochladen neuer Bilder,</span>
+<span class="s">            beim Erstellen deines Profils und bei der Kommunikation mit anderen Künstlern.</span>
+<span class="s">            Lass‘ uns ein kleines Spiel spielen!</span>
 <span class="s">            &quot;&quot;&quot;</span>
 
         <span class="nv">html: </span>
             <span class="s">&quot;&quot;&quot;</span>
-<span class="s">            Willkommen zum Kunstportal CAPKOM!&lt;br/&gt;&lt;br/&gt;</span>
-<span class="s">            Hallo, ich heiße Wizi. &lt;br/&gt;</span>
-<span class="s">            Ich möchte euch nun ein paar Fragen zur Bedienung des Kunstportals stellen. &lt;br/&gt;</span>
-<span class="s">            Dies wird nur einige Minuten in Anspruch nehmen.</span>
-<span class="s">            &quot;&quot;&quot;</span></pre></div></td></tr><tr id="section-4"><td class="docs"><div class="pilwrap"><a href="#section-4" class="pilcrow">&#182;</a></div><p>Definition of the font size setting screen</p>
-</td><td class="code"><div class="highlight"><pre>    <span class="s">&quot;fontsize&quot;</span><span class="o">:</span>
+<span class="s">            Willkommen im Online-Atelier! Hier bekommst du Hilfe beim Hochladen neuer Bilder,</span>
+<span class="s">            beim Erstellen deines Profils und bei der Kommunikation mit anderen Künstlern.</span>
+<span class="s">            Lass‘ uns ein kleines Spiel spielen!</span>
+<span class="s">            &lt;div class=&quot;explain-area&quot;&gt;&lt;/div&gt;</span>
+<span class="s">            &quot;&quot;&quot;</span>
+        <span class="nv">explain: </span><span class="nf">(element, done) -&gt;</span>
+          <span class="nv">explainArea = </span><span class="nx">jQuery</span> <span class="s">&#39;.explain-area&#39;</span><span class="p">,</span> <span class="nx">element</span>
+          <span class="nv">explainWeiter = </span><span class="nf">(done) -&gt;</span>
+            <span class="nv">weiterArea = </span><span class="nx">explainArea</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s">&quot;&lt;div class=&#39;weiter&#39;&gt;&lt;/div&gt;&quot;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s">&#39;.weiter&#39;</span><span class="p">)</span>
+            <span class="nx">weiterArea</span><span class="p">.</span><span class="nx">explain</span>
+              <span class="nv">read: </span><span class="s">&quot;Hier geht’s im Spiel weiter.&quot;</span>
+              <span class="nv">useAudio: </span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s">&#39;useAudio&#39;</span><span class="p">)</span>
+              <span class="nv">html: </span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">              &lt;button class=&quot; nextButton&quot; alt=&quot;Weiter&quot; &gt;</span>
+<span class="s">              Weiter</span>
+<span class="s">              &lt;i class = &quot;icon-arrow-right&quot; /&gt;</span>
+<span class="s">              &lt;/button&gt;</span>
+<span class="s">              &quot;&quot;&quot;</span>
+              <span class="nv">script: </span><span class="nf">(element) -&gt;</span>
+                <span class="nx">jQuery</span><span class="p">(</span><span class="nx">element</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s">&#39;button&#39;</span><span class="p">).</span><span class="nx">button</span><span class="p">()</span>
+              <span class="nv">after: </span><span class="o">-&gt;</span>
+                <span class="nx">_</span><span class="p">.</span><span class="nx">defer</span> <span class="o">-&gt;</span>
+                  <span class="nx">weiterArea</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+                  <span class="nx">done</span><span class="p">()</span>
+              <span class="nv">ttsOptions:</span>
+                <span class="nv">spinnerUri: </span><span class="s">&quot;css/spinner.gif&quot;</span>
+                <span class="nv">dialogTitle: </span><span class="s">&quot;Sprechblase&quot;</span>
+                <span class="nv">lang: </span><span class="s">&quot;de&quot;</span>
+              <span class="nv">forcedClose: </span><span class="nf">(e) -&gt;</span>
+                <span class="nx">Capkom</span><span class="p">.</span><span class="nx">audioOff</span><span class="p">()</span>
+
+          <span class="nv">explainAudioKnopf = </span><span class="nf">(done) -&gt;</span>
+            <span class="nv">audioknopfArea = </span><span class="nx">explainArea</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s">&quot;&lt;div class=&#39;audioknopf&#39;&gt;&lt;/div&gt;&quot;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s">&#39;.audioknopf&#39;</span><span class="p">)</span>
+            <span class="nx">audioknopfArea</span><span class="p">.</span><span class="nx">explain</span>
+              <span class="nv">read: </span><span class="s">&quot;Drücke diesen Knopf, wenn du das Vorlesen aktivieren oder deaktivieren möchtest.&quot;</span>
+              <span class="nv">useAudio: </span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s">&#39;useAudio&#39;</span><span class="p">)</span>
+              <span class="nv">html: </span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">              &lt;button class=&#39;tts-button&#39; alt=&#39;Vorlesen&#39;&gt;&lt;i class=&#39;icon-volume-up&#39;/&gt;&lt;/button&gt;</span>
+<span class="s">              &quot;&quot;&quot;</span>
+              <span class="nv">script: </span><span class="nf">(element) -&gt;</span>
+                <span class="nx">jQuery</span><span class="p">(</span><span class="nx">element</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s">&#39;button&#39;</span><span class="p">).</span><span class="nx">button</span><span class="p">()</span>
+              <span class="nv">after: </span><span class="o">-&gt;</span>
+                <span class="nx">_</span><span class="p">.</span><span class="nx">defer</span> <span class="o">-&gt;</span>
+                  <span class="nx">audioknopfArea</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+                  <span class="nx">done</span><span class="p">()</span>
+              <span class="nv">ttsOptions:</span>
+                <span class="nv">spinnerUri: </span><span class="s">&quot;css/spinner.gif&quot;</span>
+                <span class="nv">dialogTitle: </span><span class="s">&quot;Sprechblase&quot;</span>
+                <span class="nv">lang: </span><span class="s">&quot;de&quot;</span>
+              <span class="nv">forcedClose: </span><span class="nf">(e) -&gt;</span>
+                <span class="nx">Capkom</span><span class="p">.</span><span class="nx">audioOff</span><span class="p">()</span>
+
+          <span class="nx">Capkom</span><span class="p">.</span><span class="nx">timeout</span><span class="p">.</span><span class="nx">start</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-&gt;</span>
+            <span class="nx">explainWeiter</span> <span class="o">-&gt;</span>
+              <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&quot;explanation done&quot;</span>
+              <span class="nx">Capkom</span><span class="p">.</span><span class="nx">timeout</span><span class="p">.</span><span class="nx">start</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-&gt;</span>
+                <span class="nx">explainAudioKnopf</span> <span class="o">-&gt;</span>
+                  <span class="nx">done</span><span class="p">()</span>
+
+        <span class="nv">show: </span><span class="nf">(element) -&gt;</span>
+          <span class="k">if</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">nonClickMode</span><span class="p">()</span>
+            <span class="nx">Capkom</span><span class="p">.</span><span class="nx">timeout</span><span class="p">.</span><span class="nx">start</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-&gt;</span>
+              <span class="nx">Capkom</span><span class="p">.</span><span class="nx">clickNext</span><span class="p">()</span></pre></div></td></tr><tr id="section-4"><td class="docs"><div class="pilwrap"><a href="#section-4" class="pilcrow">&#182;</a></div><h1>#</h1>
+</td><td class="code"><div class="highlight"><pre>     <span class="nx">Definition</span> <span class="k">of</span> <span class="nx">the</span> <span class="nx">symbol</span> <span class="nx">size</span> <span class="nx">selection</span> <span class="nx">screen</span></pre></div></td></tr><tr id="section-5"><td class="docs"><div class="pilwrap"><a href="#section-5" class="pilcrow">&#182;</a></div><h1>#</h1>
+</td><td class="code"><div class="highlight"><pre>    <span class="s">&quot;symbolsize&quot;</span><span class="o">:</span>
+      <span class="nv">title: </span><span class="s">&quot;Symbolgröße&quot;</span></pre></div></td></tr><tr id="section-6"><td class="docs"><div class="pilwrap"><a href="#section-6" class="pilcrow">&#182;</a></div><p>only show it if symbols are turned on</p>
+</td><td class="code"><div class="highlight"><pre>      <span class="nv">speech: </span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">        Wir beginnen mit einem Fangspiel: Fange die Käsestücke mit der Maus, indem du</span>
+<span class="s">        auf die Quadrate klickst. Versuche, möglichst viele Quadrate mit der Maus zu treffen, damit deine Maus ausreichend Futter bekommt.</span>
+<span class="s">        &quot;&quot;&quot;</span>
+
+      <span class="nv">condition: </span><span class="nf">(profile) -&gt;</span>
+        <span class="nx">profile</span><span class="p">.</span><span class="nx">get</span> <span class="s">&quot;useSymbols&quot;</span>
+      <span class="nv">image: </span><span class="s">&quot;http://i.fonts2u.com/sn/mp1_snoopy-dings_1.png&quot;</span>
+      <span class="nv">html: </span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">      Wir beginnen mit einem Fangspiel: Fange die Käsestücke mit der Maus, indem du</span>
+<span class="s">      auf die Quadrate klickst. Versuche, möglichst viele Quadrate mit der Maus zu treffen,</span>
+<span class="s">      damit deine Maus ausreichend Futter bekommt.&lt;br/&gt;</span>
+<span class="s">      &lt;button class=&#39;start&#39;&gt;Start&lt;/button&gt;</span>
+<span class="s">      &lt;div class=&#39;fangspiel-area&#39;&gt;&lt;/div&gt;</span>
+<span class="s">      &quot;&quot;&quot;</span>
+      <span class="nv">explain: </span><span class="nf">(element, done) -&gt;</span>
+        <span class="nx">Capkom</span><span class="p">.</span><span class="nx">timeout</span><span class="p">.</span><span class="nx">start</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-&gt;</span>
+          <span class="k">if</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">nonClickMode</span>
+            <span class="nv">ttswidget = </span><span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.tts&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">)</span>
+            <span class="nx">ttswidget</span><span class="p">.</span><span class="nx">bind</span> <span class="s">&#39;ttswidgetdone&#39;</span><span class="p">,</span> <span class="nf">(e) -&gt;</span>
+              <span class="nx">done</span><span class="p">()</span>
+            <span class="nx">ttswidget</span><span class="p">.</span><span class="nx">ttswidget</span><span class="p">(</span><span class="s">&#39;talk&#39;</span><span class="p">)</span>
+      <span class="nv">show: </span><span class="nf">(element, done) -&gt;</span>
+        <span class="k">if</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">nonClickMode</span><span class="p">()</span>
+          <span class="nx">Capkom</span><span class="p">.</span><span class="nx">timeout</span><span class="p">.</span><span class="nx">start</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-&gt;</span>
+            <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.fangspiel-area&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">sizedetect</span><span class="p">()</span>
+
+      <span class="nv">scriptOnce: </span><span class="nf">(element) -&gt;</span>
+        <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.start&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">button</span><span class="p">().</span><span class="nx">click</span> <span class="nf">(e) -&gt;</span>
+          <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.fangspiel-area&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">sizedetect</span>
+            <span class="nv">result: </span><span class="nf">(size, details) -&gt;</span>
+              <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">set</span>
+                <span class="nv">symbolsizeMin: </span><span class="nx">size</span>
+                <span class="nv">symbolsizedetectDetails: </span><span class="nx">details</span>
+
+    <span class="s">&quot;read&quot;</span><span class="o">:</span>
+      <span class="nv">title: </span><span class="s">&quot;Wort-Bild Spiel&quot;</span>
+      <span class="nv">image: </span><span class="s">&quot;http://www.balloonmaniacs.com/images/snoopygraduateballoon.jpg&quot;</span>
+      <span class="nv">speech: </span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">      Nun zeigen wir dir immer ein Bild und du musst das richtige Wort dazu finden. Schau</span>
+<span class="s">      dir das Bild an und klicke dann von den drei Wörtern auf das jeweils richtige Wort.</span>
+<span class="s">      &quot;&quot;&quot;</span>
+      <span class="nv">html: </span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">        Nun zeigen wir dir immer ein Bild und du musst das richtige Wort dazu finden. Schau&#39;</span>
+<span class="s">        dir das Bild an und klicke dann von den drei Wörtern auf das jeweils richtige Wort. &lt;br/&gt;</span>
+<span class="s">        &lt;button class=&#39;start&#39;&gt;Start&lt;/button&gt;</span>
+<span class="s">        &lt;div class=&#39;wortspiel-area&#39;&gt;&lt;/div&gt;</span>
+<span class="s">      &quot;&quot;&quot;</span>
+      <span class="nv">scriptOnce: </span><span class="nf">(element) -&gt;</span>
+        <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.start&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">button</span><span class="p">().</span><span class="nx">click</span> <span class="nf">(e) -&gt;</span>
+          <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.wortspiel-area&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">wordmatch</span>
+            <span class="nv">rootPrefix: </span><span class="s">&#39;lib/wordmatch/img/&#39;</span>
+            <span class="nv">result: </span><span class="nf">(res) -&gt;</span>
+              <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">set</span>
+                <span class="nv">wordmatch: </span><span class="nx">res</span>
+              <span class="nx">Capkom</span><span class="p">.</span><span class="nx">clickNext</span><span class="p">()</span>
+              <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.wortspiel-area&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">wordmatch</span> <span class="s">&#39;destroy&#39;</span>
+      <span class="nv">show: </span><span class="nf">(element) -&gt;</span>
+        <span class="nx">_</span><span class="p">.</span><span class="nx">defer</span> <span class="o">-&gt;</span>
+          <span class="nx">Capkom</span><span class="p">.</span><span class="nx">timeout</span><span class="p">.</span><span class="nx">start</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-&gt;</span>
+            <span class="k">if</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s">&#39;useAudio&#39;</span><span class="p">)</span>
+              <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.tts&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">ttswidget</span><span class="p">(</span><span class="s">&#39;talk&#39;</span><span class="p">)</span>
+
+    <span class="s">&quot;fontsize&quot;</span><span class="o">:</span>
         <span class="nv">title: </span><span class="s">&quot;Schriftgröße&quot;</span>
         <span class="nv">image: </span><span class="s">&quot;http://www.thepartyanimal-blog.org/wp-content/uploads/2010/09/Halloween-Snoopy5.jpg&quot;</span>
         <span class="nv">speech: </span><span class="s">&quot;Welche Schriftgröße ist für dich am angenehmsten?&quot;</span>
@@ -38,11 +162,11 @@
 <span class="s">            Welche Schriftgröße ist für dich am angenehmsten?&lt;br/&gt;&lt;br/&gt;</span>
 <span class="s">            &lt;div class=&#39;fontsize&#39;&gt;&lt;/div&gt;</span>
 <span class="s">            &quot;&quot;&quot;</span>
-        <span class="nv">script: </span><span class="nf">(element) -&gt;</span>
+        <span class="nv">scriptOnce: </span><span class="nf">(element) -&gt;</span>
             <span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;.fontsize&quot;</span><span class="p">).</span><span class="nx">fontsize</span>
                 <span class="nv">value: </span><span class="nb">Number</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s">&#39;fontsize&#39;</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
                 <span class="nv">change: </span><span class="nf">(val) -&gt;</span>
-                    <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">set</span> <span class="s">&#39;fontsize&#39;</span><span class="o">:</span> <span class="s">&quot;s</span><span class="si">#{</span><span class="nx">val</span><span class="si">}</span><span class="s">&quot;</span></pre></div></td></tr><tr id="section-5"><td class="docs"><div class="pilwrap"><a href="#section-5" class="pilcrow">&#182;</a></div><p>Definition of the theme selection screen</p>
+                    <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">set</span> <span class="s">&#39;fontsize&#39;</span><span class="o">:</span> <span class="s">&quot;s</span><span class="si">#{</span><span class="nx">val</span><span class="si">}</span><span class="s">&quot;</span></pre></div></td></tr><tr id="section-7"><td class="docs"><div class="pilwrap"><a href="#section-7" class="pilcrow">&#182;</a></div><p>Definition of the theme selection screen</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="s">&quot;theme&quot;</span><span class="o">:</span>
         <span class="nv">title: </span><span class="s">&quot;Design&quot;</span>
         <span class="nv">image: </span><span class="s">&quot;http://www.balloonmaniacs.com/images/snoopygraduateballoon.jpg&quot;</span>
@@ -52,9 +176,9 @@
 <span class="s">            Wähle dazu jenes Design, das dir am besten gefällt.&lt;br/&gt;&lt;br/&gt;</span>
 <span class="s">            &lt;span id=&#39;themeselector&#39;&gt;&lt;/span&gt;</span>
 <span class="s">        &quot;&quot;&quot;</span>
-        <span class="nv">script: </span><span class="nf">(element) -&gt;</span>
+        <span class="nv">scriptOnce: </span><span class="nf">(element) -&gt;</span>
             <span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;</span><span class="err">#</span><span class="s">themeselector&quot;</span><span class="p">,</span> <span class="nx">element</span><span class="p">)</span>
-            <span class="p">.</span><span class="nx">themeswitcher</span></pre></div></td></tr><tr id="section-6"><td class="docs"><div class="pilwrap"><a href="#section-6" class="pilcrow">&#182;</a></div><p>width: "17em"</p>
+            <span class="p">.</span><span class="nx">themeswitcher</span></pre></div></td></tr><tr id="section-8"><td class="docs"><div class="pilwrap"><a href="#section-8" class="pilcrow">&#182;</a></div><p>width: "17em"</p>
 </td><td class="code"><div class="highlight"><pre>                <span class="nv">width: </span><span class="s">&quot;5em&quot;</span>
                 <span class="nv">buttonHeight: </span><span class="mi">30</span>
                 <span class="nv">onSelect: </span><span class="o">-&gt;</span>
@@ -82,13 +206,13 @@
 <span class="s">                &lt;img src=&#39;symbols/Gnome-Audio-Volume-Muted-64.png&#39; width=&#39;64&#39; alt=&#39;Keine Sprachausgabe&#39;/&gt;</span>
 <span class="s">            &lt;/label&gt;</span>
 <span class="s">        &quot;&quot;&quot;</span>
-        <span class="nv">script: </span><span class="nf">(element) -&gt;</span></pre></div></td></tr><tr id="section-7"><td class="docs"><div class="pilwrap"><a href="#section-7" class="pilcrow">&#182;</a></div><p>activate the buttons according to the profile</p>
+        <span class="nv">scriptOnce: </span><span class="nf">(element) -&gt;</span></pre></div></td></tr><tr id="section-9"><td class="docs"><div class="pilwrap"><a href="#section-9" class="pilcrow">&#182;</a></div><p>activate the buttons according to the profile</p>
 </td><td class="code"><div class="highlight"><pre>            <span class="k">if</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">get</span> <span class="s">&quot;useSymbols&quot;</span>
                 <span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;</span><span class="err">#</span><span class="s">e2r-both&quot;</span><span class="p">).</span><span class="nx">attr</span> <span class="s">&quot;checked&quot;</span><span class="p">,</span> <span class="s">&quot;checked&quot;</span>
             <span class="k">else</span>
                 <span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;</span><span class="err">#</span><span class="s">e2r-alone&quot;</span><span class="p">).</span><span class="nx">attr</span> <span class="s">&quot;checked&quot;</span><span class="p">,</span> <span class="s">&quot;checked&quot;</span>
             <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;#e2r-alone, #e2r-both&#39;</span><span class="p">)</span>
-            <span class="p">.</span><span class="nx">button</span><span class="p">()</span></pre></div></td></tr><tr id="section-8"><td class="docs"><div class="pilwrap"><a href="#section-8" class="pilcrow">&#182;</a></div><p>Handle click event, change profile</p>
+            <span class="p">.</span><span class="nx">button</span><span class="p">()</span></pre></div></td></tr><tr id="section-10"><td class="docs"><div class="pilwrap"><a href="#section-10" class="pilcrow">&#182;</a></div><p>Handle click event, change profile</p>
 </td><td class="code"><div class="highlight"><pre>            <span class="p">.</span><span class="nx">click</span> <span class="o">-&gt;</span>
                 <span class="nv">state = </span><span class="nx">@id</span><span class="p">.</span><span class="nx">replace</span> <span class="s">&quot;e2r-&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span>
                 <span class="k">switch</span> <span class="nx">state</span>
@@ -99,14 +223,14 @@
                     <span class="k">when</span> <span class="s">&quot;both&quot;</span>
                         <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">set</span>
                             <span class="nv">useE2r: </span><span class="kc">true</span>
-                            <span class="nv">useSymbols: </span><span class="kc">true</span></pre></div></td></tr><tr id="section-9"><td class="docs"><div class="pilwrap"><a href="#section-9" class="pilcrow">&#182;</a></div><p>Set button state according to the profile</p>
+                            <span class="nv">useSymbols: </span><span class="kc">true</span></pre></div></td></tr><tr id="section-11"><td class="docs"><div class="pilwrap"><a href="#section-11" class="pilcrow">&#182;</a></div><p>Set button state according to the profile</p>
 </td><td class="code"><div class="highlight"><pre>            <span class="k">if</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">get</span> <span class="s">&quot;useAudio&quot;</span>
                 <span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;</span><span class="err">#</span><span class="s">audio-on&quot;</span><span class="p">).</span><span class="nx">attr</span> <span class="s">&quot;checked&quot;</span><span class="p">,</span> <span class="s">&quot;checked&quot;</span>
             <span class="k">else</span>
                 <span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;</span><span class="err">#</span><span class="s">audio-off&quot;</span><span class="p">).</span><span class="nx">attr</span> <span class="s">&quot;checked&quot;</span><span class="p">,</span> <span class="s">&quot;checked&quot;</span>
 
             <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;#audio-on, #audio-off&#39;</span><span class="p">)</span>
-            <span class="p">.</span><span class="nx">button</span><span class="p">()</span></pre></div></td></tr><tr id="section-10"><td class="docs"><div class="pilwrap"><a href="#section-10" class="pilcrow">&#182;</a></div><p>Handle click event, change profile</p>
+            <span class="p">.</span><span class="nx">button</span><span class="p">()</span></pre></div></td></tr><tr id="section-12"><td class="docs"><div class="pilwrap"><a href="#section-12" class="pilcrow">&#182;</a></div><p>Handle click event, change profile</p>
 </td><td class="code"><div class="highlight"><pre>            <span class="p">.</span><span class="nx">click</span> <span class="o">-&gt;</span>
                 <span class="nv">state = </span><span class="nx">@id</span><span class="p">.</span><span class="nx">replace</span> <span class="s">&quot;audio-&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span>
                 <span class="k">switch</span> <span class="nx">state</span>
@@ -115,10 +239,10 @@
                             <span class="nv">useAudio: </span><span class="kc">true</span>
                     <span class="k">when</span> <span class="s">&quot;off&quot;</span>
                         <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">set</span>
-                            <span class="nv">useAudio: </span><span class="kc">false</span></pre></div></td></tr><tr id="section-11"><td class="docs"><div class="pilwrap"><a href="#section-11" class="pilcrow">&#182;</a></div><p>Definition of the symbolset selection screen</p>
+                            <span class="nv">useAudio: </span><span class="kc">false</span></pre></div></td></tr><tr id="section-13"><td class="docs"><div class="pilwrap"><a href="#section-13" class="pilcrow">&#182;</a></div><p>Definition of the symbolset selection screen</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="s">&quot;symbolset&quot;</span><span class="o">:</span>
-        <span class="nv">title: </span><span class="s">&quot;&lt;label symbol-id=&#39;symbolset&#39;&gt;Symbolsatz&lt;/label&gt;&quot;</span></pre></div></td></tr><tr id="section-12"><td class="docs"><div class="pilwrap"><a href="#section-12" class="pilcrow">&#182;</a></div><h1>#</h1>
-</td><td class="code"><div class="highlight"><pre>         <span class="nx">only</span> <span class="nx">show</span> <span class="nx">it</span> <span class="k">if</span> <span class="nx">symbols</span> <span class="nx">are</span> <span class="nx">turned</span> <span class="kc">on</span></pre></div></td></tr><tr id="section-13"><td class="docs"><div class="pilwrap"><a href="#section-13" class="pilcrow">&#182;</a></div><h1>#</h1>
+        <span class="nv">title: </span><span class="s">&quot;&lt;label symbol-id=&#39;symbolset&#39;&gt;Symbolsatz&lt;/label&gt;&quot;</span></pre></div></td></tr><tr id="section-14"><td class="docs"><div class="pilwrap"><a href="#section-14" class="pilcrow">&#182;</a></div><h1>#</h1>
+</td><td class="code"><div class="highlight"><pre>         <span class="nx">only</span> <span class="nx">show</span> <span class="nx">it</span> <span class="k">if</span> <span class="nx">symbols</span> <span class="nx">are</span> <span class="nx">turned</span> <span class="kc">on</span></pre></div></td></tr><tr id="section-15"><td class="docs"><div class="pilwrap"><a href="#section-15" class="pilcrow">&#182;</a></div><h1>#</h1>
 </td><td class="code"><div class="highlight"><pre>        <span class="nv">condition: </span><span class="nf">(profile) -&gt;</span>
             <span class="nx">profile</span><span class="p">.</span><span class="nx">get</span> <span class="s">&quot;useSymbols&quot;</span>
         <span class="nv">image: </span><span class="s">&quot;http://www.gelsenkirchener-geschichten.de/userpix/1208/1208_snoopy006_3.gif&quot;</span>
@@ -128,7 +252,7 @@
 <span class="s">            Du kannst dir später auch Deine eigenen Symbole schaffen, indem du eigene Bilder oder Fotos hochlädst.</span>
 <span class="s">            &lt;div class=&#39;symbolset-symbols&#39;&gt;&lt;/div&gt;</span>
 <span class="s">        &quot;&quot;&quot;</span>
-        <span class="nv">script: </span><span class="nf">(element) -&gt;</span>
+        <span class="nv">scriptOnce: </span><span class="nf">(element) -&gt;</span>
             <span class="nv">symbolSets = </span><span class="nx">_</span><span class="p">.</span><span class="nx">filter</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">symbolSets</span><span class="p">.</span><span class="nx">sets</span><span class="p">,</span> <span class="nf">(symbolSet) -&gt;</span>
                 <span class="nx">symbolSet</span><span class="p">.</span><span class="nx">hasSymbol</span> <span class="s">&quot;mainSymbol&quot;</span>
             <span class="nx">Capkom</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="nx">symbolSets</span>
@@ -148,52 +272,10 @@
             <span class="p">.</span><span class="nx">button</span><span class="p">().</span><span class="nx">click</span> <span class="o">-&gt;</span>
                 <span class="nx">Capkom</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="s">&#39;click&#39;</span>
                 <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">set</span>
-                    <span class="nv">symbolSet: </span><span class="nx">jQuery</span><span class="p">(</span><span class="nx">@</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span></pre></div></td></tr><tr id="section-14"><td class="docs"><div class="pilwrap"><a href="#section-14" class="pilcrow">&#182;</a></div><p>Mark current profile selection as active</p>
+                    <span class="nv">symbolSet: </span><span class="nx">jQuery</span><span class="p">(</span><span class="nx">@</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span></pre></div></td></tr><tr id="section-16"><td class="docs"><div class="pilwrap"><a href="#section-16" class="pilcrow">&#182;</a></div><p>Mark current profile selection as active</p>
 </td><td class="code"><div class="highlight"><pre>            <span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;.symbolset-symbols .symbolset-mainSymbol&quot;</span><span class="p">,</span> <span class="nx">element</span><span class="p">)</span>
             <span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s">&quot;.</span><span class="si">#{</span><span class="nx">symbolSet</span><span class="si">}</span><span class="s">&quot;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s">&#39;selected&#39;</span><span class="p">).</span><span class="nx">end</span><span class="p">()</span>
-            <span class="p">.</span><span class="nx">button</span><span class="p">()</span></pre></div></td></tr><tr id="section-15"><td class="docs"><div class="pilwrap"><a href="#section-15" class="pilcrow">&#182;</a></div><h1>#</h1>
-</td><td class="code"><div class="highlight"><pre>     <span class="nx">Definition</span> <span class="k">of</span> <span class="nx">the</span> <span class="nx">symbol</span> <span class="nx">size</span> <span class="nx">selection</span> <span class="nx">screen</span></pre></div></td></tr><tr id="section-16"><td class="docs"><div class="pilwrap"><a href="#section-16" class="pilcrow">&#182;</a></div><h1>#</h1>
-</td><td class="code"><div class="highlight"><pre>    <span class="s">&quot;symbolsize&quot;</span><span class="o">:</span>
-        <span class="nv">title: </span><span class="s">&quot;Symbolgröße&quot;</span></pre></div></td></tr><tr id="section-17"><td class="docs"><div class="pilwrap"><a href="#section-17" class="pilcrow">&#182;</a></div><p>only show it if symbols are turned on</p>
-</td><td class="code"><div class="highlight"><pre>        <span class="nv">condition: </span><span class="nf">(profile) -&gt;</span>
-            <span class="nx">profile</span><span class="p">.</span><span class="nx">get</span> <span class="s">&quot;useSymbols&quot;</span>
-        <span class="nv">image: </span><span class="s">&quot;http://i.fonts2u.com/sn/mp1_snoopy-dings_1.png&quot;</span>
-        <span class="nv">html: </span><span class="s">&quot;&quot;&quot;</span>
-<span class="s">            Die CAPKOM-Kunstplattform beinhaltet viele Symbole.&lt;br/&gt;</span>
-<span class="s">            Wie groß sollen die Symbole sein? &lt;br/&gt;&lt;br/&gt;</span>
-<span class="s">            &lt;div class=&#39;symbolsize-symbols&#39;&gt;</span>
-<span class="s">                &lt;input type=&#39;radio&#39; name=&#39;symbolsize&#39; id=&#39;symbolsize-small&#39; /&gt;</span>
-<span class="s">                &lt;label for=&#39;symbolsize-small&#39;&gt;&lt;span class=&#39;capkom-label symbolsize-small&#39; </span>
-<span class="s">                        symbolId=&#39;symbol&#39; symbolsize=&#39;small&#39; donthidesymbol=&#39;true&#39; title=&#39;klein&#39;/&gt;</span>
-<span class="s">                &lt;/label&gt;</span>
-
-<span class="s">                &lt;input type=&#39;radio&#39; name=&#39;symbolsize&#39; id=&#39;symbolsize-medium&#39; /&gt;</span>
-<span class="s">                &lt;label for=&#39;symbolsize-medium&#39;&gt;&lt;span class=&#39;capkom-label symbolsize-medium&#39; </span>
-<span class="s">                        symbolId=&#39;symbol&#39; symbolsize=&#39;medium&#39; donthidesymbol=&#39;true&#39; title=&#39;mittelgroß&#39;/&gt;</span>
-<span class="s">                &lt;/label&gt;</span>
-
-<span class="s">                &lt;input type=&#39;radio&#39; name=&#39;symbolsize&#39; id=&#39;symbolsize-large&#39; /&gt;</span>
-<span class="s">                &lt;label for=&#39;symbolsize-large&#39;&gt;</span>
-<span class="s">                    &lt;span class=&#39;capkom-label symbolsize-large&#39; </span>
-<span class="s">                        symbolId=&#39;symbol&#39; symbolsize=&#39;large&#39; donthidesymbol=&#39;true&#39; title=&#39;groß&#39;/&gt;</span>
-<span class="s">                &lt;/label&gt;</span>
-<span class="s">            &lt;/div&gt;</span>
-<span class="s">        &quot;&quot;&quot;</span>
-        <span class="nv">script: </span><span class="nf">(element) -&gt;</span></pre></div></td></tr><tr id="section-18"><td class="docs"><div class="pilwrap"><a href="#section-18" class="pilcrow">&#182;</a></div><p>Mark currently selected size</p>
-</td><td class="code"><div class="highlight"><pre>            <span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;</span><span class="err">#</span><span class="s">symbolsize-</span><span class="si">#{</span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">get</span> <span class="s">&#39;symbolsize&#39;</span><span class="si">}</span><span class="s">&quot;</span><span class="p">).</span><span class="nx">attr</span> <span class="s">&quot;checked&quot;</span><span class="p">,</span> <span class="s">&quot;checked&quot;</span>
-            <span class="nv">buttonset = </span><span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;.symbolsize-symbols&quot;</span><span class="p">,</span> <span class="nx">element</span><span class="p">)</span>
-            <span class="nx">Capkom</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="nx">buttonset</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s">&quot;[name=symbolsize]&quot;</span><span class="p">).</span><span class="nx">button</span>
-                <span class="nv">text: </span><span class="kc">false</span>
-            <span class="nv">buttonset = </span><span class="nx">buttonset</span><span class="p">.</span><span class="nx">buttonset</span><span class="p">()</span>
-            <span class="nx">buttonset</span><span class="p">.</span><span class="nx">buttonset</span><span class="p">(</span><span class="s">&#39;widget&#39;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s">&#39;label&#39;</span><span class="p">)</span>
-            <span class="p">.</span><span class="nx">css</span>
-                <span class="nv">width: </span><span class="s">&quot;160px&quot;</span>
-                <span class="nv">height: </span><span class="s">&quot;140px&quot;</span>
-
-            <span class="nx">buttonset</span><span class="p">.</span><span class="nx">click</span> <span class="nf">(e) -&gt;</span>
-                <span class="nx">Capkom</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="nx">e</span>
-            <span class="nx">buttonset</span><span class="p">.</span><span class="nx">change</span> <span class="nf">(e) -&gt;</span></pre></div></td></tr><tr id="section-19"><td class="docs"><div class="pilwrap"><a href="#section-19" class="pilcrow">&#182;</a></div><p>On change, change profile</p>
-</td><td class="code"><div class="highlight"><pre>                <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">set</span> <span class="s">&#39;symbolsize&#39;</span><span class="o">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">id</span><span class="p">.</span><span class="nx">replace</span> <span class="s">&quot;symbolsize-&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span>
+            <span class="p">.</span><span class="nx">button</span><span class="p">()</span>
 
     <span class="s">&quot;goodbye&quot;</span><span class="o">:</span>
         <span class="nv">title: </span><span class="s">&quot;Ende&quot;</span>
@@ -204,23 +286,23 @@
 <span class="s">            Dein Profil enthält nun folgende Informationen:&lt;br/&gt;&lt;br/&gt;</span>
 <span class="s">            &lt;div id=&quot;profile&quot;&gt;&lt;/div&gt;</span>
 <span class="s">        &quot;&quot;&quot;</span>
-        <span class="nv">script: </span><span class="nf">(el) -&gt;</span>
+        <span class="nv">scriptOnce: </span><span class="nf">(el) -&gt;</span>
             <span class="nv">profileText = </span><span class="o">-&gt;</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">toJSON</span><span class="p">())</span>
                 <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/,&quot;/g</span><span class="p">,</span> <span class="s">&#39;,&lt;br/&gt;&quot;&#39;</span><span class="p">)</span>
                 <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/^{|}$/g</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
                 <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/&quot;:/g</span><span class="p">,</span> <span class="s">&#39;&quot;: &#39;</span><span class="p">)</span>
             <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">bind</span> <span class="s">&quot;change&quot;</span><span class="p">,</span> <span class="nf">(profile) -&gt;</span>
                 <span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;</span><span class="err">#</span><span class="s">goodbye </span><span class="err">#</span><span class="s">profile&quot;</span><span class="p">).</span><span class="nx">html</span> <span class="nx">profileText</span><span class="p">()</span>
-            <span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;</span><span class="err">#</span><span class="s">profile&quot;</span><span class="p">,</span> <span class="nx">el</span><span class="p">).</span><span class="nx">html</span> <span class="nx">profileText</span><span class="p">()</span></pre></div></td></tr><tr id="section-20"><td class="docs"><div class="pilwrap"><a href="#section-20" class="pilcrow">&#182;</a></div><h1>#</h1>
-</td><td class="code"><div class="highlight"><pre><span class="nx">Get</span> <span class="nx">an</span> <span class="nx">array</span> <span class="k">of</span> <span class="nx">stage</span> <span class="nx">objects</span> <span class="k">in</span> <span class="nx">the</span> <span class="nx">configured</span> <span class="nx">order</span><span class="p">.</span></pre></div></td></tr><tr id="section-21"><td class="docs"><div class="pilwrap"><a href="#section-21" class="pilcrow">&#182;</a></div><h1>#</h1>
+            <span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;</span><span class="err">#</span><span class="s">profile&quot;</span><span class="p">,</span> <span class="nx">el</span><span class="p">).</span><span class="nx">html</span> <span class="nx">profileText</span><span class="p">()</span></pre></div></td></tr><tr id="section-17"><td class="docs"><div class="pilwrap"><a href="#section-17" class="pilcrow">&#182;</a></div><h1>#</h1>
+</td><td class="code"><div class="highlight"><pre><span class="nx">Get</span> <span class="nx">an</span> <span class="nx">array</span> <span class="k">of</span> <span class="nx">stage</span> <span class="nx">objects</span> <span class="k">in</span> <span class="nx">the</span> <span class="nx">configured</span> <span class="nx">order</span><span class="p">.</span></pre></div></td></tr><tr id="section-18"><td class="docs"><div class="pilwrap"><a href="#section-18" class="pilcrow">&#182;</a></div><h1>#</h1>
 </td><td class="code"><div class="highlight"><pre><span class="nv">Capkom.getStages = </span><span class="o">-&gt;</span>
     <span class="nv">res = </span><span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">stagename</span> <span class="k">of</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">order</span>
         <span class="nv">stage = </span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">stages</span><span class="p">[</span><span class="nx">stagename</span><span class="p">]</span>
         <span class="nv">stage.name = </span><span class="nx">stagename</span>
         <span class="nx">stage</span>
     <span class="nx">res</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nv">_first = </span><span class="kc">true</span>
-    <span class="nx">res</span><span class="p">[</span><span class="nx">res</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span><span class="p">].</span><span class="nv">_last = </span><span class="kc">true</span></pre></div></td></tr><tr id="section-22"><td class="docs"><div class="pilwrap"><a href="#section-22" class="pilcrow">&#182;</a></div><h2> </h2>
-</td><td class="code"><div class="highlight"><pre>    <span class="nx">Filter</span> <span class="nx">out</span> <span class="nx">the</span> <span class="nx">dependent</span> <span class="o">and</span> <span class="o">not-</span><span class="nx">to</span><span class="o">-</span><span class="nx">show</span> <span class="nx">stages</span> <span class="nx">based</span> <span class="kc">on</span> <span class="o">`</span><span class="nx">stage</span><span class="p">.</span><span class="nx">condition</span><span class="o">`</span></pre></div></td></tr><tr id="section-23"><td class="docs"><div class="pilwrap"><a href="#section-23" class="pilcrow">&#182;</a></div><h1>#</h1>
+    <span class="nx">res</span><span class="p">[</span><span class="nx">res</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span><span class="p">].</span><span class="nv">_last = </span><span class="kc">true</span></pre></div></td></tr><tr id="section-19"><td class="docs"><div class="pilwrap"><a href="#section-19" class="pilcrow">&#182;</a></div><h2> </h2>
+</td><td class="code"><div class="highlight"><pre>    <span class="nx">Filter</span> <span class="nx">out</span> <span class="nx">the</span> <span class="nx">dependent</span> <span class="o">and</span> <span class="o">not-</span><span class="nx">to</span><span class="o">-</span><span class="nx">show</span> <span class="nx">stages</span> <span class="nx">based</span> <span class="kc">on</span> <span class="o">`</span><span class="nx">stage</span><span class="p">.</span><span class="nx">condition</span><span class="o">`</span></pre></div></td></tr><tr id="section-20"><td class="docs"><div class="pilwrap"><a href="#section-20" class="pilcrow">&#182;</a></div><h1>#</h1>
 </td><td class="code"><div class="highlight"><pre>    <span class="nv">res = </span><span class="nx">_</span><span class="p">(</span><span class="nx">res</span><span class="p">).</span><span class="nx">filter</span> <span class="nf">(stage) -&gt;</span>
         <span class="kc">true</span> <span class="nx">unless</span> <span class="nx">stage</span><span class="p">.</span><span class="nx">condition</span><span class="o">?</span><span class="p">(</span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">)</span> <span class="o">is</span> <span class="kc">false</span>
 <span class="nv">Capkom.showStages = </span><span class="nf">(el) -&gt;</span>
@@ -228,18 +310,18 @@
         <span class="nv">stages = </span><span class="nx">@getStages</span><span class="p">()</span>
         <span class="nv">stageNames = </span><span class="nx">_</span><span class="p">.</span><span class="nx">map</span> <span class="nx">stages</span><span class="p">,</span> <span class="nf">(stage) -&gt;</span>
             <span class="nx">stage</span><span class="p">.</span><span class="nx">name</span>
-        <span class="nv">anchors = </span><span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;.stages&quot;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s">&quot;ul.titles&quot;</span><span class="p">).</span><span class="nx">children</span><span class="p">()</span></pre></div></td></tr><tr id="section-24"><td class="docs"><div class="pilwrap"><a href="#section-24" class="pilcrow">&#182;</a></div><h1>#</h1>
-</td><td class="code"><div class="highlight"><pre>        <span class="nx">Remove</span> <span class="o">not</span> <span class="nx">necessary</span> <span class="nx">tabs</span></pre></div></td></tr><tr id="section-25"><td class="docs"><div class="pilwrap"><a href="#section-25" class="pilcrow">&#182;</a></div><h1>#</h1>
+        <span class="nv">anchors = </span><span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;.stages&quot;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s">&quot;ul.titles&quot;</span><span class="p">).</span><span class="nx">children</span><span class="p">()</span></pre></div></td></tr><tr id="section-21"><td class="docs"><div class="pilwrap"><a href="#section-21" class="pilcrow">&#182;</a></div><h1>#</h1>
+</td><td class="code"><div class="highlight"><pre>        <span class="nx">Remove</span> <span class="o">not</span> <span class="nx">necessary</span> <span class="nx">tabs</span></pre></div></td></tr><tr id="section-22"><td class="docs"><div class="pilwrap"><a href="#section-22" class="pilcrow">&#182;</a></div><h1>#</h1>
 </td><td class="code"><div class="highlight"><pre>        <span class="k">for</span> <span class="nx">i</span> <span class="k">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">..</span><span class="nx">anchors</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span><span class="p">].</span><span class="nx">reverse</span><span class="p">()</span>
             <span class="nv">anchor = </span><span class="nx">anchors</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
-            <span class="nv">anchorName = </span><span class="nx">jQuery</span><span class="p">(</span><span class="nx">anchor</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s">&quot;href&quot;</span><span class="p">).</span><span class="nx">replace</span> <span class="sr">/^#/</span><span class="p">,</span> <span class="s">&quot;&quot;</span></pre></div></td></tr><tr id="section-26"><td class="docs"><div class="pilwrap"><a href="#section-26" class="pilcrow">&#182;</a></div><h2>anchorName not in stageNames?</h2>
-</td><td class="code"><div class="highlight"><pre>            <span class="k">if</span> <span class="nx">_</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">stageNames</span><span class="p">,</span> <span class="nx">anchorName</span><span class="p">)</span> <span class="o">is</span> <span class="o">-</span><span class="mi">1</span></pre></div></td></tr><tr id="section-27"><td class="docs"><div class="pilwrap"><a href="#section-27" class="pilcrow">&#182;</a></div><pre><code>       el.tabs "remove", i
+            <span class="nv">anchorName = </span><span class="nx">jQuery</span><span class="p">(</span><span class="nx">anchor</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s">&quot;href&quot;</span><span class="p">).</span><span class="nx">replace</span> <span class="sr">/^#/</span><span class="p">,</span> <span class="s">&quot;&quot;</span></pre></div></td></tr><tr id="section-23"><td class="docs"><div class="pilwrap"><a href="#section-23" class="pilcrow">&#182;</a></div><h2>anchorName not in stageNames?</h2>
+</td><td class="code"><div class="highlight"><pre>            <span class="k">if</span> <span class="nx">_</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">stageNames</span><span class="p">,</span> <span class="nx">anchorName</span><span class="p">)</span> <span class="o">is</span> <span class="o">-</span><span class="mi">1</span></pre></div></td></tr><tr id="section-24"><td class="docs"><div class="pilwrap"><a href="#section-24" class="pilcrow">&#182;</a></div><pre><code>       el.tabs "remove", i
 </code></pre>
-</td><td class="code"><div class="highlight"><pre>                <span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;.stages&quot;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s">&quot;[href=</span><span class="err">#</span><span class="si">#{</span><span class="nx">anchorName</span><span class="si">}</span><span class="s">]&quot;</span><span class="p">).</span><span class="nx">parent</span><span class="p">().</span><span class="nx">hide</span><span class="p">()</span></pre></div></td></tr><tr id="section-28"><td class="docs"><div class="pilwrap"><a href="#section-28" class="pilcrow">&#182;</a></div><h1>#</h1>
-</td><td class="code"><div class="highlight"><pre>        <span class="nx">Return</span> <span class="nx">the</span> <span class="nx">current</span> <span class="nx">anchorNames</span></pre></div></td></tr><tr id="section-29"><td class="docs"><div class="pilwrap"><a href="#section-29" class="pilcrow">&#182;</a></div><h1>#</h1>
+</td><td class="code"><div class="highlight"><pre>                <span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;.stages&quot;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s">&quot;[href=</span><span class="err">#</span><span class="si">#{</span><span class="nx">anchorName</span><span class="si">}</span><span class="s">]&quot;</span><span class="p">).</span><span class="nx">parent</span><span class="p">().</span><span class="nx">hide</span><span class="p">()</span></pre></div></td></tr><tr id="section-25"><td class="docs"><div class="pilwrap"><a href="#section-25" class="pilcrow">&#182;</a></div><h1>#</h1>
+</td><td class="code"><div class="highlight"><pre>        <span class="nx">Return</span> <span class="nx">the</span> <span class="nx">current</span> <span class="nx">anchorNames</span></pre></div></td></tr><tr id="section-26"><td class="docs"><div class="pilwrap"><a href="#section-26" class="pilcrow">&#182;</a></div><h1>#</h1>
 </td><td class="code"><div class="highlight"><pre>        <span class="nv">anchorNames = </span><span class="o">-&gt;</span> <span class="nx">_</span><span class="p">.</span><span class="nx">map</span> <span class="nx">anchors</span><span class="p">,</span> <span class="nf">(anchor) -&gt;</span>
-            <span class="nx">jQuery</span><span class="p">(</span><span class="nx">anchor</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s">&quot;href&quot;</span><span class="p">).</span><span class="nx">replace</span> <span class="sr">/^#/</span><span class="p">,</span> <span class="s">&quot;&quot;</span></pre></div></td></tr><tr id="section-30"><td class="docs"><div class="pilwrap"><a href="#section-30" class="pilcrow">&#182;</a></div><h1>#</h1>
-</td><td class="code"><div class="highlight"><pre>        <span class="nx">Add</span> <span class="k">new</span> <span class="nx">tabs</span></pre></div></td></tr><tr id="section-31"><td class="docs"><div class="pilwrap"><a href="#section-31" class="pilcrow">&#182;</a></div><h1>#</h1>
+            <span class="nx">jQuery</span><span class="p">(</span><span class="nx">anchor</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s">&quot;href&quot;</span><span class="p">).</span><span class="nx">replace</span> <span class="sr">/^#/</span><span class="p">,</span> <span class="s">&quot;&quot;</span></pre></div></td></tr><tr id="section-27"><td class="docs"><div class="pilwrap"><a href="#section-27" class="pilcrow">&#182;</a></div><h1>#</h1>
+</td><td class="code"><div class="highlight"><pre>        <span class="nx">Add</span> <span class="k">new</span> <span class="nx">tabs</span></pre></div></td></tr><tr id="section-28"><td class="docs"><div class="pilwrap"><a href="#section-28" class="pilcrow">&#182;</a></div><h1>#</h1>
 </td><td class="code"><div class="highlight"><pre>        <span class="k">for</span> <span class="nx">stage</span><span class="p">,</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">stages</span>
             <span class="nv">an = </span><span class="nx">anchorNames</span><span class="p">()</span>
             <span class="k">if</span> <span class="nx">_</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">an</span><span class="p">,</span> <span class="nx">stage</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span> <span class="o">is</span> <span class="o">-</span><span class="mi">1</span>

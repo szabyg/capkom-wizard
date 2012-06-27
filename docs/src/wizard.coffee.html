@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><title>wizard.coffee</title><meta http-equiv="Content-Type" content="text/html" charset="UTF-8"><link rel="stylesheet" media="all" href="../docco.css"></head><body><div id="container"><div id="background"></div><div id="jump_to">Jump To &hellip;<div id="jump_wrapper"><div id="jump_page"><a href="../index.html" class="source"><span class="file_name">README</span></a><a href="../lib/capkomsymbolwidget/capkomsymbolwidget.coffee.html" class="source "><span class="base_path">lib / capkomsymbolwidget / </span><span class="file_name">capkomsymbolwidget.coffee</span></a><a href="../lib/sizedetect/sizedetect.coffee.html" class="source "><span class="base_path">lib / sizedetect / </span><span class="file_name">sizedetect.coffee</span></a><a href="../lib/ttswidget/ttswidget.coffee.html" class="source "><span class="base_path">lib / ttswidget / </span><span class="file_name">ttswidget.coffee</span></a><a href="../src/fontsizewidget.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">fontsizewidget.coffee</span></a><a href="../src/navigation.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">navigation.coffee</span></a><a href="../src/profile.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">profile.coffee</span></a><a href="../src/stages.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">stages.coffee</span></a><a href="../src/symbolset.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">symbolset.coffee</span></a><a href="../src/symbolsets.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">symbolsets.coffee</span></a><a href="../src/thememap.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">thememap.coffee</span></a><a href="../src/wizard.coffee.html" class="source selected"><span class="base_path">src / </span><span class="file_name">wizard.coffee</span></a></div></div></div><table cellpadding="0" cellspacing="0"><thead><tr><th class="docs"><h1>wizard.coffee</h1><div class="filepath">src/</div></th><th class="code"></th></tr></thead><tbody><tr id="section-1"><td class="docs"><div class="pilwrap"><a href="#section-1" class="pilcrow">&#182;</a></div><p>Capkom Wizard is freely distributable under the MIT license.</p>
+<!DOCTYPE html><html><head><title>wizard.coffee</title><meta http-equiv="Content-Type" content="text/html" charset="UTF-8"><link rel="stylesheet" media="all" href="../docco.css"></head><body><div id="container"><div id="background"></div><div id="jump_to">Jump To &hellip;<div id="jump_wrapper"><div id="jump_page"><a href="../index.html" class="source"><span class="file_name">README</span></a><a href="../lib/capkomsymbolwidget/capkomsymbolwidget.coffee.html" class="source "><span class="base_path">lib / capkomsymbolwidget / </span><span class="file_name">capkomsymbolwidget.coffee</span></a><a href="../lib/explain/explain.coffee.html" class="source "><span class="base_path">lib / explain / </span><span class="file_name">explain.coffee</span></a><a href="../lib/sizedetect/sizedetect.coffee.html" class="source "><span class="base_path">lib / sizedetect / </span><span class="file_name">sizedetect.coffee</span></a><a href="../lib/ttswidget/ttswidget.coffee.html" class="source "><span class="base_path">lib / ttswidget / </span><span class="file_name">ttswidget.coffee</span></a><a href="../lib/wordmatch/wordmatch.coffee.html" class="source "><span class="base_path">lib / wordmatch / </span><span class="file_name">wordmatch.coffee</span></a><a href="../src/fontsizewidget.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">fontsizewidget.coffee</span></a><a href="../src/navigation.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">navigation.coffee</span></a><a href="../src/profile.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">profile.coffee</span></a><a href="../src/stages.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">stages.coffee</span></a><a href="../src/symbolset.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">symbolset.coffee</span></a><a href="../src/symbolsets.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">symbolsets.coffee</span></a><a href="../src/thememap.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">thememap.coffee</span></a><a href="../src/wizard.coffee.html" class="source selected"><span class="base_path">src / </span><span class="file_name">wizard.coffee</span></a></div></div></div><table cellpadding="0" cellspacing="0"><thead><tr><th class="docs"><h1>wizard.coffee</h1><div class="filepath">src/</div></th><th class="code"></th></tr></thead><tbody><tr id="section-1"><td class="docs"><div class="pilwrap"><a href="#section-1" class="pilcrow">&#182;</a></div><p>Capkom Wizard is freely distributable under the MIT license.</p>
 </td><td class="code"><div class="highlight"><pre></pre></div></td></tr><tr id="section-2"><td class="docs"><div class="pilwrap"><a href="#section-2" class="pilcrow">&#182;</a></div><p>Author: <a href="https://github.com/szabyg">Szaby Gruenwald</a> (<a href="http://www.salzburgresearch.at/">Salzburg Research Forschungsgesellschaft mbH</a>)</p>
 
 <p>This is the central module initializing all the other depending modules.</p>
@@ -47,12 +47,16 @@
     <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">hash</span><span class="p">.</span><span class="nx">replace</span> <span class="sr">/^#/</span><span class="p">,</span> <span class="s">&quot;&quot;</span></pre></div></td></tr><tr id="section-14"><td class="docs"><div class="pilwrap"><a href="#section-14" class="pilcrow">&#182;</a></div><p>initialize or destroy tts widget depending on the profile state</p>
 </td><td class="code"><div class="highlight"><pre><span class="nv">Capkom.updateTTS = </span><span class="o">-&gt;</span>
     <span class="k">if</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">uiLoaded</span>
-        <span class="k">if</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">get</span> <span class="s">&quot;useAudio&quot;</span>
-            <span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;.tts&quot;</span><span class="p">).</span><span class="nx">ttswidget</span>
-                <span class="nv">spinnerUri: </span><span class="s">&quot;css/spinner.gif&quot;</span>
-                <span class="nv">dialogTitle: </span><span class="s">&quot;Sprechblase&quot;</span>
-        <span class="k">else</span>
-            <span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;:capkom-ttswidget&quot;</span><span class="p">).</span><span class="nx">ttswidget</span><span class="p">(</span><span class="s">&quot;destroy&quot;</span><span class="p">)</span></pre></div></td></tr><tr id="section-15"><td class="docs"><div class="pilwrap"><a href="#section-15" class="pilcrow">&#182;</a></div><p>Make sure no console.info or .error calls on </p>
+        <span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;.tts&quot;</span><span class="p">).</span><span class="nx">ttswidget</span>
+            <span class="nv">spinnerUri: </span><span class="s">&quot;css/spinner.gif&quot;</span>
+            <span class="nv">dialogTitle: </span><span class="s">&quot;Sprechblase&quot;</span>
+            <span class="nv">forceQuit: </span><span class="o">-&gt;</span>
+              <span class="nx">Capkom</span><span class="p">.</span><span class="nx">audioOff</span><span class="p">()</span>
+            <span class="nv">manualActivate: </span><span class="o">-&gt;</span>
+              <span class="nx">Capkom</span><span class="p">.</span><span class="nx">audioOn</span><span class="p">()</span>
+            <span class="nv">disabled: </span><span class="o">not</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">get</span> <span class="s">&quot;useAudio&quot;</span>
+    <span class="k">else</span>
+        <span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;:capkom-ttswidget&quot;</span><span class="p">).</span><span class="nx">ttswidget</span><span class="p">(</span><span class="s">&#39;option&#39;</span><span class="p">,</span> <span class="s">&#39;disabled&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span></pre></div></td></tr><tr id="section-15"><td class="docs"><div class="pilwrap"><a href="#section-15" class="pilcrow">&#182;</a></div><p>Make sure no console.info or .error calls on </p>
 </td><td class="code"><div class="highlight"><pre><span class="k">if</span> <span class="nb">window</span><span class="p">.</span><span class="nx">console</span>
     <span class="nv">Capkom.console = </span><span class="nx">console</span>
 <span class="k">else</span>
@@ -60,5 +64,37 @@
         <span class="nv">info: </span><span class="o">-&gt;</span>
         <span class="nv">error: </span><span class="o">-&gt;</span>
         <span class="nv">log: </span><span class="o">-&gt;</span>
+
+
+<span class="nv">Capkom.clickNext = </span><span class="o">-&gt;</span>
+  <span class="nv">activeTab = </span><span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.ui-tabs-panel&#39;</span><span class="p">).</span><span class="nx">filter</span> <span class="nf">(e, el) -&gt;</span>
+    <span class="nx">jQuery</span><span class="p">(</span><span class="nx">el</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s">&#39;display&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="s">&#39;none&#39;</span>
+  <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.nextButton&#39;</span><span class="p">,</span> <span class="nx">activeTab</span><span class="p">).</span><span class="nx">trigger</span> <span class="s">&#39;click&#39;</span>
+
+<span class="nv">Capkom.nonClickMode = </span><span class="o">-&gt;</span>
+  <span class="o">not</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">get</span> <span class="s">&#39;canClick&#39;</span>
+
+<span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;body&#39;</span><span class="p">).</span><span class="nx">click</span> <span class="o">-&gt;</span>
+  <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">set</span> <span class="nv">canClick: </span><span class="kc">true</span>
+
+<span class="nv">Capkom.autoReadMode = </span><span class="o">-&gt;</span>
+  <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">get</span> <span class="s">&#39;useAudio&#39;</span>
+
+<span class="k">class</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">Timeout</span>
+  <span class="nv">start: </span><span class="nf">(secs, cb) -&gt;</span>
+    <span class="nx">@clear</span><span class="p">()</span></pre></div></td></tr><tr id="section-16"><td class="docs"><div class="pilwrap"><a href="#section-16" class="pilcrow">&#182;</a></div><p>@timer = setTimeout cb, secs*1000</p>
+</td><td class="code"><div class="highlight"><pre>  <span class="nv">clear: </span><span class="o">-&gt;</span>
+    <span class="k">if</span> <span class="nx">@timer</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&quot;Cancel timeout&quot;</span>
+      <span class="nx">clearTimeout</span> <span class="nx">@timer</span>
+<span class="nv">Capkom.timeout = </span><span class="k">new</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">Timeout</span>
+
+<span class="nv">Capkom.audioOff = </span><span class="o">-&gt;</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;deactivate audio&#39;</span>
+  <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">set</span> <span class="nv">useAudio: </span><span class="kc">false</span>
+
+<span class="nv">Capkom.audioOn = </span><span class="o">-&gt;</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;activate audio&#39;</span>
+  <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">set</span> <span class="nv">useAudio: </span><span class="kc">true</span>
 
 </pre></div></td></tr></tbody></table><div id="projectname"><a href="../index.html">Capkom Wizard</a></div></div></body></html>

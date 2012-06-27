@@ -5,5 +5,6 @@
     "symbolSet":  "default",
     "useE2r":     true,
     "useAudio":   true,
+    "canClick":   false,
     "theme":      "UI lightness"
 }

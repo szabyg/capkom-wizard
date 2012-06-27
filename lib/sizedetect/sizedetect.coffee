@@ -25,6 +25,7 @@ jQuery.widget "Capkom.sizedetect"
       maxSize: 200
       minSize: 100
       clickCount: 5
+      timeout: 4
       result: (bestSize, details) ->
         res = "<h2>Results</h2>"
         res += "Measured Sizes (these sizes depend from the screen size)"
@@ -46,9 +47,28 @@ jQuery.widget "Capkom.sizedetect"
     @_fixConsole()
     # widget styling
     @element.addClass 'sizedetect-container'
+    @_savedCSS =
+      position: @element.css 'position'
+      top: @element.css 'top'
+      bottom: @element.css 'bottom'
+      left: @element.css 'left'
+      right: @element.css 'right'
+      'z-index': @element.css 'z-index'
+      'background-color': @element.css 'background-color'
+
     @element.css
-      width: @getInnerWidth() - 30
-      height: @getInnerHeight() - 30
+      position: 'fixed'
+      top: '5px'
+      bottom: '5px'
+      left: '5px'
+      right: '5px'
+      'background-color': '#fff'
+      'z-index': 100
+      # border: '1px red solid'
+
+      # width: @getInnerWidth() - 30
+      # height: @getInnerHeight() - 30
+
     @element.append "<div class='progressBar'></div>"
     @progressBar = @element.find ".progressBar"
     @progressBar.css
@@ -97,9 +117,9 @@ jQuery.widget "Capkom.sizedetect"
   _destroy: ->
     @element.html ""
     @element.removeClass 'sizedetect-container'
-    @element.css
-      width: 'auto'
-      height: 'auto'
+    @element.css @_savedCSS
+      # width: 'auto'
+      # height: 'auto'
 
   _beginGame: ->
     level = 2
@@ -133,8 +153,15 @@ jQuery.widget "Capkom.sizedetect"
     @catchme.css 'top', Math.floor Math.random() * maxTop
     @notyetmoved = true
     @reactionTimer.clearAndStart()
+    @timeoutTimer = setTimeout =>
+      @timeout()
+    , @options.timeout * 1000
+
+  timeout: ->
+    @finish()
 
   _attempt: (succeeded) ->
+    clearTimeout @timeoutTimer
     # If it's a successful click then register the reaction and move times
     if succeeded
       moveTime = @moveTimer.end()

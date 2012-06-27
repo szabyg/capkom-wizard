@@ -65,12 +65,16 @@ Capkom.getStagename = ->
 # initialize or destroy tts widget depending on the profile state
 Capkom.updateTTS = ->
     if Capkom.uiLoaded
-        if Capkom.profile.get "useAudio"
-            jQuery(".tts").ttswidget
-                spinnerUri: "css/spinner.gif"
-                dialogTitle: "Sprechblase"
-        else
-            jQuery(":capkom-ttswidget").ttswidget("destroy")
+        jQuery(".tts").ttswidget
+            spinnerUri: "css/spinner.gif"
+            dialogTitle: "Sprechblase"
+            forceQuit: ->
+              Capkom.audioOff()
+            manualActivate: ->
+              Capkom.audioOn()
+            disabled: not Capkom.profile.get "useAudio"
+    else
+        jQuery(":capkom-ttswidget").ttswidget('option', 'disabled', true)
 
 # Make sure no console.info or .error calls on 
 if window.console
@@ -81,3 +85,35 @@ else
         error: ->
         log: ->
 
+
+Capkom.clickNext = ->
+  activeTab = jQuery('.ui-tabs-panel').filter (e, el) ->
+    jQuery(el).css('display') != 'none'
+  jQuery('.nextButton', activeTab).trigger 'click'
+
+Capkom.nonClickMode = ->
+  not Capkom.profile.get 'canClick'
+
+jQuery('body').click ->
+  Capkom.profile.set canClick: true
+
+Capkom.autoReadMode = ->
+  Capkom.profile.get 'useAudio'
+
+class Capkom.Timeout
+  start: (secs, cb) ->
+    @clear()
+    # @timer = setTimeout cb, secs*1000
+  clear: ->
+    if @timer
+      console.info "Cancel timeout"
+      clearTimeout @timer
+Capkom.timeout = new Capkom.Timeout
+
+Capkom.audioOff = ->
+  console.info 'deactivate audio'
+  Capkom.profile.set useAudio: false
+
+Capkom.audioOn = ->
+  console.info 'activate audio'
+  Capkom.profile.set useAudio: true

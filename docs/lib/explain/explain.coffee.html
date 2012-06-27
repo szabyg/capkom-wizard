@@ -1,0 +1,76 @@
+<!DOCTYPE html><html><head><title>explain.coffee</title><meta http-equiv="Content-Type" content="text/html" charset="UTF-8"><link rel="stylesheet" media="all" href="../../docco.css"></head><body><div id="container"><div id="background"></div><div id="jump_to">Jump To &hellip;<div id="jump_wrapper"><div id="jump_page"><a href="../../index.html" class="source"><span class="file_name">README</span></a><a href="../../lib/capkomsymbolwidget/capkomsymbolwidget.coffee.html" class="source "><span class="base_path">lib / capkomsymbolwidget / </span><span class="file_name">capkomsymbolwidget.coffee</span></a><a href="../../lib/explain/explain.coffee.html" class="source selected"><span class="base_path">lib / explain / </span><span class="file_name">explain.coffee</span></a><a href="../../lib/sizedetect/sizedetect.coffee.html" class="source "><span class="base_path">lib / sizedetect / </span><span class="file_name">sizedetect.coffee</span></a><a href="../../lib/ttswidget/ttswidget.coffee.html" class="source "><span class="base_path">lib / ttswidget / </span><span class="file_name">ttswidget.coffee</span></a><a href="../../lib/wordmatch/wordmatch.coffee.html" class="source "><span class="base_path">lib / wordmatch / </span><span class="file_name">wordmatch.coffee</span></a><a href="../../src/fontsizewidget.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">fontsizewidget.coffee</span></a><a href="../../src/navigation.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">navigation.coffee</span></a><a href="../../src/profile.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">profile.coffee</span></a><a href="../../src/stages.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">stages.coffee</span></a><a href="../../src/symbolset.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">symbolset.coffee</span></a><a href="../../src/symbolsets.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">symbolsets.coffee</span></a><a href="../../src/thememap.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">thememap.coffee</span></a><a href="../../src/wizard.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">wizard.coffee</span></a></div></div></div><table cellpadding="0" cellspacing="0"><thead><tr><th class="docs"><h1>explain.coffee</h1><div class="filepath">lib/explain/</div></th><th class="code"></th></tr></thead><tbody><tr id="section-1"><td class="docs"><div class="pilwrap"><a href="#section-1" class="pilcrow">&#182;</a></div><p>Initialize Capkom object</p>
+</td><td class="code"><div class="highlight"><pre><span class="nv">Capkom = </span><span class="k">this</span><span class="p">.</span><span class="nx">Capkom</span> <span class="o">?=</span> <span class="p">{}</span></pre></div></td></tr><tr id="section-2"><td class="docs"><div class="pilwrap"><a href="#section-2" class="pilcrow">&#182;</a></div><p>Adds a symbol to a Capkom UI. Depending on the profile and the symbolset 
+the symbol can come from different symbolsets and have different sizes.
+Easiest usage would be this:</p>
+
+<pre><code>&lt;div id="sizedetect-container"&gt;&lt;/div&gt;
+
+jQuery("#sizedetect-container").sizedetect({
+  result: function(size){
+     // code to set profile parameter
+  }
+});
+</code></pre>
+
+<p>That causes a lookup for the <code>welcome</code> symbol in the defined 
+symbolsets in the defined size.</p>
+</td><td class="code"><div class="highlight"><pre></pre></div></td></tr><tr id="section-3"><td class="docs"><div class="pilwrap"><a href="#section-3" class="pilcrow">&#182;</a></div><p>TODO useAudio berücksichtigen</p>
+</td><td class="code"><div class="highlight"><pre><span class="nx">jQuery</span><span class="p">.</span><span class="nx">widget</span> <span class="s">&quot;Capkom.explain&quot;</span></pre></div></td></tr><tr id="section-4"><td class="docs"><div class="pilwrap"><a href="#section-4" class="pilcrow">&#182;</a></div><p>Options:</p>
+</td><td class="code"><div class="highlight"><pre>  <span class="nv">options:</span></pre></div></td></tr><tr id="section-5"><td class="docs"><div class="pilwrap"><a href="#section-5" class="pilcrow">&#182;</a></div><p>By default <code>Capkom.profile</code> is used for getting the selected symbolset,
+size and to be informed about profile changes.</p>
+</td><td class="code"><div class="highlight"><pre>      <span class="nv">profile: </span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span>
+      <span class="nv">read: </span><span class="s">&quot;This will be heard&quot;</span>
+      <span class="nv">html: </span><span class="s">&quot;This will be shown. &lt;button&gt;Testknopf&lt;/button&gt;&quot;</span>
+      <span class="nv">useAudio: </span><span class="kc">true</span>
+      <span class="nv">domInit: </span><span class="nf">(element, done) -&gt;</span>
+        <span class="nx">jQuery</span><span class="p">(</span><span class="nx">element</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s">&#39;button&#39;</span><span class="p">).</span><span class="nx">button</span><span class="p">()</span>
+        <span class="nx">done</span><span class="p">()</span>
+      <span class="nv">after: </span><span class="o">-&gt;</span>
+        <span class="nx">alert</span> <span class="s">&quot;this should happen after reading the text.&quot;</span>
+      <span class="nv">ttsOptions: </span><span class="p">{}</span>
+      <span class="nv">maxSize: </span><span class="mi">200</span>
+      <span class="nv">minSize: </span><span class="mi">100</span>
+      <span class="nv">clickCount: </span><span class="mi">5</span>
+      <span class="nv">result: </span><span class="nf">(bestSize, details) -&gt;</span>
+        <span class="nv">res = </span><span class="s">&quot;&lt;h2&gt;Results&lt;/h2&gt;&quot;</span>
+        <span class="nx">res</span> <span class="o">+=</span> <span class="s">&quot;Measured Sizes (these sizes depend from the screen size)&quot;</span>
+        <span class="nx">res</span> <span class="o">+=</span> <span class="s">&quot;&lt;ul&gt;&quot;</span>
+        <span class="k">for</span> <span class="nx">size</span><span class="p">,</span> <span class="nx">result</span> <span class="k">of</span> <span class="nx">details</span>
+          <span class="nx">res</span> <span class="o">+=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">          &lt;li&gt;</span>
+<span class="s">            size: </span><span class="si">#{</span><span class="nx">size</span><span class="si">}</span><span class="s">px, score: </span><span class="si">#{</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">score</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span><span class="si">}</span><span class="s"> %&lt;br/&gt;</span>
+<span class="s">            Reaction time: average: </span><span class="si">#{</span><span class="nx">result</span><span class="p">.</span><span class="nx">reactionTimeAverage</span><span class="si">}</span><span class="s">, standard deviation: </span><span class="si">#{</span><span class="nx">result</span><span class="p">.</span><span class="nx">reactionTimeStDev</span><span class="si">}</span><span class="s">&lt;br/&gt;</span>
+<span class="s">            Move time: average: </span><span class="si">#{</span><span class="nx">result</span><span class="p">.</span><span class="nx">moveTimeAverage</span><span class="si">}</span><span class="s">, standard deviation: </span><span class="si">#{</span><span class="nx">result</span><span class="p">.</span><span class="nx">moveTimeStDev</span><span class="si">}</span><span class="s"></span>
+<span class="s">           &lt;/li&gt;</span>
+<span class="s">           &quot;&quot;&quot;</span>
+        <span class="nx">res</span> <span class="o">+=</span> <span class="s">&quot;&lt;/ul&gt;&quot;</span>
+        <span class="nx">res</span> <span class="o">+=</span> <span class="s">&quot;&lt;p&gt;Minimum size resulted in </span><span class="si">#{</span><span class="nx">bestSize</span><span class="si">}</span><span class="s">&lt;/p&gt;&quot;</span>
+        <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;#results&#39;</span><span class="p">).</span><span class="nx">html</span> <span class="nx">res</span>
+        <span class="nx">@console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;ideal size:&#39;</span><span class="p">,</span> <span class="nx">size</span><span class="p">,</span> <span class="s">&#39;detailed results:&#39;</span><span class="p">,</span> <span class="nx">details</span>
+
+  <span class="nv">_create: </span><span class="o">-&gt;</span>
+    <span class="nx">@element</span><span class="p">.</span><span class="nx">html</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">  &lt;div tts=&quot;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">read</span><span class="si">}</span><span class="s">&quot; class=&quot;explain&quot;&gt;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">html</span><span class="si">}</span><span class="s">&lt;/div&gt;</span>
+<span class="s">    &quot;&quot;&quot;</span>
+    <span class="vi">@explainPanel = </span><span class="nx">@element</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s">&#39;.explain&#39;</span><span class="p">)</span>
+    <span class="nx">@options</span><span class="p">.</span><span class="nx">domInit</span> <span class="nx">@explainPanel</span><span class="p">,</span> <span class="o">=&gt;</span>
+      <span class="nv">options = </span><span class="nx">_</span><span class="p">.</span><span class="nx">extend</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">ttsOptions</span><span class="p">,</span>
+        <span class="nv">mode: </span><span class="s">&#39;auto&#39;</span>
+        <span class="nv">beforeDialog: </span><span class="o">=&gt;</span>
+          <span class="nx">@explainPanel</span><span class="p">.</span><span class="nx">ttswidget</span> <span class="s">&#39;getInnerContentElement&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">innerContent</span><span class="p">)</span> <span class="o">=&gt;</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="nx">@explainPanel</span><span class="p">,</span> <span class="nx">innerContent</span>
+            <span class="nx">innerContent</span><span class="p">.</span><span class="nx">append</span> <span class="nx">@explainPanel</span>
+        <span class="nv">done: </span><span class="o">=&gt;</span>
+          <span class="nx">@_trigger</span> <span class="s">&#39;after&#39;</span>
+          <span class="nx">_</span><span class="p">.</span><span class="nx">defer</span> <span class="o">=&gt;</span>
+            <span class="k">if</span> <span class="nx">@explainPanel</span>
+              <span class="nx">@explainPanel</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+              <span class="vi">@explainPanel = </span><span class="kc">null</span>
+        <span class="nv">forcedClose: </span><span class="o">=&gt;</span>
+          <span class="nx">@_trigger</span> <span class="s">&#39;forcedClose&#39;</span>
+
+      <span class="nx">@explainPanel</span><span class="p">.</span><span class="nx">ttswidget</span> <span class="nx">options</span>
+
+  <span class="nv">_destroy: </span><span class="o">-&gt;</span>
+    <span class="nx">@element</span><span class="p">.</span><span class="nx">append</span> <span class="nx">@explainPanel</span></pre></div></td></tr><tr id="section-6"><td class="docs"><div class="pilwrap"><a href="#section-6" class="pilcrow">&#182;</a></div><p>@explainPanel.remove()</p>
+</td><td class="code"><div class="highlight"><pre></pre></div></td></tr></tbody></table><div id="projectname"><a href="../../index.html">Capkom Wizard</a></div></div></body></html>

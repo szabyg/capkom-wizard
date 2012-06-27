@@ -1,0 +1,11 @@
+.sizedetect-container {
+    position: absolute;
+    top: 5;
+    left: 5;
+    border: 3px solid #ccc;
+    background-color: #fff;
+}
+
+.catchme {
+    background-image: url(garbage_fly_big.jpg)
+}

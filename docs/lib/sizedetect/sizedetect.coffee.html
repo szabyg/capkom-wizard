@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><title>sizedetect.coffee</title><meta http-equiv="Content-Type" content="text/html" charset="UTF-8"><link rel="stylesheet" media="all" href="../../docco.css"></head><body><div id="container"><div id="background"></div><div id="jump_to">Jump To &hellip;<div id="jump_wrapper"><div id="jump_page"><a href="../../index.html" class="source"><span class="file_name">README</span></a><a href="../../lib/capkomsymbolwidget/capkomsymbolwidget.coffee.html" class="source "><span class="base_path">lib / capkomsymbolwidget / </span><span class="file_name">capkomsymbolwidget.coffee</span></a><a href="../../lib/sizedetect/sizedetect.coffee.html" class="source selected"><span class="base_path">lib / sizedetect / </span><span class="file_name">sizedetect.coffee</span></a><a href="../../lib/ttswidget/ttswidget.coffee.html" class="source "><span class="base_path">lib / ttswidget / </span><span class="file_name">ttswidget.coffee</span></a><a href="../../src/fontsizewidget.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">fontsizewidget.coffee</span></a><a href="../../src/navigation.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">navigation.coffee</span></a><a href="../../src/profile.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">profile.coffee</span></a><a href="../../src/stages.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">stages.coffee</span></a><a href="../../src/symbolset.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">symbolset.coffee</span></a><a href="../../src/symbolsets.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">symbolsets.coffee</span></a><a href="../../src/thememap.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">thememap.coffee</span></a><a href="../../src/wizard.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">wizard.coffee</span></a></div></div></div><table cellpadding="0" cellspacing="0"><thead><tr><th class="docs"><h1>sizedetect.coffee</h1><div class="filepath">lib/sizedetect/</div></th><th class="code"></th></tr></thead><tbody><tr id="section-1"><td class="docs"><div class="pilwrap"><a href="#section-1" class="pilcrow">&#182;</a></div><p>Initialize Capkom object</p>
+<!DOCTYPE html><html><head><title>sizedetect.coffee</title><meta http-equiv="Content-Type" content="text/html" charset="UTF-8"><link rel="stylesheet" media="all" href="../../docco.css"></head><body><div id="container"><div id="background"></div><div id="jump_to">Jump To &hellip;<div id="jump_wrapper"><div id="jump_page"><a href="../../index.html" class="source"><span class="file_name">README</span></a><a href="../../lib/capkomsymbolwidget/capkomsymbolwidget.coffee.html" class="source "><span class="base_path">lib / capkomsymbolwidget / </span><span class="file_name">capkomsymbolwidget.coffee</span></a><a href="../../lib/explain/explain.coffee.html" class="source "><span class="base_path">lib / explain / </span><span class="file_name">explain.coffee</span></a><a href="../../lib/sizedetect/sizedetect.coffee.html" class="source selected"><span class="base_path">lib / sizedetect / </span><span class="file_name">sizedetect.coffee</span></a><a href="../../lib/ttswidget/ttswidget.coffee.html" class="source "><span class="base_path">lib / ttswidget / </span><span class="file_name">ttswidget.coffee</span></a><a href="../../lib/wordmatch/wordmatch.coffee.html" class="source "><span class="base_path">lib / wordmatch / </span><span class="file_name">wordmatch.coffee</span></a><a href="../../src/fontsizewidget.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">fontsizewidget.coffee</span></a><a href="../../src/navigation.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">navigation.coffee</span></a><a href="../../src/profile.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">profile.coffee</span></a><a href="../../src/stages.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">stages.coffee</span></a><a href="../../src/symbolset.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">symbolset.coffee</span></a><a href="../../src/symbolsets.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">symbolsets.coffee</span></a><a href="../../src/thememap.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">thememap.coffee</span></a><a href="../../src/wizard.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">wizard.coffee</span></a></div></div></div><table cellpadding="0" cellspacing="0"><thead><tr><th class="docs"><h1>sizedetect.coffee</h1><div class="filepath">lib/sizedetect/</div></th><th class="code"></th></tr></thead><tbody><tr id="section-1"><td class="docs"><div class="pilwrap"><a href="#section-1" class="pilcrow">&#182;</a></div><p>Initialize Capkom object</p>
 </td><td class="code"><div class="highlight"><pre><span class="nv">Capkom = </span><span class="k">this</span><span class="p">.</span><span class="nx">Capkom</span> <span class="o">?=</span> <span class="p">{}</span></pre></div></td></tr><tr id="section-2"><td class="docs"><div class="pilwrap"><a href="#section-2" class="pilcrow">&#182;</a></div><p>Adds a symbol to a Capkom UI. Depending on the profile and the symbolset 
 the symbol can come from different symbolsets and have different sizes.
 Easiest usage would be this:</p>
@@ -22,6 +22,7 @@ size and to be informed about profile changes.</p>
       <span class="nv">maxSize: </span><span class="mi">200</span>
       <span class="nv">minSize: </span><span class="mi">100</span>
       <span class="nv">clickCount: </span><span class="mi">5</span>
+      <span class="nv">timeout: </span><span class="mi">4</span>
       <span class="nv">result: </span><span class="nf">(bestSize, details) -&gt;</span>
         <span class="nv">res = </span><span class="s">&quot;&lt;h2&gt;Results&lt;/h2&gt;&quot;</span>
         <span class="nx">res</span> <span class="o">+=</span> <span class="s">&quot;Measured Sizes (these sizes depend from the screen size)&quot;</span>
@@ -42,53 +43,67 @@ size and to be informed about profile changes.</p>
   <span class="nv">_create: </span><span class="o">-&gt;</span>
     <span class="nx">@_fixConsole</span><span class="p">()</span></pre></div></td></tr><tr id="section-5"><td class="docs"><div class="pilwrap"><a href="#section-5" class="pilcrow">&#182;</a></div><p>widget styling</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="nx">@element</span><span class="p">.</span><span class="nx">addClass</span> <span class="s">&#39;sizedetect-container&#39;</span>
+    <span class="vi">@_savedCSS =</span>
+      <span class="nv">position: </span><span class="nx">@element</span><span class="p">.</span><span class="nx">css</span> <span class="s">&#39;position&#39;</span>
+      <span class="nv">top: </span><span class="nx">@element</span><span class="p">.</span><span class="nx">css</span> <span class="s">&#39;top&#39;</span>
+      <span class="nv">bottom: </span><span class="nx">@element</span><span class="p">.</span><span class="nx">css</span> <span class="s">&#39;bottom&#39;</span>
+      <span class="nv">left: </span><span class="nx">@element</span><span class="p">.</span><span class="nx">css</span> <span class="s">&#39;left&#39;</span>
+      <span class="nv">right: </span><span class="nx">@element</span><span class="p">.</span><span class="nx">css</span> <span class="s">&#39;right&#39;</span>
+      <span class="s">&#39;z-index&#39;</span><span class="o">:</span> <span class="nx">@element</span><span class="p">.</span><span class="nx">css</span> <span class="s">&#39;z-index&#39;</span>
+      <span class="s">&#39;background-color&#39;</span><span class="o">:</span> <span class="nx">@element</span><span class="p">.</span><span class="nx">css</span> <span class="s">&#39;background-color&#39;</span>
+
     <span class="nx">@element</span><span class="p">.</span><span class="nx">css</span>
-      <span class="nv">width: </span><span class="nx">@getInnerWidth</span><span class="p">()</span> <span class="o">-</span> <span class="mi">30</span>
-      <span class="nv">height: </span><span class="nx">@getInnerHeight</span><span class="p">()</span> <span class="o">-</span> <span class="mi">30</span>
-    <span class="nx">@element</span><span class="p">.</span><span class="nx">append</span> <span class="s">&quot;&lt;div class=&#39;progressBar&#39;&gt;&lt;/div&gt;&quot;</span>
+      <span class="nv">position: </span><span class="s">&#39;fixed&#39;</span>
+      <span class="nv">top: </span><span class="s">&#39;5px&#39;</span>
+      <span class="nv">bottom: </span><span class="s">&#39;5px&#39;</span>
+      <span class="nv">left: </span><span class="s">&#39;5px&#39;</span>
+      <span class="nv">right: </span><span class="s">&#39;5px&#39;</span>
+      <span class="s">&#39;background-color&#39;</span><span class="o">:</span> <span class="s">&#39;#fff&#39;</span>
+      <span class="s">&#39;z-index&#39;</span><span class="o">:</span> <span class="mi">100</span></pre></div></td></tr><tr id="section-6"><td class="docs"><div class="pilwrap"><a href="#section-6" class="pilcrow">&#182;</a></div><p>border: '1px red solid'</p>
+</td><td class="code"><div class="highlight"><pre></pre></div></td></tr><tr id="section-7"><td class="docs"><div class="pilwrap"><a href="#section-7" class="pilcrow">&#182;</a></div><p>width: @getInnerWidth() - 30
+height: @getInnerHeight() - 30</p>
+</td><td class="code"><div class="highlight"><pre>    <span class="nx">@element</span><span class="p">.</span><span class="nx">append</span> <span class="s">&quot;&lt;div class=&#39;progressBar&#39;&gt;&lt;/div&gt;&quot;</span>
     <span class="vi">@progressBar = </span><span class="nx">@element</span><span class="p">.</span><span class="nx">find</span> <span class="s">&quot;.progressBar&quot;</span>
     <span class="nx">@progressBar</span><span class="p">.</span><span class="nx">css</span>
       <span class="s">&#39;float&#39;</span><span class="o">:</span> <span class="s">&#39;right&#39;</span>
       <span class="s">&#39;width&#39;</span><span class="o">:</span> <span class="s">&#39;50%&#39;</span>
-    <span class="nx">@progressBar</span><span class="p">.</span><span class="nx">progressbar</span><span class="p">()</span></pre></div></td></tr><tr id="section-6"><td class="docs"><div class="pilwrap"><a href="#section-6" class="pilcrow">&#182;</a></div><p>Catchme button and functionality</p>
+    <span class="nx">@progressBar</span><span class="p">.</span><span class="nx">progressbar</span><span class="p">()</span></pre></div></td></tr><tr id="section-8"><td class="docs"><div class="pilwrap"><a href="#section-8" class="pilcrow">&#182;</a></div><p>Catchme button and functionality</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="nx">@element</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s">&quot;&lt;button class=&#39;catchme&#39;&gt;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">symbolLabel</span><span class="si">}</span><span class="s">&lt;/button&gt;&quot;</span><span class="p">)</span>
     <span class="vi">@catchme = </span><span class="nx">@element</span><span class="p">.</span><span class="nx">find</span> <span class="s">&#39;.catchme&#39;</span>
-    <span class="nx">@console</span><span class="p">.</span><span class="nx">info</span> <span class="nx">@catchme</span><span class="p">.</span><span class="nx">button</span><span class="p">()</span></pre></div></td></tr><tr id="section-7"><td class="docs"><div class="pilwrap"><a href="#section-7" class="pilcrow">&#182;</a></div><p>correct click</p>
+    <span class="nx">@console</span><span class="p">.</span><span class="nx">info</span> <span class="nx">@catchme</span><span class="p">.</span><span class="nx">button</span><span class="p">()</span></pre></div></td></tr><tr id="section-9"><td class="docs"><div class="pilwrap"><a href="#section-9" class="pilcrow">&#182;</a></div><p>correct click</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="nx">@catchme</span><span class="p">.</span><span class="nx">click</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span>
       <span class="nx">e</span><span class="p">.</span><span class="nx">stopPropagation</span><span class="p">()</span>
-      <span class="nx">@_attempt</span> <span class="kc">true</span></pre></div></td></tr><tr id="section-8"><td class="docs"><div class="pilwrap"><a href="#section-8" class="pilcrow">&#182;</a></div><p>wrong click</p>
+      <span class="nx">@_attempt</span> <span class="kc">true</span></pre></div></td></tr><tr id="section-10"><td class="docs"><div class="pilwrap"><a href="#section-10" class="pilcrow">&#182;</a></div><p>wrong click</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="nx">@element</span><span class="p">.</span><span class="nx">click</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span>
-      <span class="nx">@_attempt</span> <span class="kc">false</span></pre></div></td></tr><tr id="section-9"><td class="docs"><div class="pilwrap"><a href="#section-9" class="pilcrow">&#182;</a></div><p>measure delay before first mouse move (reaction time)</p>
+      <span class="nx">@_attempt</span> <span class="kc">false</span></pre></div></td></tr><tr id="section-11"><td class="docs"><div class="pilwrap"><a href="#section-11" class="pilcrow">&#182;</a></div><p>measure delay before first mouse move (reaction time)</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="nx">@element</span><span class="p">.</span><span class="nx">mousemove</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span>
       <span class="k">if</span> <span class="nx">@notyetmoved</span>
         <span class="vi">@notyetmoved = </span><span class="kc">false</span>
         <span class="vi">@reactionTime = </span><span class="nx">@reactionTimer</span><span class="p">.</span><span class="nx">end</span><span class="p">()</span>
-        <span class="nx">@moveTimer</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span></pre></div></td></tr><tr id="section-10"><td class="docs"><div class="pilwrap"><a href="#section-10" class="pilcrow">&#182;</a></div><p>jQuery('#reactionTime').html(@reactionTime)</p>
-</td><td class="code"><div class="highlight"><pre></pre></div></td></tr><tr id="section-11"><td class="docs"><div class="pilwrap"><a href="#section-11" class="pilcrow">&#182;</a></div><p>display elements for debug info</p>
+        <span class="nx">@moveTimer</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span></pre></div></td></tr><tr id="section-12"><td class="docs"><div class="pilwrap"><a href="#section-12" class="pilcrow">&#182;</a></div><p>jQuery('#reactionTime').html(@reactionTime)</p>
+</td><td class="code"><div class="highlight"><pre></pre></div></td></tr><tr id="section-13"><td class="docs"><div class="pilwrap"><a href="#section-13" class="pilcrow">&#182;</a></div><p>display elements for debug info</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="nx">@element</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s">&#39;&lt;div id=&quot;moveTime&quot;&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
-    <span class="nx">@element</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s">&#39;&lt;div id=&quot;reactionTime&quot;&gt;&lt;/div&gt;&#39;</span><span class="p">)</span></pre></div></td></tr><tr id="section-12"><td class="docs"><div class="pilwrap"><a href="#section-12" class="pilcrow">&#182;</a></div><p>@result collects all results of the levels</p>
-</td><td class="code"><div class="highlight"><pre>    <span class="vi">@details = </span><span class="p">{}</span></pre></div></td></tr><tr id="section-13"><td class="docs"><div class="pilwrap"><a href="#section-13" class="pilcrow">&#182;</a></div><p>Set up measurement and statistics counters</p>
+    <span class="nx">@element</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s">&#39;&lt;div id=&quot;reactionTime&quot;&gt;&lt;/div&gt;&#39;</span><span class="p">)</span></pre></div></td></tr><tr id="section-14"><td class="docs"><div class="pilwrap"><a href="#section-14" class="pilcrow">&#182;</a></div><p>@result collects all results of the levels</p>
+</td><td class="code"><div class="highlight"><pre>    <span class="vi">@details = </span><span class="p">{}</span></pre></div></td></tr><tr id="section-15"><td class="docs"><div class="pilwrap"><a href="#section-15" class="pilcrow">&#182;</a></div><p>Set up measurement and statistics counters</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="vi">@moveTimer = </span><span class="k">new</span> <span class="nx">StopWatch</span>
     <span class="vi">@reactionTimer = </span><span class="k">new</span> <span class="nx">StopWatch</span>
 
     <span class="vi">@moveTimeStat = </span><span class="k">new</span> <span class="nx">Stat</span>
-    <span class="vi">@reactionTimeStat = </span><span class="k">new</span> <span class="nx">Stat</span></pre></div></td></tr><tr id="section-14"><td class="docs"><div class="pilwrap"><a href="#section-14" class="pilcrow">&#182;</a></div><p>everything set up, begin the game</p>
+    <span class="vi">@reactionTimeStat = </span><span class="k">new</span> <span class="nx">Stat</span></pre></div></td></tr><tr id="section-16"><td class="docs"><div class="pilwrap"><a href="#section-16" class="pilcrow">&#182;</a></div><p>everything set up, begin the game</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="nx">@_beginGame</span><span class="p">()</span>
 
   <span class="nv">_destroy: </span><span class="o">-&gt;</span>
     <span class="nx">@element</span><span class="p">.</span><span class="nx">html</span> <span class="s">&quot;&quot;</span>
     <span class="nx">@element</span><span class="p">.</span><span class="nx">removeClass</span> <span class="s">&#39;sizedetect-container&#39;</span>
-    <span class="nx">@element</span><span class="p">.</span><span class="nx">css</span>
-      <span class="nv">width: </span><span class="s">&#39;auto&#39;</span>
-      <span class="nv">height: </span><span class="s">&#39;auto&#39;</span>
-
-  <span class="nv">_beginGame: </span><span class="o">-&gt;</span>
+    <span class="nx">@element</span><span class="p">.</span><span class="nx">css</span> <span class="nx">@_savedCSS</span></pre></div></td></tr><tr id="section-17"><td class="docs"><div class="pilwrap"><a href="#section-17" class="pilcrow">&#182;</a></div><p>width: 'auto'
+height: 'auto'</p>
+</td><td class="code"><div class="highlight"><pre>  <span class="nv">_beginGame: </span><span class="o">-&gt;</span>
     <span class="nv">level = </span><span class="mi">2</span>
     <span class="k">while</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">((</span><span class="nb">Math</span><span class="p">.</span><span class="nx">min</span> <span class="nx">@getInnerWidth</span><span class="p">(),</span> <span class="nx">@getInnerHeight</span><span class="p">())</span> <span class="o">/</span> <span class="nx">level</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">maxSize</span>
       <span class="nx">level</span><span class="o">++</span>
     <span class="nx">@_newLevel</span> <span class="nx">level</span> <span class="o">-</span> <span class="mi">1</span>
 
-  <span class="nv">_newLevel: </span><span class="nf">(level) -&gt;</span></pre></div></td></tr><tr id="section-15"><td class="docs"><div class="pilwrap"><a href="#section-15" class="pilcrow">&#182;</a></div><p>Set up level specific things</p>
+  <span class="nv">_newLevel: </span><span class="nf">(level) -&gt;</span></pre></div></td></tr><tr id="section-18"><td class="docs"><div class="pilwrap"><a href="#section-18" class="pilcrow">&#182;</a></div><p>Set up level specific things</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="k">if</span> <span class="nx">@size</span> <span class="o">&lt;</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">minSize</span>
       <span class="nx">@finish</span><span class="p">()</span>
     <span class="k">else</span>
@@ -97,10 +112,10 @@ size and to be informed about profile changes.</p>
       <span class="vi">@currentLevel = </span><span class="nx">@details</span><span class="p">[</span><span class="nx">@size</span><span class="p">.</span><span class="nx">toString</span><span class="p">()]</span> <span class="o">=</span> <span class="p">[]</span>
       <span class="nx">@progressBar</span><span class="p">.</span><span class="nx">progressbar</span> <span class="s">&#39;value&#39;</span><span class="p">,</span> <span class="mi">0</span>
       <span class="nx">@catchme</span><span class="p">.</span><span class="nx">css</span> <span class="s">&#39;width&#39;</span><span class="p">,</span> <span class="nx">@size</span>
-      <span class="nx">@catchme</span><span class="p">.</span><span class="nx">css</span> <span class="s">&#39;height&#39;</span><span class="p">,</span> <span class="nx">@size</span></pre></div></td></tr><tr id="section-16"><td class="docs"><div class="pilwrap"><a href="#section-16" class="pilcrow">&#182;</a></div><p>Reset sensors, start stop watches</p>
+      <span class="nx">@catchme</span><span class="p">.</span><span class="nx">css</span> <span class="s">&#39;height&#39;</span><span class="p">,</span> <span class="nx">@size</span></pre></div></td></tr><tr id="section-19"><td class="docs"><div class="pilwrap"><a href="#section-19" class="pilcrow">&#182;</a></div><p>Reset sensors, start stop watches</p>
 </td><td class="code"><div class="highlight"><pre>      <span class="nx">@moveTimeStat</span><span class="p">.</span><span class="nx">clear</span><span class="p">()</span>
       <span class="nx">@reactionTimeStat</span><span class="p">.</span><span class="nx">clear</span><span class="p">()</span>
-      <span class="nx">@console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;new level started with symbol size&#39;</span><span class="p">,</span> <span class="nx">@size</span></pre></div></td></tr><tr id="section-17"><td class="docs"><div class="pilwrap"><a href="#section-17" class="pilcrow">&#182;</a></div><p>Begin level</p>
+      <span class="nx">@console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;new level started with symbol size&#39;</span><span class="p">,</span> <span class="nx">@size</span></pre></div></td></tr><tr id="section-20"><td class="docs"><div class="pilwrap"><a href="#section-20" class="pilcrow">&#182;</a></div><p>Begin level</p>
 </td><td class="code"><div class="highlight"><pre>      <span class="nx">@_newPosition</span><span class="p">()</span>
 
   <span class="nv">_newPosition: </span><span class="o">-&gt;</span>
@@ -110,10 +125,17 @@ size and to be informed about profile changes.</p>
     <span class="nx">@catchme</span><span class="p">.</span><span class="nx">css</span> <span class="s">&#39;top&#39;</span><span class="p">,</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="nx">maxTop</span>
     <span class="vi">@notyetmoved = </span><span class="kc">true</span>
     <span class="nx">@reactionTimer</span><span class="p">.</span><span class="nx">clearAndStart</span><span class="p">()</span>
+    <span class="vi">@timeoutTimer = </span><span class="nx">setTimeout</span> <span class="o">=&gt;</span>
+      <span class="nx">@timeout</span><span class="p">()</span>
+    <span class="p">,</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">timeout</span> <span class="o">*</span> <span class="mi">1000</span>
 
-  <span class="nv">_attempt: </span><span class="nf">(succeeded) -&gt;</span></pre></div></td></tr><tr id="section-18"><td class="docs"><div class="pilwrap"><a href="#section-18" class="pilcrow">&#182;</a></div><p>If it's a successful click then register the reaction and move times</p>
+  <span class="nv">timeout: </span><span class="o">-&gt;</span>
+    <span class="nx">@finish</span><span class="p">()</span>
+
+  <span class="nv">_attempt: </span><span class="nf">(succeeded) -&gt;</span>
+    <span class="nx">clearTimeout</span> <span class="nx">@timeoutTimer</span></pre></div></td></tr><tr id="section-21"><td class="docs"><div class="pilwrap"><a href="#section-21" class="pilcrow">&#182;</a></div><p>If it's a successful click then register the reaction and move times</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="k">if</span> <span class="nx">succeeded</span>
-      <span class="nv">moveTime = </span><span class="nx">@moveTimer</span><span class="p">.</span><span class="nx">end</span><span class="p">()</span></pre></div></td></tr><tr id="section-19"><td class="docs"><div class="pilwrap"><a href="#section-19" class="pilcrow">&#182;</a></div><p>jQuery('#moveTime').html(moveTime)</p>
+      <span class="nv">moveTime = </span><span class="nx">@moveTimer</span><span class="p">.</span><span class="nx">end</span><span class="p">()</span></pre></div></td></tr><tr id="section-22"><td class="docs"><div class="pilwrap"><a href="#section-22" class="pilcrow">&#182;</a></div><p>jQuery('#moveTime').html(moveTime)</p>
 </td><td class="code"><div class="highlight"><pre>      <span class="vi">@start = </span><span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">()</span>
       <span class="nx">@console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;success&#39;</span><span class="p">,</span> <span class="nx">@level</span><span class="p">,</span> <span class="s">&#39;reactionTime:&#39;</span><span class="p">,</span> <span class="nx">@reactionTime</span><span class="p">,</span> <span class="s">&#39;moveTime:&#39;</span><span class="p">,</span> <span class="nx">moveTime</span>
 
@@ -123,25 +145,25 @@ size and to be informed about profile changes.</p>
         <span class="nv">reactionTime: </span><span class="nx">@reactionTime</span>
       <span class="nx">@reactionTimeStat</span><span class="p">.</span><span class="nx">add</span> <span class="nx">@reactionTime</span>
       <span class="nx">@moveTimeStat</span><span class="p">.</span><span class="nx">add</span> <span class="nx">moveTime</span>
-    <span class="k">else</span></pre></div></td></tr><tr id="section-20"><td class="docs"><div class="pilwrap"><a href="#section-20" class="pilcrow">&#182;</a></div><p>if click failed register failed click</p>
+    <span class="k">else</span></pre></div></td></tr><tr id="section-23"><td class="docs"><div class="pilwrap"><a href="#section-23" class="pilcrow">&#182;</a></div><p>if click failed register failed click</p>
 </td><td class="code"><div class="highlight"><pre>      <span class="nx">@console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;fail&#39;</span>
-      <span class="nx">@currentLevel</span><span class="p">.</span><span class="nx">push</span> <span class="mi">0</span></pre></div></td></tr><tr id="section-21"><td class="docs"><div class="pilwrap"><a href="#section-21" class="pilcrow">&#182;</a></div><p>After e.g. 5 clicks start a new level or finish game depending the score</p>
-</td><td class="code"><div class="highlight"><pre>    <span class="k">if</span> <span class="nx">@currentLevel</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;=</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">clickCount</span></pre></div></td></tr><tr id="section-22"><td class="docs"><div class="pilwrap"><a href="#section-22" class="pilcrow">&#182;</a></div><p>evaluate current level</p>
+      <span class="nx">@currentLevel</span><span class="p">.</span><span class="nx">push</span> <span class="mi">0</span></pre></div></td></tr><tr id="section-24"><td class="docs"><div class="pilwrap"><a href="#section-24" class="pilcrow">&#182;</a></div><p>After e.g. 5 clicks start a new level or finish game depending the score</p>
+</td><td class="code"><div class="highlight"><pre>    <span class="k">if</span> <span class="nx">@currentLevel</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;=</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">clickCount</span></pre></div></td></tr><tr id="section-25"><td class="docs"><div class="pilwrap"><a href="#section-25" class="pilcrow">&#182;</a></div><p>evaluate current level</p>
 </td><td class="code"><div class="highlight"><pre>      <span class="nx">@evaluateCurrentLevel</span><span class="p">()</span>
-      <span class="k">if</span> <span class="nx">@currentLevel</span><span class="p">.</span><span class="nx">score</span> <span class="o">&gt;=</span> <span class="mi">0</span></pre></div></td></tr><tr id="section-23"><td class="docs"><div class="pilwrap"><a href="#section-23" class="pilcrow">&#182;</a></div><p>High score --> New level</p>
+      <span class="k">if</span> <span class="nx">@currentLevel</span><span class="p">.</span><span class="nx">score</span> <span class="o">&gt;=</span> <span class="mi">0</span></pre></div></td></tr><tr id="section-26"><td class="docs"><div class="pilwrap"><a href="#section-26" class="pilcrow">&#182;</a></div><p>High score --> New level</p>
 </td><td class="code"><div class="highlight"><pre>        <span class="vi">@goodSize = </span><span class="nx">@size</span>
         <span class="nx">@console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&quot;goodSize is&quot;</span><span class="p">,</span> <span class="nx">@goodSize</span><span class="p">,</span> <span class="nx">@</span>
         <span class="k">if</span> <span class="nx">@currentLevel</span><span class="p">.</span><span class="nx">moveTimeAverage</span> <span class="o">&lt;</span> <span class="mi">2000</span>
           <span class="nx">@_newLevel</span> <span class="nx">@level</span> <span class="o">+</span> <span class="mi">2</span>
         <span class="k">else</span>
           <span class="nx">@_newLevel</span> <span class="nx">@level</span> <span class="o">+</span> <span class="mi">1</span>
-      <span class="k">else</span></pre></div></td></tr><tr id="section-24"><td class="docs"><div class="pilwrap"><a href="#section-24" class="pilcrow">&#182;</a></div><p>Low score --> Finish</p>
+      <span class="k">else</span></pre></div></td></tr><tr id="section-27"><td class="docs"><div class="pilwrap"><a href="#section-27" class="pilcrow">&#182;</a></div><p>Low score --> Finish</p>
 </td><td class="code"><div class="highlight"><pre>        <span class="nx">@finish</span><span class="p">()</span>
     <span class="k">else</span>
       <span class="nv">progress = </span><span class="p">(</span><span class="nx">@currentLevel</span><span class="p">.</span><span class="nx">length</span> <span class="o">/</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">clickCount</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
       <span class="nx">@console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;progress:&#39;</span><span class="p">,</span> <span class="nx">progress</span>
       <span class="nx">@progressBar</span><span class="p">.</span><span class="nx">progressbar</span> <span class="s">&#39;value&#39;</span><span class="p">,</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">progress</span><span class="p">)</span>
-      <span class="k">if</span> <span class="nx">succeeded</span></pre></div></td></tr><tr id="section-25"><td class="docs"><div class="pilwrap"><a href="#section-25" class="pilcrow">&#182;</a></div><p>Next task, same level</p>
+      <span class="k">if</span> <span class="nx">succeeded</span></pre></div></td></tr><tr id="section-28"><td class="docs"><div class="pilwrap"><a href="#section-28" class="pilcrow">&#182;</a></div><p>Next task, same level</p>
 </td><td class="code"><div class="highlight"><pre>        <span class="nx">@reactionTimer</span><span class="p">.</span><span class="nx">clear</span><span class="p">()</span>
         <span class="nx">@moveTimer</span><span class="p">.</span><span class="nx">clear</span><span class="p">()</span>
         <span class="nx">@_newPosition</span><span class="p">()</span>
@@ -185,7 +207,7 @@ size and to be informed about profile changes.</p>
       <span class="vi">@console =</span>
         <span class="nv">info: </span><span class="o">-&gt;</span>
         <span class="nv">error: </span><span class="o">-&gt;</span>
-        <span class="nv">log: </span><span class="o">-&gt;</span></pre></div></td></tr><tr id="section-26"><td class="docs"><div class="pilwrap"><a href="#section-26" class="pilcrow">&#182;</a></div><p>Class for calculating simple statistical data</p>
+        <span class="nv">log: </span><span class="o">-&gt;</span></pre></div></td></tr><tr id="section-29"><td class="docs"><div class="pilwrap"><a href="#section-29" class="pilcrow">&#182;</a></div><p>Class for calculating simple statistical data</p>
 </td><td class="code"><div class="highlight"><pre><span class="k">class</span> <span class="nx">Stat</span>
   <span class="nv">constructor: </span><span class="nf">(opts) -&gt;</span>
     <span class="nv">options =</span>
@@ -218,7 +240,7 @@ size and to be informed about profile changes.</p>
       <span class="nx">v</span> <span class="o">+=</span> <span class="p">(</span><span class="nx">av</span> <span class="o">-</span> <span class="nx">val</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="nx">av</span> <span class="o">-</span> <span class="nx">val</span><span class="p">)</span>
     <span class="nv">v = </span><span class="nx">v</span> <span class="o">/</span> <span class="nx">smpls</span><span class="p">.</span><span class="nx">length</span>
   <span class="nv">getStandardDeviation: </span><span class="o">-&gt;</span>
-    <span class="nb">Math</span><span class="p">.</span><span class="nx">sqrt</span> <span class="nx">@getVariance</span><span class="p">()</span></pre></div></td></tr><tr id="section-27"><td class="docs"><div class="pilwrap"><a href="#section-27" class="pilcrow">&#182;</a></div><p>Class for measuring time in milliseconds</p>
+    <span class="nb">Math</span><span class="p">.</span><span class="nx">sqrt</span> <span class="nx">@getVariance</span><span class="p">()</span></pre></div></td></tr><tr id="section-30"><td class="docs"><div class="pilwrap"><a href="#section-30" class="pilcrow">&#182;</a></div><p>Class for measuring time in milliseconds</p>
 </td><td class="code"><div class="highlight"><pre><span class="k">class</span> <span class="nx">StopWatch</span>
   <span class="nv">constructor: </span><span class="nf">(@error = -&gt; @console.error.apply @console, arguments) -&gt;</span>
     <span class="vi">@elapsed = </span><span class="mi">0</span>

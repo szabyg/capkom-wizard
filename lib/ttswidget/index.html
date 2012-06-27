@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="ttswidget.css" />
     <link rel="stylesheet" href="../jquery/jquery-ui.min.css" />
 
-    <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script>
     <script type="text/javascript" src="../jquery/jquery-1.7.1.js"></script>
     <script type="text/javascript" src="../jquery/jquery-ui.1.9m5.js"></script>
     <script type="text/javascript" src="../underscore-min.js"></script>
@@ -22,9 +21,48 @@
     <script type="text/javascript">
         jQuery(document).ready(function(){_.defer(function(){
             jQuery(".tts").ttswidget({
-                gender: "male"
+                gender:"male"
             });
+            cleanup_test(usetwice_test);
+            console.info('Test instantiated.');
         })});
+        function cleanup_test(done){
+            jQuery("#test1").ttswidget({
+                gender:"male",
+                mode:"auto",
+                done:function () {
+                    if (jQuery('body > .ui-dialog').length > 0) {
+                        alert('Test error: Dialog still in the dom.')
+                    } else {
+                        console.info("Cleanup test passed.");
+                        if (typeof done == "function") done();
+                    }
+                }
+            });
+        }
+        function usetwice_test(done){
+            var passed = false;
+            jQuery("#test2").ttswidget({
+                gender:"male",
+                done:function () {
+                    if (!passed) {
+                        try {
+                            jQuery("#test2").ttswidget('talk');
+                            passed = true;
+
+                        } catch (e) {
+                            alert("Use twice test failed!");
+                            console.error(e);
+                            jQuery("#test2").ttswidget('talk');
+                        }
+                    } else {
+                        console.info("Use twice test passed.");
+                        if (typeof done == "function") done();
+                    }
+                }
+            });
+            jQuery("#test2").ttswidget('talk');
+        }
     </script>
 
     <style>
@@ -96,5 +134,11 @@ Test a text
             });
         })(jQuery);
     </script>
+    <div id="test1" class="tts2" lang="en">
+        Short
+    </div>
+    <div id="test2" class="tts2" lang="en">
+        Short
+    </div>
 </body>
 </html>

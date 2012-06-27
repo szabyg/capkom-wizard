@@ -13,19 +13,21 @@
     <script type="text/javascript" src="../json-serialization.js"></script>
 
     <link rel="stylesheet" href="../../css/style.css" />
-<!--
-    <link rel="stylesheet" href="sizedetect.css" />
--->
-    <script type="text/javascript" src="sizedetect.js"></script>
+    <link rel="stylesheet" href="explain.css" />
+    <script type="text/javascript" src="explain.js"></script>
+    <script type="text/javascript" src="../ttswidget/ttswidget.js"></script>
     <script type="text/javascript">
         jQuery(document).ready(function(){_.defer(function(){
             jQuery("#start").button()
                     .click(function(){
-                        jQuery("#demo").sizedetect({
-                            symbolLabel: "Fang mich!"
+                        jQuery("#demo").explain({
                         });
                         jQuery("#start").hide();
                     });
+            jQuery("#demo").explain({
+            });
+            jQuery("#start").hide();
+
         })});
     </script>
 
@@ -53,8 +55,8 @@
             level. The sizes depend on the screen size and the speed of the player. The game begins with a size that's
             at least maxSize specified in the options and ends at the latest when the measured symbol size became
             smaller then the minSize. For further info see the
-            <a href="../../docs/lib/sizedetect/sizedetect.coffee.html">documented source code</a> or
-            <a href="https://github.com/szabyg/capkom-wizard/tree/gh-pages/lib/sizedetect">github</a>
+            <a href="../../docs/lib/explain/explain.coffee.html">documented source code</a> or
+            <a href="https://github.com/szabyg/capkom-wizard/tree/gh-pages/lib/explain">github</a>
         </p>
         <button id="start">Start</button>
         <div id='demo'></div>

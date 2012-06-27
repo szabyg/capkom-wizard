@@ -24,41 +24,60 @@ jQuery.widget "Capkom.wordmatch"
       result: (details) ->
         @console.info 'detailed results:', details
       symbolSize: 150
+      rootPrefix: 'img/'
       questions: [
         type: 's2w' # symbol to word
-        question: 'img/tree.jpg'
+        question: 'tree.jpg'
         choices: ['Baum', 'Haus', 'Hose']
         correct: 'Baum'
       ,
         type: 's2w',
-        question: 'img/house.jpg'
+        question: 'house.jpg'
         choices: ['Baum', 'Haus', 'Hose']
         correct: 'Haus'
       ,
         type: 's2w',
-        question: 'img/pants.gif'
+        question: 'pants.gif'
         choices: ['Baum', 'Haus', 'Hose']
         correct: 'Hose'
       ,
         type: 'w2s' # word to symbol
         question: 'Baum'
-        choices: ['img/tree.jpg', 'img/pants.gif', 'img/house.jpg']
-        correct: 'img/tree.jpg'
+        choices: ['tree.jpg', 'pants.gif', 'house.jpg']
+        correct: 'tree.jpg'
       ,
         type: 'w2s' # word to symbol
         question: 'Haus'
-        choices: ['img/tree.jpg', 'img/pants.gif', 'img/house.jpg']
-        correct: 'img/house.jpg'
+        choices: ['tree.jpg', 'pants.gif', 'house.jpg']
+        correct: 'house.jpg'
       ,
         type: 'w2s' # word to symbol
         question: 'Hose'
-        choices: ['img/tree.jpg', 'img/pants.gif', 'img/house.jpg']
-        correct: 'img/pants.gif'
+        choices: ['tree.jpg', 'pants.gif', 'house.jpg']
+        correct: 'pants.gif'
       ]
 
   _create: ->
     @_fixConsole()
     # widget styling
+    @_savedCSS =
+      position: @element.css 'position'
+      top: @element.css 'top'
+      bottom: @element.css 'bottom'
+      left: @element.css 'left'
+      right: @element.css 'right'
+      'z-index': @element.css 'z-index'
+      'background-color': @element.css 'background-color'
+
+    @element.css
+      position: 'absolute'
+      top: '5px'
+      bottom: '5px'
+      left: '5px'
+      right: '5px'
+      'background-color': '#fff'
+      'z-index': 100
+
     @element.addClass 'wordmatch-container'
     @element.append "<div class='progressBar'></div>"
     @progressBar = @element.find ".progressBar"
@@ -79,6 +98,9 @@ jQuery.widget "Capkom.wordmatch"
     @questionArea = @element.find '.question-area'
     @answerArea = @element.find '.answer-area'
 
+    @questionArea.css
+      'text-align': 'center'
+
     @element.append "<div class='msg-dialog'></div>"
     @messageArea = @element.find '.msg-dialog'
     # everything set up, begin the game
@@ -87,9 +109,7 @@ jQuery.widget "Capkom.wordmatch"
   _destroy: ->
     @element.html ""
     @element.removeClass 'wordmatch-container'
-    @element.css
-      width: 'auto'
-      height: 'auto'
+    @element.css @_savedCSS
 
   _beginGame: ->
     # prepare sequence
@@ -104,72 +124,83 @@ jQuery.widget "Capkom.wordmatch"
         wrong: 0
         times: new Stat
     @timer = new StopWatch()
-
     @_renderNext()
+
   _renderNext: ->
-    @finish() unless @sequence.length
-    @question = @sequence.shift()
-    switch @question.type
-      when 's2w'
-        @questionArea.html "<img class='question' src='#{@question.question}' width='#{@options.symbolSize * 2} height='#{@options.symbolSize * 2}'/>"
-        @answerArea.html ''
-        for choice in @_shuffle @question.choices
-          @answerArea.append "<button value='#{choice}' width='#{@options.symbolSize} height='#{@options.symbolSize}'>#{choice}</button>"
-        @currentResultContainer = @results.symbol2word
-      when 'w2s'
-        @questionArea.html "<h1>#{@question.question}</h1>"
-        @answerArea.html ''
-        for choice in @_shuffle @question.choices
-          @answerArea.append """
-            <button value='#{choice}' width='#{@options.symbolSize} height='#{@options.symbolSize}'>
-              <img class='choice' src='#{choice}' width='#{@options.symbolSize} height='#{@options.symbolSize}'/>
-            </button>
-          """
-        @currentResultContainer = @results.word2symbol
-    @buttonsDisabled = false
-    @playArea.find('button')
-    .button()
-    .css
-      minWidth: @options.symbolSize
-      minHeight: @options.symbolSize
-    .click (e) =>
-      unless @buttonsDisabled
-        @buttonsDisabled = true
-        attempt = jQuery(e.currentTarget).attr('value')
-        if attempt is @question.correct
-          @currentResultContainer.times.add @timer.end()
-          @currentResultContainer.correct++
-          jQuery(e.currentTarget).css
-            'border': 'lightgreen 5px solid'
-          @message 'Korrekt!', =>
-            @buttonsDisabled = false
-            @_renderNext()
-        else
-          @currentResultContainer.wrong++
-          jQuery(e.currentTarget).css
-            'border': 'red 5px solid'
-          @message "Leider falsch.. Versuch's noch einmal!", =>
-            @buttonsDisabled = false
+    if @sequence.length
+      @question = @sequence.shift()
+      switch @question.type
+        when 's2w'
+          @questionArea.html "<img class='question' src='#{@options.rootPrefix}#{@question.question}' width='#{@options.symbolSize * 2} height='#{@options.symbolSize * 2}'/>"
+          @answerArea.html ''
+          for choice in @_shuffle @question.choices
+            @answerArea.append "<button value='#{choice}' width='#{@options.symbolSize} height='#{@options.symbolSize}'>#{choice}</button>"
+          @currentResultContainer = @results.symbol2word
+        when 'w2s'
+          @questionArea.html "<h1>#{@question.question}</h1>"
+          jQuery('h1', @questionArea).css
+            "text-align": "center"
+            "font-size": "140%"
+          @answerArea.html ''
+          for choice in @_shuffle @question.choices
+            @answerArea.append """
+              <button value='#{choice}' width='#{@options.symbolSize} height='#{@options.symbolSize}'>
+                <img class='choice' src='#{@options.rootPrefix}#{choice}' width='#{@options.symbolSize} height='#{@options.symbolSize}'/>
+              </button>
+            """
+          @currentResultContainer = @results.word2symbol
+      @buttonsDisabled = false
+      @playArea.find('button')
+      .button()
+      .css
+        minWidth: @options.symbolSize
+        minHeight: @options.symbolSize
+      .click (e) =>
+        unless @buttonsDisabled
+          @buttonsDisabled = true
+          attempt = jQuery(e.currentTarget).attr('value')
+          if attempt is @question.correct
+            @currentResultContainer.times.add @timer.end()
+            @currentResultContainer.correct++
             jQuery(e.currentTarget).css
-              'border': ''
-    @timer.start()
+              'border': 'lightgreen 5px solid'
+            @message 'Korrekt!', =>
+              @buttonsDisabled = false
+              @_renderNext()
+          else
+            @currentResultContainer.wrong++
+            jQuery(e.currentTarget).css
+              'border': 'red 5px solid'
+            @message "Leider falsch.. Versuch's noch einmal!", =>
+              @buttonsDisabled = false
+              jQuery(e.currentTarget).css
+                'border': ''
+      @timer.start()
+    else
+      @finish()
 
   message: (msg, cb) ->
-    @messageArea.html(msg).dialog()
+    @messageArea.html(msg).dialog
+      hide: "fade"
+      close: =>
+        _.defer =>
+          @messageArea.dialog 'destroy'
+          cb()
     afterWaiting = =>
-      @messageArea.dialog('destroy')
-      cb()
-    setTimeout afterWaiting, 100
+      @messageArea.dialog('close')
+
+    setTimeout afterWaiting, 1000
   finish: ->
     @playArea.html ''
+    @element.css @_savedCSS
     @results.word2symbol.score = @results.word2symbol.correct / (@results.word2symbol.correct + @results.word2symbol.wrong)
     @results.word2symbol.times = @results.word2symbol.times.getStatistics()
 
     @results.symbol2word.score = @results.symbol2word.correct / (@results.symbol2word.correct + @results.symbol2word.wrong)
     @results.symbol2word.times = @results.symbol2word.times.getStatistics()
-
-    console.info 'results', @results
-    jQuery('.results').html JSON.stringify @results
+    @message "Gratuliere, fertig!", =>
+      console.info 'results', @results
+      @options.result @results
 
   getInnerWidth: ->
     return jQuery(window).width()

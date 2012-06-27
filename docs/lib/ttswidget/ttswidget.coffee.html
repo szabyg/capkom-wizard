@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><title>ttswidget.coffee</title><meta http-equiv="Content-Type" content="text/html" charset="UTF-8"><link rel="stylesheet" media="all" href="../../docco.css"></head><body><div id="container"><div id="background"></div><div id="jump_to">Jump To &hellip;<div id="jump_wrapper"><div id="jump_page"><a href="../../index.html" class="source"><span class="file_name">README</span></a><a href="../../lib/capkomsymbolwidget/capkomsymbolwidget.coffee.html" class="source "><span class="base_path">lib / capkomsymbolwidget / </span><span class="file_name">capkomsymbolwidget.coffee</span></a><a href="../../lib/sizedetect/sizedetect.coffee.html" class="source "><span class="base_path">lib / sizedetect / </span><span class="file_name">sizedetect.coffee</span></a><a href="../../lib/ttswidget/ttswidget.coffee.html" class="source selected"><span class="base_path">lib / ttswidget / </span><span class="file_name">ttswidget.coffee</span></a><a href="../../src/fontsizewidget.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">fontsizewidget.coffee</span></a><a href="../../src/navigation.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">navigation.coffee</span></a><a href="../../src/profile.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">profile.coffee</span></a><a href="../../src/stages.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">stages.coffee</span></a><a href="../../src/symbolset.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">symbolset.coffee</span></a><a href="../../src/symbolsets.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">symbolsets.coffee</span></a><a href="../../src/thememap.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">thememap.coffee</span></a><a href="../../src/wizard.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">wizard.coffee</span></a></div></div></div><table cellpadding="0" cellspacing="0"><thead><tr><th class="docs"><h1>ttswidget.coffee</h1><div class="filepath">lib/ttswidget/</div></th><th class="code"></th></tr></thead><tbody><tr id="section-1"><td class="docs"><div class="pilwrap"><a href="#section-1" class="pilcrow">&#182;</a></div><p>ttswidget is a jQuery UI widget, creating a Text-To-Seech button at the beginning of a DOM element.
+<!DOCTYPE html><html><head><title>ttswidget.coffee</title><meta http-equiv="Content-Type" content="text/html" charset="UTF-8"><link rel="stylesheet" media="all" href="../../docco.css"></head><body><div id="container"><div id="background"></div><div id="jump_to">Jump To &hellip;<div id="jump_wrapper"><div id="jump_page"><a href="../../index.html" class="source"><span class="file_name">README</span></a><a href="../../lib/capkomsymbolwidget/capkomsymbolwidget.coffee.html" class="source "><span class="base_path">lib / capkomsymbolwidget / </span><span class="file_name">capkomsymbolwidget.coffee</span></a><a href="../../lib/explain/explain.coffee.html" class="source "><span class="base_path">lib / explain / </span><span class="file_name">explain.coffee</span></a><a href="../../lib/sizedetect/sizedetect.coffee.html" class="source "><span class="base_path">lib / sizedetect / </span><span class="file_name">sizedetect.coffee</span></a><a href="../../lib/ttswidget/ttswidget.coffee.html" class="source selected"><span class="base_path">lib / ttswidget / </span><span class="file_name">ttswidget.coffee</span></a><a href="../../lib/wordmatch/wordmatch.coffee.html" class="source "><span class="base_path">lib / wordmatch / </span><span class="file_name">wordmatch.coffee</span></a><a href="../../src/fontsizewidget.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">fontsizewidget.coffee</span></a><a href="../../src/navigation.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">navigation.coffee</span></a><a href="../../src/profile.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">profile.coffee</span></a><a href="../../src/stages.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">stages.coffee</span></a><a href="../../src/symbolset.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">symbolset.coffee</span></a><a href="../../src/symbolsets.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">symbolsets.coffee</span></a><a href="../../src/thememap.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">thememap.coffee</span></a><a href="../../src/wizard.coffee.html" class="source "><span class="base_path">src / </span><span class="file_name">wizard.coffee</span></a></div></div></div><table cellpadding="0" cellspacing="0"><thead><tr><th class="docs"><h1>ttswidget.coffee</h1><div class="filepath">lib/ttswidget/</div></th><th class="code"></th></tr></thead><tbody><tr id="section-1"><td class="docs"><div class="pilwrap"><a href="#section-1" class="pilcrow">&#182;</a></div><p>ttswidget is a jQuery UI widget, creating a Text-To-Seech button at the beginning of a DOM element.
 Pressing the button will open up a dialog box showing the read text and a player control UI
 for pausing or stopping the audio.
 Usage:</p>
@@ -19,197 +19,210 @@ The <code>lang</code> attribute specifies the language of interpretation. If no 
 is defined the default language is used. (see at <code>options</code>)
 Using Font Awesome - http://fortawesome.github.com/Font-Awesome</p>
 </td><td class="code"><div class="highlight"><pre><span class="nx">jQuery</span><span class="p">.</span><span class="nx">widget</span> <span class="s">&quot;capkom.ttswidget&quot;</span><span class="p">,</span></pre></div></td></tr><tr id="section-2"><td class="docs"><div class="pilwrap"><a href="#section-2" class="pilcrow">&#182;</a></div><p>Options:</p>
-</td><td class="code"><div class="highlight"><pre>    <span class="nv">options:</span></pre></div></td></tr><tr id="section-3"><td class="docs"><div class="pilwrap"><a href="#section-3" class="pilcrow">&#182;</a></div><p>Default language of text interpretaion. This can be overridden by setting
+</td><td class="code"><div class="highlight"><pre>  <span class="nv">options:</span></pre></div></td></tr><tr id="section-3"><td class="docs"><div class="pilwrap"><a href="#section-3" class="pilcrow">&#182;</a></div><p>The Triggering mode defines how  speaking is triggered.
+'button' creates a button on the element. When clicked the talking is triggered.
+'auto' triggers talking on instantiation</p>
+</td><td class="code"><div class="highlight"><pre>    <span class="nv">mode: </span><span class="s">&#39;button&#39;</span></pre></div></td></tr><tr id="section-4"><td class="docs"><div class="pilwrap"><a href="#section-4" class="pilcrow">&#182;</a></div><p>Default language of text interpretaion. This can be overridden by setting
 the <code>lang</code> attribute of the element.</p>
-</td><td class="code"><div class="highlight"><pre>        <span class="nv">language: </span><span class="s">&quot;de&quot;</span></pre></div></td></tr><tr id="section-4"><td class="docs"><div class="pilwrap"><a href="#section-4" class="pilcrow">&#182;</a></div><p>The used backend URI</p>
-</td><td class="code"><div class="highlight"><pre>        <span class="nv">backendUri: </span><span class="s">&quot;http://dev.iks-project.eu/mary&quot;</span></pre></div></td></tr><tr id="section-5"><td class="docs"><div class="pilwrap"><a href="#section-5" class="pilcrow">&#182;</a></div><p>Type of the used backend.</p>
-</td><td class="code"><div class="highlight"><pre>        <span class="nv">backendType: </span><span class="s">&quot;MARY&quot;</span></pre></div></td></tr><tr id="section-6"><td class="docs"><div class="pilwrap"><a href="#section-6" class="pilcrow">&#182;</a></div><p>UI icon class to be used for the button
+</td><td class="code"><div class="highlight"><pre>    <span class="nv">lang: </span><span class="s">&quot;de&quot;</span></pre></div></td></tr><tr id="section-5"><td class="docs"><div class="pilwrap"><a href="#section-5" class="pilcrow">&#182;</a></div><p>The used backend URI</p>
+</td><td class="code"><div class="highlight"><pre>    <span class="nv">backendUri: </span><span class="s">&quot;http://dev.iks-project.eu/mary&quot;</span></pre></div></td></tr><tr id="section-6"><td class="docs"><div class="pilwrap"><a href="#section-6" class="pilcrow">&#182;</a></div><p>Type of the used backend.</p>
+</td><td class="code"><div class="highlight"><pre>    <span class="nv">backendType: </span><span class="s">&quot;MARY&quot;</span></pre></div></td></tr><tr id="section-7"><td class="docs"><div class="pilwrap"><a href="#section-7" class="pilcrow">&#182;</a></div><p>UI icon class to be used for the button
        iconClass: "ui-icon-speaker"
 Spinner icon to be shown when still loading</p>
-</td><td class="code"><div class="highlight"><pre>        <span class="nv">spinnerUri: </span><span class="s">&quot;spinner.gif&quot;</span></pre></div></td></tr><tr id="section-7"><td class="docs"><div class="pilwrap"><a href="#section-7" class="pilcrow">&#182;</a></div><p>Dialog title</p>
-</td><td class="code"><div class="highlight"><pre>        <span class="nv">dialogTitle: </span><span class="s">&quot;TTS widget&quot;</span></pre></div></td></tr><tr id="section-8"><td class="docs"><div class="pilwrap"><a href="#section-8" class="pilcrow">&#182;</a></div><p>Default text to be read in case no text is found</p>
-</td><td class="code"><div class="highlight"><pre>        <span class="nv">defaultText: </span><span class="s">&quot;No text found&quot;</span></pre></div></td></tr><tr id="section-9"><td class="docs"><div class="pilwrap"><a href="#section-9" class="pilcrow">&#182;</a></div><p>The button title to be set. This is not shown but if a screen reader
+</td><td class="code"><div class="highlight"><pre>    <span class="nv">spinnerUri: </span><span class="s">&quot;spinner.gif&quot;</span></pre></div></td></tr><tr id="section-8"><td class="docs"><div class="pilwrap"><a href="#section-8" class="pilcrow">&#182;</a></div><p>Dialog title</p>
+</td><td class="code"><div class="highlight"><pre>    <span class="nv">dialogTitle: </span><span class="s">&quot;TTS widget&quot;</span></pre></div></td></tr><tr id="section-9"><td class="docs"><div class="pilwrap"><a href="#section-9" class="pilcrow">&#182;</a></div><p>Default text to be read in case no text is found</p>
+</td><td class="code"><div class="highlight"><pre>    <span class="nv">defaultText: </span><span class="s">&quot;No text found&quot;</span></pre></div></td></tr><tr id="section-10"><td class="docs"><div class="pilwrap"><a href="#section-10" class="pilcrow">&#182;</a></div><p>The button title to be set. This is not shown but if a screen reader
 would read it, it is shown.</p>
-</td><td class="code"><div class="highlight"><pre>        <span class="nv">buttonLabel: </span><span class="s">&quot;Speak&quot;</span></pre></div></td></tr><tr id="section-10"><td class="docs"><div class="pilwrap"><a href="#section-10" class="pilcrow">&#182;</a></div><p>The error message when something goes wrong loading the audio.</p>
-</td><td class="code"><div class="highlight"><pre>        <span class="nv">errorMsg: </span><span class="s">&quot;Error loading audio.&quot;</span>
+</td><td class="code"><div class="highlight"><pre>    <span class="nv">buttonLabel: </span><span class="s">&quot;Speak&quot;</span></pre></div></td></tr><tr id="section-11"><td class="docs"><div class="pilwrap"><a href="#section-11" class="pilcrow">&#182;</a></div><p>The error message when something goes wrong loading the audio.</p>
+</td><td class="code"><div class="highlight"><pre>    <span class="nv">errorMsg: </span><span class="s">&quot;Error loading audio.&quot;</span></pre></div></td></tr><tr id="section-12"><td class="docs"><div class="pilwrap"><a href="#section-12" class="pilcrow">&#182;</a></div><p>The finished event is trigggered when speaking is over and the panel disappeared.</p>
+</td><td class="code"><div class="highlight"><pre>    <span class="nv">finished: </span><span class="nf">(e) -&gt;</span>
+    <span class="nv">manualActivate: </span><span class="nf">(e) -&gt;</span>
+    <span class="nv">forcedClose: </span><span class="nf">(e) -&gt;</span>
 
-    <span class="nv">_create: </span><span class="o">-&gt;</span></pre></div></td></tr><tr id="section-11"><td class="docs"><div class="pilwrap"><a href="#section-11" class="pilcrow">&#182;</a></div><p>Add button to the element</p>
+
+
+  <span class="nv">_create: </span><span class="o">-&gt;</span>
+    <span class="k">switch</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">mode</span>
+      <span class="k">when</span> <span class="s">&#39;button&#39;</span></pre></div></td></tr><tr id="section-13"><td class="docs"><div class="pilwrap"><a href="#section-13" class="pilcrow">&#182;</a></div><p>Add button to the element</p>
 </td><td class="code"><div class="highlight"><pre>        <span class="vi">@button = </span><span class="nx">jQuery</span> <span class="s">&quot;&lt;button class=&#39;tts-button&#39; alt=&#39;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">buttonLabel</span><span class="si">}</span><span class="s">&#39;&gt;&lt;i class=&#39;icon-volume-up&#39;/&gt;&lt;/button&gt;&quot;</span>
         <span class="nx">@button</span><span class="p">.</span><span class="nx">prependTo</span> <span class="nx">@element</span>
         <span class="nx">@button</span><span class="p">.</span><span class="nx">button</span>
-            <span class="nv">text: </span><span class="kc">true</span></pre></div></td></tr><tr id="section-12"><td class="docs"><div class="pilwrap"><a href="#section-12" class="pilcrow">&#182;</a></div><pre><code>       icons:
+          <span class="nv">text: </span><span class="kc">true</span></pre></div></td></tr><tr id="section-14"><td class="docs"><div class="pilwrap"><a href="#section-14" class="pilcrow">&#182;</a></div><pre><code>       icons:
            primary: @options.iconClass
 </code></pre>
 </td><td class="code"><div class="highlight"><pre>        <span class="nx">@button</span><span class="p">.</span><span class="nx">click</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span>
-            <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
-            <span class="nx">@talk</span><span class="p">()</span>
-            <span class="kc">false</span>
-    <span class="nv">_destroy: </span><span class="o">-&gt;</span>
-        <span class="nx">@_cleanup</span><span class="p">()</span>
-        <span class="nx">jQuery</span><span class="p">(</span><span class="nx">@button</span><span class="p">)</span>
-        <span class="p">.</span><span class="nx">button</span><span class="p">(</span><span class="s">&quot;destroy&quot;</span><span class="p">)</span>
-        <span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
-    <span class="nv">prepare: </span><span class="o">-&gt;</span>
-        <span class="nx">@_cleanup</span><span class="p">()</span>
-    <span class="nv">talk: </span><span class="o">-&gt;</span>
-        <span class="nx">@prepare</span><span class="p">()</span>
-        <span class="nv">audioSnippet = </span><span class="kc">null</span>
-        <span class="k">if</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">msie</span>
-            <span class="nv">audioSnippet = </span><span class="s">&quot;&quot;&quot;</span>
-<span class="s">            &lt;OBJECT id=&#39;playera&#39; height=&#39;40&#39; width=&#39;230&#39; classid=&#39;clsid:22D6F312-B0F6-11D0-94AB-0080C74C7E95&#39;&gt;</span>
-<span class="s">                &lt;embed src=&#39;</span><span class="si">#{</span><span class="nx">@_makeLink</span><span class="p">()</span><span class="si">}</span><span class="s">&#39; name=&#39;playera&#39; width=&#39;230&#39; height=&#39;40&#39; pluginspage=&#39;http://www.microsoft.com/windows/windowsmedia/&#39; type=&#39;application/x-mplayer2&#39; autoplay=&#39;true&#39; showcontrols=&#39;1&#39; fullScreen=&#39;false&#39; DisplaySize=&#39;0&#39; autostart=&#39;true&#39; controls=&#39;All&#39; controller=&#39;true&#39;&gt;&lt;/embed&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;AutoStart&#39; VALUE=&#39;True&#39;/&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;Filename&#39; VALUE=&#39;</span><span class="si">#{</span><span class="nx">@_makeLink</span><span class="p">()</span><span class="si">}</span><span class="s">&#39;/&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;Mute&#39; VALUE=&#39;False&#39;/&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;SendPlayStateChangeEvents&#39; VALUE=&#39;True&#39;/&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;ShowControls&#39; VALUE=&#39;True&#39;/&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;ShowAudioControls&#39; VALUE=&#39;True&#39;/&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;Volume&#39; VALUE=&#39;1&#39;/&gt;</span>
-<span class="s">                &lt;PARAM NAME=&#39;AutoSize&#39; VALUE=&#39;True&#39;/&gt;</span>
-<span class="s">            &lt;/OBJECT&gt;</span>
-<span class="s">            &quot;&quot;&quot;</span>
-        <span class="k">else</span>
-            <span class="nv">audioSnippet = </span><span class="s">&quot;&quot;&quot;</span>
-<span class="s">            &lt;audio id=&#39;ttswidget-audio&#39; controls=&#39;controls&#39; style=&#39;&#39; src=&#39;</span><span class="si">#{</span><span class="nx">@_makeLink</span><span class="p">()</span><span class="si">}</span><span class="s">&#39;</span>
-<span class="s">                type=&#39;audio/mpeg&#39;&gt;Your browser does not support the audio tag.</span>
-<span class="s">            &lt;/audio&gt;</span>
-<span class="s">            &lt;img class=&#39;spinner&#39; src=&#39;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">spinnerUri</span><span class="si">}</span><span class="s">&#39;/&gt;</span>
-<span class="s">            &quot;&quot;&quot;</span>
-
-        <span class="vi">@dialog = </span><span class="nx">jQuery</span> <span class="s">&quot;&quot;&quot;</span>
-<span class="s">            &lt;div id=&#39;ttswidget-dialog&#39; title=&#39;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">dialogTitle</span><span class="si">}</span><span class="s">&#39;&gt;</span>
-<span class="s">                </span><span class="si">#{</span><span class="nx">@_getText</span><span class="p">()</span><span class="si">}</span><span class="s"></span>
-<span class="s">                &lt;br/&gt;&lt;br/&gt;</span>
-<span class="s">                </span><span class="si">#{</span><span class="nx">audioSnippet</span><span class="si">}</span><span class="s"></span>
-<span class="s">            &lt;/div&gt;</span>
+          <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
+          <span class="nx">@_trigger</span> <span class="s">&#39;manualActivate&#39;</span>
+          <span class="nx">@talk</span><span class="p">()</span>
+          <span class="kc">false</span>
+      <span class="k">when</span> <span class="s">&#39;auto&#39;</span>
+        <span class="nx">@talk</span><span class="p">()</span>
+  <span class="nv">_destroy: </span><span class="o">-&gt;</span>
+    <span class="nx">_</span><span class="p">.</span><span class="nx">defer</span> <span class="o">=&gt;</span>
+      <span class="nx">@dialog</span><span class="o">?</span><span class="p">.</span><span class="nx">dialog</span><span class="p">(</span><span class="s">&#39;destroy&#39;</span><span class="p">).</span><span class="nx">remove</span><span class="p">()</span>
+      <span class="nx">@dialog</span><span class="o">=</span><span class="kc">null</span>
+      <span class="nx">jQuery</span><span class="p">(</span><span class="nx">@button</span><span class="p">).</span><span class="nx">remove</span><span class="p">()</span>
+  <span class="nv">talk: </span><span class="o">-&gt;</span>
+      <span class="nx">@dialog</span><span class="o">?</span><span class="p">.</span><span class="nx">dialog</span><span class="p">(</span><span class="s">&#39;destroy&#39;</span><span class="p">).</span><span class="nx">remove</span><span class="p">()</span>
+      <span class="vi">@dialog = </span><span class="kc">null</span>
+      <span class="nv">audioSnippet = </span><span class="kc">null</span>
+      <span class="k">if</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">msie</span>
+        <span class="nv">audioSnippet = </span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">        &lt;OBJECT id=&#39;playera&#39; height=&#39;40&#39; width=&#39;230&#39; classid=&#39;clsid:22D6F312-B0F6-11D0-94AB-0080C74C7E95&#39;&gt;</span>
+<span class="s">          &lt;embed src=&#39;</span><span class="si">#{</span><span class="nx">@_makeLink</span><span class="p">()</span><span class="si">}</span><span class="s">&#39; name=&#39;playera&#39; width=&#39;230&#39; height=&#39;40&#39; pluginspage=&#39;http://www.microsoft.com/windows/windowsmedia/&#39; type=&#39;application/x-mplayer2&#39; autoplay=&#39;true&#39; showcontrols=&#39;1&#39; fullScreen=&#39;false&#39; DisplaySize=&#39;0&#39; autostart=&#39;true&#39; controls=&#39;All&#39; controller=&#39;true&#39;&gt;&lt;/embed&gt;</span>
+<span class="s">          &lt;PARAM NAME=&#39;AutoStart&#39; VALUE=&#39;True&#39;/&gt;</span>
+<span class="s">          &lt;PARAM NAME=&#39;Filename&#39; VALUE=&#39;</span><span class="si">#{</span><span class="nx">@_makeLink</span><span class="p">()</span><span class="si">}</span><span class="s">&#39;/&gt;</span>
+<span class="s">          &lt;PARAM NAME=&#39;Mute&#39; VALUE=&#39;False&#39;/&gt;</span>
+<span class="s">          &lt;PARAM NAME=&#39;SendPlayStateChangeEvents&#39; VALUE=&#39;True&#39;/&gt;</span>
+<span class="s">          &lt;PARAM NAME=&#39;ShowControls&#39; VALUE=&#39;True&#39;/&gt;</span>
+<span class="s">          &lt;PARAM NAME=&#39;ShowAudioControls&#39; VALUE=&#39;True&#39;/&gt;</span>
+<span class="s">          &lt;PARAM NAME=&#39;Volume&#39; VALUE=&#39;1&#39;/&gt;</span>
+<span class="s">          &lt;PARAM NAME=&#39;AutoSize&#39; VALUE=&#39;True&#39;/&gt;</span>
+<span class="s">        &lt;/OBJECT&gt;</span>
 <span class="s">        &quot;&quot;&quot;</span>
-        <span class="nx">@dialog</span><span class="p">.</span><span class="nx">appendTo</span> <span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;body&quot;</span><span class="p">)</span>
-        <span class="nx">@dialog</span><span class="p">.</span><span class="nx">dialog</span>
-            <span class="nv">close: </span><span class="o">=&gt;</span>
-                <span class="nx">setTimeout</span> <span class="o">=&gt;</span>
-                    <span class="nx">@_cleanup</span><span class="p">()</span>
-                <span class="p">,</span> <span class="mi">500</span>
-            <span class="nv">hide: </span><span class="s">&quot;fade&quot;</span>
-            <span class="nv">width: </span><span class="s">&quot;500&quot;</span>
-        <span class="k">if</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">msie</span> <span class="c1"># and no</span>
-            <span class="nb">document</span><span class="p">.</span><span class="nx">playera</span><span class="p">.</span><span class="nx">attachEvent</span> <span class="s">&quot;EndOfStream&quot;</span><span class="p">,</span> <span class="p">(</span><span class="nx">state</span><span class="p">)</span> <span class="o">=&gt;</span>
-                <span class="nx">@dialog</span><span class="p">.</span><span class="nx">dialog</span> <span class="s">&quot;close&quot;</span>
-                <span class="nx">setTimeout</span> <span class="o">=&gt;</span>
-                    <span class="nx">@_cleanup</span><span class="p">()</span>
-                <span class="p">,</span> <span class="mi">500</span>
-        <span class="k">else</span>
-            <span class="vi">@audioElement = </span><span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;</span><span class="err">#</span><span class="s">ttswidget-audio&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="vi">@audioElement.onabort = </span><span class="nf">() -&gt;</span>
-                <span class="nx">console</span><span class="o">?</span><span class="p">.</span><span class="nx">error</span> <span class="nx">attributes</span>
-            <span class="nx">@audioElement</span><span class="p">.</span><span class="nx">load</span><span class="p">()</span>
-            <span class="nx">@audioElement</span><span class="p">.</span><span class="nx">play</span><span class="p">()</span>
-            <span class="nx">jQuery</span><span class="p">(</span><span class="nx">@audioElement</span><span class="p">).</span><span class="nx">bind</span> <span class="s">&#39;playing&#39;</span><span class="p">,</span> <span class="o">=&gt;</span>
-                <span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;.spinner&quot;</span><span class="p">,</span> <span class="nx">@dialog</span><span class="p">).</span><span class="nx">hide</span><span class="p">()</span>
-            <span class="nx">jQuery</span><span class="p">(</span><span class="nx">@audioElement</span><span class="p">).</span><span class="nx">bind</span> <span class="s">&#39;ended&#39;</span><span class="p">,</span> <span class="o">=&gt;</span>
-                <span class="nx">@dialog</span><span class="p">.</span><span class="nx">dialog</span> <span class="s">&quot;close&quot;</span>
-                <span class="nx">setTimeout</span> <span class="o">=&gt;</span>
-                    <span class="nx">@_cleanup</span><span class="p">()</span>
-                <span class="p">,</span> <span class="mi">500</span>
-            <span class="nx">jQuery</span><span class="p">(</span><span class="nx">@audioElement</span><span class="p">).</span><span class="nx">bind</span> <span class="s">&#39;error&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span>
-                <span class="nv">errorHtml = </span><span class="s">&quot;&quot;&quot;</span>
-<span class="s">                &lt;br/&gt;</span>
-<span class="s">                &lt;div style=&quot;color: red&quot;&gt;</span>
-<span class="s">                    &lt;span class=&quot;ui-icon ui-icon-alert&quot; style=&quot;float:left; margin:0 7px 20px 0;&quot;&gt;&lt;/span&gt;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">errorMsg</span><span class="si">}</span><span class="s"></span>
-<span class="s">                &lt;/div&gt;</span>
-<span class="s">                &quot;&quot;&quot;</span>
-                <span class="nx">@dialog</span><span class="p">.</span><span class="nx">append</span> <span class="nx">errorHtml</span>
-    <span class="nv">_cleanup: </span><span class="o">-&gt;</span>
-        <span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;</span><span class="err">#</span><span class="s">ttswidget-dialog&quot;</span><span class="p">).</span><span class="nx">dialog</span><span class="p">(</span><span class="s">&quot;destroy&quot;</span><span class="p">).</span><span class="nx">remove</span><span class="p">()</span>
-    <span class="nv">_getText: </span><span class="o">-&gt;</span>
-        <span class="k">return</span> <span class="nx">@element</span><span class="p">.</span><span class="nx">attr</span> <span class="s">&quot;tts&quot;</span> <span class="k">if</span> <span class="nx">@element</span><span class="p">.</span><span class="nx">attr</span> <span class="s">&quot;tts&quot;</span>
-        <span class="k">return</span> <span class="nx">@element</span><span class="p">.</span><span class="o">not</span><span class="p">(</span><span class="nx">@button</span><span class="p">).</span><span class="nx">text</span><span class="p">().</span><span class="nx">replace</span><span class="p">(</span><span class="s">&quot;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">buttonLabel</span><span class="si">}</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="nx">@element</span><span class="p">.</span><span class="nx">text</span><span class="p">()</span>
-        <span class="k">return</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">defaultText</span>
-    <span class="nv">_getLang: </span><span class="o">-&gt;</span>
-        <span class="k">return</span> <span class="nx">@element</span><span class="p">.</span><span class="nx">attr</span> <span class="s">&quot;lang&quot;</span> <span class="k">if</span> <span class="nx">@element</span><span class="p">.</span><span class="nx">attr</span> <span class="s">&quot;lang&quot;</span>
-        <span class="k">return</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">lang</span> <span class="k">if</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">lang</span>
-    <span class="nv">_getGender: </span><span class="o">-&gt;</span>
-        <span class="k">return</span> <span class="nx">@element</span><span class="p">.</span><span class="nx">attr</span> <span class="s">&quot;gender&quot;</span> <span class="k">if</span> <span class="nx">@element</span><span class="p">.</span><span class="nx">attr</span> <span class="s">&quot;gender&quot;</span>
-        <span class="k">return</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">gender</span> <span class="k">if</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">gender</span>
-    <span class="nv">preset: </span><span class="nf">(lang=&quot;en&quot;, gender=&quot;male&quot;) -&gt;</span>
-        <span class="nv">presets =</span>
-            <span class="s">&quot;de-male&quot;</span><span class="o">:</span> <span class="p">[</span>
-                    <span class="s">&quot;LOCALE=de&quot;</span>
-                    <span class="s">&quot;VOICE=bits3&quot;</span>
-                <span class="p">]</span>
-            <span class="s">&quot;de-female&quot;</span><span class="o">:</span> <span class="p">[</span>
-                    <span class="s">&quot;LOCALE=de&quot;</span>
-                    <span class="s">&quot;VOICE=bits1-hsmm&quot;</span>
-                <span class="p">]</span>
-            <span class="s">&quot;en-male&quot;</span><span class="o">:</span> <span class="p">[</span>
-                    <span class="s">&quot;LOCALE=en_GB&quot;</span>
-                    <span class="s">&quot;VOICE=dfki-spike&quot;</span>
-                <span class="p">]</span>
-            <span class="s">&quot;en-female&quot;</span><span class="o">:</span> <span class="p">[</span>
-                    <span class="s">&quot;LOCALE=en_GB&quot;</span>
-                    <span class="s">&quot;VOICE=dfki-prudence&quot;</span>
-                <span class="p">]</span>
-        <span class="nv">res = </span><span class="nx">presets</span><span class="p">[</span><span class="s">&quot;</span><span class="si">#{</span><span class="nx">lang</span><span class="si">}</span><span class="s">-</span><span class="si">#{</span><span class="nx">gender</span><span class="si">}</span><span class="s">&quot;</span><span class="p">]</span>
-        <span class="nx">console</span><span class="o">?</span><span class="p">.</span><span class="nx">error</span> <span class="s">&quot;There&#39;s no TTS preset defined for </span><span class="si">#{</span><span class="nx">lang</span><span class="si">}</span><span class="s"> and </span><span class="si">#{</span><span class="nx">gender</span><span class="si">}</span><span class="s">.&quot;</span> <span class="nx">unless</span> <span class="nx">res</span>
-        <span class="k">return</span> <span class="nx">res</span> <span class="o">or</span> <span class="nx">presets</span><span class="p">[</span><span class="s">&quot;de-female&quot;</span><span class="p">]</span></pre></div></td></tr><tr id="section-13"><td class="docs"><div class="pilwrap"><a href="#section-13" class="pilcrow">&#182;</a></div><p>Internal method for implementing the audio uri.</p>
-</td><td class="code"><div class="highlight"><pre>    <span class="nv">_makeLink: </span><span class="nf">() -&gt;</span>
-        <span class="nv">_encodeURI = </span><span class="nf">(str) -&gt;</span>
-            <span class="nb">encodeURI</span><span class="p">(</span><span class="nx">str</span><span class="p">).</span><span class="nx">replace</span> <span class="sr">/&#39;/g</span><span class="p">,</span> <span class="s">&quot;%27&quot;</span>
-        <span class="nv">text = </span><span class="nx">@_getText</span><span class="p">()</span>
-        <span class="nv">uri = </span><span class="nx">@options</span><span class="p">.</span><span class="nx">backendUri</span> <span class="o">+</span> <span class="s">&quot;/process?&quot;</span>
-        <span class="nv">params = </span><span class="nx">@preset</span><span class="p">(</span><span class="nx">@_getLang</span><span class="p">(),</span> <span class="nx">@_getGender</span><span class="p">())</span>
-        <span class="p">.</span><span class="nx">concat</span> <span class="p">[</span>
-            <span class="s">&quot;INPUT_TYPE=TEXT&amp;OUTPUT_TYPE=AUDIO&amp;INPUT_TEXT=</span><span class="si">#{</span><span class="nx">_encodeURI</span> <span class="nx">text</span><span class="si">}</span><span class="s">&quot;</span>
-            <span class="s">&quot;OUTPUT_TEXT=&quot;</span>
-            <span class="s">&quot;effect_Volume_selected=&quot;</span>
-            <span class="s">&quot;effect_Volume_parameters=&quot;</span> <span class="o">+</span> <span class="nb">encodeURI</span> <span class="s">&quot;amount:2.0;&quot;</span>
-            <span class="s">&quot;effect_Volume_default=Default&quot;</span>
-            <span class="s">&quot;effect_Volume_help=Help&quot;</span>
-            <span class="s">&quot;effect_TractScaler_selected=&quot;</span>
-            <span class="s">&quot;effect_TractScaler_parameters&quot;</span> <span class="o">+</span> <span class="nb">encodeURI</span> <span class="s">&quot;amount:1.5;&quot;</span>
-            <span class="s">&quot;effect_TractScaler_default=Default&quot;</span>
-            <span class="s">&quot;effect_TractScaler_help=Help&quot;</span>
-            <span class="s">&quot;effect_F0Scale_selected=&quot;</span>
-            <span class="s">&quot;effect_F0Scale_parameters=&quot;</span> <span class="o">+</span> <span class="nb">encodeURI</span> <span class="s">&quot;f0Scale:2.0;&quot;</span>
-            <span class="s">&quot;effect_F0Scale_default=Default&quot;</span>
-            <span class="s">&quot;effect_F0Scale_help=Help&quot;</span>
-            <span class="s">&quot;effect_F0Add_selected=&quot;</span>
-            <span class="s">&quot;effect_F0Add_parameters=&quot;</span> <span class="o">+</span> <span class="nb">encodeURI</span> <span class="s">&quot;f0Add:50.0;&quot;</span>
-            <span class="s">&quot;effect_F0Add_default=Default&quot;</span>
-            <span class="s">&quot;effect_F0Add_help=Help&quot;</span>
-            <span class="s">&quot;effect_Rate_selected=&quot;</span>
-            <span class="s">&quot;effect_Rate_parameters=&quot;</span> <span class="o">+</span> <span class="nb">encodeURI</span> <span class="s">&quot;durScale:1.5;&quot;</span>
-            <span class="s">&quot;effect_Rate_default=Default&quot;</span>
-            <span class="s">&quot;effect_Rate_help=Help&quot;</span>
-            <span class="s">&quot;effect_Robot_selected=&quot;</span>
-            <span class="s">&quot;effect_Robot_parameters=&quot;</span> <span class="o">+</span> <span class="nb">encodeURI</span> <span class="s">&quot;amount:100.0;&quot;</span>
-            <span class="s">&quot;effect_Robot_default=Default&quot;</span>
-            <span class="s">&quot;effect_Robot_help=Help&quot;</span>
-            <span class="s">&quot;effect_Whisper_selected=&quot;</span>
-            <span class="s">&quot;effect_Whisper_parameters=&quot;</span> <span class="o">+</span> <span class="nb">encodeURI</span> <span class="s">&quot;amount:100.0;&quot;</span>
-            <span class="s">&quot;effect_Whisper_default=Default&quot;</span>
-            <span class="s">&quot;effect_Whisper_help=Help&quot;</span>
-            <span class="s">&quot;effect_Stadium_selected=&quot;</span>
-            <span class="s">&quot;effect_Stadium_parameters=&quot;</span> <span class="o">+</span> <span class="nb">encodeURI</span> <span class="s">&quot;amount:100.0&quot;</span>
-            <span class="s">&quot;effect_Stadium_default=Default&quot;</span>
-            <span class="s">&quot;effect_Stadium_help=Help&quot;</span>
-            <span class="s">&quot;effect_Chorus_selected=&quot;</span>
-            <span class="s">&quot;effect_Chorus_parameters=&quot;</span> <span class="o">+</span> <span class="nb">encodeURI</span> <span class="s">&quot;delay1:466;amp1:0.54;delay2:600;amp2:-0.10;delay3:250;amp3:0.30&quot;</span>
-            <span class="s">&quot;effect_Chorus_default=Default&quot;</span>
-            <span class="s">&quot;effect_Chorus_help=Help&quot;</span>
-            <span class="s">&quot;effect_FIRFilter_selected=&quot;</span>
-            <span class="s">&quot;effect_FIRFilter_parameters=&quot;</span> <span class="o">+</span> <span class="nb">encodeURI</span> <span class="s">&quot;type:3;fc1:500.0;fc2:2000.0&quot;</span>
-            <span class="s">&quot;effect_FIRFilter_default=Default&quot;</span>
-            <span class="s">&quot;effect_FIRFilter_help=Help&quot;</span>
-            <span class="s">&quot;effect_JetPilot_selected=&quot;</span>
-            <span class="s">&quot;effect_JetPilot_parameters=&quot;</span>
-            <span class="s">&quot;effect_JetPilot_default=Default&quot;</span>
-            <span class="s">&quot;effect_JetPilot_help=Help&quot;</span>
-            <span class="s">&quot;HELP_TEXT=&quot;</span>
-            <span class="s">&quot;VOICE_SELECTIONS=bits3%20de%20male%20unitselection%20general&quot;</span>
-            <span class="s">&quot;AUDIO_OUT=WAVE_FILE&quot;</span>
-            <span class="s">&quot;AUDIO=WAVE_FILE&quot;</span>
-        <span class="p">]</span>
-        <span class="nv">res = </span><span class="nx">uri</span> <span class="o">+</span> <span class="nx">params</span><span class="p">.</span><span class="nx">join</span> <span class="s">&#39;&amp;&#39;</span>
-        <span class="nx">res</span>
+      <span class="k">else</span>
+        <span class="nv">audioSnippet = </span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">        &lt;audio id=&#39;ttswidget-audio&#39; controls=&#39;controls&#39; style=&#39;&#39; src=&#39;</span><span class="si">#{</span><span class="nx">@_makeLink</span><span class="p">()</span><span class="si">}</span><span class="s">&#39;</span>
+<span class="s">          type=&#39;audio/mpeg&#39;&gt;Your browser does not support the audio tag.</span>
+<span class="s">        &lt;/audio&gt;</span>
+<span class="s">        &lt;img class=&#39;spinner&#39; src=&#39;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">spinnerUri</span><span class="si">}</span><span class="s">&#39;/&gt;</span>
+<span class="s">        &quot;&quot;&quot;</span>
+
+      <span class="vi">@dialog = </span><span class="nx">jQuery</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">        &lt;div class=&#39;ttswidget-dialog&#39; title=&#39;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">dialogTitle</span><span class="si">}</span><span class="s">&#39;&gt;</span>
+<span class="s">          </span><span class="si">#{</span><span class="nx">@_getText</span><span class="p">()</span><span class="si">}</span><span class="s"></span>
+<span class="s">          &lt;br/&gt;&lt;br/&gt;</span>
+<span class="s">          &lt;div class=&#39;inner-content&#39;&gt;&lt;/div&gt;</span>
+<span class="s">          </span><span class="si">#{</span><span class="nx">audioSnippet</span><span class="si">}</span><span class="s"></span>
+<span class="s">        &lt;/div&gt;</span>
+<span class="s">      &quot;&quot;&quot;</span>
+      <span class="nx">@dialog</span><span class="p">.</span><span class="nx">appendTo</span> <span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;body&quot;</span><span class="p">)</span>
+      <span class="nx">@_trigger</span> <span class="s">&#39;beforeDialog&#39;</span>
+      <span class="nx">@dialog</span><span class="p">.</span><span class="nx">dialog</span>
+        <span class="nv">close: </span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">ui</span><span class="p">)</span> <span class="o">=&gt;</span>
+          <span class="k">if</span> <span class="nx">e</span><span class="p">.</span><span class="nx">currentTarget</span>
+            <span class="nx">@_trigger</span> <span class="s">&#39;forcedClose&#39;</span>
+          <span class="nx">_</span><span class="p">.</span><span class="nx">defer</span> <span class="o">=&gt;</span>
+            <span class="nx">@dialog</span><span class="o">?</span><span class="p">.</span><span class="nx">dialog</span><span class="p">(</span><span class="s">&#39;destroy&#39;</span><span class="p">).</span><span class="nx">remove</span><span class="p">()</span>
+            <span class="vi">@dialog = </span><span class="kc">null</span>
+            <span class="nx">@_trigger</span> <span class="s">&#39;done&#39;</span>
+        <span class="nv">hide: </span><span class="s">&quot;fade&quot;</span>
+        <span class="nv">width: </span><span class="s">&quot;500&quot;</span>
+
+      <span class="k">if</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">msie</span> <span class="c1"># and no</span>
+          <span class="nb">document</span><span class="p">.</span><span class="nx">playera</span><span class="p">.</span><span class="nx">attachEvent</span> <span class="s">&quot;EndOfStream&quot;</span><span class="p">,</span> <span class="p">(</span><span class="nx">state</span><span class="p">)</span> <span class="o">=&gt;</span>
+              <span class="nx">@dialog</span><span class="p">.</span><span class="nx">dialog</span> <span class="s">&quot;close&quot;</span>
+      <span class="k">else</span>
+          <span class="vi">@audioElement = </span><span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;</span><span class="err">#</span><span class="s">ttswidget-audio&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+          <span class="vi">@audioElement.onabort = </span><span class="nf">() -&gt;</span>
+              <span class="nx">console</span><span class="o">?</span><span class="p">.</span><span class="nx">error</span> <span class="nx">arguments</span>
+          <span class="nx">@audioElement</span><span class="p">.</span><span class="nx">load</span><span class="p">()</span>
+          <span class="nx">@audioElement</span><span class="p">.</span><span class="nx">play</span><span class="p">()</span>
+          <span class="nx">jQuery</span><span class="p">(</span><span class="nx">@audioElement</span><span class="p">).</span><span class="nx">bind</span> <span class="s">&#39;playing&#39;</span><span class="p">,</span> <span class="o">=&gt;</span>
+              <span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;.spinner&quot;</span><span class="p">,</span> <span class="nx">@dialog</span><span class="p">).</span><span class="nx">hide</span><span class="p">()</span>
+          <span class="nx">jQuery</span><span class="p">(</span><span class="nx">@audioElement</span><span class="p">).</span><span class="nx">bind</span> <span class="s">&#39;ended&#39;</span><span class="p">,</span> <span class="o">=&gt;</span>
+              <span class="nx">@dialog</span><span class="p">.</span><span class="nx">dialog</span> <span class="s">&quot;close&quot;</span>
+          <span class="nx">jQuery</span><span class="p">(</span><span class="nx">@audioElement</span><span class="p">).</span><span class="nx">bind</span> <span class="s">&#39;error&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span>
+              <span class="nv">errorHtml = </span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">              &lt;br/&gt;</span>
+<span class="s">              &lt;div style=&quot;color: red&quot;&gt;</span>
+<span class="s">                  &lt;span class=&quot;ui-icon ui-icon-alert&quot; style=&quot;float:left; margin:0 7px 20px 0;&quot;&gt;&lt;/span&gt;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">errorMsg</span><span class="si">}</span><span class="s"></span>
+<span class="s">              &lt;/div&gt;</span>
+<span class="s">              &quot;&quot;&quot;</span>
+              <span class="nx">@dialog</span><span class="p">.</span><span class="nx">append</span> <span class="nx">errorHtml</span>
+  <span class="nv">_getText: </span><span class="o">-&gt;</span>
+      <span class="k">return</span> <span class="nx">@element</span><span class="p">.</span><span class="nx">attr</span> <span class="s">&quot;tts&quot;</span> <span class="k">if</span> <span class="nx">@element</span><span class="p">.</span><span class="nx">attr</span> <span class="s">&quot;tts&quot;</span>
+      <span class="k">return</span> <span class="nx">@element</span><span class="p">.</span><span class="o">not</span><span class="p">(</span><span class="nx">@button</span><span class="p">).</span><span class="nx">text</span><span class="p">().</span><span class="nx">replace</span><span class="p">(</span><span class="s">&quot;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">buttonLabel</span><span class="si">}</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="nx">@element</span><span class="p">.</span><span class="nx">text</span><span class="p">()</span>
+      <span class="k">return</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">defaultText</span>
+  <span class="nv">_getLang: </span><span class="o">-&gt;</span>
+      <span class="k">return</span> <span class="nx">@element</span><span class="p">.</span><span class="nx">attr</span> <span class="s">&quot;lang&quot;</span> <span class="k">if</span> <span class="nx">@element</span><span class="p">.</span><span class="nx">attr</span> <span class="s">&quot;lang&quot;</span>
+      <span class="k">return</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">lang</span> <span class="k">if</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">lang</span>
+  <span class="nv">_getGender: </span><span class="o">-&gt;</span>
+      <span class="k">return</span> <span class="nx">@element</span><span class="p">.</span><span class="nx">attr</span> <span class="s">&quot;gender&quot;</span> <span class="k">if</span> <span class="nx">@element</span><span class="p">.</span><span class="nx">attr</span> <span class="s">&quot;gender&quot;</span>
+      <span class="k">return</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">gender</span> <span class="k">if</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">gender</span></pre></div></td></tr><tr id="section-15"><td class="docs"><div class="pilwrap"><a href="#section-15" class="pilcrow">&#182;</a></div><p>Can be used in beforeTalk event handler</p>
+</td><td class="code"><div class="highlight"><pre>  <span class="nv">getInnerContentElement: </span><span class="nf">(cb) -&gt;</span>
+    <span class="nv">innerContent = </span><span class="nx">jQuery</span> <span class="s">&#39;.inner-content&#39;</span><span class="p">,</span> <span class="nx">@dialog</span>
+    <span class="nx">cb</span> <span class="nx">innerContent</span>
+  <span class="nv">preset: </span><span class="nf">(lang=&quot;en&quot;, gender=&quot;male&quot;) -&gt;</span>
+      <span class="nv">presets =</span>
+          <span class="s">&quot;de-male&quot;</span><span class="o">:</span> <span class="p">[</span>
+                  <span class="s">&quot;LOCALE=de&quot;</span>
+                  <span class="s">&quot;VOICE=bits3&quot;</span>
+              <span class="p">]</span>
+          <span class="s">&quot;de-female&quot;</span><span class="o">:</span> <span class="p">[</span>
+                  <span class="s">&quot;LOCALE=de&quot;</span>
+                  <span class="s">&quot;VOICE=bits1-hsmm&quot;</span>
+              <span class="p">]</span>
+          <span class="s">&quot;en-male&quot;</span><span class="o">:</span> <span class="p">[</span>
+                  <span class="s">&quot;LOCALE=en_GB&quot;</span>
+                  <span class="s">&quot;VOICE=dfki-spike&quot;</span>
+              <span class="p">]</span>
+          <span class="s">&quot;en-female&quot;</span><span class="o">:</span> <span class="p">[</span>
+                  <span class="s">&quot;LOCALE=en_GB&quot;</span>
+                  <span class="s">&quot;VOICE=dfki-prudence&quot;</span>
+              <span class="p">]</span>
+      <span class="nv">res = </span><span class="nx">presets</span><span class="p">[</span><span class="s">&quot;</span><span class="si">#{</span><span class="nx">lang</span><span class="si">}</span><span class="s">-</span><span class="si">#{</span><span class="nx">gender</span><span class="si">}</span><span class="s">&quot;</span><span class="p">]</span>
+      <span class="nx">console</span><span class="o">?</span><span class="p">.</span><span class="nx">error</span> <span class="s">&quot;There&#39;s no TTS preset defined for </span><span class="si">#{</span><span class="nx">lang</span><span class="si">}</span><span class="s"> and </span><span class="si">#{</span><span class="nx">gender</span><span class="si">}</span><span class="s">.&quot;</span> <span class="nx">unless</span> <span class="nx">res</span>
+      <span class="k">return</span> <span class="nx">res</span> <span class="o">or</span> <span class="nx">presets</span><span class="p">[</span><span class="s">&quot;de-female&quot;</span><span class="p">]</span></pre></div></td></tr><tr id="section-16"><td class="docs"><div class="pilwrap"><a href="#section-16" class="pilcrow">&#182;</a></div><p>Internal method for implementing the audio uri.</p>
+</td><td class="code"><div class="highlight"><pre>  <span class="nv">_makeLink: </span><span class="nf">() -&gt;</span>
+    <span class="nv">_encodeURI = </span><span class="nf">(str) -&gt;</span>
+        <span class="nb">encodeURI</span><span class="p">(</span><span class="nx">str</span><span class="p">).</span><span class="nx">replace</span> <span class="sr">/&#39;/g</span><span class="p">,</span> <span class="s">&quot;%27&quot;</span>
+    <span class="nv">text = </span><span class="nx">@_getText</span><span class="p">()</span>
+    <span class="nv">uri = </span><span class="nx">@options</span><span class="p">.</span><span class="nx">backendUri</span> <span class="o">+</span> <span class="s">&quot;/process?&quot;</span>
+    <span class="nv">params = </span><span class="nx">@preset</span><span class="p">(</span><span class="nx">@_getLang</span><span class="p">(),</span> <span class="nx">@_getGender</span><span class="p">())</span>
+    <span class="p">.</span><span class="nx">concat</span> <span class="p">[</span>
+      <span class="s">&quot;INPUT_TYPE=TEXT&amp;OUTPUT_TYPE=AUDIO&amp;INPUT_TEXT=</span><span class="si">#{</span><span class="nx">_encodeURI</span> <span class="nx">text</span><span class="si">}</span><span class="s">&quot;</span>
+      <span class="s">&quot;OUTPUT_TEXT=&quot;</span>
+      <span class="s">&quot;effect_Volume_selected=&quot;</span>
+      <span class="s">&quot;effect_Volume_parameters=&quot;</span> <span class="o">+</span> <span class="nb">encodeURI</span> <span class="s">&quot;amount:2.0;&quot;</span>
+      <span class="s">&quot;effect_Volume_default=Default&quot;</span>
+      <span class="s">&quot;effect_Volume_help=Help&quot;</span>
+      <span class="s">&quot;effect_TractScaler_selected=&quot;</span>
+      <span class="s">&quot;effect_TractScaler_parameters&quot;</span> <span class="o">+</span> <span class="nb">encodeURI</span> <span class="s">&quot;amount:1.5;&quot;</span>
+      <span class="s">&quot;effect_TractScaler_default=Default&quot;</span>
+      <span class="s">&quot;effect_TractScaler_help=Help&quot;</span>
+      <span class="s">&quot;effect_F0Scale_selected=&quot;</span>
+      <span class="s">&quot;effect_F0Scale_parameters=&quot;</span> <span class="o">+</span> <span class="nb">encodeURI</span> <span class="s">&quot;f0Scale:2.0;&quot;</span>
+      <span class="s">&quot;effect_F0Scale_default=Default&quot;</span>
+      <span class="s">&quot;effect_F0Scale_help=Help&quot;</span>
+      <span class="s">&quot;effect_F0Add_selected=&quot;</span>
+      <span class="s">&quot;effect_F0Add_parameters=&quot;</span> <span class="o">+</span> <span class="nb">encodeURI</span> <span class="s">&quot;f0Add:50.0;&quot;</span>
+      <span class="s">&quot;effect_F0Add_default=Default&quot;</span>
+      <span class="s">&quot;effect_F0Add_help=Help&quot;</span>
+      <span class="s">&quot;effect_Rate_selected=&quot;</span>
+      <span class="s">&quot;effect_Rate_parameters=&quot;</span> <span class="o">+</span> <span class="nb">encodeURI</span> <span class="s">&quot;durScale:1.5;&quot;</span>
+      <span class="s">&quot;effect_Rate_default=Default&quot;</span>
+      <span class="s">&quot;effect_Rate_help=Help&quot;</span>
+      <span class="s">&quot;effect_Robot_selected=&quot;</span>
+      <span class="s">&quot;effect_Robot_parameters=&quot;</span> <span class="o">+</span> <span class="nb">encodeURI</span> <span class="s">&quot;amount:100.0;&quot;</span>
+      <span class="s">&quot;effect_Robot_default=Default&quot;</span>
+      <span class="s">&quot;effect_Robot_help=Help&quot;</span>
+      <span class="s">&quot;effect_Whisper_selected=&quot;</span>
+      <span class="s">&quot;effect_Whisper_parameters=&quot;</span> <span class="o">+</span> <span class="nb">encodeURI</span> <span class="s">&quot;amount:100.0;&quot;</span>
+      <span class="s">&quot;effect_Whisper_default=Default&quot;</span>
+      <span class="s">&quot;effect_Whisper_help=Help&quot;</span>
+      <span class="s">&quot;effect_Stadium_selected=&quot;</span>
+      <span class="s">&quot;effect_Stadium_parameters=&quot;</span> <span class="o">+</span> <span class="nb">encodeURI</span> <span class="s">&quot;amount:100.0&quot;</span>
+      <span class="s">&quot;effect_Stadium_default=Default&quot;</span>
+      <span class="s">&quot;effect_Stadium_help=Help&quot;</span>
+      <span class="s">&quot;effect_Chorus_selected=&quot;</span>
+      <span class="s">&quot;effect_Chorus_parameters=&quot;</span> <span class="o">+</span> <span class="nb">encodeURI</span> <span class="s">&quot;delay1:466;amp1:0.54;delay2:600;amp2:-0.10;delay3:250;amp3:0.30&quot;</span>
+      <span class="s">&quot;effect_Chorus_default=Default&quot;</span>
+      <span class="s">&quot;effect_Chorus_help=Help&quot;</span>
+      <span class="s">&quot;effect_FIRFilter_selected=&quot;</span>
+      <span class="s">&quot;effect_FIRFilter_parameters=&quot;</span> <span class="o">+</span> <span class="nb">encodeURI</span> <span class="s">&quot;type:3;fc1:500.0;fc2:2000.0&quot;</span>
+      <span class="s">&quot;effect_FIRFilter_default=Default&quot;</span>
+      <span class="s">&quot;effect_FIRFilter_help=Help&quot;</span>
+      <span class="s">&quot;effect_JetPilot_selected=&quot;</span>
+      <span class="s">&quot;effect_JetPilot_parameters=&quot;</span>
+      <span class="s">&quot;effect_JetPilot_default=Default&quot;</span>
+      <span class="s">&quot;effect_JetPilot_help=Help&quot;</span>
+      <span class="s">&quot;HELP_TEXT=&quot;</span>
+      <span class="s">&quot;VOICE_SELECTIONS=bits3%20de%20male%20unitselection%20general&quot;</span>
+      <span class="s">&quot;AUDIO_OUT=WAVE_FILE&quot;</span>
+      <span class="s">&quot;AUDIO=WAVE_FILE&quot;</span>
+    <span class="p">]</span>
+    <span class="nv">res = </span><span class="nx">uri</span> <span class="o">+</span> <span class="nx">params</span><span class="p">.</span><span class="nx">join</span> <span class="s">&#39;&amp;&#39;</span>
+    <span class="nx">res</span>
 
 </pre></div></td></tr></tbody></table><div id="projectname"><a href="../../index.html">Capkom Wizard</a></div></div></body></html>

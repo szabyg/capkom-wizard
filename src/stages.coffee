@@ -4,8 +4,9 @@ Capkom = this.Capkom ?= {}
 # Defining in which order the wizard stages will follow
 Capkom.order = [
     "welcome"
-    "fontsize"
     "symbolsize"
+    "read"
+    "fontsize"
     "theme"
     "channels"
     "symbolset"
@@ -19,21 +20,146 @@ Capkom.stages =
         image: "http://www.greeting-cards-4u.com/tubes/CharlyBrown/snoopy.gif"
         speech:
             """
-            Willkommen zum Kunstportal CAPKOM!
-            Hallo, ich heisse Wizi.
-            Ich möchte euch nun ein paar Fragen zur Bedienung des Kunstportals stellen.
-            Dies wird nur einige Minuten in Anspruch nehmen.
+            Willkommen im Online-Atelier! Hier bekommst du Hilfe beim Hochladen neuer Bilder,
+            beim Erstellen deines Profils und bei der Kommunikation mit anderen Künstlern.
+            Lass‘ uns ein kleines Spiel spielen!
             """
 
         html: 
             """
-            Willkommen zum Kunstportal CAPKOM!<br/><br/>
-            Hallo, ich heiße Wizi. <br/>
-            Ich möchte euch nun ein paar Fragen zur Bedienung des Kunstportals stellen. <br/>
-            Dies wird nur einige Minuten in Anspruch nehmen.
+            Willkommen im Online-Atelier! Hier bekommst du Hilfe beim Hochladen neuer Bilder,
+            beim Erstellen deines Profils und bei der Kommunikation mit anderen Künstlern.
+            Lass‘ uns ein kleines Spiel spielen!
+            <div class="explain-area"></div>
             """
+        explain: (element, done) ->
+          explainArea = jQuery '.explain-area', element
+          explainWeiter = (done) ->
+            weiterArea = explainArea.append("<div class='weiter'></div>").find('.weiter')
+            weiterArea.explain
+              read: "Hier geht’s im Spiel weiter."
+              useAudio: Capkom.profile.get('useAudio')
+              html: """
+              <button class=" nextButton" alt="Weiter" >
+              Weiter
+              <i class = "icon-arrow-right" />
+              </button>
+              """
+              script: (element) ->
+                jQuery(element).find('button').button()
+              after: ->
+                _.defer ->
+                  weiterArea.remove()
+                  done()
+              ttsOptions:
+                spinnerUri: "css/spinner.gif"
+                dialogTitle: "Sprechblase"
+                lang: "de"
+              forcedClose: (e) ->
+                Capkom.audioOff()
 
-    # Definition of the font size setting screen
+          explainAudioKnopf = (done) ->
+            audioknopfArea = explainArea.append("<div class='audioknopf'></div>").find('.audioknopf')
+            audioknopfArea.explain
+              read: "Drücke diesen Knopf, wenn du das Vorlesen aktivieren oder deaktivieren möchtest."
+              useAudio: Capkom.profile.get('useAudio')
+              html: """
+              <button class='tts-button' alt='Vorlesen'><i class='icon-volume-up'/></button>
+              """
+              script: (element) ->
+                jQuery(element).find('button').button()
+              after: ->
+                _.defer ->
+                  audioknopfArea.remove()
+                  done()
+              ttsOptions:
+                spinnerUri: "css/spinner.gif"
+                dialogTitle: "Sprechblase"
+                lang: "de"
+              forcedClose: (e) ->
+                Capkom.audioOff()
+
+          Capkom.timeout.start 4, ->
+            explainWeiter ->
+              console.info "explanation done"
+              Capkom.timeout.start 2, ->
+                explainAudioKnopf ->
+                  done()
+
+        show: (element) ->
+          if Capkom.nonClickMode()
+            Capkom.timeout.start 2, ->
+              Capkom.clickNext()
+
+    ###
+     Definition of the symbol size selection screen
+    ###
+    "symbolsize":
+      title: "Symbolgröße"
+      # only show it if symbols are turned on
+      speech: """
+        Wir beginnen mit einem Fangspiel: Fange die Käsestücke mit der Maus, indem du
+        auf die Quadrate klickst. Versuche, möglichst viele Quadrate mit der Maus zu treffen, damit deine Maus ausreichend Futter bekommt.
+        """
+
+      condition: (profile) ->
+        profile.get "useSymbols"
+      image: "http://i.fonts2u.com/sn/mp1_snoopy-dings_1.png"
+      html: """
+      Wir beginnen mit einem Fangspiel: Fange die Käsestücke mit der Maus, indem du
+      auf die Quadrate klickst. Versuche, möglichst viele Quadrate mit der Maus zu treffen,
+      damit deine Maus ausreichend Futter bekommt.<br/>
+      <button class='start'>Start</button>
+      <div class='fangspiel-area'></div>
+      """
+      explain: (element, done) ->
+        Capkom.timeout.start 4, ->
+          if Capkom.nonClickMode
+            ttswidget = jQuery('.tts', element)
+            ttswidget.bind 'ttswidgetdone', (e) ->
+              done()
+            ttswidget.ttswidget('talk')
+      show: (element, done) ->
+        if Capkom.nonClickMode()
+          Capkom.timeout.start 2, ->
+            jQuery('.fangspiel-area', element).sizedetect()
+
+      scriptOnce: (element) ->
+        jQuery('.start', element).button().click (e) ->
+          jQuery('.fangspiel-area', element).sizedetect
+            result: (size, details) ->
+              Capkom.profile.set
+                symbolsizeMin: size
+                symbolsizedetectDetails: details
+
+    "read":
+      title: "Wort-Bild Spiel"
+      image: "http://www.balloonmaniacs.com/images/snoopygraduateballoon.jpg"
+      speech: """
+      Nun zeigen wir dir immer ein Bild und du musst das richtige Wort dazu finden. Schau
+      dir das Bild an und klicke dann von den drei Wörtern auf das jeweils richtige Wort.
+      """
+      html: """
+        Nun zeigen wir dir immer ein Bild und du musst das richtige Wort dazu finden. Schau'
+        dir das Bild an und klicke dann von den drei Wörtern auf das jeweils richtige Wort. <br/>
+        <button class='start'>Start</button>
+        <div class='wortspiel-area'></div>
+      """
+      scriptOnce: (element) ->
+        jQuery('.start', element).button().click (e) ->
+          jQuery('.wortspiel-area', element).wordmatch
+            rootPrefix: 'lib/wordmatch/img/'
+            result: (res) ->
+              Capkom.profile.set
+                wordmatch: res
+              Capkom.clickNext()
+              jQuery('.wortspiel-area', element).wordmatch 'destroy'
+      show: (element) ->
+        _.defer ->
+          Capkom.timeout.start 4, ->
+            if Capkom.profile.get('useAudio')
+              jQuery('.tts', element).ttswidget('talk')
+
     "fontsize":
         title: "Schriftgröße"
         image: "http://www.thepartyanimal-blog.org/wp-content/uploads/2010/09/Halloween-Snoopy5.jpg"
@@ -43,7 +169,7 @@ Capkom.stages =
             Welche Schriftgröße ist für dich am angenehmsten?<br/><br/>
             <div class='fontsize'></div>
             """
-        script: (element) ->
+        scriptOnce: (element) ->
             jQuery(".fontsize").fontsize
                 value: Number Capkom.profile.get('fontsize').replace("s", "")
                 change: (val) ->
@@ -59,7 +185,7 @@ Capkom.stages =
             Wähle dazu jenes Design, das dir am besten gefällt.<br/><br/>
             <span id='themeselector'></span>
         """
-        script: (element) ->
+        scriptOnce: (element) ->
             jQuery("#themeselector", element)
             .themeswitcher
                 #width: "17em"
@@ -90,7 +216,7 @@ Capkom.stages =
                 <img src='symbols/Gnome-Audio-Volume-Muted-64.png' width='64' alt='Keine Sprachausgabe'/>
             </label>
         """
-        script: (element) ->
+        scriptOnce: (element) ->
             # activate the buttons according to the profile
             if Capkom.profile.get "useSymbols"
                 jQuery("#e2r-both").attr "checked", "checked"
@@ -145,7 +271,7 @@ Capkom.stages =
             Du kannst dir später auch Deine eigenen Symbole schaffen, indem du eigene Bilder oder Fotos hochlädst.
             <div class='symbolset-symbols'></div>
         """
-        script: (element) ->
+        scriptOnce: (element) ->
             symbolSets = _.filter Capkom.symbolSets.sets, (symbolSet) ->
                 symbolSet.hasSymbol "mainSymbol"
             Capkom.console.info symbolSets
@@ -171,54 +297,6 @@ Capkom.stages =
             .find(".#{symbolSet}").addClass('selected').end()
             .button()
 
-    ###
-     Definition of the symbol size selection screen
-    ###
-    "symbolsize":
-        title: "Symbolgröße"
-        # only show it if symbols are turned on
-        condition: (profile) ->
-            profile.get "useSymbols"
-        image: "http://i.fonts2u.com/sn/mp1_snoopy-dings_1.png"
-        html: """
-            Die CAPKOM-Kunstplattform beinhaltet viele Symbole.<br/>
-            Wie groß sollen die Symbole sein? <br/><br/>
-            <div class='symbolsize-symbols'>
-                <input type='radio' name='symbolsize' id='symbolsize-small' />
-                <label for='symbolsize-small'><span class='capkom-label symbolsize-small' 
-                        symbolId='symbol' symbolsize='small' donthidesymbol='true' title='klein'/>
-                </label>
-
-                <input type='radio' name='symbolsize' id='symbolsize-medium' />
-                <label for='symbolsize-medium'><span class='capkom-label symbolsize-medium' 
-                        symbolId='symbol' symbolsize='medium' donthidesymbol='true' title='mittelgroß'/>
-                </label>
-
-                <input type='radio' name='symbolsize' id='symbolsize-large' />
-                <label for='symbolsize-large'>
-                    <span class='capkom-label symbolsize-large' 
-                        symbolId='symbol' symbolsize='large' donthidesymbol='true' title='groß'/>
-                </label>
-            </div>
-        """
-        script: (element) ->
-            # Mark currently selected size
-            jQuery("#symbolsize-#{Capkom.profile.get 'symbolsize'}").attr "checked", "checked"
-            buttonset = jQuery(".symbolsize-symbols", element)
-            Capkom.console.info buttonset.find("[name=symbolsize]").button
-                text: false
-            buttonset = buttonset.buttonset()
-            buttonset.buttonset('widget').find('label')
-            .css
-                width: "160px"
-                height: "140px"
-
-            buttonset.click (e) ->
-                Capkom.console.info e
-            buttonset.change (e) ->
-                # On change, change profile
-                Capkom.profile.set 'symbolsize': e.target.id.replace "symbolsize-", ""
-
     "goodbye":
         title: "Ende"
         image: "http://www.slowtrav.com/blog/teachick/snoopy_thankyou_big.gif"
@@ -228,7 +306,7 @@ Capkom.stages =
             Dein Profil enthält nun folgende Informationen:<br/><br/>
             <div id="profile"></div>
         """
-        script: (el) ->
+        scriptOnce: (el) ->
             profileText = -> JSON.stringify(Capkom.profile.toJSON())
                 .replace(/,"/g, ',<br/>"')
                 .replace(/^{|}$/g, "")

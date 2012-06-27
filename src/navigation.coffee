@@ -7,8 +7,17 @@ Capkom.initNav = ->
         jQuery(".stages .titles").append jQuery(_renderStageTitle(stage))
         @renderStage stage, jQuery(".stages")
     jQuery(".stages").tabs(
-        select: (event, ui) ->
-            window.location.hash = ui.tab.hash
+        show: (event, ui) ->
+          window.location.hash = ui.tab.hash
+          newStage = _.detect Capkom.getStages(), (stage) ->
+            stage.name is ui.tab.hash.substring 1
+          Capkom.activeStage?.hide? ui.panel
+          Capkom.activeStage = newStage
+          if newStage.explain and Capkom.profile.get 'useAudio'
+            newStage.explain ui.panel, ->
+              newStage.show? ui.panel
+          else
+            newStage.show? ui.panel
     ).addClass('ui-tabs-vertical ui-helper-clearfix')
 
     Capkom.uiLoaded = true
@@ -43,15 +52,17 @@ Capkom.renderStage = (stage, tabsEl, index) ->
         el = jQuery( _renderStage stage ).insertBefore jQuery(tabsEl.find(".ui-tabs-panel")[index])
     else
         el = jQuery( _renderStage stage ).appendTo tabsEl
-    stage.script jQuery(".stage-content", el) if stage.script
+    stage.scriptOnce jQuery(".stage-content", el) if stage.scriptOnce
     if stage._first then jQuery(".prevButton", el).hide()
     if stage._last then jQuery(".nextButton", el).hide()
     jQuery(".prevButton", el).button()
     .click =>
+        Capkom.timeout.clear()
         newIndex = jQuery(".stages").find("ul.titles .ui-tabs-active").prev().index()
         jQuery(".stages").tabs "select", newIndex
     jQuery(".nextButton", el).button()
     .click =>
+        Capkom.timeout.clear()
         newIndex = jQuery(".stages").find("ul.titles .ui-tabs-active").next().index()
         jQuery(".stages").tabs "select", newIndex
     jQuery(".stage-content.tts", el).attr "tts", stage.speech if stage.speech

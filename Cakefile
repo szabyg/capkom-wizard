@@ -1,6 +1,8 @@
 appFiles  = [
   'lib/ttswidget/ttswidget.coffee'
+  'lib/explain/explain.coffee'
   'lib/sizedetect/sizedetect.coffee'
+  'lib/wordmatch/wordmatch.coffee'
   'lib/capkomsymbolwidget/capkomsymbolwidget.coffee'
   'src/fontsizewidget.coffee'
 
@@ -14,6 +16,14 @@ appFiles  = [
 ]
 target = "lib/capkomwizard.js"
 
+widgets = [
+  'lib/capkomsymbolwidget/capkomsymbolwidget.coffee'
+  'lib/explain/explain.coffee'
+  'lib/sizedetect/sizedetect.coffee'
+  'lib/ttswidget/ttswidget.coffee'
+  'lib/wordmatch/wordmatch.coffee'
+]
+
 fs         = require 'fs'
 {exec}     = require 'child_process'
 util       = require 'util'
@@ -22,6 +32,7 @@ justchanged = null
 
 task 'watch', 'Watch prod source files and build changes', ->
     invoke 'build'
+    invoke 'widgetwatch'
     util.log "Watching for changes in #{appFiles.join ', '}"
 
     for file in appFiles then do (file) ->
@@ -61,6 +72,17 @@ task 'build', 'Build single application file from source files', ->
                                 util.log 'Couldn\'t delete the lib/tmp.coffee file/'
                             util.log 'Done building coffee file.'
                         invoke 'doc'
+task 'widgetwatch', 'Watch and compile widgets', ->
+  console.info "coffee -wc #{widgets.join ' '}"
+  spawn = require('child_process').spawn
+  params = widgets.slice 0
+  params.unshift '-wc'
+  p = spawn "coffee", params
+  p.stdout.on 'data', (data) ->
+    console.log "" + data
+  p.stderr.on 'data', (data) ->
+    console.log "" + data
+
 
 task 'doc', 'Build documentation', ->
     exec "docco-husky #{appFiles.join ' '}", (err, stdout, stderr) ->
