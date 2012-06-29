@@ -42,6 +42,8 @@ jQuery.widget "Capkom.sizedetect"
         res += "<p>Minimum size resulted in #{bestSize}</p>"
         jQuery('#results').html res
         @console.info 'ideal size:', size, 'detailed results:', details
+      noclick: (e) ->
+        alert "You cannot use the computer with your current devices. Consult with Platus."
 
   _create: ->
     @_fixConsole()
@@ -90,6 +92,9 @@ jQuery.widget "Capkom.sizedetect"
     @element.click (e) =>
       @_attempt false
 
+    # escape keypress
+    jQuery('body').bind 'keyup', widget: @, @_escHandler
+
     # measure delay before first mouse move (reaction time)
     @element.mousemove (e) =>
       if @notyetmoved
@@ -120,6 +125,8 @@ jQuery.widget "Capkom.sizedetect"
     @element.css @_savedCSS
       # width: 'auto'
       # height: 'auto'
+    # escape keypress
+    jQuery('body').unbind 'keyup', @_escHandler
 
   _beginGame: ->
     level = 2
@@ -210,7 +217,7 @@ jQuery.widget "Capkom.sizedetect"
       @console.info 'goodSize', @goodSize, @
       @options.result.apply @, [@goodSize, @details]
     else
-      alert "You cannot use the computer with your current devices. Consult with Platus."
+      @_trigger 'noclick'
     @destroy()
 
   evaluateCurrentLevel: ->
@@ -246,8 +253,11 @@ jQuery.widget "Capkom.sizedetect"
         error: ->
         log: ->
 
+  _escHandler: (e) =>
+    if e.keyCode is 27
+      e.data.widget.finish()
 
-    # Class for calculating simple statistical data
+# Class for calculating simple statistical data
 class Stat
   constructor: (opts) ->
     options =
