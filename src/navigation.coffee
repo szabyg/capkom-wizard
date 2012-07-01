@@ -9,15 +9,60 @@ Capkom.initNav = ->
     jQuery(".stages").tabs(
         show: (event, ui) ->
           window.location.hash = ui.tab.hash
+          console.info ui.tab.hash
           newStage = _.detect Capkom.getStages(), (stage) ->
             stage.name is ui.tab.hash.substring 1
           Capkom.activeStage?.hide? ui.panel
           Capkom.activeStage = newStage
-          if newStage.explain and Capkom.profile.get 'useAudio'
-            newStage.explain ui.panel, ->
-              newStage.show? ui.panel
-          else
-            newStage.show? ui.panel
+          # The lifecycle of a stage after activation:
+          # if audioOn: screenread
+          autoread = (stage, panel, done) ->
+            console.info 'autoread'
+            if Capkom.autoReadMode()
+              Capkom.timeout.start 2, ->
+                ttswidget = jQuery('.tts', panel)
+                _done = (e) ->
+                  d = done.shift()
+                  d? stage, panel, done
+                  ttswidget.unbind 'ttswidgetdone', _done
+                ttswidget.bind 'ttswidgetdone', _done
+                ttswidget.ttswidget('talk')
+            else
+              d = done.shift()
+              d? stage, panel, done
+
+          # then, if there's an explanation and audioOn, explain
+          autoExplain = (stage, panel, done) ->
+            console.info 'autoExplain'
+            if stage.explain and Capkom.autoReadMode()
+              Capkom.timeout.start 2, ->
+                stage.explain panel, ->
+                  d = done.shift()
+                  d? stage, panel, done
+            else
+              d = done.shift()
+              d? stage, panel, done
+          # then, if there's a game to start, start the game
+          autoGameStart = (stage, panel, done) ->
+            console.info 'autoGameStart'
+            if stage.startGame
+              Capkom.timeout.start 2, ->
+                stage.startGame panel, ->
+                  d = done.shift()
+                  d stage, panel, done
+            else
+              d = done.shift()
+              d? stage, panel, done
+          # then, if the person cannot click, go to the next stage automatically
+          autoForward = (stage, panel, done) ->
+            console.info 'autoForward'
+            unless Capkom.canClick
+              Capkom.timeout.start 2, ->
+                Capkom.clickNext()
+            _.defer ->
+              d = done.shift()
+              d? stage, panel, done
+          autoread newStage, ui.panel, [autoExplain, autoGameStart, autoForward]
     ).addClass('ui-tabs-vertical ui-helper-clearfix')
 
     Capkom.uiLoaded = true

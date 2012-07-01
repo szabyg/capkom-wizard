@@ -47,15 +47,7 @@
     <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">hash</span><span class="p">.</span><span class="nx">replace</span> <span class="sr">/^#/</span><span class="p">,</span> <span class="s">&quot;&quot;</span></pre></div></td></tr><tr id="section-14"><td class="docs"><div class="pilwrap"><a href="#section-14" class="pilcrow">&#182;</a></div><p>initialize or destroy tts widget depending on the profile state</p>
 </td><td class="code"><div class="highlight"><pre><span class="nv">Capkom.updateTTS = </span><span class="o">-&gt;</span>
     <span class="k">if</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">uiLoaded</span>
-        <span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;.tts&quot;</span><span class="p">).</span><span class="nx">ttswidget</span>
-            <span class="nv">spinnerUri: </span><span class="s">&quot;css/spinner.gif&quot;</span>
-            <span class="nv">dialogTitle: </span><span class="s">&quot;Sprechblase&quot;</span>
-            <span class="nv">forcedClose: </span><span class="o">-&gt;</span>
-              <span class="nx">Capkom</span><span class="p">.</span><span class="nx">timeout</span><span class="p">.</span><span class="nx">clear</span><span class="p">()</span>
-              <span class="nx">Capkom</span><span class="p">.</span><span class="nx">audioOff</span><span class="p">()</span>
-            <span class="nv">manualActivate: </span><span class="o">-&gt;</span>
-              <span class="nx">Capkom</span><span class="p">.</span><span class="nx">audioOn</span><span class="p">()</span>
-            <span class="nv">active: </span><span class="o">not</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">get</span> <span class="s">&quot;useAudio&quot;</span>
+        <span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;.tts&quot;</span><span class="p">).</span><span class="nx">ttswidget</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">getTTSOptions</span><span class="p">()</span>
     <span class="k">else</span>
         <span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;:capkom-ttswidget&quot;</span><span class="p">).</span><span class="nx">ttswidget</span><span class="p">(</span><span class="s">&#39;option&#39;</span><span class="p">,</span> <span class="s">&#39;disabled&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span></pre></div></td></tr><tr id="section-15"><td class="docs"><div class="pilwrap"><a href="#section-15" class="pilcrow">&#182;</a></div><p>Make sure no console.info or .error calls on </p>
 </td><td class="code"><div class="highlight"><pre><span class="k">if</span> <span class="nb">window</span><span class="p">.</span><span class="nx">console</span>
@@ -75,8 +67,12 @@
 <span class="nv">Capkom.nonClickMode = </span><span class="o">-&gt;</span>
   <span class="o">not</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">get</span> <span class="s">&#39;canClick&#39;</span>
 
-<span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;body&#39;</span><span class="p">).</span><span class="nx">click</span> <span class="o">-&gt;</span>
+<span class="nv">Capkom.canClick = </span><span class="o">-&gt;</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;canClick: true&#39;</span>
   <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">set</span> <span class="nv">canClick: </span><span class="kc">true</span>
+<span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;body&#39;</span><span class="p">).</span><span class="nx">click</span> <span class="o">-&gt;</span>
+  <span class="nx">@canClick</span><span class="p">()</span>
+
 
 <span class="nv">Capkom.autoReadMode = </span><span class="o">-&gt;</span>
   <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">get</span> <span class="s">&#39;useAudio&#39;</span>
@@ -101,5 +97,98 @@
 <span class="nv">Capkom.audioOn = </span><span class="o">-&gt;</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;activate audio&#39;</span>
   <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">set</span> <span class="nv">useAudio: </span><span class="kc">true</span>
+
+<span class="nv">Capkom.getTTSOptions = </span><span class="o">-&gt;</span>
+  <span class="nv">spinnerUri: </span><span class="s">&quot;css/spinner.gif&quot;</span>
+  <span class="nv">dialogTitle: </span><span class="s">&quot;Sprechblase&quot;</span>
+  <span class="nv">lang: </span><span class="s">&quot;de&quot;</span>
+  <span class="nv">forcedClose: </span><span class="o">-&gt;</span>
+    <span class="nx">Capkom</span><span class="p">.</span><span class="nx">timeout</span><span class="p">.</span><span class="nx">clear</span><span class="p">()</span>
+    <span class="nx">Capkom</span><span class="p">.</span><span class="nx">audioOff</span><span class="p">()</span>
+  <span class="nv">manualActivate: </span><span class="o">-&gt;</span>
+    <span class="nx">Capkom</span><span class="p">.</span><span class="nx">audioOn</span><span class="p">()</span>
+  <span class="nv">active: </span><span class="o">not</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">get</span> <span class="s">&quot;useAudio&quot;</span>
+
+<span class="nv">Capkom.wordmatchQuestions = </span><span class="p">[</span>
+      <span class="nv">type: </span><span class="s">&#39;s2w&#39;</span> <span class="c1"># symbol to word</span>
+      <span class="nv">question: </span><span class="s">&#39;tree.jpg&#39;</span>
+      <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;Baum&#39;</span><span class="p">,</span> <span class="s">&#39;Haus&#39;</span><span class="p">,</span> <span class="s">&#39;Hose&#39;</span><span class="p">]</span>
+      <span class="nv">correct: </span><span class="s">&#39;Baum&#39;</span>
+    <span class="p">,</span>
+      <span class="nv">type: </span><span class="s">&#39;s2w&#39;</span> <span class="c1"># symbol to word</span>
+      <span class="nv">question: </span><span class="s">&#39;house.jpg&#39;</span>
+      <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;Baum&#39;</span><span class="p">,</span> <span class="s">&#39;Haus&#39;</span><span class="p">,</span> <span class="s">&#39;Hose&#39;</span><span class="p">]</span>
+      <span class="nv">correct: </span><span class="s">&#39;Haus&#39;</span>
+    <span class="p">,</span>
+      <span class="nv">type: </span><span class="s">&#39;s2w&#39;</span> <span class="c1"># symbol to word</span>
+      <span class="nv">question: </span><span class="s">&#39;pants.gif&#39;</span>
+      <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;Baum&#39;</span><span class="p">,</span> <span class="s">&#39;Haus&#39;</span><span class="p">,</span> <span class="s">&#39;Hose&#39;</span><span class="p">]</span>
+      <span class="nv">correct: </span><span class="s">&#39;Hose&#39;</span>
+    <span class="p">,</span>
+      <span class="nv">type: </span><span class="s">&#39;s2w&#39;</span>
+      <span class="nv">question: </span><span class="s">&#39;apfel.jpg&#39;</span>
+      <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;Apfel&#39;</span><span class="p">,</span> <span class="s">&#39;Hund&#39;</span><span class="p">,</span> <span class="s">&#39;Erdbeere&#39;</span><span class="p">]</span>
+      <span class="nv">correct: </span><span class="s">&#39;Apfel&#39;</span>
+    <span class="p">,</span>
+      <span class="nv">type: </span><span class="s">&#39;s2w&#39;</span> <span class="c1"># symbol to word</span>
+      <span class="nv">question: </span><span class="s">&#39;auto.jpg&#39;</span>
+      <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;Hund&#39;</span><span class="p">,</span> <span class="s">&#39;Erdbeere&#39;</span><span class="p">,</span> <span class="s">&#39;Auto&#39;</span><span class="p">]</span>
+      <span class="nv">correct: </span><span class="s">&#39;Auto&#39;</span>
+    <span class="p">,</span>
+      <span class="nv">type: </span><span class="s">&#39;s2w&#39;</span> <span class="c1"># symbol to word</span>
+      <span class="nv">question: </span><span class="s">&#39;ei.jpg&#39;</span>
+      <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;Auto&#39;</span><span class="p">,</span> <span class="s">&#39;Ei&#39;</span><span class="p">,</span> <span class="s">&#39;Haus&#39;</span><span class="p">]</span>
+      <span class="nv">correct: </span><span class="s">&#39;Ei&#39;</span>
+    <span class="p">,</span>
+      <span class="nv">type: </span><span class="s">&#39;s2w&#39;</span> <span class="c1"># symbol to word</span>
+      <span class="nv">question: </span><span class="s">&#39;rose.jpg&#39;</span>
+      <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;Rose&#39;</span><span class="p">,</span> <span class="s">&#39;Haus&#39;</span><span class="p">,</span> <span class="s">&#39;Ei&#39;</span><span class="p">]</span>
+      <span class="nv">correct: </span><span class="s">&#39;Rose&#39;</span>
+    <span class="p">,</span>
+      <span class="nv">type: </span><span class="s">&#39;s2w&#39;</span> <span class="c1"># symbol to word</span>
+      <span class="nv">question: </span><span class="s">&#39;erdbeere.jpg&#39;</span>
+      <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;Katze&#39;</span><span class="p">,</span> <span class="s">&#39;Erdbeere&#39;</span><span class="p">,</span> <span class="s">&#39;Auto&#39;</span><span class="p">]</span>
+      <span class="nv">correct: </span><span class="s">&#39;Erdbeere&#39;</span>
+    <span class="p">,</span>
+      <span class="nv">type: </span><span class="s">&#39;w2s&#39;</span> <span class="c1"># word to symbol</span>
+      <span class="nv">question: </span><span class="s">&#39;Baum&#39;</span>
+      <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;tree.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;pants.gif&#39;</span><span class="p">,</span> <span class="s">&#39;house.jpg&#39;</span><span class="p">]</span>
+      <span class="nv">correct: </span><span class="s">&#39;tree.jpg&#39;</span>
+    <span class="p">,</span>
+      <span class="nv">type: </span><span class="s">&#39;w2s&#39;</span> <span class="c1"># word to symbol</span>
+      <span class="nv">question: </span><span class="s">&#39;Haus&#39;</span>
+      <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;tree.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;pants.gif&#39;</span><span class="p">,</span> <span class="s">&#39;house.jpg&#39;</span><span class="p">]</span>
+      <span class="nv">correct: </span><span class="s">&#39;house.jpg&#39;</span>
+    <span class="p">,</span>
+      <span class="nv">type: </span><span class="s">&#39;w2s&#39;</span> <span class="c1"># word to symbol</span>
+      <span class="nv">question: </span><span class="s">&#39;Hose&#39;</span>
+      <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;tree.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;pants.gif&#39;</span><span class="p">,</span> <span class="s">&#39;house.jpg&#39;</span><span class="p">]</span>
+      <span class="nv">correct: </span><span class="s">&#39;pants.gif&#39;</span>
+    <span class="p">,</span>
+      <span class="nv">type: </span><span class="s">&#39;w2s&#39;</span> <span class="c1"># word to symbol</span>
+      <span class="nv">question: </span><span class="s">&#39;Apfel&#39;</span>
+      <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;cat.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;haus.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;apfel.jpg&#39;</span><span class="p">]</span>
+      <span class="nv">correct: </span><span class="s">&#39;apfel.jpg&#39;</span>
+    <span class="p">,</span>
+      <span class="nv">type: </span><span class="s">&#39;w2s&#39;</span> <span class="c1"># word to symbol</span>
+      <span class="nv">question: </span><span class="s">&#39;Auto&#39;</span>
+      <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;tree.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;pants.gif&#39;</span><span class="p">,</span> <span class="s">&#39;auto.jpg&#39;</span><span class="p">]</span>
+      <span class="nv">correct: </span><span class="s">&#39;auto.jpg&#39;</span>
+    <span class="p">,</span>
+      <span class="nv">type: </span><span class="s">&#39;w2s&#39;</span> <span class="c1"># word to symbol</span>
+      <span class="nv">question: </span><span class="s">&#39;Ei&#39;</span>
+      <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;ei.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;haus.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;katze.jpg&#39;</span><span class="p">]</span>
+      <span class="nv">correct: </span><span class="s">&#39;ei.jpg&#39;</span>
+    <span class="p">,</span>
+      <span class="nv">type: </span><span class="s">&#39;w2s&#39;</span> <span class="c1"># word to symbol</span>
+      <span class="nv">question: </span><span class="s">&#39;Katze&#39;</span>
+      <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;hund.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;katze.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;pants.gif&#39;</span><span class="p">]</span>
+      <span class="nv">correct: </span><span class="s">&#39;katze.jpg&#39;</span>
+    <span class="p">,</span>
+      <span class="nv">type: </span><span class="s">&#39;w2s&#39;</span> <span class="c1"># word to symbol</span>
+      <span class="nv">question: </span><span class="s">&#39;Schmetterling&#39;</span>
+      <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;hund.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;schmetterling.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;tree.jpg&#39;</span><span class="p">]</span>
+      <span class="nv">correct: </span><span class="s">&#39;schmetterling.jpg&#39;</span>
+    <span class="p">]</span>
 
 </pre></div></td></tr></tbody></table><div id="projectname"><a href="../index.html">Capkom Wizard</a></div></div></body></html>

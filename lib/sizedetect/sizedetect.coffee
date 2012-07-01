@@ -81,7 +81,6 @@ jQuery.widget "Capkom.sizedetect"
 
     # Catchme button and functionality
     # @element.append("<button class='catchme'>#{@options.symbolLabel}</button>")
-    debugger
     @element.append("<button class='catchme'><img src='#{@options.rootPrefix}aron.png'/></button>")
     @catchme = @element.find '.catchme'
     @console.info @catchme.button()
@@ -95,9 +94,9 @@ jQuery.widget "Capkom.sizedetect"
 
     # Hide mouse cursor
     @catchme.css
-      cursor: 'url(./blank.cur), none'
+      cursor: "url(#{@options.rootPrefix}blank.cur), none"
     @element.css
-      cursor: 'url(./aron.png), none'
+      cursor: "url(#{@options.rootPrefix}blank.cur), none"
 
     # Create custom cursor
     @element.append "<img class='custom-cursor' src='#{@options.rootPrefix}futter.png'/>"

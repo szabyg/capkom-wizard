@@ -73,8 +73,7 @@ height: @getInnerHeight() - 30</p>
       <span class="s">&#39;width&#39;</span><span class="o">:</span> <span class="s">&#39;50%&#39;</span>
     <span class="nx">@progressBar</span><span class="p">.</span><span class="nx">progressbar</span><span class="p">()</span></pre></div></td></tr><tr id="section-8"><td class="docs"><div class="pilwrap"><a href="#section-8" class="pilcrow">&#182;</a></div><p>Catchme button and functionality
 @element.append("<button class='catchme'>#{@options.symbolLabel}</button>")</p>
-</td><td class="code"><div class="highlight"><pre>    <span class="nx">debugger</span>
-    <span class="nx">@element</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s">&quot;&lt;button class=&#39;catchme&#39;&gt;&lt;img src=&#39;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">rootPrefix</span><span class="si">}</span><span class="s">aron.png&#39;/&gt;&lt;/button&gt;&quot;</span><span class="p">)</span>
+</td><td class="code"><div class="highlight"><pre>    <span class="nx">@element</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s">&quot;&lt;button class=&#39;catchme&#39;&gt;&lt;img src=&#39;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">rootPrefix</span><span class="si">}</span><span class="s">aron.png&#39;/&gt;&lt;/button&gt;&quot;</span><span class="p">)</span>
     <span class="vi">@catchme = </span><span class="nx">@element</span><span class="p">.</span><span class="nx">find</span> <span class="s">&#39;.catchme&#39;</span>
     <span class="nx">@console</span><span class="p">.</span><span class="nx">info</span> <span class="nx">@catchme</span><span class="p">.</span><span class="nx">button</span><span class="p">()</span>
 
@@ -84,9 +83,9 @@ height: @getInnerHeight() - 30</p>
       <span class="nx">e</span><span class="p">.</span><span class="nx">stopPropagation</span><span class="p">()</span>
       <span class="nx">@_attempt</span> <span class="kc">true</span></pre></div></td></tr><tr id="section-10"><td class="docs"><div class="pilwrap"><a href="#section-10" class="pilcrow">&#182;</a></div><p>Hide mouse cursor</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="nx">@catchme</span><span class="p">.</span><span class="nx">css</span>
-      <span class="nv">cursor: </span><span class="s">&#39;url(./blank.cur), none&#39;</span>
+      <span class="nv">cursor: </span><span class="s">&quot;url(</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">rootPrefix</span><span class="si">}</span><span class="s">blank.cur), none&quot;</span>
     <span class="nx">@element</span><span class="p">.</span><span class="nx">css</span>
-      <span class="nv">cursor: </span><span class="s">&#39;url(./aron.png), none&#39;</span></pre></div></td></tr><tr id="section-11"><td class="docs"><div class="pilwrap"><a href="#section-11" class="pilcrow">&#182;</a></div><p>Create custom cursor</p>
+      <span class="nv">cursor: </span><span class="s">&quot;url(</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">rootPrefix</span><span class="si">}</span><span class="s">blank.cur), none&quot;</span></pre></div></td></tr><tr id="section-11"><td class="docs"><div class="pilwrap"><a href="#section-11" class="pilcrow">&#182;</a></div><p>Create custom cursor</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="nx">@element</span><span class="p">.</span><span class="nx">append</span> <span class="s">&quot;&lt;img class=&#39;custom-cursor&#39; src=&#39;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">rootPrefix</span><span class="si">}</span><span class="s">futter.png&#39;/&gt;&quot;</span>
     <span class="vi">@cursor = </span><span class="nx">jQuery</span> <span class="s">&#39;.custom-cursor&#39;</span><span class="p">,</span> <span class="nx">@element</span>
     <span class="nx">@cursor</span><span class="p">.</span><span class="nx">css</span></pre></div></td></tr><tr id="section-12"><td class="docs"><div class="pilwrap"><a href="#section-12" class="pilcrow">&#182;</a></div><p>cursor: 'none'

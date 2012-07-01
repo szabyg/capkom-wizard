@@ -22,7 +22,7 @@ Capkom.stages =
             """
             Willkommen im Online-Atelier! Hier bekommst du Hilfe beim Hochladen neuer Bilder,
             beim Erstellen deines Profils und bei der Kommunikation mit anderen Künstlern.
-            Lass‘ uns ein kleines Spiel spielen!
+            Lass uns ein kleines Spiel spielen!
             """
 
         html: 
@@ -51,13 +51,7 @@ Capkom.stages =
                 _.defer ->
                   weiterArea.remove()
                   done()
-              ttsOptions:
-                spinnerUri: "css/spinner.gif"
-                dialogTitle: "Sprechblase"
-                lang: "de"
-              forcedClose: (e) ->
-                Capkom.timeout.clear()
-                Capkom.audioOff()
+              ttsOptions: Capkom.getTTSOptions()
 
           explainAudioKnopf = (done) ->
             audioknopfArea = explainArea.append("<div class='audioknopf'></div>").find('.audioknopf')
@@ -73,13 +67,7 @@ Capkom.stages =
                 _.defer ->
                   audioknopfArea.remove()
                   done()
-              ttsOptions:
-                spinnerUri: "css/spinner.gif"
-                dialogTitle: "Sprechblase"
-                lang: "de"
-              forcedClose: (e) ->
-                Capkom.timeout.clear()
-                Capkom.audioOff()
+              ttsOptions: Capkom.getTTSOptions()
 
           Capkom.timeout.start 4, ->
             explainWeiter ->
@@ -101,17 +89,16 @@ Capkom.stages =
       title: "Symbolgröße"
       # only show it if symbols are turned on
       speech: """
-        Wir beginnen mit einem Fangspiel: Fange die Käsestücke mit der Maus, indem du
-        auf die Quadrate klickst. Versuche, möglichst viele Quadrate mit der Maus zu treffen, damit deine Maus ausreichend Futter bekommt.
+        Wir beginnen mit einem Fangspiel: Füttere den Hund indem du mit der Futterdose auf den Hund klickst.
+        Versuche möglichst oft den Hund füttern, damit er glücklich und gesund bleibt.
         """
 
       condition: (profile) ->
         profile.get "useSymbols"
       image: "http://i.fonts2u.com/sn/mp1_snoopy-dings_1.png"
       html: """
-      Wir beginnen mit einem Fangspiel: Fange die Käsestücke mit der Maus, indem du
-      auf die Quadrate klickst. Versuche, möglichst viele Quadrate mit der Maus zu treffen,
-      damit deine Maus ausreichend Futter bekommt.<br/>
+      Wir beginnen mit einem Fangspiel: Füttere den Hund indem du mit der Futterdose auf den Hund klickst.
+      Versuche möglichst oft den Hund füttern, damit er glücklich und gesund bleibt.<br/>
       <button class='start'>Start</button>
       <div class='fangspiel-area'></div>
       """
@@ -124,25 +111,41 @@ Capkom.stages =
               ttswidget.unbind 'ttswidgetdone', _done
             ttswidget.bind 'ttswidgetdone', _done
             ttswidget.ttswidget('talk')
+      ###
       show: (element, done) ->
         if Capkom.nonClickMode()
           Capkom.timeout.start 2, ->
             jQuery('.fangspiel-area', element).sizedetect
               rootPrefix: 'lib/sizedetect/'
-
+              result: (size, details) ->
+                Capkom.profile.set
+                  symbolsizeMin: size
+                  symbolsizedetectDetails: details
+      ###
+      startGame: (element, done) ->
+        jQuery('.fangspiel-area', element).sizedetect
+          rootPrefix: 'lib/sizedetect/'
+          result: (size, details) ->
+            Capkom.profile.set
+              symbolsizeMin: size
+              symbolsizedetectDetails: details
+            done()
+            Capkom.clickNext()
       scriptOnce: (element) ->
         jQuery('.start', element).button().click (e) ->
           jQuery('.fangspiel-area', element).sizedetect
+            rootPrefix: 'lib/sizedetect/'
             result: (size, details) ->
               Capkom.profile.set
                 symbolsizeMin: size
                 symbolsizedetectDetails: details
+              Capkom.clickNext()
 
     "read":
       title: "Wort-Bild Spiel"
       image: "http://www.balloonmaniacs.com/images/snoopygraduateballoon.jpg"
       speech: """
-      Nun zeigen wir dir immer ein Bild und du musst das richtige Wort dazu finden. Schau‘ dir das Bild an und klicke
+      Nun zeigen wir dir immer ein Bild und du musst das richtige Wort dazu finden. Schau dir das Bild an und klicke
       dann von den drei Wörtern auf das jeweils richtige Wort. Manchmal zeigen wir dir aber auch ein Wort und drei Bilder.
       Du musst dann das richtige Bild, das zum Wort gehört, anklicken.
       """
@@ -162,88 +165,18 @@ Capkom.stages =
                 wordmatch: res
               Capkom.clickNext()
               jQuery('.wortspiel-area', element).wordmatch 'destroy'
-            questions: [
-                type: 's2w' # symbol to word
-                question: 'tree.jpg'
-                choices: ['Baum', 'Haus', 'Hose']
-                correct: 'Baum'
-            ,
-                type: 's2w' # symbol to word
-                question: 'house.jpg'
-                choices: ['Baum', 'Haus', 'Hose']
-                correct: 'Haus'
-            ,
-                type: 's2w' # symbol to word
-                question: 'pants.gif'
-                choices: ['Baum', 'Haus', 'Hose']
-                correct: 'Hose'
-            ,
-                type: 's2w'
-                question: 'apfel.jpg'
-                choices: ['Apfel', 'Hund', 'Erdbeere']
-                correct: 'Apfel'
-            ,
-                type: 's2w' # symbol to word
-                question: 'auto.jpg'
-                choices: ['Hund', 'Erdbeere', 'Auto']
-                correct: 'Auto'
-            ,
-                type: 's2w' # symbol to word
-                question: 'ei.jpg'
-                choices: ['Auto', 'Ei', 'Haus']
-                correct: 'Ei'
-            ,
-                type: 's2w' # symbol to word
-                question: 'rose.jpg'
-                choices: ['Rose', 'Haus', 'Ei']
-                correct: 'Rose'
-            ,
-                type: 's2w' # symbol to word
-                question: 'erdbeere.jpg'
-                choices: ['Katze', 'Erdbeere', 'Auto']
-                correct: 'Erdbeere'
-            ,
-                type: 'w2s' # word to symbol
-                question: 'Baum'
-                choices: ['tree.jpg', 'pants.gif', 'house.jpg']
-                correct: 'tree.jpg'
-            ,
-                type: 'w2s' # word to symbol
-                question: 'Haus'
-                choices: ['tree.jpg', 'pants.gif', 'house.jpg']
-                correct: 'house.jpg'
-            ,
-                type: 'w2s' # word to symbol
-                question: 'Hose'
-                choices: ['tree.jpg', 'pants.gif', 'house.jpg']
-                correct: 'pants.gif'
-            ,
-                type: 'w2s' # word to symbol
-                question: 'Apfel'
-                choices: ['cat.jpg', 'haus.jpg', 'apfel.jpg']
-                correct: 'apfel.jpg'
-            ,
-                type: 'w2s' # word to symbol
-                question: 'Auto'
-                choices: ['tree.jpg', 'pants.gif', 'auto.jpg']
-                correct: 'auto.jpg'
-            ,
-                type: 'w2s' # word to symbol
-                question: 'Ei'
-                choices: ['ei.jpg', 'haus.jpg', 'katze.jpg']
-                correct: 'ei.jpg'
-            ,
-                type: 'w2s' # word to symbol
-                question: 'Katze'
-                choices: ['hund.jpg', 'katze.jpg', 'pants.gif']
-                correct: 'katze.jpg'
-            ,
-                type: 'w2s' # word to symbol
-                question: 'Schmetterling'
-                choices: ['hund.jpg', 'schmetterling.jpg', 'tree.jpg']
-                correct: 'schmetterling.jpg'
-            ]
+            questions: Capkom.wordmatchQuestions
 
+      startGame: (element, done) ->
+        jQuery('.wortspiel-area', element).wordmatch
+          rootPrefix: 'lib/wordmatch/img/'
+          result: (res) ->
+            Capkom.profile.set
+              wordmatch: res
+            done()
+            Capkom.clickNext()
+            jQuery('.wortspiel-area', element).wordmatch 'destroy'
+          questions: Capkom.wordmatchQuestions
 
       show: (element) ->
         _.defer ->

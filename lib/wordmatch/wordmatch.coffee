@@ -88,9 +88,9 @@ jQuery.widget "Capkom.wordmatch"
 
     @element.append """
       <div class='play-area'>
-        <table>
+        <table style="width: 100%;">
           <tr><td><div class='question-area'></div></td></tr>
-          <tr><td><div class='answer-area'></div></td></tr>
+          <tr><td><div class='answer-area' style='text-align: center'></div></td></tr>
         </table>
       </div>
     """
@@ -127,25 +127,26 @@ jQuery.widget "Capkom.wordmatch"
     @_renderNext()
 
   _renderNext: ->
+    @updateProgress()
     if @sequence.length
       @question = @sequence.shift()
       switch @question.type
         when 's2w'
-          @questionArea.html "<img class='question' src='#{@options.rootPrefix}#{@question.question}' width='#{@options.symbolSize * 2} height='#{@options.symbolSize * 2}'/>"
+          @questionArea.html "<img class='question' src='#{@options.rootPrefix}#{@question.question}' style='height:#{@options.symbolSize}px;'/>"
           @answerArea.html ''
           for choice in @_shuffle @question.choices
-            @answerArea.append "<button value='#{choice}' width='#{@options.symbolSize} height='#{@options.symbolSize}'>#{choice}</button>"
+            @answerArea.append "<button value='#{choice}' width='#{@options.symbolSize} height='#{@options.symbolSize}' style='margin:1ex;'>#{choice}</button>"
           @currentResultContainer = @results.symbol2word
         when 'w2s'
-          @questionArea.html "<h1>#{@question.question}</h1>"
+          @questionArea.html "<h1 style='padding: 2ex;'>#{@question.question}</h1>"
           jQuery('h1', @questionArea).css
             "text-align": "center"
             "font-size": "140%"
           @answerArea.html ''
           for choice in @_shuffle @question.choices
             @answerArea.append """
-              <button value='#{choice}' width='#{@options.symbolSize} height='#{@options.symbolSize}'>
-                <img class='choice' src='#{@options.rootPrefix}#{choice}' width='#{@options.symbolSize} height='#{@options.symbolSize}'/>
+              <button value='#{choice}' width='#{@options.symbolSize} height='#{@options.symbolSize}' style='margin: 1ex;'>
+                <img class='choice' src='#{@options.rootPrefix}#{choice}' style='height:#{@options.symbolSize}px;'/>
               </button>
             """
           @currentResultContainer = @results.word2symbol
@@ -227,10 +228,14 @@ jQuery.widget "Capkom.wordmatch"
   _shuffle: (arr) ->
     randOrd = ->
       Math.round(Math.random())-0.5
-    arr.splice(0).sort randOrd
+    arr.slice(0).sort randOrd
+
+  updateProgress: ->
+    val = (@options.questions.length - @sequence.length) / @options.questions.length * 100
+    @progressBar.progressbar 'value', val
 
 
-    # Class for calculating simple statistical data
+# Class for calculating simple statistical data
 class Stat
   constructor: (opts) ->
     options =
