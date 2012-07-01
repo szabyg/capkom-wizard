@@ -68,11 +68,12 @@ Capkom.updateTTS = ->
         jQuery(".tts").ttswidget
             spinnerUri: "css/spinner.gif"
             dialogTitle: "Sprechblase"
-            forceQuit: ->
+            forcedClose: ->
+              Capkom.timeout.clear()
               Capkom.audioOff()
             manualActivate: ->
               Capkom.audioOn()
-            disabled: not Capkom.profile.get "useAudio"
+            active: not Capkom.profile.get "useAudio"
     else
         jQuery(":capkom-ttswidget").ttswidget('option', 'disabled', true)
 
@@ -103,7 +104,10 @@ Capkom.autoReadMode = ->
 class Capkom.Timeout
   start: (secs, cb) ->
     @clear()
-    # @timer = setTimeout cb, secs*1000
+    run = =>
+      @timer = null
+      cb()
+    @timer = setTimeout run, secs*1000
   clear: ->
     if @timer
       console.info "Cancel timeout"

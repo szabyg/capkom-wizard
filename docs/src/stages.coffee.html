@@ -53,6 +53,7 @@
                 <span class="nv">dialogTitle: </span><span class="s">&quot;Sprechblase&quot;</span>
                 <span class="nv">lang: </span><span class="s">&quot;de&quot;</span>
               <span class="nv">forcedClose: </span><span class="nf">(e) -&gt;</span>
+                <span class="nx">Capkom</span><span class="p">.</span><span class="nx">timeout</span><span class="p">.</span><span class="nx">clear</span><span class="p">()</span>
                 <span class="nx">Capkom</span><span class="p">.</span><span class="nx">audioOff</span><span class="p">()</span>
 
           <span class="nv">explainAudioKnopf = </span><span class="nf">(done) -&gt;</span>
@@ -74,13 +75,15 @@
                 <span class="nv">dialogTitle: </span><span class="s">&quot;Sprechblase&quot;</span>
                 <span class="nv">lang: </span><span class="s">&quot;de&quot;</span>
               <span class="nv">forcedClose: </span><span class="nf">(e) -&gt;</span>
+                <span class="nx">Capkom</span><span class="p">.</span><span class="nx">timeout</span><span class="p">.</span><span class="nx">clear</span><span class="p">()</span>
                 <span class="nx">Capkom</span><span class="p">.</span><span class="nx">audioOff</span><span class="p">()</span>
 
           <span class="nx">Capkom</span><span class="p">.</span><span class="nx">timeout</span><span class="p">.</span><span class="nx">start</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-&gt;</span>
             <span class="nx">explainWeiter</span> <span class="o">-&gt;</span>
-              <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&quot;explanation done&quot;</span>
+              <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&quot;&#39;weiter&#39; explanation done&quot;</span>
               <span class="nx">Capkom</span><span class="p">.</span><span class="nx">timeout</span><span class="p">.</span><span class="nx">start</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-&gt;</span>
                 <span class="nx">explainAudioKnopf</span> <span class="o">-&gt;</span>
+                  <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&quot;&#39;audio&#39; explanation done&quot;</span>
                   <span class="nx">done</span><span class="p">()</span>
 
         <span class="nv">show: </span><span class="nf">(element) -&gt;</span>
@@ -109,13 +112,16 @@
         <span class="nx">Capkom</span><span class="p">.</span><span class="nx">timeout</span><span class="p">.</span><span class="nx">start</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-&gt;</span>
           <span class="k">if</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">nonClickMode</span>
             <span class="nv">ttswidget = </span><span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.tts&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">)</span>
-            <span class="nx">ttswidget</span><span class="p">.</span><span class="nx">bind</span> <span class="s">&#39;ttswidgetdone&#39;</span><span class="p">,</span> <span class="nf">(e) -&gt;</span>
+            <span class="nv">_done = </span><span class="nf">(e) -&gt;</span>
               <span class="nx">done</span><span class="p">()</span>
+              <span class="nx">ttswidget</span><span class="p">.</span><span class="nx">unbind</span> <span class="s">&#39;ttswidgetdone&#39;</span><span class="p">,</span> <span class="nx">_done</span>
+            <span class="nx">ttswidget</span><span class="p">.</span><span class="nx">bind</span> <span class="s">&#39;ttswidgetdone&#39;</span><span class="p">,</span> <span class="nx">_done</span>
             <span class="nx">ttswidget</span><span class="p">.</span><span class="nx">ttswidget</span><span class="p">(</span><span class="s">&#39;talk&#39;</span><span class="p">)</span>
       <span class="nv">show: </span><span class="nf">(element, done) -&gt;</span>
         <span class="k">if</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">nonClickMode</span><span class="p">()</span>
           <span class="nx">Capkom</span><span class="p">.</span><span class="nx">timeout</span><span class="p">.</span><span class="nx">start</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-&gt;</span>
-            <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.fangspiel-area&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">sizedetect</span><span class="p">()</span>
+            <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.fangspiel-area&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">sizedetect</span>
+              <span class="nv">rootPrefix: </span><span class="s">&#39;lib/sizedetect/&#39;</span>
 
       <span class="nv">scriptOnce: </span><span class="nf">(element) -&gt;</span>
         <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.start&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">button</span><span class="p">().</span><span class="nx">click</span> <span class="nf">(e) -&gt;</span>
@@ -129,12 +135,14 @@
       <span class="nv">title: </span><span class="s">&quot;Wort-Bild Spiel&quot;</span>
       <span class="nv">image: </span><span class="s">&quot;http://www.balloonmaniacs.com/images/snoopygraduateballoon.jpg&quot;</span>
       <span class="nv">speech: </span><span class="s">&quot;&quot;&quot;</span>
-<span class="s">      Nun zeigen wir dir immer ein Bild und du musst das richtige Wort dazu finden. Schau</span>
-<span class="s">      dir das Bild an und klicke dann von den drei Wörtern auf das jeweils richtige Wort.</span>
+<span class="s">      Nun zeigen wir dir immer ein Bild und du musst das richtige Wort dazu finden. Schau‘ dir das Bild an und klicke</span>
+<span class="s">      dann von den drei Wörtern auf das jeweils richtige Wort. Manchmal zeigen wir dir aber auch ein Wort und drei Bilder.</span>
+<span class="s">      Du musst dann das richtige Bild, das zum Wort gehört, anklicken.</span>
 <span class="s">      &quot;&quot;&quot;</span>
       <span class="nv">html: </span><span class="s">&quot;&quot;&quot;</span>
-<span class="s">        Nun zeigen wir dir immer ein Bild und du musst das richtige Wort dazu finden. Schau&#39;</span>
-<span class="s">        dir das Bild an und klicke dann von den drei Wörtern auf das jeweils richtige Wort. &lt;br/&gt;</span>
+<span class="s">        Nun zeigen wir dir immer ein Bild und du musst das richtige Wort dazu finden. Schau‘ dir das Bild an und klicke</span>
+<span class="s">        dann von den drei Wörtern auf das jeweils richtige Wort. Manchmal zeigen wir dir aber auch ein Wort und drei</span>
+<span class="s">        Bilder. Du musst dann das richtige Bild, das zum Wort gehört, anklicken. &lt;br/&gt;</span>
 <span class="s">        &lt;button class=&#39;start&#39;&gt;Start&lt;/button&gt;</span>
 <span class="s">        &lt;div class=&#39;wortspiel-area&#39;&gt;&lt;/div&gt;</span>
 <span class="s">      &quot;&quot;&quot;</span>

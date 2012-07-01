@@ -25,7 +25,8 @@ jQuery.widget "Capkom.sizedetect"
       maxSize: 200
       minSize: 100
       clickCount: 5
-      timeout: 40
+      timeout: 400
+      rootPrefix: ''
       result: (bestSize, details) ->
         res = "<h2>Results</h2>"
         res += "Measured Sizes (these sizes depend from the screen size)"
@@ -66,11 +67,11 @@ jQuery.widget "Capkom.sizedetect"
       right: '5px'
       'background-color': '#fff'
       'z-index': 100
-      # border: '1px red solid'
-
+      #test-area {
       # width: @getInnerWidth() - 30
       # height: @getInnerHeight() - 30
 
+    # Create progress bar
     @element.append "<div class='progressBar'></div>"
     @progressBar = @element.find ".progressBar"
     @progressBar.css
@@ -79,14 +80,64 @@ jQuery.widget "Capkom.sizedetect"
     @progressBar.progressbar()
 
     # Catchme button and functionality
-    @element.append("<button class='catchme'>#{@options.symbolLabel}</button>")
+    # @element.append("<button class='catchme'>#{@options.symbolLabel}</button>")
+    debugger
+    @element.append("<button class='catchme'><img src='#{@options.rootPrefix}aron.png'/></button>")
     @catchme = @element.find '.catchme'
     @console.info @catchme.button()
 
+    @catchme.find('.ui-button-text').css
+      'padding': 0
     # correct click
     @catchme.click (e) =>
       e.stopPropagation()
       @_attempt true
+
+    # Hide mouse cursor
+    @catchme.css
+      cursor: 'url(./blank.cur), none'
+    @element.css
+      cursor: 'url(./aron.png), none'
+
+    # Create custom cursor
+    @element.append "<img class='custom-cursor' src='#{@options.rootPrefix}futter.png'/>"
+    @cursor = jQuery '.custom-cursor', @element
+    @cursor.css
+      # cursor: 'none'
+      # width: '100px'
+      # height: '100px'
+      position: 'absolute'
+      #display: 'none'
+      top: 0
+      left: 0
+      'z-index': 10000
+      # border: '1px solid red'
+      'pointer-events': 'none'
+
+    @cursor.click (e) =>
+      @cursor.hide()
+      console.info e
+      jQuery(document.elementFromPoint(e.clientX, e.clientY)).trigger 'click'
+      _.defer =>
+        @cursor.show()
+      false
+
+    @element.mouseout (e) =>
+      console.info 'element out', 'e', e, 'e.relatedTarget', e.relatedTarget
+      unless @catchme.has e.relatedTarget
+        @cursor.hide()
+      false
+
+    @element.mouseenter (e) =>
+      console.info 'element enter', e
+      @cursor.show()
+      false
+
+    @element.mousemove (e) =>
+      console.info 'element move'
+      @cursor.css
+        left: e.clientX - (@cursorsize / 2)
+        top: e.clientY - (@cursorsize / 2)
 
     # wrong click
     @element.click (e) =>
@@ -141,10 +192,16 @@ jQuery.widget "Capkom.sizedetect"
     else
         @level = level
         @size = Math.floor((Math.min @getInnerWidth(), @getInnerHeight()) / @level)
+        @cursorsize = @size / 2
+        @cursor.css
+          height: @cursorsize
+          width: @cursorsize
         @currentLevel = @details[@size.toString()] = []
         @progressBar.progressbar 'value', 0
-        @catchme.css 'width', @size
-        @catchme.css 'height', @size
+        @catchme.add('img', @catchme)
+        .css
+          'width': @size
+          'height': @size
         # Reset sensors, start stop watches
         @moveTimeStat.clear()
         @reactionTimeStat.clear()
@@ -255,7 +312,8 @@ jQuery.widget "Capkom.sizedetect"
 
   _escHandler: (e) =>
     if e.keyCode is 27
-      e.data.widget.finish()
+      # e.data.widget.finish()
+      e.data.widget.destroy()
 
 # Class for calculating simple statistical data
 class Stat

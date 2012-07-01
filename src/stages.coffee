@@ -56,6 +56,7 @@ Capkom.stages =
                 dialogTitle: "Sprechblase"
                 lang: "de"
               forcedClose: (e) ->
+                Capkom.timeout.clear()
                 Capkom.audioOff()
 
           explainAudioKnopf = (done) ->
@@ -77,13 +78,15 @@ Capkom.stages =
                 dialogTitle: "Sprechblase"
                 lang: "de"
               forcedClose: (e) ->
+                Capkom.timeout.clear()
                 Capkom.audioOff()
 
           Capkom.timeout.start 4, ->
             explainWeiter ->
-              console.info "explanation done"
+              console.info "'weiter' explanation done"
               Capkom.timeout.start 2, ->
                 explainAudioKnopf ->
+                  console.info "'audio' explanation done"
                   done()
 
         show: (element) ->
@@ -116,13 +119,16 @@ Capkom.stages =
         Capkom.timeout.start 4, ->
           if Capkom.nonClickMode
             ttswidget = jQuery('.tts', element)
-            ttswidget.bind 'ttswidgetdone', (e) ->
+            _done = (e) ->
               done()
+              ttswidget.unbind 'ttswidgetdone', _done
+            ttswidget.bind 'ttswidgetdone', _done
             ttswidget.ttswidget('talk')
       show: (element, done) ->
         if Capkom.nonClickMode()
           Capkom.timeout.start 2, ->
-            jQuery('.fangspiel-area', element).sizedetect()
+            jQuery('.fangspiel-area', element).sizedetect
+              rootPrefix: 'lib/sizedetect/'
 
       scriptOnce: (element) ->
         jQuery('.start', element).button().click (e) ->
@@ -136,12 +142,14 @@ Capkom.stages =
       title: "Wort-Bild Spiel"
       image: "http://www.balloonmaniacs.com/images/snoopygraduateballoon.jpg"
       speech: """
-      Nun zeigen wir dir immer ein Bild und du musst das richtige Wort dazu finden. Schau
-      dir das Bild an und klicke dann von den drei Wörtern auf das jeweils richtige Wort.
+      Nun zeigen wir dir immer ein Bild und du musst das richtige Wort dazu finden. Schau‘ dir das Bild an und klicke
+      dann von den drei Wörtern auf das jeweils richtige Wort. Manchmal zeigen wir dir aber auch ein Wort und drei Bilder.
+      Du musst dann das richtige Bild, das zum Wort gehört, anklicken.
       """
       html: """
-        Nun zeigen wir dir immer ein Bild und du musst das richtige Wort dazu finden. Schau'
-        dir das Bild an und klicke dann von den drei Wörtern auf das jeweils richtige Wort. <br/>
+        Nun zeigen wir dir immer ein Bild und du musst das richtige Wort dazu finden. Schau‘ dir das Bild an und klicke
+        dann von den drei Wörtern auf das jeweils richtige Wort. Manchmal zeigen wir dir aber auch ein Wort und drei
+        Bilder. Du musst dann das richtige Bild, das zum Wort gehört, anklicken. <br/>
         <button class='start'>Start</button>
         <div class='wortspiel-area'></div>
       """
