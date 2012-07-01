@@ -115,25 +115,21 @@ jQuery.widget "Capkom.sizedetect"
 
     @cursor.click (e) =>
       @cursor.hide()
-      console.info e
       jQuery(document.elementFromPoint(e.clientX, e.clientY)).trigger 'click'
       _.defer =>
         @cursor.show()
       false
 
     @element.mouseout (e) =>
-      console.info 'element out', 'e', e, 'e.relatedTarget', e.relatedTarget
       unless @catchme.has e.relatedTarget
         @cursor.hide()
       false
 
     @element.mouseenter (e) =>
-      console.info 'element enter', e
       @cursor.show()
       false
 
     @element.mousemove (e) =>
-      console.info 'element move'
       @cursor.css
         left: e.clientX - (@cursorsize / 2)
         top: e.clientY - (@cursorsize / 2)

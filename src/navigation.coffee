@@ -9,7 +9,7 @@ Capkom.initNav = ->
     jQuery(".stages").tabs(
         show: (event, ui) ->
           window.location.hash = ui.tab.hash
-          console.info ui.tab.hash
+          Capkom.console.info ui.tab.hash
           newStage = _.detect Capkom.getStages(), (stage) ->
             stage.name is ui.tab.hash.substring 1
           Capkom.activeStage?.hide? ui.panel
@@ -17,7 +17,6 @@ Capkom.initNav = ->
           # The lifecycle of a stage after activation:
           # if audioOn: screenread
           autoread = (stage, panel, done) ->
-            console.info 'autoread'
             if Capkom.autoReadMode()
               Capkom.timeout.start 2, ->
                 ttswidget = jQuery('.tts', panel)
@@ -33,7 +32,6 @@ Capkom.initNav = ->
 
           # then, if there's an explanation and audioOn, explain
           autoExplain = (stage, panel, done) ->
-            console.info 'autoExplain'
             if stage.explain and Capkom.autoReadMode()
               Capkom.timeout.start 2, ->
                 stage.explain panel, ->
@@ -44,7 +42,6 @@ Capkom.initNav = ->
               d? stage, panel, done
           # then, if there's a game to start, start the game
           autoGameStart = (stage, panel, done) ->
-            console.info 'autoGameStart'
             if stage.startGame
               Capkom.timeout.start 2, ->
                 stage.startGame panel, ->
@@ -55,7 +52,6 @@ Capkom.initNav = ->
               d? stage, panel, done
           # then, if the person cannot click, go to the next stage automatically
           autoForward = (stage, panel, done) ->
-            console.info 'autoForward'
             if Capkom.nonClickMode()
               Capkom.timeout.start 2, ->
                 Capkom.clickNext()

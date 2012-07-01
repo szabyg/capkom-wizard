@@ -98,25 +98,21 @@ height: '100px'</p>
 
     <span class="nx">@cursor</span><span class="p">.</span><span class="nx">click</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span>
       <span class="nx">@cursor</span><span class="p">.</span><span class="nx">hide</span><span class="p">()</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="nx">e</span>
       <span class="nx">jQuery</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">elementFromPoint</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">clientX</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">clientY</span><span class="p">)).</span><span class="nx">trigger</span> <span class="s">&#39;click&#39;</span>
       <span class="nx">_</span><span class="p">.</span><span class="nx">defer</span> <span class="o">=&gt;</span>
         <span class="nx">@cursor</span><span class="p">.</span><span class="nx">show</span><span class="p">()</span>
       <span class="kc">false</span>
 
     <span class="nx">@element</span><span class="p">.</span><span class="nx">mouseout</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;element out&#39;</span><span class="p">,</span> <span class="s">&#39;e&#39;</span><span class="p">,</span> <span class="nx">e</span><span class="p">,</span> <span class="s">&#39;e.relatedTarget&#39;</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">relatedTarget</span>
       <span class="nx">unless</span> <span class="nx">@catchme</span><span class="p">.</span><span class="nx">has</span> <span class="nx">e</span><span class="p">.</span><span class="nx">relatedTarget</span>
         <span class="nx">@cursor</span><span class="p">.</span><span class="nx">hide</span><span class="p">()</span>
       <span class="kc">false</span>
 
     <span class="nx">@element</span><span class="p">.</span><span class="nx">mouseenter</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;element enter&#39;</span><span class="p">,</span> <span class="nx">e</span>
       <span class="nx">@cursor</span><span class="p">.</span><span class="nx">show</span><span class="p">()</span>
       <span class="kc">false</span>
 
     <span class="nx">@element</span><span class="p">.</span><span class="nx">mousemove</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;element move&#39;</span>
       <span class="nx">@cursor</span><span class="p">.</span><span class="nx">css</span>
         <span class="nv">left: </span><span class="nx">e</span><span class="p">.</span><span class="nx">clientX</span> <span class="o">-</span> <span class="p">(</span><span class="nx">@cursorsize</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
         <span class="nv">top: </span><span class="nx">e</span><span class="p">.</span><span class="nx">clientY</span> <span class="o">-</span> <span class="p">(</span><span class="nx">@cursorsize</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span></pre></div></td></tr><tr id="section-16"><td class="docs"><div class="pilwrap"><a href="#section-16" class="pilcrow">&#182;</a></div><p>wrong click</p>

@@ -209,7 +209,6 @@ jQuery.widget "Capkom.wordmatch"
     @results.symbol2word.score = @results.symbol2word.correct / (@results.symbol2word.correct + @results.symbol2word.wrong)
     @results.symbol2word.times = @results.symbol2word.times.getStatistics()
     @message "Gratuliere, das war's schon!", =>
-      console.info 'results', @results
       @options.result @results
     @destroy()
 
