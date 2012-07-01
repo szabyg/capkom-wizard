@@ -51,7 +51,7 @@ if audioOn: screenread</p>
               <span class="nx">d</span><span class="o">?</span> <span class="nx">stage</span><span class="p">,</span> <span class="nx">panel</span><span class="p">,</span> <span class="nx">done</span></pre></div></td></tr><tr id="section-5"><td class="docs"><div class="pilwrap"><a href="#section-5" class="pilcrow">&#182;</a></div><p>then, if the person cannot click, go to the next stage automatically</p>
 </td><td class="code"><div class="highlight"><pre>          <span class="nv">autoForward = </span><span class="nf">(stage, panel, done) -&gt;</span>
             <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;autoForward&#39;</span>
-            <span class="nx">unless</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">canClick</span>
+            <span class="k">if</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">nonClickMode</span><span class="p">()</span>
               <span class="nx">Capkom</span><span class="p">.</span><span class="nx">timeout</span><span class="p">.</span><span class="nx">start</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-&gt;</span>
                 <span class="nx">Capkom</span><span class="p">.</span><span class="nx">clickNext</span><span class="p">()</span>
             <span class="nx">_</span><span class="p">.</span><span class="nx">defer</span> <span class="o">-&gt;</span>

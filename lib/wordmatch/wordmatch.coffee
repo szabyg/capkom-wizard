@@ -24,6 +24,7 @@ jQuery.widget "Capkom.wordmatch"
       result: (details) ->
         @console.info 'detailed results:', details
       symbolSize: 150
+      numberOfQuestions: 5
       rootPrefix: 'img/'
       questions: [
         type: 's2w' # symbol to word
@@ -75,10 +76,10 @@ jQuery.widget "Capkom.wordmatch"
       bottom: '5px'
       left: '5px'
       right: '5px'
-      'background-color': '#fff'
+      'background-color': ''
       'z-index': 100
 
-    @element.addClass 'wordmatch-container'
+    @element.addClass 'wordmatch-container ui-widget-content'
     @element.append "<div class='progressBar'></div>"
     @progressBar = @element.find ".progressBar"
     @progressBar.css
@@ -103,17 +104,24 @@ jQuery.widget "Capkom.wordmatch"
 
     @element.append "<div class='msg-dialog'></div>"
     @messageArea = @element.find '.msg-dialog'
+
+    # escape keypress
+    jQuery('body').bind 'keyup', widget: @, @_escHandler
+
     # everything set up, begin the game
     @_beginGame()
 
   _destroy: ->
     @element.html ""
-    @element.removeClass 'wordmatch-container'
+    @element.removeClass 'wordmatch-container ui-widget-content'
     @element.css @_savedCSS
+    # escape keypress
+    jQuery('body').unbind 'keyup', @_escHandler
 
   _beginGame: ->
     # prepare sequence
     @sequence = @_shuffle @options.questions
+    @sequence = @sequence.slice 0, @options.numberOfQuestions
     @results =
       word2symbol:
         correct: 0
@@ -132,7 +140,7 @@ jQuery.widget "Capkom.wordmatch"
       @question = @sequence.shift()
       switch @question.type
         when 's2w'
-          @questionArea.html "<img class='question' src='#{@options.rootPrefix}#{@question.question}' style='height:#{@options.symbolSize}px;'/>"
+          @questionArea.html "<img class='question' src='#{@options.rootPrefix}#{@question.question}' style='height:#{@options.symbolSize}px;padding:1em;'/>"
           @answerArea.html ''
           for choice in @_shuffle @question.choices
             @answerArea.append "<button value='#{choice}' width='#{@options.symbolSize} height='#{@options.symbolSize}' style='margin:1ex;'>#{choice}</button>"
@@ -187,6 +195,7 @@ jQuery.widget "Capkom.wordmatch"
         _.defer =>
           @messageArea.dialog 'destroy'
           cb()
+      dialogClass: 'shortmessage'
     afterWaiting = =>
       @messageArea.dialog('close')
 
@@ -199,9 +208,10 @@ jQuery.widget "Capkom.wordmatch"
 
     @results.symbol2word.score = @results.symbol2word.correct / (@results.symbol2word.correct + @results.symbol2word.wrong)
     @results.symbol2word.times = @results.symbol2word.times.getStatistics()
-    @message "Gratuliere, fertig!", =>
+    @message "Gratuliere, das war's schon!", =>
       console.info 'results', @results
       @options.result @results
+    @destroy()
 
   getInnerWidth: ->
     return jQuery(window).width()
@@ -231,9 +241,13 @@ jQuery.widget "Capkom.wordmatch"
     arr.slice(0).sort randOrd
 
   updateProgress: ->
-    val = (@options.questions.length - @sequence.length) / @options.questions.length * 100
+    val = (@options.numberOfQuestions - @sequence.length) / @options.numberOfQuestions * 100
     @progressBar.progressbar 'value', val
 
+  _escHandler: (e) =>
+    if e.keyCode is 27
+      # e.data.widget.finish()
+      e.data.widget.destroy()
 
 # Class for calculating simple statistical data
 class Stat

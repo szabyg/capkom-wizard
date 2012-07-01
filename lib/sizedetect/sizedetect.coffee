@@ -49,7 +49,7 @@ jQuery.widget "Capkom.sizedetect"
   _create: ->
     @_fixConsole()
     # widget styling
-    @element.addClass 'sizedetect-container'
+    @element.addClass 'sizedetect-container ui-widget-content'
     @_savedCSS =
       position: @element.css 'position'
       top: @element.css 'top'
@@ -65,7 +65,7 @@ jQuery.widget "Capkom.sizedetect"
       bottom: '5px'
       left: '5px'
       right: '5px'
-      'background-color': '#fff'
+      #'background-color': '#fff'
       'z-index': 100
       #test-area {
       # width: @getInnerWidth() - 30
@@ -171,7 +171,7 @@ jQuery.widget "Capkom.sizedetect"
 
   _destroy: ->
     @element.html ""
-    @element.removeClass 'sizedetect-container'
+    @element.removeClass 'sizedetect-container ui-widget-content'
     @element.css @_savedCSS
       # width: 'auto'
       # height: 'auto'

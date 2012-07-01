@@ -1,0 +1,11 @@
+.stages .ui-progressbar {
+    height: 0.5em;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+    padding: 0 1em;
+}
+
+.shortmessage .ui-dialog-titlebar {
+    display: none;
+}

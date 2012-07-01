@@ -70,6 +70,7 @@
 <span class="nv">Capkom.canClick = </span><span class="o">-&gt;</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;canClick: true&#39;</span>
   <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">set</span> <span class="nv">canClick: </span><span class="kc">true</span>
+
 <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;body&#39;</span><span class="p">).</span><span class="nx">click</span> <span class="o">-&gt;</span>
   <span class="nx">@canClick</span><span class="p">()</span>
 
@@ -91,10 +92,12 @@
 <span class="nv">Capkom.timeout = </span><span class="k">new</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">Timeout</span>
 
 <span class="nv">Capkom.audioOff = </span><span class="o">-&gt;</span>
+  <span class="nx">Capkom</span><span class="p">.</span><span class="nx">canClick</span><span class="p">()</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;deactivate audio&#39;</span>
   <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">set</span> <span class="nv">useAudio: </span><span class="kc">false</span>
 
 <span class="nv">Capkom.audioOn = </span><span class="o">-&gt;</span>
+  <span class="nx">Capkom</span><span class="p">.</span><span class="nx">canClick</span><span class="p">()</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;activate audio&#39;</span>
   <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">set</span> <span class="nv">useAudio: </span><span class="kc">true</span>
 

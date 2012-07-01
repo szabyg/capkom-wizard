@@ -56,7 +56,7 @@ Capkom.initNav = ->
           # then, if the person cannot click, go to the next stage automatically
           autoForward = (stage, panel, done) ->
             console.info 'autoForward'
-            unless Capkom.canClick
+            if Capkom.nonClickMode()
               Capkom.timeout.start 2, ->
                 Capkom.clickNext()
             _.defer ->
