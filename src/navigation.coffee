@@ -8,6 +8,8 @@ Capkom.initNav = ->
         @renderStage stage, jQuery(".stages")
     jQuery(".stages").tabs(
         show: (event, ui) ->
+          jQuery(":capkom-ttswidget").each ->
+            jQuery(@).ttswidget('cancel')
           window.location.hash = ui.tab.hash
           Capkom.console.info ui.tab.hash
           newStage = _.detect Capkom.getStages(), (stage) ->

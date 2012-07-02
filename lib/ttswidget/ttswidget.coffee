@@ -128,7 +128,7 @@ jQuery.widget "capkom.ttswidget",
       else
           @audioElement = jQuery("#ttswidget-audio")[0]
           @audioElement.onabort = () ->
-              console?.error arguments
+              # console?.error arguments
           @audioElement.load()
           @audioElement.play()
           jQuery(@audioElement).bind 'playing', =>
@@ -143,6 +143,11 @@ jQuery.widget "capkom.ttswidget",
               </div>
               """
               @dialog.append errorHtml
+  cancel: ->
+    if @dialog
+      @dialog.dialog('destroy').html ''
+      @dialog = null
+    true
   _getText: ->
       return @element.attr "tts" if @element.attr "tts"
       return @element.not(@button).text().replace("#{@options.buttonLabel}", "") if @element.text()
