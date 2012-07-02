@@ -40,7 +40,7 @@ Capkom.stages =
             read: "Benutze diesen Knopf damit du zum nächsten Schritt kommst."
             useAudio: Capkom.profile.get('useAudio')
             html: """
-            <button class=" nextButton" alt="Weiter" >
+            <button class="nextButton demoButton" alt="Weiter" >
             Weiter
             <i class = "icon-arrow-right" />
             </button>
@@ -59,7 +59,7 @@ Capkom.stages =
             read: "Drücke diesen Knopf, wenn du das Vorlesen aktivieren oder deaktivieren möchtest."
             useAudio: Capkom.profile.get('useAudio')
             html: """
-            <button class='tts-button' alt='Vorlesen'><i class='icon-volume-up'/></button>
+            <button class='tts-button demoButton' alt='Vorlesen'><i class='icon-volume-up'/></button>
             """
             script: (element) ->
               jQuery(element).find('button').button()
@@ -102,6 +102,7 @@ Capkom.stages =
     <button class='start'>Start</button>
     <div class='fangspiel-area'></div>
     """
+    ###
     explain: (element, done) ->
       Capkom.timeout.start 4, ->
         if Capkom.nonClickMode
@@ -111,7 +112,6 @@ Capkom.stages =
             ttswidget.unbind 'ttswidgetdone', _done
           ttswidget.bind 'ttswidgetdone', _done
           ttswidget.ttswidget('talk')
-    ###
     show: (element, done) ->
       if Capkom.nonClickMode()
         Capkom.timeout.start 2, ->
@@ -155,35 +155,35 @@ Capkom.stages =
       dann von den drei Wörtern auf das jeweils richtige Wort. Manchmal zeigen wir dir aber auch ein Wort und drei
       Bilder. Du musst dann das richtige Bild, das zum Wort gehört, anklicken. <br/>
       <button class='start'>Start</button>
-      <div class='wortspiel-area'></div>
     """
     scriptOnce: (element) ->
       jQuery('.start', element).button().click (e) ->
-        jQuery('.wortspiel-area', element).wordmatch
+        jQuery('.play-area', element).wordmatch
           rootPrefix: 'lib/wordmatch/img/'
           result: (res) ->
             Capkom.profile.set
               wordmatch: res
             Capkom.clickNext()
-            jQuery('.wortspiel-area', element).wordmatch 'destroy'
+            jQuery('.play-area', element).wordmatch 'destroy'
           questions: Capkom.wordmatchQuestions
+        jQuery('.start', element).hide()
 
     startGame: (element, done) ->
-      jQuery('.wortspiel-area', element).wordmatch
+      jQuery('.play-area', element).wordmatch
         rootPrefix: 'lib/wordmatch/img/'
         result: (res) ->
           Capkom.profile.set
             wordmatch: res
           done()
           Capkom.clickNext()
-          jQuery('.wortspiel-area', element).wordmatch 'destroy'
+          jQuery('.play-area', element).wordmatch 'destroy'
+          jQuery('.start', element).show()
         questions: Capkom.wordmatchQuestions
+      jQuery('.start', element).hide()
 
     show: (element) ->
-      _.defer ->
-        Capkom.timeout.start 4, ->
-          if Capkom.profile.get('useAudio')
-            jQuery('.tts', element).ttswidget('talk')
+    hide: (element) ->
+      jQuery(':Capkom.wordmatch.play-area', element).wordmatch 'destroy'
 
   "fontsize":
       title: "Schriftgröße"
@@ -205,12 +205,12 @@ Capkom.stages =
       title: "Design"
       image: "http://www.balloonmaniacs.com/images/snoopygraduateballoon.jpg"
       speech: """
-      Bitte bestimme nun die beste Farben für die Anzeige. Wähle die Farbkombination aus, die für dich am angenehmsten ist
+      Bitte bestimme nun die besten Farben für die Anzeige. Wähle die Farbkombination aus, die für dich am angenehmsten ist
       und klicke auf den Weiter Knopf.
       """
       html: """
-          Bitte bestimme nun das Bildschirmdesign.<br/>
-          Wähle dazu jenes Design, das dir am besten gefällt.<br/><br/>
+          Bitte bestimme nun die besten Farben für die Anzeige. Wähle die Farbkombination aus, die für dich am angenehmsten ist
+          und klicke auf den Weiter Knopf..<br/><br/>
           <span id='themeselector'></span>
       """
       scriptOnce: (element) ->

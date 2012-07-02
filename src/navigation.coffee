@@ -14,7 +14,8 @@ Capkom.initNav = ->
           Capkom.console.info ui.tab.hash
           newStage = _.detect Capkom.getStages(), (stage) ->
             stage.name is ui.tab.hash.substring 1
-          Capkom.activeStage?.hide? ui.panel
+          if Capkom.activeStage
+            Capkom.activeStage.hide? jQuery "##{Capkom.activeStage.name}"
           Capkom.activeStage = newStage
           # The lifecycle of a stage after activation:
           # if audioOn: screenread
@@ -77,6 +78,8 @@ Capkom.renderStage = (stage, tabsEl, index) ->
                     <div style="padding: 5px 15px;">
                         <span class="stage-content tts" lang="de">#{stage.html}</span>
                     </div>
+                </td></tr><tr><td colspan="2">
+                    <div class="play-area"></div>
                     <div class="buttons">
                         <button class="prevButton" alt="Zurück">
                             <i class="icon-arrow-left"></i>

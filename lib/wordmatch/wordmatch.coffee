@@ -71,7 +71,7 @@ jQuery.widget "Capkom.wordmatch"
       'background-color': @element.css 'background-color'
 
     @element.css
-      position: 'absolute'
+      # position: 'absolute'
       top: '5px'
       bottom: '5px'
       left: '5px'

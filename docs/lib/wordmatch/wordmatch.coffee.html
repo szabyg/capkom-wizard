@@ -66,9 +66,8 @@ size and to be informed about profile changes.</p>
       <span class="s">&#39;z-index&#39;</span><span class="o">:</span> <span class="nx">@element</span><span class="p">.</span><span class="nx">css</span> <span class="s">&#39;z-index&#39;</span>
       <span class="s">&#39;background-color&#39;</span><span class="o">:</span> <span class="nx">@element</span><span class="p">.</span><span class="nx">css</span> <span class="s">&#39;background-color&#39;</span>
 
-    <span class="nx">@element</span><span class="p">.</span><span class="nx">css</span>
-      <span class="nv">position: </span><span class="s">&#39;absolute&#39;</span>
-      <span class="nv">top: </span><span class="s">&#39;5px&#39;</span>
+    <span class="nx">@element</span><span class="p">.</span><span class="nx">css</span></pre></div></td></tr><tr id="section-6"><td class="docs"><div class="pilwrap"><a href="#section-6" class="pilcrow">&#182;</a></div><p>position: 'absolute'</p>
+</td><td class="code"><div class="highlight"><pre>      <span class="nv">top: </span><span class="s">&#39;5px&#39;</span>
       <span class="nv">bottom: </span><span class="s">&#39;5px&#39;</span>
       <span class="nv">left: </span><span class="s">&#39;5px&#39;</span>
       <span class="nv">right: </span><span class="s">&#39;5px&#39;</span>
@@ -99,17 +98,17 @@ size and to be informed about profile changes.</p>
       <span class="s">&#39;text-align&#39;</span><span class="o">:</span> <span class="s">&#39;center&#39;</span>
 
     <span class="nx">@element</span><span class="p">.</span><span class="nx">append</span> <span class="s">&quot;&lt;div class=&#39;msg-dialog&#39;&gt;&lt;/div&gt;&quot;</span>
-    <span class="vi">@messageArea = </span><span class="nx">@element</span><span class="p">.</span><span class="nx">find</span> <span class="s">&#39;.msg-dialog&#39;</span></pre></div></td></tr><tr id="section-6"><td class="docs"><div class="pilwrap"><a href="#section-6" class="pilcrow">&#182;</a></div><p>escape keypress</p>
-</td><td class="code"><div class="highlight"><pre>    <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;body&#39;</span><span class="p">).</span><span class="nx">bind</span> <span class="s">&#39;keyup&#39;</span><span class="p">,</span> <span class="nv">widget: </span><span class="nx">@</span><span class="p">,</span> <span class="nx">@_escHandler</span></pre></div></td></tr><tr id="section-7"><td class="docs"><div class="pilwrap"><a href="#section-7" class="pilcrow">&#182;</a></div><p>everything set up, begin the game</p>
+    <span class="vi">@messageArea = </span><span class="nx">@element</span><span class="p">.</span><span class="nx">find</span> <span class="s">&#39;.msg-dialog&#39;</span></pre></div></td></tr><tr id="section-7"><td class="docs"><div class="pilwrap"><a href="#section-7" class="pilcrow">&#182;</a></div><p>escape keypress</p>
+</td><td class="code"><div class="highlight"><pre>    <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;body&#39;</span><span class="p">).</span><span class="nx">bind</span> <span class="s">&#39;keyup&#39;</span><span class="p">,</span> <span class="nv">widget: </span><span class="nx">@</span><span class="p">,</span> <span class="nx">@_escHandler</span></pre></div></td></tr><tr id="section-8"><td class="docs"><div class="pilwrap"><a href="#section-8" class="pilcrow">&#182;</a></div><p>everything set up, begin the game</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="nx">@_beginGame</span><span class="p">()</span>
 
   <span class="nv">_destroy: </span><span class="o">-&gt;</span>
     <span class="nx">@element</span><span class="p">.</span><span class="nx">html</span> <span class="s">&quot;&quot;</span>
     <span class="nx">@element</span><span class="p">.</span><span class="nx">removeClass</span> <span class="s">&#39;wordmatch-container ui-widget-content&#39;</span>
-    <span class="nx">@element</span><span class="p">.</span><span class="nx">css</span> <span class="nx">@_savedCSS</span></pre></div></td></tr><tr id="section-8"><td class="docs"><div class="pilwrap"><a href="#section-8" class="pilcrow">&#182;</a></div><p>escape keypress</p>
+    <span class="nx">@element</span><span class="p">.</span><span class="nx">css</span> <span class="nx">@_savedCSS</span></pre></div></td></tr><tr id="section-9"><td class="docs"><div class="pilwrap"><a href="#section-9" class="pilcrow">&#182;</a></div><p>escape keypress</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;body&#39;</span><span class="p">).</span><span class="nx">unbind</span> <span class="s">&#39;keyup&#39;</span><span class="p">,</span> <span class="nx">@_escHandler</span>
 
-  <span class="nv">_beginGame: </span><span class="o">-&gt;</span></pre></div></td></tr><tr id="section-9"><td class="docs"><div class="pilwrap"><a href="#section-9" class="pilcrow">&#182;</a></div><p>prepare sequence</p>
+  <span class="nv">_beginGame: </span><span class="o">-&gt;</span></pre></div></td></tr><tr id="section-10"><td class="docs"><div class="pilwrap"><a href="#section-10" class="pilcrow">&#182;</a></div><p>prepare sequence</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="vi">@sequence = </span><span class="nx">@_shuffle</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">questions</span>
     <span class="vi">@sequence = </span><span class="nx">@sequence</span><span class="p">.</span><span class="nx">slice</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">numberOfQuestions</span>
     <span class="vi">@results =</span>
@@ -234,8 +233,8 @@ size and to be informed about profile changes.</p>
     <span class="nx">@progressBar</span><span class="p">.</span><span class="nx">progressbar</span> <span class="s">&#39;value&#39;</span><span class="p">,</span> <span class="nx">val</span>
 
   <span class="nv">_escHandler: </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span>
-    <span class="k">if</span> <span class="nx">e</span><span class="p">.</span><span class="nx">keyCode</span> <span class="o">is</span> <span class="mi">27</span></pre></div></td></tr><tr id="section-10"><td class="docs"><div class="pilwrap"><a href="#section-10" class="pilcrow">&#182;</a></div><p>e.data.widget.finish()</p>
-</td><td class="code"><div class="highlight"><pre>      <span class="nx">e</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">widget</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span></pre></div></td></tr><tr id="section-11"><td class="docs"><div class="pilwrap"><a href="#section-11" class="pilcrow">&#182;</a></div><p>Class for calculating simple statistical data</p>
+    <span class="k">if</span> <span class="nx">e</span><span class="p">.</span><span class="nx">keyCode</span> <span class="o">is</span> <span class="mi">27</span></pre></div></td></tr><tr id="section-11"><td class="docs"><div class="pilwrap"><a href="#section-11" class="pilcrow">&#182;</a></div><p>e.data.widget.finish()</p>
+</td><td class="code"><div class="highlight"><pre>      <span class="nx">e</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">widget</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span></pre></div></td></tr><tr id="section-12"><td class="docs"><div class="pilwrap"><a href="#section-12" class="pilcrow">&#182;</a></div><p>Class for calculating simple statistical data</p>
 </td><td class="code"><div class="highlight"><pre><span class="k">class</span> <span class="nx">Stat</span>
   <span class="nv">constructor: </span><span class="nf">(opts) -&gt;</span>
     <span class="nv">options =</span>
@@ -272,7 +271,7 @@ size and to be informed about profile changes.</p>
   <span class="nv">getStatistics: </span><span class="o">-&gt;</span>
     <span class="nv">average: </span><span class="nx">@getAverage</span><span class="p">()</span>
     <span class="nv">variance: </span><span class="nx">@getVariance</span><span class="p">()</span>
-    <span class="nv">standardDeviation: </span><span class="nx">@getStandardDeviation</span><span class="p">()</span></pre></div></td></tr><tr id="section-12"><td class="docs"><div class="pilwrap"><a href="#section-12" class="pilcrow">&#182;</a></div><p>Class for measuring time in milliseconds</p>
+    <span class="nv">standardDeviation: </span><span class="nx">@getStandardDeviation</span><span class="p">()</span></pre></div></td></tr><tr id="section-13"><td class="docs"><div class="pilwrap"><a href="#section-13" class="pilcrow">&#182;</a></div><p>Class for measuring time in milliseconds</p>
 </td><td class="code"><div class="highlight"><pre><span class="k">class</span> <span class="nx">StopWatch</span>
   <span class="nv">constructor: </span><span class="nf">(@error = -&gt; @console.error.apply @console, arguments) -&gt;</span>
     <span class="vi">@elapsed = </span><span class="mi">0</span>

@@ -14,7 +14,8 @@
           <span class="nx">Capkom</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="nx">ui</span><span class="p">.</span><span class="nx">tab</span><span class="p">.</span><span class="nx">hash</span>
           <span class="nv">newStage = </span><span class="nx">_</span><span class="p">.</span><span class="nx">detect</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">getStages</span><span class="p">(),</span> <span class="nf">(stage) -&gt;</span>
             <span class="nx">stage</span><span class="p">.</span><span class="nx">name</span> <span class="o">is</span> <span class="nx">ui</span><span class="p">.</span><span class="nx">tab</span><span class="p">.</span><span class="nx">hash</span><span class="p">.</span><span class="nx">substring</span> <span class="mi">1</span>
-          <span class="nx">Capkom</span><span class="p">.</span><span class="nx">activeStage</span><span class="o">?</span><span class="p">.</span><span class="nx">hide</span><span class="o">?</span> <span class="nx">ui</span><span class="p">.</span><span class="nx">panel</span>
+          <span class="k">if</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">activeStage</span>
+            <span class="nx">Capkom</span><span class="p">.</span><span class="nx">activeStage</span><span class="p">.</span><span class="nx">hide</span><span class="o">?</span> <span class="nx">jQuery</span> <span class="s">&quot;</span><span class="err">#</span><span class="si">#{</span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">activeStage</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="s">&quot;</span>
           <span class="nv">Capkom.activeStage = </span><span class="nx">newStage</span></pre></div></td></tr><tr id="section-2"><td class="docs"><div class="pilwrap"><a href="#section-2" class="pilcrow">&#182;</a></div><p>The lifecycle of a stage after activation:
 if audioOn: screenread</p>
 </td><td class="code"><div class="highlight"><pre>          <span class="nv">autoread = </span><span class="nf">(stage, panel, done) -&gt;</span>
@@ -72,6 +73,8 @@ if audioOn: screenread</p>
 <span class="s">                    &lt;div style=&quot;padding: 5px 15px;&quot;&gt;</span>
 <span class="s">                        &lt;span class=&quot;stage-content tts&quot; lang=&quot;de&quot;&gt;</span><span class="si">#{</span><span class="nx">stage</span><span class="p">.</span><span class="nx">html</span><span class="si">}</span><span class="s">&lt;/span&gt;</span>
 <span class="s">                    &lt;/div&gt;</span>
+<span class="s">                &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan=&quot;2&quot;&gt;</span>
+<span class="s">                    &lt;div class=&quot;play-area&quot;&gt;&lt;/div&gt;</span>
 <span class="s">                    &lt;div class=&quot;buttons&quot;&gt;</span>
 <span class="s">                        &lt;button class=&quot;prevButton&quot; alt=&quot;Zurück&quot;&gt;</span>
 <span class="s">                            &lt;i class=&quot;icon-arrow-left&quot;&gt;&lt;/i&gt;</span>

@@ -37,7 +37,7 @@
             <span class="nv">read: </span><span class="s">&quot;Benutze diesen Knopf damit du zum nächsten Schritt kommst.&quot;</span>
             <span class="nv">useAudio: </span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s">&#39;useAudio&#39;</span><span class="p">)</span>
             <span class="nv">html: </span><span class="s">&quot;&quot;&quot;</span>
-<span class="s">            &lt;button class=&quot; nextButton&quot; alt=&quot;Weiter&quot; &gt;</span>
+<span class="s">            &lt;button class=&quot;nextButton demoButton&quot; alt=&quot;Weiter&quot; &gt;</span>
 <span class="s">            Weiter</span>
 <span class="s">            &lt;i class = &quot;icon-arrow-right&quot; /&gt;</span>
 <span class="s">            &lt;/button&gt;</span>
@@ -56,7 +56,7 @@
             <span class="nv">read: </span><span class="s">&quot;Drücke diesen Knopf, wenn du das Vorlesen aktivieren oder deaktivieren möchtest.&quot;</span>
             <span class="nv">useAudio: </span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s">&#39;useAudio&#39;</span><span class="p">)</span>
             <span class="nv">html: </span><span class="s">&quot;&quot;&quot;</span>
-<span class="s">            &lt;button class=&#39;tts-button&#39; alt=&#39;Vorlesen&#39;&gt;&lt;i class=&#39;icon-volume-up&#39;/&gt;&lt;/button&gt;</span>
+<span class="s">            &lt;button class=&#39;tts-button demoButton&#39; alt=&#39;Vorlesen&#39;&gt;&lt;i class=&#39;icon-volume-up&#39;/&gt;&lt;/button&gt;</span>
 <span class="s">            &quot;&quot;&quot;</span>
             <span class="nv">script: </span><span class="nf">(element) -&gt;</span>
               <span class="nx">jQuery</span><span class="p">(</span><span class="nx">element</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s">&#39;button&#39;</span><span class="p">).</span><span class="nx">button</span><span class="p">()</span>
@@ -94,8 +94,8 @@
 <span class="s">    Versuche möglichst oft den Hund füttern, damit er glücklich und gesund bleibt.&lt;br/&gt;</span>
 <span class="s">    &lt;button class=&#39;start&#39;&gt;Start&lt;/button&gt;</span>
 <span class="s">    &lt;div class=&#39;fangspiel-area&#39;&gt;&lt;/div&gt;</span>
-<span class="s">    &quot;&quot;&quot;</span>
-    <span class="nv">explain: </span><span class="nf">(element, done) -&gt;</span>
+<span class="s">    &quot;&quot;&quot;</span></pre></div></td></tr><tr id="section-7"><td class="docs"><div class="pilwrap"><a href="#section-7" class="pilcrow">&#182;</a></div><h1>#</h1>
+</td><td class="code"><div class="highlight"><pre>    <span class="nv">explain: </span><span class="nf">(element, done) -&gt;</span>
       <span class="nx">Capkom</span><span class="p">.</span><span class="nx">timeout</span><span class="p">.</span><span class="nx">start</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-&gt;</span>
         <span class="k">if</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">nonClickMode</span>
           <span class="nv">ttswidget = </span><span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.tts&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">)</span>
@@ -103,8 +103,8 @@
             <span class="nx">done</span><span class="p">()</span>
             <span class="nx">ttswidget</span><span class="p">.</span><span class="nx">unbind</span> <span class="s">&#39;ttswidgetdone&#39;</span><span class="p">,</span> <span class="nx">_done</span>
           <span class="nx">ttswidget</span><span class="p">.</span><span class="nx">bind</span> <span class="s">&#39;ttswidgetdone&#39;</span><span class="p">,</span> <span class="nx">_done</span>
-          <span class="nx">ttswidget</span><span class="p">.</span><span class="nx">ttswidget</span><span class="p">(</span><span class="s">&#39;talk&#39;</span><span class="p">)</span></pre></div></td></tr><tr id="section-7"><td class="docs"><div class="pilwrap"><a href="#section-7" class="pilcrow">&#182;</a></div><h1>#</h1>
-</td><td class="code"><div class="highlight"><pre>    <span class="nv">show: </span><span class="nf">(element, done) -&gt;</span>
+          <span class="nx">ttswidget</span><span class="p">.</span><span class="nx">ttswidget</span><span class="p">(</span><span class="s">&#39;talk&#39;</span><span class="p">)</span>
+    <span class="nv">show: </span><span class="nf">(element, done) -&gt;</span>
       <span class="k">if</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">nonClickMode</span><span class="p">()</span>
         <span class="nx">Capkom</span><span class="p">.</span><span class="nx">timeout</span><span class="p">.</span><span class="nx">start</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-&gt;</span>
           <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.fangspiel-area&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">sizedetect</span>
@@ -145,35 +145,35 @@
 <span class="s">      dann von den drei Wörtern auf das jeweils richtige Wort. Manchmal zeigen wir dir aber auch ein Wort und drei</span>
 <span class="s">      Bilder. Du musst dann das richtige Bild, das zum Wort gehört, anklicken. &lt;br/&gt;</span>
 <span class="s">      &lt;button class=&#39;start&#39;&gt;Start&lt;/button&gt;</span>
-<span class="s">      &lt;div class=&#39;wortspiel-area&#39;&gt;&lt;/div&gt;</span>
 <span class="s">    &quot;&quot;&quot;</span>
     <span class="nv">scriptOnce: </span><span class="nf">(element) -&gt;</span>
       <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.start&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">button</span><span class="p">().</span><span class="nx">click</span> <span class="nf">(e) -&gt;</span>
-        <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.wortspiel-area&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">wordmatch</span>
+        <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.play-area&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">wordmatch</span>
           <span class="nv">rootPrefix: </span><span class="s">&#39;lib/wordmatch/img/&#39;</span>
           <span class="nv">result: </span><span class="nf">(res) -&gt;</span>
             <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">set</span>
               <span class="nv">wordmatch: </span><span class="nx">res</span>
             <span class="nx">Capkom</span><span class="p">.</span><span class="nx">clickNext</span><span class="p">()</span>
-            <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.wortspiel-area&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">wordmatch</span> <span class="s">&#39;destroy&#39;</span>
+            <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.play-area&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">wordmatch</span> <span class="s">&#39;destroy&#39;</span>
           <span class="nv">questions: </span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">wordmatchQuestions</span>
+        <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.start&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">hide</span><span class="p">()</span>
 
     <span class="nv">startGame: </span><span class="nf">(element, done) -&gt;</span>
-      <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.wortspiel-area&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">wordmatch</span>
+      <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.play-area&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">wordmatch</span>
         <span class="nv">rootPrefix: </span><span class="s">&#39;lib/wordmatch/img/&#39;</span>
         <span class="nv">result: </span><span class="nf">(res) -&gt;</span>
           <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">set</span>
             <span class="nv">wordmatch: </span><span class="nx">res</span>
           <span class="nx">done</span><span class="p">()</span>
           <span class="nx">Capkom</span><span class="p">.</span><span class="nx">clickNext</span><span class="p">()</span>
-          <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.wortspiel-area&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">wordmatch</span> <span class="s">&#39;destroy&#39;</span>
+          <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.play-area&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">wordmatch</span> <span class="s">&#39;destroy&#39;</span>
+          <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.start&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">show</span><span class="p">()</span>
         <span class="nv">questions: </span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">wordmatchQuestions</span>
+      <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.start&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">hide</span><span class="p">()</span>
 
     <span class="nv">show: </span><span class="nf">(element) -&gt;</span>
-      <span class="nx">_</span><span class="p">.</span><span class="nx">defer</span> <span class="o">-&gt;</span>
-        <span class="nx">Capkom</span><span class="p">.</span><span class="nx">timeout</span><span class="p">.</span><span class="nx">start</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-&gt;</span>
-          <span class="k">if</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s">&#39;useAudio&#39;</span><span class="p">)</span>
-            <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.tts&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">ttswidget</span><span class="p">(</span><span class="s">&#39;talk&#39;</span><span class="p">)</span>
+    <span class="nv">hide: </span><span class="nf">(element) -&gt;</span>
+      <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;:Capkom.wordmatch.play-area&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">wordmatch</span> <span class="s">&#39;destroy&#39;</span>
 
   <span class="s">&quot;fontsize&quot;</span><span class="o">:</span>
       <span class="nv">title: </span><span class="s">&quot;Schriftgröße&quot;</span>
@@ -193,12 +193,12 @@
       <span class="nv">title: </span><span class="s">&quot;Design&quot;</span>
       <span class="nv">image: </span><span class="s">&quot;http://www.balloonmaniacs.com/images/snoopygraduateballoon.jpg&quot;</span>
       <span class="nv">speech: </span><span class="s">&quot;&quot;&quot;</span>
-<span class="s">      Bitte bestimme nun die beste Farben für die Anzeige. Wähle die Farbkombination aus, die für dich am angenehmsten ist</span>
+<span class="s">      Bitte bestimme nun die besten Farben für die Anzeige. Wähle die Farbkombination aus, die für dich am angenehmsten ist</span>
 <span class="s">      und klicke auf den Weiter Knopf.</span>
 <span class="s">      &quot;&quot;&quot;</span>
       <span class="nv">html: </span><span class="s">&quot;&quot;&quot;</span>
-<span class="s">          Bitte bestimme nun das Bildschirmdesign.&lt;br/&gt;</span>
-<span class="s">          Wähle dazu jenes Design, das dir am besten gefällt.&lt;br/&gt;&lt;br/&gt;</span>
+<span class="s">          Bitte bestimme nun die besten Farben für die Anzeige. Wähle die Farbkombination aus, die für dich am angenehmsten ist</span>
+<span class="s">          und klicke auf den Weiter Knopf..&lt;br/&gt;&lt;br/&gt;</span>
 <span class="s">          &lt;span id=&#39;themeselector&#39;&gt;&lt;/span&gt;</span>
 <span class="s">      &quot;&quot;&quot;</span>
       <span class="nv">scriptOnce: </span><span class="nf">(element) -&gt;</span>
