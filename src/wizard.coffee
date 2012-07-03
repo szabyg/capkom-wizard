@@ -131,7 +131,17 @@ Capkom.getTTSOptions = ->
   manualActivate: ->
     Capkom.audioOn()
   active: not Capkom.profile.get "useAudio"
-
+Capkom.symbolunderstandingQuestions = [
+    question: 'hund.jpg', choices: ['futter.jpg', 'lolli.jpg', 'apfel.jpg'], correct: 'futter.jpg', type: 'su'
+  ,
+    question: 'baby.jpg', choices: ['auto.jpg', 'ei.jpg', 'kinderwagen.jpg'], correct: 'kinderwagen.jpg', type: 'su'
+  ,
+    question: 'apfel.jpg', choices: ['wasser.jpg', 'birne.jpg', 'kuchen.jpg'], correct: 'birne.jpg', type: 'su'
+  ,
+    question: 'baum.jpg', choices: ['apfel.jpg', 'dog.jpg', 'auto.jpg'], correct: 'apfel.jpg', type: 'su'
+  ,
+    question: 'flugzeug.jpg', choices: ['dog.jpg', 'ballon.jpg', 'cat.jpg'], correct: 'ballon.jpg', type: 'su'
+  ]
 Capkom.wordmatchQuestions = [
       type: 's2w' # symbol to word
       question: 'tree.jpg'

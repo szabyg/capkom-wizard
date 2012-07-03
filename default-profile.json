@@ -2,7 +2,7 @@
     "fontsize":   "s5",
     "symbolsize": "medium",
     "useSymbols": true,
-    "symbolSet":  "default",
+    "symbolSet":  "capkom",
     "useE2r":     true,
     "useAudio":   true,
     "canClick":   false,

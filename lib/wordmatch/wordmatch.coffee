@@ -22,11 +22,22 @@ jQuery.widget "Capkom.wordmatch"
       # size and to be informed about profile changes.
       profile: Capkom.profile
       result: (details) ->
-        @console.info 'detailed results:', details
+        console.info 'detailed results:', details
       symbolSize: 150
-      numberOfQuestions: 5
+      numberOfQuestions: 3
       rootPrefix: 'img/'
       questions: [
+          question: 'hund.jpg', choices: ['futter.jpg', 'lolli.jpg', 'apfel.jpg'], correct: 'futter.jpg', type: 'su'
+        ,
+          question: 'baby.jpg', choices: ['auto.jpg', 'ei.jpg', 'kinderwagen.jpg'], correct: 'kinderwagen.jpg', type: 'su'
+        ,
+          question: 'apfel.jpg', choices: ['wasser.jpg', 'birne.jpg', 'kuchen.jpg'], correct: 'birne.jpg', type: 'su'
+        ,
+          question: 'baum.jpg', choices: ['apfel.jpg', 'dog.jpg', 'auto.jpg'], correct: 'apfel.jpg', type: 'su'
+        ,
+          question: 'flugzeug.jpg', choices: ['dog.jpg', 'ballon.jpg', 'cat.jpg'], correct: 'ballon.jpg', type: 'su'
+      ]
+        ###
         type: 's2w' # symbol to word
         question: 'tree.jpg'
         choices: ['Baum', 'Haus', 'Hose']
@@ -57,7 +68,7 @@ jQuery.widget "Capkom.wordmatch"
         choices: ['tree.jpg', 'pants.gif', 'house.jpg']
         correct: 'pants.gif'
       ]
-
+      ###
   _create: ->
     @_fixConsole()
     # widget styling
@@ -120,44 +131,55 @@ jQuery.widget "Capkom.wordmatch"
 
   _beginGame: ->
     # prepare sequence
-    @sequence = @_shuffle @options.questions
-    @sequence = @sequence.slice 0, @options.numberOfQuestions
-    @results =
-      word2symbol:
+    @results = {}
+    @sequence = []
+    for type in @getQuestionTypes()
+      @sequence = @sequence.concat @_shuffle(_(@options.questions).filter((q) -> q.type is type)).slice 0, @options.numberOfQuestions
+      @results[type] =
         correct: 0
         wrong: 0
         times: new Stat
-      symbol2word:
-        correct: 0
-        wrong: 0
-        times: new Stat
+
+    console.info 'before', _.map @sequence, (q) -> q.question
+    @sequence = @_shuffle @sequence
+    console.info 'after', _.map @sequence, (q) -> q.question
     @timer = new StopWatch()
     @_renderNext()
 
+  getQuestionTypes: ->
+    _.uniq(_.map(@options.questions, (q) -> q.type))
+
+  _renderQuestion: (question = @question) ->
+    res = ''
+    if question.question.match /\.(jpg|png|gif)$/
+      res = "<img class='question' src='#{@options.rootPrefix}#{question.question}' style='height:#{@options.symbolSize}px;padding:1em;'/>"
+    else
+      res = "<h1 style='padding:2ex; text-align:center; font-size:140%;'>#{question.question}</h1>"
+    res
+
+  _renderAnswers: (question = @question) ->
+    res = ''
+    if question.choices[0].match /\.(jpg|png|gif)$/
+      for choice in @_shuffle @question.choices
+        res += """
+          <button value='#{choice}' width='#{@options.symbolSize} height='#{@options.symbolSize}' style='margin: 1ex;'>
+            <img class='choice' src='#{@options.rootPrefix}#{choice}' style='height:#{@options.symbolSize}px;'/>
+          </button>
+        """
+    else
+      for choice in @_shuffle question.choices
+        res += "<button value='#{choice}' width='#{@options.symbolSize} height='#{@options.symbolSize}' style='margin:1ex;'>#{choice}</button>"
+    res
+
   _renderNext: ->
     @updateProgress()
+    @answerArea.html ''
     if @sequence.length
       @question = @sequence.shift()
-      switch @question.type
-        when 's2w'
-          @questionArea.html "<img class='question' src='#{@options.rootPrefix}#{@question.question}' style='height:#{@options.symbolSize}px;padding:1em;'/>"
-          @answerArea.html ''
-          for choice in @_shuffle @question.choices
-            @answerArea.append "<button value='#{choice}' width='#{@options.symbolSize} height='#{@options.symbolSize}' style='margin:1ex;'>#{choice}</button>"
-          @currentResultContainer = @results.symbol2word
-        when 'w2s'
-          @questionArea.html "<h1 style='padding: 2ex;'>#{@question.question}</h1>"
-          jQuery('h1', @questionArea).css
-            "text-align": "center"
-            "font-size": "140%"
-          @answerArea.html ''
-          for choice in @_shuffle @question.choices
-            @answerArea.append """
-              <button value='#{choice}' width='#{@options.symbolSize} height='#{@options.symbolSize}' style='margin: 1ex;'>
-                <img class='choice' src='#{@options.rootPrefix}#{choice}' style='height:#{@options.symbolSize}px;'/>
-              </button>
-            """
-          @currentResultContainer = @results.word2symbol
+      @currentResultContainer = @results[@question.type]
+      @questionArea.html @_renderQuestion()
+      @answerArea.html @_renderAnswers()
+
       @buttonsDisabled = false
       @playArea.find('button')
       .button()
@@ -203,11 +225,10 @@ jQuery.widget "Capkom.wordmatch"
   finish: ->
     @playArea.html ''
     @element.css @_savedCSS
-    @results.word2symbol.score = @results.word2symbol.correct / (@results.word2symbol.correct + @results.word2symbol.wrong)
-    @results.word2symbol.times = @results.word2symbol.times.getStatistics()
+    for type in @getQuestionTypes()
+      @results[type].score = @results[type].correct / (@results[type].correct + @results[type].wrong)
+      @results[type].times = @results[type].times.getStatistics()
 
-    @results.symbol2word.score = @results.symbol2word.correct / (@results.symbol2word.correct + @results.symbol2word.wrong)
-    @results.symbol2word.times = @results.symbol2word.times.getStatistics()
     @message "Gratuliere, das war's schon!", =>
       @options.result @results
     @destroy()
@@ -234,10 +255,9 @@ jQuery.widget "Capkom.wordmatch"
         info: ->
         error: ->
         log: ->
-  _shuffle: (arr) ->
-    randOrd = ->
-      Math.round(Math.random())-0.5
-    arr.slice(0).sort randOrd
+  _shuffle: (v) ->
+    # http://jsfromhell.com/array/shuffle
+    _.shuffle v
 
   updateProgress: ->
     val = (@options.numberOfQuestions - @sequence.length) / @options.numberOfQuestions * 100

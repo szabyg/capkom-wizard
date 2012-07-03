@@ -6,6 +6,7 @@ Capkom.order = [
     "welcome"
     "symbolsize"
     "read"
+    "symbolunderstanding"
     "fontsize"
     "theme"
     "channels"
@@ -89,19 +90,19 @@ Capkom.stages =
     title: "Symbolgröße"
     # only show it if symbols are turned on
     speech: """
-      Wir beginnen mit einem Fangspiel: Füttere den Hund indem du mit der Futterdose auf den Hund klickst.
-      Versuche möglichst oft den Hund füttern, damit er glücklich und gesund bleibt.
-      """
+              Wir beginnen mit einem Fangspiel: Füttere den Hund indem du mit der Futterdose auf den Hund klickst.
+              Versuche möglichst oft den Hund füttern, damit er glücklich und gesund bleibt.
+              """
 
     condition: (profile) ->
       profile.get "useSymbols"
     image: "http://i.fonts2u.com/sn/mp1_snoopy-dings_1.png"
     html: """
-    Wir beginnen mit einem Fangspiel: Füttere den Hund indem du mit der Futterdose auf den Hund klickst.
-    Versuche möglichst oft den Hund füttern, damit er glücklich und gesund bleibt.<br/>
-    <button class='start'>Start</button>
-    <div class='fangspiel-area'></div>
-    """
+            Wir beginnen mit einem Fangspiel: Füttere den Hund indem du mit der Futterdose auf den Hund klickst.
+            Versuche möglichst oft den Hund füttern, damit er glücklich und gesund bleibt.<br/>
+            <button class='start'>Start</button>
+            <div class='fangspiel-area'></div>
+            """
     ###
     explain: (element, done) ->
       Capkom.timeout.start 4, ->
@@ -141,6 +142,55 @@ Capkom.stages =
               symbolsizeMin: size
               symbolsizedetectDetails: details
             Capkom.clickNext()
+
+  ###
+   Definition of the symbol size selection screen
+  ###
+  "symbolunderstanding":
+    title: "Symbol-Verständnis"
+    # only show it if symbols are turned on
+    speech: """
+      Symbolverständnis Erklärung
+    """
+
+    condition: (profile) ->
+      profile.get "useSymbols"
+    image: "http://i.fonts2u.com/sn/mp1_snoopy-dings_1.png"
+    html: """
+            Symbolverständnis Erklärung.
+            <button class='start'>Start</button>
+            <div class='fangspiel-area'></div>
+            """
+    scriptOnce: (element) ->
+      jQuery('.start', element).button().click (e) ->
+        debugger
+        jQuery('.play-area', element).wordmatch
+          rootPrefix: 'lib/wordmatch/img/'
+          result: (res) ->
+            Capkom.profile.set
+              wordmatch: res
+            Capkom.clickNext()
+            jQuery('.play-area', element).wordmatch 'destroy'
+          questions: Capkom.symbolunderstandingQuestions
+        jQuery('.start', element).hide()
+
+    startGame: (element, done) ->
+      jQuery('.play-area', element).wordmatch
+        rootPrefix: 'lib/wordmatch/img/'
+        result: (res) ->
+          Capkom.profile.set
+            wordmatch: res
+          done()
+          Capkom.clickNext()
+          jQuery(':Capkom-wordmatch.play-area', element).wordmatch 'destroy'
+          jQuery('.start', element).show()
+        questions: Capkom.symbolunderstandingQuestions
+        numberOfQuestions: 5
+      jQuery('.start', element).hide()
+
+    show: (element) ->
+    hide: (element) ->
+      jQuery(':Capkom-wordmatch.play-area', element).wordmatch 'destroy'
 
   "read":
     title: "Wort-Bild Spiel"
@@ -183,7 +233,7 @@ Capkom.stages =
 
     show: (element) ->
     hide: (element) ->
-      jQuery(':Capkom.wordmatch.play-area', element).wordmatch 'destroy'
+      jQuery(':Capkom-wordmatch.play-area', element).wordmatch 'destroy'
 
   "fontsize":
       title: "Schriftgröße"

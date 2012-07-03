@@ -19,12 +19,22 @@ symbolsets in the defined size.</p>
 size and to be informed about profile changes.</p>
 </td><td class="code"><div class="highlight"><pre>      <span class="nv">profile: </span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span>
       <span class="nv">result: </span><span class="nf">(details) -&gt;</span>
-        <span class="nx">@console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;detailed results:&#39;</span><span class="p">,</span> <span class="nx">details</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;detailed results:&#39;</span><span class="p">,</span> <span class="nx">details</span>
       <span class="nv">symbolSize: </span><span class="mi">150</span>
-      <span class="nv">numberOfQuestions: </span><span class="mi">5</span>
+      <span class="nv">numberOfQuestions: </span><span class="mi">3</span>
       <span class="nv">rootPrefix: </span><span class="s">&#39;img/&#39;</span>
       <span class="nv">questions: </span><span class="p">[</span>
-        <span class="nv">type: </span><span class="s">&#39;s2w&#39;</span> <span class="c1"># symbol to word</span>
+          <span class="nv">question: </span><span class="s">&#39;hund.jpg&#39;</span><span class="p">,</span> <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;futter.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;lolli.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;apfel.jpg&#39;</span><span class="p">],</span> <span class="nv">correct: </span><span class="s">&#39;futter.jpg&#39;</span><span class="p">,</span> <span class="nv">type: </span><span class="s">&#39;su&#39;</span>
+        <span class="p">,</span>
+          <span class="nv">question: </span><span class="s">&#39;baby.jpg&#39;</span><span class="p">,</span> <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;auto.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;ei.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;kinderwagen.jpg&#39;</span><span class="p">],</span> <span class="nv">correct: </span><span class="s">&#39;kinderwagen.jpg&#39;</span><span class="p">,</span> <span class="nv">type: </span><span class="s">&#39;su&#39;</span>
+        <span class="p">,</span>
+          <span class="nv">question: </span><span class="s">&#39;apfel.jpg&#39;</span><span class="p">,</span> <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;wasser.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;birne.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;kuchen.jpg&#39;</span><span class="p">],</span> <span class="nv">correct: </span><span class="s">&#39;birne.jpg&#39;</span><span class="p">,</span> <span class="nv">type: </span><span class="s">&#39;su&#39;</span>
+        <span class="p">,</span>
+          <span class="nv">question: </span><span class="s">&#39;baum.jpg&#39;</span><span class="p">,</span> <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;apfel.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;dog.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;auto.jpg&#39;</span><span class="p">],</span> <span class="nv">correct: </span><span class="s">&#39;apfel.jpg&#39;</span><span class="p">,</span> <span class="nv">type: </span><span class="s">&#39;su&#39;</span>
+        <span class="p">,</span>
+          <span class="nv">question: </span><span class="s">&#39;flugzeug.jpg&#39;</span><span class="p">,</span> <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;dog.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;ballon.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;cat.jpg&#39;</span><span class="p">],</span> <span class="nv">correct: </span><span class="s">&#39;ballon.jpg&#39;</span><span class="p">,</span> <span class="nv">type: </span><span class="s">&#39;su&#39;</span>
+      <span class="p">]</span></pre></div></td></tr><tr id="section-5"><td class="docs"><div class="pilwrap"><a href="#section-5" class="pilcrow">&#182;</a></div><h1>#</h1>
+</td><td class="code"><div class="highlight"><pre>        <span class="nv">type: </span><span class="s">&#39;s2w&#39;</span> <span class="c1"># symbol to word</span>
         <span class="nv">question: </span><span class="s">&#39;tree.jpg&#39;</span>
         <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;Baum&#39;</span><span class="p">,</span> <span class="s">&#39;Haus&#39;</span><span class="p">,</span> <span class="s">&#39;Hose&#39;</span><span class="p">]</span>
         <span class="nv">correct: </span><span class="s">&#39;Baum&#39;</span>
@@ -53,10 +63,9 @@ size and to be informed about profile changes.</p>
         <span class="nv">question: </span><span class="s">&#39;Hose&#39;</span>
         <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;tree.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;pants.gif&#39;</span><span class="p">,</span> <span class="s">&#39;house.jpg&#39;</span><span class="p">]</span>
         <span class="nv">correct: </span><span class="s">&#39;pants.gif&#39;</span>
-      <span class="p">]</span>
-
-  <span class="nv">_create: </span><span class="o">-&gt;</span>
-    <span class="nx">@_fixConsole</span><span class="p">()</span></pre></div></td></tr><tr id="section-5"><td class="docs"><div class="pilwrap"><a href="#section-5" class="pilcrow">&#182;</a></div><p>widget styling</p>
+      <span class="p">]</span></pre></div></td></tr><tr id="section-6"><td class="docs"><div class="pilwrap"><a href="#section-6" class="pilcrow">&#182;</a></div><h1>#</h1>
+</td><td class="code"><div class="highlight"><pre>  <span class="nv">_create: </span><span class="o">-&gt;</span>
+    <span class="nx">@_fixConsole</span><span class="p">()</span></pre></div></td></tr><tr id="section-7"><td class="docs"><div class="pilwrap"><a href="#section-7" class="pilcrow">&#182;</a></div><p>widget styling</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="vi">@_savedCSS =</span>
       <span class="nv">position: </span><span class="nx">@element</span><span class="p">.</span><span class="nx">css</span> <span class="s">&#39;position&#39;</span>
       <span class="nv">top: </span><span class="nx">@element</span><span class="p">.</span><span class="nx">css</span> <span class="s">&#39;top&#39;</span>
@@ -66,7 +75,7 @@ size and to be informed about profile changes.</p>
       <span class="s">&#39;z-index&#39;</span><span class="o">:</span> <span class="nx">@element</span><span class="p">.</span><span class="nx">css</span> <span class="s">&#39;z-index&#39;</span>
       <span class="s">&#39;background-color&#39;</span><span class="o">:</span> <span class="nx">@element</span><span class="p">.</span><span class="nx">css</span> <span class="s">&#39;background-color&#39;</span>
 
-    <span class="nx">@element</span><span class="p">.</span><span class="nx">css</span></pre></div></td></tr><tr id="section-6"><td class="docs"><div class="pilwrap"><a href="#section-6" class="pilcrow">&#182;</a></div><p>position: 'absolute'</p>
+    <span class="nx">@element</span><span class="p">.</span><span class="nx">css</span></pre></div></td></tr><tr id="section-8"><td class="docs"><div class="pilwrap"><a href="#section-8" class="pilcrow">&#182;</a></div><p>position: 'absolute'</p>
 </td><td class="code"><div class="highlight"><pre>      <span class="nv">top: </span><span class="s">&#39;5px&#39;</span>
       <span class="nv">bottom: </span><span class="s">&#39;5px&#39;</span>
       <span class="nv">left: </span><span class="s">&#39;5px&#39;</span>
@@ -98,55 +107,66 @@ size and to be informed about profile changes.</p>
       <span class="s">&#39;text-align&#39;</span><span class="o">:</span> <span class="s">&#39;center&#39;</span>
 
     <span class="nx">@element</span><span class="p">.</span><span class="nx">append</span> <span class="s">&quot;&lt;div class=&#39;msg-dialog&#39;&gt;&lt;/div&gt;&quot;</span>
-    <span class="vi">@messageArea = </span><span class="nx">@element</span><span class="p">.</span><span class="nx">find</span> <span class="s">&#39;.msg-dialog&#39;</span></pre></div></td></tr><tr id="section-7"><td class="docs"><div class="pilwrap"><a href="#section-7" class="pilcrow">&#182;</a></div><p>escape keypress</p>
-</td><td class="code"><div class="highlight"><pre>    <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;body&#39;</span><span class="p">).</span><span class="nx">bind</span> <span class="s">&#39;keyup&#39;</span><span class="p">,</span> <span class="nv">widget: </span><span class="nx">@</span><span class="p">,</span> <span class="nx">@_escHandler</span></pre></div></td></tr><tr id="section-8"><td class="docs"><div class="pilwrap"><a href="#section-8" class="pilcrow">&#182;</a></div><p>everything set up, begin the game</p>
+    <span class="vi">@messageArea = </span><span class="nx">@element</span><span class="p">.</span><span class="nx">find</span> <span class="s">&#39;.msg-dialog&#39;</span></pre></div></td></tr><tr id="section-9"><td class="docs"><div class="pilwrap"><a href="#section-9" class="pilcrow">&#182;</a></div><p>escape keypress</p>
+</td><td class="code"><div class="highlight"><pre>    <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;body&#39;</span><span class="p">).</span><span class="nx">bind</span> <span class="s">&#39;keyup&#39;</span><span class="p">,</span> <span class="nv">widget: </span><span class="nx">@</span><span class="p">,</span> <span class="nx">@_escHandler</span></pre></div></td></tr><tr id="section-10"><td class="docs"><div class="pilwrap"><a href="#section-10" class="pilcrow">&#182;</a></div><p>everything set up, begin the game</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="nx">@_beginGame</span><span class="p">()</span>
 
   <span class="nv">_destroy: </span><span class="o">-&gt;</span>
     <span class="nx">@element</span><span class="p">.</span><span class="nx">html</span> <span class="s">&quot;&quot;</span>
     <span class="nx">@element</span><span class="p">.</span><span class="nx">removeClass</span> <span class="s">&#39;wordmatch-container ui-widget-content&#39;</span>
-    <span class="nx">@element</span><span class="p">.</span><span class="nx">css</span> <span class="nx">@_savedCSS</span></pre></div></td></tr><tr id="section-9"><td class="docs"><div class="pilwrap"><a href="#section-9" class="pilcrow">&#182;</a></div><p>escape keypress</p>
+    <span class="nx">@element</span><span class="p">.</span><span class="nx">css</span> <span class="nx">@_savedCSS</span></pre></div></td></tr><tr id="section-11"><td class="docs"><div class="pilwrap"><a href="#section-11" class="pilcrow">&#182;</a></div><p>escape keypress</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;body&#39;</span><span class="p">).</span><span class="nx">unbind</span> <span class="s">&#39;keyup&#39;</span><span class="p">,</span> <span class="nx">@_escHandler</span>
 
-  <span class="nv">_beginGame: </span><span class="o">-&gt;</span></pre></div></td></tr><tr id="section-10"><td class="docs"><div class="pilwrap"><a href="#section-10" class="pilcrow">&#182;</a></div><p>prepare sequence</p>
-</td><td class="code"><div class="highlight"><pre>    <span class="vi">@sequence = </span><span class="nx">@_shuffle</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">questions</span>
-    <span class="vi">@sequence = </span><span class="nx">@sequence</span><span class="p">.</span><span class="nx">slice</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">numberOfQuestions</span>
-    <span class="vi">@results =</span>
-      <span class="nv">word2symbol:</span>
+  <span class="nv">_beginGame: </span><span class="o">-&gt;</span></pre></div></td></tr><tr id="section-12"><td class="docs"><div class="pilwrap"><a href="#section-12" class="pilcrow">&#182;</a></div><p>prepare sequence</p>
+</td><td class="code"><div class="highlight"><pre>    <span class="vi">@results = </span><span class="p">{}</span>
+    <span class="vi">@sequence = </span><span class="p">[]</span>
+    <span class="k">for</span> <span class="nx">type</span> <span class="k">in</span> <span class="nx">@getQuestionTypes</span><span class="p">()</span>
+      <span class="vi">@sequence = </span><span class="nx">@sequence</span><span class="p">.</span><span class="nx">concat</span> <span class="nx">@_shuffle</span><span class="p">(</span><span class="nx">_</span><span class="p">(</span><span class="nx">@options</span><span class="p">.</span><span class="nx">questions</span><span class="p">).</span><span class="nx">filter</span><span class="p">(</span><span class="nf">(q) -&gt;</span> <span class="nx">q</span><span class="p">.</span><span class="nx">type</span> <span class="o">is</span> <span class="nx">type</span><span class="p">)).</span><span class="nx">slice</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">numberOfQuestions</span>
+      <span class="nx">@results</span><span class="p">[</span><span class="nx">type</span><span class="p">]</span> <span class="o">=</span>
         <span class="nv">correct: </span><span class="mi">0</span>
         <span class="nv">wrong: </span><span class="mi">0</span>
         <span class="nv">times: </span><span class="k">new</span> <span class="nx">Stat</span>
-      <span class="nv">symbol2word:</span>
-        <span class="nv">correct: </span><span class="mi">0</span>
-        <span class="nv">wrong: </span><span class="mi">0</span>
-        <span class="nv">times: </span><span class="k">new</span> <span class="nx">Stat</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;before&#39;</span><span class="p">,</span> <span class="nx">_</span><span class="p">.</span><span class="nx">map</span> <span class="nx">@sequence</span><span class="p">,</span> <span class="nf">(q) -&gt;</span> <span class="nx">q</span><span class="p">.</span><span class="nx">question</span>
+    <span class="vi">@sequence = </span><span class="nx">@_shuffle</span> <span class="nx">@sequence</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;after&#39;</span><span class="p">,</span> <span class="nx">_</span><span class="p">.</span><span class="nx">map</span> <span class="nx">@sequence</span><span class="p">,</span> <span class="nf">(q) -&gt;</span> <span class="nx">q</span><span class="p">.</span><span class="nx">question</span>
     <span class="vi">@timer = </span><span class="k">new</span> <span class="nx">StopWatch</span><span class="p">()</span>
     <span class="nx">@_renderNext</span><span class="p">()</span>
 
+  <span class="nv">getQuestionTypes: </span><span class="o">-&gt;</span>
+    <span class="nx">_</span><span class="p">.</span><span class="nx">uniq</span><span class="p">(</span><span class="nx">_</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">@options</span><span class="p">.</span><span class="nx">questions</span><span class="p">,</span> <span class="nf">(q) -&gt;</span> <span class="nx">q</span><span class="p">.</span><span class="nx">type</span><span class="p">))</span>
+
+  <span class="nv">_renderQuestion: </span><span class="nf">(question = @question) -&gt;</span>
+    <span class="nv">res = </span><span class="s">&#39;&#39;</span>
+    <span class="k">if</span> <span class="nx">question</span><span class="p">.</span><span class="nx">question</span><span class="p">.</span><span class="nx">match</span> <span class="sr">/\.(jpg|png|gif)$/</span>
+      <span class="nv">res = </span><span class="s">&quot;&lt;img class=&#39;question&#39; src=&#39;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">rootPrefix</span><span class="si">}#{</span><span class="nx">question</span><span class="p">.</span><span class="nx">question</span><span class="si">}</span><span class="s">&#39; style=&#39;height:</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">symbolSize</span><span class="si">}</span><span class="s">px;padding:1em;&#39;/&gt;&quot;</span>
+    <span class="k">else</span>
+      <span class="nv">res = </span><span class="s">&quot;&lt;h1 style=&#39;padding:2ex; text-align:center; font-size:140%;&#39;&gt;</span><span class="si">#{</span><span class="nx">question</span><span class="p">.</span><span class="nx">question</span><span class="si">}</span><span class="s">&lt;/h1&gt;&quot;</span>
+    <span class="nx">res</span>
+
+  <span class="nv">_renderAnswers: </span><span class="nf">(question = @question) -&gt;</span>
+    <span class="nv">res = </span><span class="s">&#39;&#39;</span>
+    <span class="k">if</span> <span class="nx">question</span><span class="p">.</span><span class="nx">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">match</span> <span class="sr">/\.(jpg|png|gif)$/</span>
+      <span class="k">for</span> <span class="nx">choice</span> <span class="k">in</span> <span class="nx">@_shuffle</span> <span class="nx">@question</span><span class="p">.</span><span class="nx">choices</span>
+        <span class="nx">res</span> <span class="o">+=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">          &lt;button value=&#39;</span><span class="si">#{</span><span class="nx">choice</span><span class="si">}</span><span class="s">&#39; width=&#39;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">symbolSize</span><span class="si">}</span><span class="s"> height=&#39;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">symbolSize</span><span class="si">}</span><span class="s">&#39; style=&#39;margin: 1ex;&#39;&gt;</span>
+<span class="s">            &lt;img class=&#39;choice&#39; src=&#39;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">rootPrefix</span><span class="si">}#{</span><span class="nx">choice</span><span class="si">}</span><span class="s">&#39; style=&#39;height:</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">symbolSize</span><span class="si">}</span><span class="s">px;&#39;/&gt;</span>
+<span class="s">          &lt;/button&gt;</span>
+<span class="s">        &quot;&quot;&quot;</span>
+    <span class="k">else</span>
+      <span class="k">for</span> <span class="nx">choice</span> <span class="k">in</span> <span class="nx">@_shuffle</span> <span class="nx">question</span><span class="p">.</span><span class="nx">choices</span>
+        <span class="nx">res</span> <span class="o">+=</span> <span class="s">&quot;&lt;button value=&#39;</span><span class="si">#{</span><span class="nx">choice</span><span class="si">}</span><span class="s">&#39; width=&#39;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">symbolSize</span><span class="si">}</span><span class="s"> height=&#39;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">symbolSize</span><span class="si">}</span><span class="s">&#39; style=&#39;margin:1ex;&#39;&gt;</span><span class="si">#{</span><span class="nx">choice</span><span class="si">}</span><span class="s">&lt;/button&gt;&quot;</span>
+    <span class="nx">res</span>
+
   <span class="nv">_renderNext: </span><span class="o">-&gt;</span>
     <span class="nx">@updateProgress</span><span class="p">()</span>
+    <span class="nx">@answerArea</span><span class="p">.</span><span class="nx">html</span> <span class="s">&#39;&#39;</span>
     <span class="k">if</span> <span class="nx">@sequence</span><span class="p">.</span><span class="nx">length</span>
       <span class="vi">@question = </span><span class="nx">@sequence</span><span class="p">.</span><span class="nx">shift</span><span class="p">()</span>
-      <span class="k">switch</span> <span class="nx">@question</span><span class="p">.</span><span class="nx">type</span>
-        <span class="k">when</span> <span class="s">&#39;s2w&#39;</span>
-          <span class="nx">@questionArea</span><span class="p">.</span><span class="nx">html</span> <span class="s">&quot;&lt;img class=&#39;question&#39; src=&#39;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">rootPrefix</span><span class="si">}#{</span><span class="nx">@question</span><span class="p">.</span><span class="nx">question</span><span class="si">}</span><span class="s">&#39; style=&#39;height:</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">symbolSize</span><span class="si">}</span><span class="s">px;padding:1em;&#39;/&gt;&quot;</span>
-          <span class="nx">@answerArea</span><span class="p">.</span><span class="nx">html</span> <span class="s">&#39;&#39;</span>
-          <span class="k">for</span> <span class="nx">choice</span> <span class="k">in</span> <span class="nx">@_shuffle</span> <span class="nx">@question</span><span class="p">.</span><span class="nx">choices</span>
-            <span class="nx">@answerArea</span><span class="p">.</span><span class="nx">append</span> <span class="s">&quot;&lt;button value=&#39;</span><span class="si">#{</span><span class="nx">choice</span><span class="si">}</span><span class="s">&#39; width=&#39;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">symbolSize</span><span class="si">}</span><span class="s"> height=&#39;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">symbolSize</span><span class="si">}</span><span class="s">&#39; style=&#39;margin:1ex;&#39;&gt;</span><span class="si">#{</span><span class="nx">choice</span><span class="si">}</span><span class="s">&lt;/button&gt;&quot;</span>
-          <span class="vi">@currentResultContainer = </span><span class="nx">@results</span><span class="p">.</span><span class="nx">symbol2word</span>
-        <span class="k">when</span> <span class="s">&#39;w2s&#39;</span>
-          <span class="nx">@questionArea</span><span class="p">.</span><span class="nx">html</span> <span class="s">&quot;&lt;h1 style=&#39;padding: 2ex;&#39;&gt;</span><span class="si">#{</span><span class="nx">@question</span><span class="p">.</span><span class="nx">question</span><span class="si">}</span><span class="s">&lt;/h1&gt;&quot;</span>
-          <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;h1&#39;</span><span class="p">,</span> <span class="nx">@questionArea</span><span class="p">).</span><span class="nx">css</span>
-            <span class="s">&quot;text-align&quot;</span><span class="o">:</span> <span class="s">&quot;center&quot;</span>
-            <span class="s">&quot;font-size&quot;</span><span class="o">:</span> <span class="s">&quot;140%&quot;</span>
-          <span class="nx">@answerArea</span><span class="p">.</span><span class="nx">html</span> <span class="s">&#39;&#39;</span>
-          <span class="k">for</span> <span class="nx">choice</span> <span class="k">in</span> <span class="nx">@_shuffle</span> <span class="nx">@question</span><span class="p">.</span><span class="nx">choices</span>
-            <span class="nx">@answerArea</span><span class="p">.</span><span class="nx">append</span> <span class="s">&quot;&quot;&quot;</span>
-<span class="s">              &lt;button value=&#39;</span><span class="si">#{</span><span class="nx">choice</span><span class="si">}</span><span class="s">&#39; width=&#39;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">symbolSize</span><span class="si">}</span><span class="s"> height=&#39;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">symbolSize</span><span class="si">}</span><span class="s">&#39; style=&#39;margin: 1ex;&#39;&gt;</span>
-<span class="s">                &lt;img class=&#39;choice&#39; src=&#39;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">rootPrefix</span><span class="si">}#{</span><span class="nx">choice</span><span class="si">}</span><span class="s">&#39; style=&#39;height:</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">symbolSize</span><span class="si">}</span><span class="s">px;&#39;/&gt;</span>
-<span class="s">              &lt;/button&gt;</span>
-<span class="s">            &quot;&quot;&quot;</span>
-          <span class="vi">@currentResultContainer = </span><span class="nx">@results</span><span class="p">.</span><span class="nx">word2symbol</span>
+      <span class="vi">@currentResultContainer = </span><span class="nx">@results</span><span class="p">[</span><span class="nx">@question</span><span class="p">.</span><span class="nx">type</span><span class="p">]</span>
+      <span class="nx">@questionArea</span><span class="p">.</span><span class="nx">html</span> <span class="nx">@_renderQuestion</span><span class="p">()</span>
+      <span class="nx">@answerArea</span><span class="p">.</span><span class="nx">html</span> <span class="nx">@_renderAnswers</span><span class="p">()</span>
+
       <span class="vi">@buttonsDisabled = </span><span class="kc">false</span>
       <span class="nx">@playArea</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s">&#39;button&#39;</span><span class="p">)</span>
       <span class="p">.</span><span class="nx">button</span><span class="p">()</span>
@@ -192,11 +212,10 @@ size and to be informed about profile changes.</p>
   <span class="nv">finish: </span><span class="o">-&gt;</span>
     <span class="nx">@playArea</span><span class="p">.</span><span class="nx">html</span> <span class="s">&#39;&#39;</span>
     <span class="nx">@element</span><span class="p">.</span><span class="nx">css</span> <span class="nx">@_savedCSS</span>
-    <span class="vi">@results.word2symbol.score = </span><span class="nx">@results</span><span class="p">.</span><span class="nx">word2symbol</span><span class="p">.</span><span class="nx">correct</span> <span class="o">/</span> <span class="p">(</span><span class="nx">@results</span><span class="p">.</span><span class="nx">word2symbol</span><span class="p">.</span><span class="nx">correct</span> <span class="o">+</span> <span class="nx">@results</span><span class="p">.</span><span class="nx">word2symbol</span><span class="p">.</span><span class="nx">wrong</span><span class="p">)</span>
-    <span class="vi">@results.word2symbol.times = </span><span class="nx">@results</span><span class="p">.</span><span class="nx">word2symbol</span><span class="p">.</span><span class="nx">times</span><span class="p">.</span><span class="nx">getStatistics</span><span class="p">()</span>
+    <span class="k">for</span> <span class="nx">type</span> <span class="k">in</span> <span class="nx">@getQuestionTypes</span><span class="p">()</span>
+      <span class="nx">@results</span><span class="p">[</span><span class="nx">type</span><span class="p">].</span><span class="nv">score = </span><span class="nx">@results</span><span class="p">[</span><span class="nx">type</span><span class="p">].</span><span class="nx">correct</span> <span class="o">/</span> <span class="p">(</span><span class="nx">@results</span><span class="p">[</span><span class="nx">type</span><span class="p">].</span><span class="nx">correct</span> <span class="o">+</span> <span class="nx">@results</span><span class="p">[</span><span class="nx">type</span><span class="p">].</span><span class="nx">wrong</span><span class="p">)</span>
+      <span class="nx">@results</span><span class="p">[</span><span class="nx">type</span><span class="p">].</span><span class="nv">times = </span><span class="nx">@results</span><span class="p">[</span><span class="nx">type</span><span class="p">].</span><span class="nx">times</span><span class="p">.</span><span class="nx">getStatistics</span><span class="p">()</span>
 
-    <span class="vi">@results.symbol2word.score = </span><span class="nx">@results</span><span class="p">.</span><span class="nx">symbol2word</span><span class="p">.</span><span class="nx">correct</span> <span class="o">/</span> <span class="p">(</span><span class="nx">@results</span><span class="p">.</span><span class="nx">symbol2word</span><span class="p">.</span><span class="nx">correct</span> <span class="o">+</span> <span class="nx">@results</span><span class="p">.</span><span class="nx">symbol2word</span><span class="p">.</span><span class="nx">wrong</span><span class="p">)</span>
-    <span class="vi">@results.symbol2word.times = </span><span class="nx">@results</span><span class="p">.</span><span class="nx">symbol2word</span><span class="p">.</span><span class="nx">times</span><span class="p">.</span><span class="nx">getStatistics</span><span class="p">()</span>
     <span class="nx">@message</span> <span class="s">&quot;Gratuliere, das war&#39;s schon!&quot;</span><span class="p">,</span> <span class="o">=&gt;</span>
       <span class="nx">@options</span><span class="p">.</span><span class="nx">result</span> <span class="nx">@results</span>
     <span class="nx">@destroy</span><span class="p">()</span>
@@ -223,18 +242,16 @@ size and to be informed about profile changes.</p>
         <span class="nv">info: </span><span class="o">-&gt;</span>
         <span class="nv">error: </span><span class="o">-&gt;</span>
         <span class="nv">log: </span><span class="o">-&gt;</span>
-  <span class="nv">_shuffle: </span><span class="nf">(arr) -&gt;</span>
-    <span class="nv">randOrd = </span><span class="o">-&gt;</span>
-      <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">())</span><span class="o">-</span><span class="mf">0.5</span>
-    <span class="nx">arr</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">sort</span> <span class="nx">randOrd</span>
+  <span class="nv">_shuffle: </span><span class="nf">(v) -&gt;</span></pre></div></td></tr><tr id="section-13"><td class="docs"><div class="pilwrap"><a href="#section-13" class="pilcrow">&#182;</a></div><p>http://jsfromhell.com/array/shuffle</p>
+</td><td class="code"><div class="highlight"><pre>    <span class="nx">_</span><span class="p">.</span><span class="nx">shuffle</span> <span class="nx">v</span>
 
   <span class="nv">updateProgress: </span><span class="o">-&gt;</span>
     <span class="nv">val = </span><span class="p">(</span><span class="nx">@options</span><span class="p">.</span><span class="nx">numberOfQuestions</span> <span class="o">-</span> <span class="nx">@sequence</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="o">/</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">numberOfQuestions</span> <span class="o">*</span> <span class="mi">100</span>
     <span class="nx">@progressBar</span><span class="p">.</span><span class="nx">progressbar</span> <span class="s">&#39;value&#39;</span><span class="p">,</span> <span class="nx">val</span>
 
   <span class="nv">_escHandler: </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span>
-    <span class="k">if</span> <span class="nx">e</span><span class="p">.</span><span class="nx">keyCode</span> <span class="o">is</span> <span class="mi">27</span></pre></div></td></tr><tr id="section-11"><td class="docs"><div class="pilwrap"><a href="#section-11" class="pilcrow">&#182;</a></div><p>e.data.widget.finish()</p>
-</td><td class="code"><div class="highlight"><pre>      <span class="nx">e</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">widget</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span></pre></div></td></tr><tr id="section-12"><td class="docs"><div class="pilwrap"><a href="#section-12" class="pilcrow">&#182;</a></div><p>Class for calculating simple statistical data</p>
+    <span class="k">if</span> <span class="nx">e</span><span class="p">.</span><span class="nx">keyCode</span> <span class="o">is</span> <span class="mi">27</span></pre></div></td></tr><tr id="section-14"><td class="docs"><div class="pilwrap"><a href="#section-14" class="pilcrow">&#182;</a></div><p>e.data.widget.finish()</p>
+</td><td class="code"><div class="highlight"><pre>      <span class="nx">e</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">widget</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span></pre></div></td></tr><tr id="section-15"><td class="docs"><div class="pilwrap"><a href="#section-15" class="pilcrow">&#182;</a></div><p>Class for calculating simple statistical data</p>
 </td><td class="code"><div class="highlight"><pre><span class="k">class</span> <span class="nx">Stat</span>
   <span class="nv">constructor: </span><span class="nf">(opts) -&gt;</span>
     <span class="nv">options =</span>
@@ -271,7 +288,7 @@ size and to be informed about profile changes.</p>
   <span class="nv">getStatistics: </span><span class="o">-&gt;</span>
     <span class="nv">average: </span><span class="nx">@getAverage</span><span class="p">()</span>
     <span class="nv">variance: </span><span class="nx">@getVariance</span><span class="p">()</span>
-    <span class="nv">standardDeviation: </span><span class="nx">@getStandardDeviation</span><span class="p">()</span></pre></div></td></tr><tr id="section-13"><td class="docs"><div class="pilwrap"><a href="#section-13" class="pilcrow">&#182;</a></div><p>Class for measuring time in milliseconds</p>
+    <span class="nv">standardDeviation: </span><span class="nx">@getStandardDeviation</span><span class="p">()</span></pre></div></td></tr><tr id="section-16"><td class="docs"><div class="pilwrap"><a href="#section-16" class="pilcrow">&#182;</a></div><p>Class for measuring time in milliseconds</p>
 </td><td class="code"><div class="highlight"><pre><span class="k">class</span> <span class="nx">StopWatch</span>
   <span class="nv">constructor: </span><span class="nf">(@error = -&gt; @console.error.apply @console, arguments) -&gt;</span>
     <span class="vi">@elapsed = </span><span class="mi">0</span>
