@@ -88,7 +88,7 @@ Capkom.nonClickMode = ->
   not Capkom.profile.get 'canClick'
 
 Capkom.canClick = ->
-  console.info 'canClick: true'
+  Capkom.console.info 'canClick: true'
   Capkom.profile.set canClick: true
 
 jQuery('body').click ->
@@ -107,18 +107,18 @@ class Capkom.Timeout
     @timer = setTimeout run, secs*1000
   clear: ->
     if @timer
-      console.info "Cancel timeout"
+      Capkom.console.info "Cancel timeout"
       clearTimeout @timer
 Capkom.timeout = new Capkom.Timeout
 
 Capkom.audioOff = ->
   Capkom.canClick()
-  console.info 'deactivate audio'
+  Capkom.console.info 'deactivate audio'
   Capkom.profile.set useAudio: false
 
 Capkom.audioOn = ->
   Capkom.canClick()
-  console.info 'activate audio'
+  Capkom.console.info 'activate audio'
   Capkom.profile.set useAudio: true
 
 Capkom.getTTSOptions = ->

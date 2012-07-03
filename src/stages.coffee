@@ -72,10 +72,8 @@ Capkom.stages =
 
         Capkom.timeout.start 4, ->
           explainWeiter ->
-            console.info "'weiter' explanation done"
             Capkom.timeout.start 2, ->
               explainAudioKnopf ->
-                console.info "'audio' explanation done"
                 done()
 
       show: (element) ->
@@ -170,7 +168,7 @@ Capkom.stages =
             Capkom.profile.set
               wordmatch: res
             Capkom.clickNext()
-            jQuery('.play-area', element).wordmatch 'destroy'
+            jQuery(':Capkom-wordmatch.play-area', element).wordmatch 'destroy'
           questions: Capkom.symbolunderstandingQuestions
         jQuery('.start', element).hide()
 
@@ -214,7 +212,7 @@ Capkom.stages =
             Capkom.profile.set
               wordmatch: res
             Capkom.clickNext()
-            jQuery('.play-area', element).wordmatch 'destroy'
+            jQuery(':Capkom-wordmatch.play-area', element).wordmatch 'destroy'
           questions: Capkom.wordmatchQuestions
         jQuery('.start', element).hide()
 
@@ -226,7 +224,7 @@ Capkom.stages =
             wordmatch: res
           done()
           Capkom.clickNext()
-          jQuery('.play-area', element).wordmatch 'destroy'
+          jQuery(':Capkom-wordmatch.play-area', element).wordmatch 'destroy'
           jQuery('.start', element).show()
         questions: Capkom.wordmatchQuestions
       jQuery('.start', element).hide()

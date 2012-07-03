@@ -35,26 +35,18 @@ jQuery.widget "Capkom.explain"
       maxSize: 200
       minSize: 100
       clickCount: 5
-      result: (bestSize, details) ->
-        res = "<h2>Results</h2>"
-        res += "Measured Sizes (these sizes depend from the screen size)"
-        res += "<ul>"
-        for size, result of details
-          res += """
-          <li>
-            size: #{size}px, score: #{Math.round(result.score * 100)} %<br/>
-            Reaction time: average: #{result.reactionTimeAverage}, standard deviation: #{result.reactionTimeStDev}<br/>
-            Move time: average: #{result.moveTimeAverage}, standard deviation: #{result.moveTimeStDev}
-           </li>
-           """
-        res += "</ul>"
-        res += "<p>Minimum size resulted in #{bestSize}</p>"
-        jQuery('#results').html res
-        @console.info 'ideal size:', size, 'detailed results:', details
 
   _create: ->
+    # Make sure no console.info or .error calls on
+    if window.console
+      @console = window.console
+    else
+      @console =
+        info: ->
+        error: ->
+        log: ->
     @element.html """
-  <div tts="#{@options.read}" class="explain">#{@options.html}</div>
+      <div tts="#{@options.read}" class="explain">#{@options.html}</div>
     """
     @explainPanel = @element.find('.explain')
     @options.domInit @explainPanel, =>
@@ -62,7 +54,7 @@ jQuery.widget "Capkom.explain"
         mode: 'auto'
         beforeDialog: =>
           @explainPanel.ttswidget 'getInnerContentElement', (innerContent) =>
-            console.info @explainPanel, innerContent
+            # console.info @explainPanel, innerContent
             innerContent.append @explainPanel
         done: =>
           @_trigger 'after'

@@ -31,35 +31,25 @@ size and to be informed about profile changes.</p>
       <span class="nv">maxSize: </span><span class="mi">200</span>
       <span class="nv">minSize: </span><span class="mi">100</span>
       <span class="nv">clickCount: </span><span class="mi">5</span>
-      <span class="nv">result: </span><span class="nf">(bestSize, details) -&gt;</span>
-        <span class="nv">res = </span><span class="s">&quot;&lt;h2&gt;Results&lt;/h2&gt;&quot;</span>
-        <span class="nx">res</span> <span class="o">+=</span> <span class="s">&quot;Measured Sizes (these sizes depend from the screen size)&quot;</span>
-        <span class="nx">res</span> <span class="o">+=</span> <span class="s">&quot;&lt;ul&gt;&quot;</span>
-        <span class="k">for</span> <span class="nx">size</span><span class="p">,</span> <span class="nx">result</span> <span class="k">of</span> <span class="nx">details</span>
-          <span class="nx">res</span> <span class="o">+=</span> <span class="s">&quot;&quot;&quot;</span>
-<span class="s">          &lt;li&gt;</span>
-<span class="s">            size: </span><span class="si">#{</span><span class="nx">size</span><span class="si">}</span><span class="s">px, score: </span><span class="si">#{</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">score</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span><span class="si">}</span><span class="s"> %&lt;br/&gt;</span>
-<span class="s">            Reaction time: average: </span><span class="si">#{</span><span class="nx">result</span><span class="p">.</span><span class="nx">reactionTimeAverage</span><span class="si">}</span><span class="s">, standard deviation: </span><span class="si">#{</span><span class="nx">result</span><span class="p">.</span><span class="nx">reactionTimeStDev</span><span class="si">}</span><span class="s">&lt;br/&gt;</span>
-<span class="s">            Move time: average: </span><span class="si">#{</span><span class="nx">result</span><span class="p">.</span><span class="nx">moveTimeAverage</span><span class="si">}</span><span class="s">, standard deviation: </span><span class="si">#{</span><span class="nx">result</span><span class="p">.</span><span class="nx">moveTimeStDev</span><span class="si">}</span><span class="s"></span>
-<span class="s">           &lt;/li&gt;</span>
-<span class="s">           &quot;&quot;&quot;</span>
-        <span class="nx">res</span> <span class="o">+=</span> <span class="s">&quot;&lt;/ul&gt;&quot;</span>
-        <span class="nx">res</span> <span class="o">+=</span> <span class="s">&quot;&lt;p&gt;Minimum size resulted in </span><span class="si">#{</span><span class="nx">bestSize</span><span class="si">}</span><span class="s">&lt;/p&gt;&quot;</span>
-        <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;#results&#39;</span><span class="p">).</span><span class="nx">html</span> <span class="nx">res</span>
-        <span class="nx">@console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;ideal size:&#39;</span><span class="p">,</span> <span class="nx">size</span><span class="p">,</span> <span class="s">&#39;detailed results:&#39;</span><span class="p">,</span> <span class="nx">details</span>
 
-  <span class="nv">_create: </span><span class="o">-&gt;</span>
+  <span class="nv">_create: </span><span class="o">-&gt;</span></pre></div></td></tr><tr id="section-6"><td class="docs"><div class="pilwrap"><a href="#section-6" class="pilcrow">&#182;</a></div><p>Make sure no console.info or .error calls on</p>
+</td><td class="code"><div class="highlight"><pre>    <span class="k">if</span> <span class="nb">window</span><span class="p">.</span><span class="nx">console</span>
+      <span class="vi">@console = </span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span>
+    <span class="k">else</span>
+      <span class="vi">@console =</span>
+        <span class="nv">info: </span><span class="o">-&gt;</span>
+        <span class="nv">error: </span><span class="o">-&gt;</span>
+        <span class="nv">log: </span><span class="o">-&gt;</span>
     <span class="nx">@element</span><span class="p">.</span><span class="nx">html</span> <span class="s">&quot;&quot;&quot;</span>
-<span class="s">  &lt;div tts=&quot;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">read</span><span class="si">}</span><span class="s">&quot; class=&quot;explain&quot;&gt;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">html</span><span class="si">}</span><span class="s">&lt;/div&gt;</span>
+<span class="s">      &lt;div tts=&quot;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">read</span><span class="si">}</span><span class="s">&quot; class=&quot;explain&quot;&gt;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">html</span><span class="si">}</span><span class="s">&lt;/div&gt;</span>
 <span class="s">    &quot;&quot;&quot;</span>
     <span class="vi">@explainPanel = </span><span class="nx">@element</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s">&#39;.explain&#39;</span><span class="p">)</span>
     <span class="nx">@options</span><span class="p">.</span><span class="nx">domInit</span> <span class="nx">@explainPanel</span><span class="p">,</span> <span class="o">=&gt;</span>
       <span class="nv">options = </span><span class="nx">_</span><span class="p">.</span><span class="nx">extend</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">ttsOptions</span><span class="p">,</span>
         <span class="nv">mode: </span><span class="s">&#39;auto&#39;</span>
         <span class="nv">beforeDialog: </span><span class="o">=&gt;</span>
-          <span class="nx">@explainPanel</span><span class="p">.</span><span class="nx">ttswidget</span> <span class="s">&#39;getInnerContentElement&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">innerContent</span><span class="p">)</span> <span class="o">=&gt;</span>
-            <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="nx">@explainPanel</span><span class="p">,</span> <span class="nx">innerContent</span>
-            <span class="nx">innerContent</span><span class="p">.</span><span class="nx">append</span> <span class="nx">@explainPanel</span>
+          <span class="nx">@explainPanel</span><span class="p">.</span><span class="nx">ttswidget</span> <span class="s">&#39;getInnerContentElement&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">innerContent</span><span class="p">)</span> <span class="o">=&gt;</span></pre></div></td></tr><tr id="section-7"><td class="docs"><div class="pilwrap"><a href="#section-7" class="pilcrow">&#182;</a></div><p>console.info @explainPanel, innerContent</p>
+</td><td class="code"><div class="highlight"><pre>            <span class="nx">innerContent</span><span class="p">.</span><span class="nx">append</span> <span class="nx">@explainPanel</span>
         <span class="nv">done: </span><span class="o">=&gt;</span>
           <span class="nx">@_trigger</span> <span class="s">&#39;after&#39;</span>
           <span class="nx">_</span><span class="p">.</span><span class="nx">defer</span> <span class="o">=&gt;</span>
@@ -72,5 +62,5 @@ size and to be informed about profile changes.</p>
       <span class="nx">@explainPanel</span><span class="p">.</span><span class="nx">ttswidget</span> <span class="nx">options</span>
 
   <span class="nv">_destroy: </span><span class="o">-&gt;</span>
-    <span class="nx">@element</span><span class="p">.</span><span class="nx">append</span> <span class="nx">@explainPanel</span></pre></div></td></tr><tr id="section-6"><td class="docs"><div class="pilwrap"><a href="#section-6" class="pilcrow">&#182;</a></div><p>@explainPanel.remove()</p>
+    <span class="nx">@element</span><span class="p">.</span><span class="nx">append</span> <span class="nx">@explainPanel</span></pre></div></td></tr><tr id="section-8"><td class="docs"><div class="pilwrap"><a href="#section-8" class="pilcrow">&#182;</a></div><p>@explainPanel.remove()</p>
 </td><td class="code"><div class="highlight"><pre></pre></div></td></tr></tbody></table><div id="projectname"><a href="../../index.html">Capkom Wizard</a></div></div></body></html>

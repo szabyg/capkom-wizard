@@ -69,10 +69,8 @@
 
         <span class="nx">Capkom</span><span class="p">.</span><span class="nx">timeout</span><span class="p">.</span><span class="nx">start</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-&gt;</span>
           <span class="nx">explainWeiter</span> <span class="o">-&gt;</span>
-            <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&quot;&#39;weiter&#39; explanation done&quot;</span>
             <span class="nx">Capkom</span><span class="p">.</span><span class="nx">timeout</span><span class="p">.</span><span class="nx">start</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-&gt;</span>
               <span class="nx">explainAudioKnopf</span> <span class="o">-&gt;</span>
-                <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&quot;&#39;audio&#39; explanation done&quot;</span>
                 <span class="nx">done</span><span class="p">()</span>
 
       <span class="nv">show: </span><span class="nf">(element) -&gt;</span>
@@ -156,7 +154,7 @@
             <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">set</span>
               <span class="nv">wordmatch: </span><span class="nx">res</span>
             <span class="nx">Capkom</span><span class="p">.</span><span class="nx">clickNext</span><span class="p">()</span>
-            <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.play-area&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">wordmatch</span> <span class="s">&#39;destroy&#39;</span>
+            <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;:Capkom-wordmatch.play-area&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">wordmatch</span> <span class="s">&#39;destroy&#39;</span>
           <span class="nv">questions: </span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">symbolunderstandingQuestions</span>
         <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.start&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">hide</span><span class="p">()</span>
 
@@ -200,7 +198,7 @@
             <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">set</span>
               <span class="nv">wordmatch: </span><span class="nx">res</span>
             <span class="nx">Capkom</span><span class="p">.</span><span class="nx">clickNext</span><span class="p">()</span>
-            <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.play-area&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">wordmatch</span> <span class="s">&#39;destroy&#39;</span>
+            <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;:Capkom-wordmatch.play-area&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">wordmatch</span> <span class="s">&#39;destroy&#39;</span>
           <span class="nv">questions: </span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">wordmatchQuestions</span>
         <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.start&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">hide</span><span class="p">()</span>
 
@@ -212,7 +210,7 @@
             <span class="nv">wordmatch: </span><span class="nx">res</span>
           <span class="nx">done</span><span class="p">()</span>
           <span class="nx">Capkom</span><span class="p">.</span><span class="nx">clickNext</span><span class="p">()</span>
-          <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.play-area&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">wordmatch</span> <span class="s">&#39;destroy&#39;</span>
+          <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;:Capkom-wordmatch.play-area&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">wordmatch</span> <span class="s">&#39;destroy&#39;</span>
           <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.start&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">show</span><span class="p">()</span>
         <span class="nv">questions: </span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">wordmatchQuestions</span>
       <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.start&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">hide</span><span class="p">()</span>

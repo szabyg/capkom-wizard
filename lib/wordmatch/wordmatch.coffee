@@ -140,10 +140,9 @@ jQuery.widget "Capkom.wordmatch"
         wrong: 0
         times: new Stat
 
-    console.info 'before', _.map @sequence, (q) -> q.question
     @sequence = @_shuffle @sequence
-    console.info 'after', _.map @sequence, (q) -> q.question
-    @timer = new StopWatch()
+    @console.info 'questions', _.map @sequence, (q) -> q.question
+    @timer = new StopWatch @console.error
     @_renderNext()
 
   getQuestionTypes: ->

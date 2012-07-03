@@ -116,8 +116,7 @@ jQuery.widget "Capkom.sizedetect"
     @cursor.click (e) =>
       @cursor.hide()
       jQuery(document.elementFromPoint(e.clientX, e.clientY)).trigger 'click'
-      _.defer =>
-        @cursor.show()
+      @cursor.show()
       false
 
     @element.mouseout (e) =>
@@ -156,8 +155,8 @@ jQuery.widget "Capkom.sizedetect"
     @details = {}
 
     # Set up measurement and statistics counters
-    @moveTimer = new StopWatch
-    @reactionTimer = new StopWatch
+    @moveTimer = new StopWatch @console.error
+    @reactionTimer = new StopWatch @console.error
 
     @moveTimeStat = new Stat
     @reactionTimeStat = new Stat
@@ -236,7 +235,6 @@ jQuery.widget "Capkom.sizedetect"
       @moveTimeStat.add moveTime
     else
       # if click failed register failed click
-      @console.info 'fail'
       @currentLevel.push 0
 
     # After e.g. 5 clicks start a new level or finish game depending the score

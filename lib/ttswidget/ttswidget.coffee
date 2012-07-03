@@ -124,7 +124,7 @@ jQuery.widget "capkom.ttswidget",
 
       if jQuery.browser.msie # and no
           document.playera.attachEvent "EndOfStream", (state) =>
-              @dialog.dialog "close"
+              @dialog?.dialog "close"
       else
           @audioElement = jQuery("#ttswidget-audio")[0]
           @audioElement.onabort = () ->

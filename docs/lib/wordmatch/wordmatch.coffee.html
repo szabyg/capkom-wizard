@@ -127,10 +127,9 @@ size and to be informed about profile changes.</p>
         <span class="nv">wrong: </span><span class="mi">0</span>
         <span class="nv">times: </span><span class="k">new</span> <span class="nx">Stat</span>
 
-    <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;before&#39;</span><span class="p">,</span> <span class="nx">_</span><span class="p">.</span><span class="nx">map</span> <span class="nx">@sequence</span><span class="p">,</span> <span class="nf">(q) -&gt;</span> <span class="nx">q</span><span class="p">.</span><span class="nx">question</span>
     <span class="vi">@sequence = </span><span class="nx">@_shuffle</span> <span class="nx">@sequence</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;after&#39;</span><span class="p">,</span> <span class="nx">_</span><span class="p">.</span><span class="nx">map</span> <span class="nx">@sequence</span><span class="p">,</span> <span class="nf">(q) -&gt;</span> <span class="nx">q</span><span class="p">.</span><span class="nx">question</span>
-    <span class="vi">@timer = </span><span class="k">new</span> <span class="nx">StopWatch</span><span class="p">()</span>
+    <span class="nx">@console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;questions&#39;</span><span class="p">,</span> <span class="nx">_</span><span class="p">.</span><span class="nx">map</span> <span class="nx">@sequence</span><span class="p">,</span> <span class="nf">(q) -&gt;</span> <span class="nx">q</span><span class="p">.</span><span class="nx">question</span>
+    <span class="vi">@timer = </span><span class="k">new</span> <span class="nx">StopWatch</span> <span class="nx">@console</span><span class="p">.</span><span class="nx">error</span>
     <span class="nx">@_renderNext</span><span class="p">()</span>
 
   <span class="nv">getQuestionTypes: </span><span class="o">-&gt;</span>
