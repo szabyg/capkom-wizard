@@ -9,7 +9,7 @@ Capkom.order = [
     "symbolunderstanding"
     "fontsize"
     "theme"
-    "channels"
+    # "channels"
     "symbolset"
     "goodbye"
 ]

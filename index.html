@@ -27,13 +27,13 @@
         Backbone.sync = function(method, entity, options){
             // Store profile in localStorage
             localStorage.profile = JSON.stringify(entity.toJSON());
-            Capkom.console.info('sending profile', localStorage.profile);
             if (window.location.href.indexOf('localhost') < 0){
                 var backendBaseUri = "http://www.online-atelier.com/OnlineAtelier/home/capkom?callback=?";
     //            var backendBaseUri = "http://localhost:3000/?callback=?";
     //            var backendBaseUri = "test.json";
                 switch(method){
                     case 'create':
+                        Capkom.console.info('sending profile', JSON.parse(localStorage.profile));
                         var jqXHR = jQuery.ajax({
                             url: backendBaseUri,
                             data: {

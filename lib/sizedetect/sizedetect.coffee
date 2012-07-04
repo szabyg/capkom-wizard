@@ -172,6 +172,7 @@ jQuery.widget "Capkom.sizedetect"
       # height: 'auto'
     # escape keypress
     jQuery('body').unbind 'keyup', @_escHandler
+    clearTimeout @timeoutTimer
 
   _beginGame: ->
     level = 2

@@ -141,6 +141,7 @@ height: '100px'</p>
 height: 'auto'
 escape keypress</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;body&#39;</span><span class="p">).</span><span class="nx">unbind</span> <span class="s">&#39;keyup&#39;</span><span class="p">,</span> <span class="nx">@_escHandler</span>
+    <span class="nx">clearTimeout</span> <span class="nx">@timeoutTimer</span>
 
   <span class="nv">_beginGame: </span><span class="o">-&gt;</span>
     <span class="nv">level = </span><span class="mi">2</span>
