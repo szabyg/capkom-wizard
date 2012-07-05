@@ -25,7 +25,7 @@ jQuery.widget "Capkom.sizedetect"
       maxSize: 200
       minSize: 100
       clickCount: 5
-      timeout: 400
+      timeout: 60
       rootPrefix: ''
       result: (bestSize, details) ->
         res = "<h2>Results</h2>"

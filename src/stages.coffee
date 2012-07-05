@@ -21,16 +21,14 @@ Capkom.stages =
       image: "http://www.greeting-cards-4u.com/tubes/CharlyBrown/snoopy.gif"
       speech:
           """
-          Willkommen im Online-Atelier! Hier bekommst du Hilfe beim Hochladen neuer Bilder,
-          beim Erstellen deines Profils und bei der Kommunikation mit anderen Künstlern.
-          Lass uns ein kleines Spiel spielen!
+          Hallo im Online-Atelier! Wir helfen dir damit du das Online-Atelier gut verwenden kannst. Lass uns
+          zuerst spielen!
           """
 
       html:
           """
-          Willkommen im Online-Atelier! Hier bekommst du Hilfe beim Hochladen neuer Bilder,
-          beim Erstellen deines Profils und bei der Kommunikation mit anderen Künstlern.
-          Lass‘ uns ein kleines Spiel spielen!
+          Hallo im Online-Atelier! Wir helfen dir damit du das Online-Atelier gut verwenden kannst. Lass uns
+          zuerst spielen!
           <div class="explain-area"></div>
           """
       explain: (element, done) ->
@@ -38,7 +36,7 @@ Capkom.stages =
         explainWeiter = (done) ->
           weiterArea = explainArea.append("<div class='weiter'></div>").find('.weiter')
           weiterArea.explain
-            read: "Benutze diesen Knopf damit du zum nächsten Schritt kommst."
+            read: "Wenn du jetzt spielen willst, dann benütze den Weiter-Knopf um anzufangen"
             useAudio: Capkom.profile.get('useAudio')
             html: """
             <button class="nextButton demoButton" alt="Weiter" >
@@ -57,7 +55,10 @@ Capkom.stages =
         explainAudioKnopf = (done) ->
           audioknopfArea = explainArea.append("<div class='audioknopf'></div>").find('.audioknopf')
           audioknopfArea.explain
-            read: "Drücke diesen Knopf, wenn du das Vorlesen aktivieren oder deaktivieren möchtest."
+            read: """
+              Wenn du nicht willst das dir der Text vorgelesen wird, dann drücke diesen Knopf. Du kannst diesen Knopf
+              auch später wieder einschalten. Wenn du den Ton eingeschaltet hast ist der Knopf rot umrandet.
+            """
             useAudio: Capkom.profile.get('useAudio')
             html: """
             <button class='tts-button demoButton' alt='Vorlesen'><i class='icon-volume-up'/></button>
@@ -71,9 +72,9 @@ Capkom.stages =
             ttsOptions: Capkom.getTTSOptions()
 
         Capkom.timeout.start 4, ->
-          explainWeiter ->
+          explainAudioKnopf ->
             Capkom.timeout.start 2, ->
-              explainAudioKnopf ->
+              explainWeiter ->
                 done()
 
       show: (element) ->
@@ -88,19 +89,19 @@ Capkom.stages =
     title: "Symbolgröße"
     # only show it if symbols are turned on
     speech: """
-              Wir beginnen mit einem Fangspiel: Füttere den Hund indem du mit der Futterdose auf den Hund klickst.
-              Versuche möglichst oft den Hund füttern, damit er glücklich und gesund bleibt.
-              """
+      Wir beginnen mit einem Spiel: Füttere den Hund. Ziehe die Futterdose auf das Bild von dem Hund.
+      Wenn du es oft schaffst, ist der Hund glücklich und gesund.
+    """
 
     condition: (profile) ->
       profile.get "useSymbols"
     image: "http://i.fonts2u.com/sn/mp1_snoopy-dings_1.png"
     html: """
-            Wir beginnen mit einem Fangspiel: Füttere den Hund indem du mit der Futterdose auf den Hund klickst.
-            Versuche möglichst oft den Hund füttern, damit er glücklich und gesund bleibt.<br/>
-            <button class='start'>Start</button>
-            <div class='fangspiel-area'></div>
-            """
+      Wir beginnen mit einem Spiel: Füttere den Hund. Ziehe die Futterdose auf das Bild von dem Hund.
+      Wenn du es oft schaffst, ist der Hund glücklich und gesund.
+      <button class='start'>Start</button>
+      <div class='fangspiel-area'></div>
+    """
     ###
     explain: (element, done) ->
       Capkom.timeout.start 4, ->
@@ -148,17 +149,19 @@ Capkom.stages =
     title: "Symbol-Verständnis"
     # only show it if symbols are turned on
     speech: """
-      Symbolverständnis Erklärung
+      Finde heraus welche Bilder zusammengehören. Zu dem Bild in der ersten Reihe passt immer ein
+      Bildaus der zweiten Reihe.
     """
 
     condition: (profile) ->
       profile.get "useSymbols"
     image: "http://i.fonts2u.com/sn/mp1_snoopy-dings_1.png"
     html: """
-            Symbolverständnis Erklärung.
-            <button class='start'>Start</button>
-            <div class='fangspiel-area'></div>
-            """
+      Finde heraus welche Bilder zusammengehören. Zu dem Bild in der ersten Reihe passt immer ein
+      Bildaus der zweiten Reihe.
+      <button class='start'>Start</button>
+      <div class='fangspiel-area'></div>
+    """
     scriptOnce: (element) ->
       jQuery('.start', element).button().click (e) ->
         debugger
@@ -194,14 +197,11 @@ Capkom.stages =
     title: "Wort-Bild Spiel"
     image: "http://www.balloonmaniacs.com/images/snoopygraduateballoon.jpg"
     speech: """
-    Nun zeigen wir dir immer ein Bild und du musst das richtige Wort dazu finden. Schau dir das Bild an und klicke
-    dann von den drei Wörtern auf das jeweils richtige Wort. Manchmal zeigen wir dir aber auch ein Wort und drei Bilder.
-    Du musst dann das richtige Bild, das zum Wort gehört, anklicken.
+      Bei diesem Spiel zeigen wir dir Wörter und Bilder. Wähle das passende Wort oder Bild aus.
     """
     html: """
-      Nun zeigen wir dir immer ein Bild und du musst das richtige Wort dazu finden. Schau‘ dir das Bild an und klicke
-      dann von den drei Wörtern auf das jeweils richtige Wort. Manchmal zeigen wir dir aber auch ein Wort und drei
-      Bilder. Du musst dann das richtige Bild, das zum Wort gehört, anklicken. <br/>
+      Bei diesem Spiel zeigen wir dir Wörter und Bilder. Wähle das passende Wort oder Bild aus.
+      <br/>
       <button class='start'>Start</button>
     """
     scriptOnce: (element) ->
@@ -236,10 +236,10 @@ Capkom.stages =
   "fontsize":
       title: "Schriftgröße"
       image: "http://www.thepartyanimal-blog.org/wp-content/uploads/2010/09/Halloween-Snoopy5.jpg"
-      speech: "Wähle die Schriftgröße aus, die für dich am besten lesbar ist und klicke auf den Weiter Knopf."
+      speech: "Klicke auf die Schriftgröße, die du am besten lesen kannst. Dann klicke auf den Weiter Knopf."
       html:
           """
-          Wähle die Schriftgröße aus, die für dich am besten lesbar ist und klicke auf den Weiter Knopf.<br/><br/>
+          Klicke auf die Schriftgröße, die du am besten lesen kannst. Dann klicke auf den Weiter Knopf.<br/><br/>
           <div class='fontsize'></div>
           """
       scriptOnce: (element) ->
@@ -253,13 +253,14 @@ Capkom.stages =
       title: "Design"
       image: "http://www.balloonmaniacs.com/images/snoopygraduateballoon.jpg"
       speech: """
-      Bitte bestimme nun die besten Farben für die Anzeige. Wähle die Farbkombination aus, die für dich am angenehmsten ist
-      und klicke auf den Weiter Knopf.
+        Wie soll dein Online-Atelier aussehen. Hier siehst du mehrere Bilder und du kannst sie gleich
+        ausprobieren. dann drücke auf den Knopf. "Weiter".
       """
       html: """
-          Bitte bestimme nun die besten Farben für die Anzeige. Wähle die Farbkombination aus, die für dich am angenehmsten ist
-          und klicke auf den Weiter Knopf..<br/><br/>
-          <span id='themeselector'></span>
+        Wie soll dein Online-Atelier aussehen. Hier siehst du mehrere Bilder und du kannst sie gleich
+        ausprobieren. dann drücke auf den Knopf. "Weiter".
+        <br/><br/>
+        <span id='themeselector'></span>
       """
       scriptOnce: (element) ->
           jQuery("#themeselector", element)
@@ -376,11 +377,11 @@ Capkom.stages =
   "goodbye":
       title: "Ende"
       image: "http://www.slowtrav.com/blog/teachick/snoopy_thankyou_big.gif"
-      speech: "Dein Profil enthält nun Informationen, die ich jetzt trotzdem nicht vorlesen werde, weil sie nur für die Entwickler da sind."
+      speech: "Du hast nun dein Online-Atelier so eingestellt, dass du es gut verwenden kannst."
       html: """
-          Vielen Dank für deine Zeit! <br/>
-          Dein Profil enthält nun folgende Informationen:<br/><br/>
-          <div id="profile"></div>
+        Du hast nun dein Online-Atelier so eingestellt, dass du es gut verwenden kannst.
+        <br/><br/>
+        <div id="profile"></div>
       """
       scriptOnce: (el) ->
           profileText = -> JSON.stringify(Capkom.profile.toJSON())
