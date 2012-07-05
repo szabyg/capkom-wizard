@@ -22,8 +22,6 @@
         "channels": "Wizi_SpracheSymbole", 
         "Symbole": "Wizi_Symbol", 
         "symbol": "Wizi_Symbol",
-        "symbolset":"Wizi_Symbolsatz",
-        "symbolunderstanding":"Wizi_Symbolsatz",
         "read":"Wizi_Symbolsatz",
         "symbolsize": "Wizi_Symbol",
         "Text": "Wizi_Text",

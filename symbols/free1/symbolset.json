@@ -15,9 +15,8 @@
     "channels": "Sprache-Symbole",
     "text-with-symbols": "Text+Symbole",
     "text-only": "Text",
-    "symbolset":"Symbole",
     "symbolunderstanding":"Symbole",
-      "read":"Symbole",
+    "read":"Symbole",
     "goodbye": "ende"
   },
   "symbols": ["back", "design", "ende", "fontsize", "Sprache-Symbole", "Symbole", "symbolsize", "Text", "Text+Symbole", "tts", "weiter", "Willkommen-home"]

@@ -3,9 +3,9 @@
 </td><td class="code"><div class="highlight"><pre><span class="nv">Capkom.order = </span><span class="p">[</span>
     <span class="s">&quot;welcome&quot;</span>
     <span class="s">&quot;symbolsize&quot;</span>
+    <span class="s">&quot;fontsize&quot;</span>
     <span class="s">&quot;read&quot;</span>
     <span class="s">&quot;symbolunderstanding&quot;</span>
-    <span class="s">&quot;fontsize&quot;</span>
     <span class="s">&quot;theme&quot;</span></pre></div></td></tr><tr id="section-3"><td class="docs"><div class="pilwrap"><a href="#section-3" class="pilcrow">&#182;</a></div><p>"channels"</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="s">&quot;symbolset&quot;</span>
     <span class="s">&quot;goodbye&quot;</span>
@@ -233,7 +233,7 @@
               <span class="nv">change: </span><span class="nf">(val) -&gt;</span>
                   <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">set</span> <span class="s">&#39;fontsize&#39;</span><span class="o">:</span> <span class="s">&quot;s</span><span class="si">#{</span><span class="nx">val</span><span class="si">}</span><span class="s">&quot;</span></pre></div></td></tr><tr id="section-14"><td class="docs"><div class="pilwrap"><a href="#section-14" class="pilcrow">&#182;</a></div><p>Definition of the theme selection screen</p>
 </td><td class="code"><div class="highlight"><pre>  <span class="s">&quot;theme&quot;</span><span class="o">:</span>
-      <span class="nv">title: </span><span class="s">&quot;Design&quot;</span>
+      <span class="nv">title: </span><span class="s">&quot;Aussehen&quot;</span>
       <span class="nv">image: </span><span class="s">&quot;http://www.balloonmaniacs.com/images/snoopygraduateballoon.jpg&quot;</span>
       <span class="nv">speech: </span><span class="s">&quot;&quot;&quot;</span>
 <span class="s">        Wie soll dein Online-Atelier aussehen. Hier siehst du mehrere Bilder und du kannst sie gleich</span>
@@ -310,16 +310,16 @@
                       <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">set</span>
                           <span class="nv">useAudio: </span><span class="kc">false</span></pre></div></td></tr><tr id="section-20"><td class="docs"><div class="pilwrap"><a href="#section-20" class="pilcrow">&#182;</a></div><p>Definition of the symbolset selection screen</p>
 </td><td class="code"><div class="highlight"><pre>  <span class="s">&quot;symbolset&quot;</span><span class="o">:</span>
-      <span class="nv">title: </span><span class="s">&quot;&lt;label symbol-id=&#39;symbolset&#39;&gt;Symbolsatz&lt;/label&gt;&quot;</span></pre></div></td></tr><tr id="section-21"><td class="docs"><div class="pilwrap"><a href="#section-21" class="pilcrow">&#182;</a></div><h1>#</h1>
+      <span class="nv">title: </span><span class="s">&quot;&lt;label symbol-id=&#39;symbolset&#39;&gt;Bildart&lt;/label&gt;&quot;</span></pre></div></td></tr><tr id="section-21"><td class="docs"><div class="pilwrap"><a href="#section-21" class="pilcrow">&#182;</a></div><h1>#</h1>
 </td><td class="code"><div class="highlight"><pre>       <span class="nx">only</span> <span class="nx">show</span> <span class="nx">it</span> <span class="k">if</span> <span class="nx">symbols</span> <span class="nx">are</span> <span class="nx">turned</span> <span class="kc">on</span></pre></div></td></tr><tr id="section-22"><td class="docs"><div class="pilwrap"><a href="#section-22" class="pilcrow">&#182;</a></div><h1>#</h1>
 </td><td class="code"><div class="highlight"><pre>      <span class="nv">condition: </span><span class="nf">(profile) -&gt;</span>
           <span class="nx">profile</span><span class="p">.</span><span class="nx">get</span> <span class="s">&quot;useSymbols&quot;</span>
       <span class="nv">image: </span><span class="s">&quot;http://www.gelsenkirchener-geschichten.de/userpix/1208/1208_snoopy006_3.gif&quot;</span>
-      <span class="nv">speech: </span><span class="s">&quot;Welche Art der Symbole gefällt dir am besten?&quot;</span>
+      <span class="nv">speech: </span><span class="s">&quot;Welche Art von bildern gefällt dier besser. Suche dir eines aus. Später kannst du auch deine eigenen Bilder und Fotos verwenden.&quot;</span>
       <span class="nv">html: </span><span class="s">&quot;&quot;&quot;</span>
-<span class="s">          Welche Art der Symbole gefällt dir am besten?&lt;br/&gt;</span>
-<span class="s">          Du kannst dir später auch Deine eigenen Symbole schaffen, indem du eigene Bilder oder Fotos hochlädst.</span>
+<span class="s">          Welche Art von bildern gefällt dier besser. Suche dir eines aus.&lt;br/&gt;</span>
 <span class="s">          &lt;div class=&#39;symbolset-symbols&#39;&gt;&lt;/div&gt;</span>
+<span class="s">          Später kannst du auch deine eigenen Bilder und Fotos verwenden.</span>
 <span class="s">      &quot;&quot;&quot;</span>
       <span class="nv">scriptOnce: </span><span class="nf">(element) -&gt;</span>
           <span class="nv">symbolSets = </span><span class="nx">_</span><span class="p">.</span><span class="nx">filter</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">symbolSets</span><span class="p">.</span><span class="nx">sets</span><span class="p">,</span> <span class="nf">(symbolSet) -&gt;</span>
@@ -353,7 +353,6 @@
       <span class="nv">html: </span><span class="s">&quot;&quot;&quot;</span>
 <span class="s">        Du hast nun dein Online-Atelier so eingestellt, dass du es gut verwenden kannst.</span>
 <span class="s">        &lt;br/&gt;&lt;br/&gt;</span>
-<span class="s">        &lt;div id=&quot;profile&quot;&gt;&lt;/div&gt;</span>
 <span class="s">      &quot;&quot;&quot;</span>
       <span class="nv">scriptOnce: </span><span class="nf">(el) -&gt;</span>
           <span class="nv">profileText = </span><span class="o">-&gt;</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">toJSON</span><span class="p">())</span>

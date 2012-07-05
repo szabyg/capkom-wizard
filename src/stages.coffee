@@ -5,9 +5,9 @@ Capkom = this.Capkom ?= {}
 Capkom.order = [
     "welcome"
     "symbolsize"
+    "fontsize"
     "read"
     "symbolunderstanding"
-    "fontsize"
     "theme"
     # "channels"
     "symbolset"
@@ -250,7 +250,7 @@ Capkom.stages =
 
   # Definition of the theme selection screen
   "theme":
-      title: "Design"
+      title: "Aussehen"
       image: "http://www.balloonmaniacs.com/images/snoopygraduateballoon.jpg"
       speech: """
         Wie soll dein Online-Atelier aussehen. Hier siehst du mehrere Bilder und du kannst sie gleich
@@ -335,18 +335,18 @@ Capkom.stages =
 
   # Definition of the symbolset selection screen
   "symbolset":
-      title: "<label symbol-id='symbolset'>Symbolsatz</label>"
+      title: "<label symbol-id='symbolset'>Bildart</label>"
       ###
        only show it if symbols are turned on
       ###
       condition: (profile) ->
           profile.get "useSymbols"
       image: "http://www.gelsenkirchener-geschichten.de/userpix/1208/1208_snoopy006_3.gif"
-      speech: "Welche Art der Symbole gefällt dir am besten?"
+      speech: "Welche Art von bildern gefällt dier besser. Suche dir eines aus. Später kannst du auch deine eigenen Bilder und Fotos verwenden."
       html: """
-          Welche Art der Symbole gefällt dir am besten?<br/>
-          Du kannst dir später auch Deine eigenen Symbole schaffen, indem du eigene Bilder oder Fotos hochlädst.
+          Welche Art von bildern gefällt dier besser. Suche dir eines aus.<br/>
           <div class='symbolset-symbols'></div>
+          Später kannst du auch deine eigenen Bilder und Fotos verwenden.
       """
       scriptOnce: (element) ->
           symbolSets = _.filter Capkom.symbolSets.sets, (symbolSet) ->
@@ -381,7 +381,6 @@ Capkom.stages =
       html: """
         Du hast nun dein Online-Atelier so eingestellt, dass du es gut verwenden kannst.
         <br/><br/>
-        <div id="profile"></div>
       """
       scriptOnce: (el) ->
           profileText = -> JSON.stringify(Capkom.profile.toJSON())
