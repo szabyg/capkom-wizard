@@ -223,3 +223,13 @@ Capkom.wordmatchQuestions = [
       choices: ['hund.jpg', 'schmetterling.jpg', 'tree.jpg']
       correct: 'schmetterling.jpg'
     ]
+jQuery(document).ready ->
+  _.defer ->
+    jQuery(['lib/sizedetect/aron.png', 'lib/sizedetect/futter.png']).preload()
+    dir = 'lib/wordmatch/img/'
+    jQuery(["#{dir}apfel.jpg", "#{dir}cat.jpg", "#{dir}futter.jpg", "#{dir}kuchen.jpg", "#{dir}schwein.jpg",
+    "#{dir}auto.jpg", "#{dir}dog.jpg", "#{dir}haus.jpg", "#{dir}labrador.jpg", "#{dir}tree.jpg",
+    "#{dir}baby.jpg", "#{dir}drache.jpg", "#{dir}house.jpg", "#{dir}lolli.jpg", "#{dir}wasser.jpg",
+    "#{dir}ballon.jpg", "#{dir}ei.jpg", "#{dir}hund.jpg", "#{dir}pants.gif",
+    "#{dir}baum.jpg", "#{dir}erdbeere.jpg", "#{dir}katze.jpg", "#{dir}rose.jpg",
+    "#{dir}birne.jpg", "#{dir}flugzeug.jpg", "#{dir}kinderwagen.jpg", "#{dir}schmetterling.jpg"]).preload()

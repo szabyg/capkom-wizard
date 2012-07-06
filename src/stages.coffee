@@ -39,10 +39,7 @@ Capkom.stages =
             read: "Wenn du jetzt spielen willst, dann benütze den Weiter-Knopf um anzufangen"
             useAudio: Capkom.profile.get('useAudio')
             html: """
-            <button class="nextButton demoButton" alt="Weiter" >
-            Weiter
-            <i class = "icon-arrow-right" />
-            </button>
+              <button class="previousButton demoButton" alt="Zurück" >Zurück <i class = "icon-arrow-left" /></button>&nbsp;<button class="nextButton demoButton" alt="Weiter" >Weiter <i class = "icon-arrow-right" /></button>
             """
             script: (element) ->
               jQuery(element).find('button').button()
@@ -73,14 +70,16 @@ Capkom.stages =
 
         Capkom.timeout.start 4, ->
           explainAudioKnopf ->
-            Capkom.timeout.start 2, ->
+            Capkom.timeout.start 1, ->
               explainWeiter ->
                 done()
 
+      ###
       show: (element) ->
         if Capkom.nonClickMode()
           Capkom.timeout.start 2, ->
             Capkom.clickNext()
+      ###
 
   ###
    Definition of the symbol size selection screen
@@ -173,6 +172,7 @@ Capkom.stages =
             Capkom.clickNext()
             jQuery(':Capkom-wordmatch.play-area', element).wordmatch 'destroy'
           questions: Capkom.symbolunderstandingQuestions
+          feedbackPos: ['Super!', 'Toll!', 'Perfekt!']
         jQuery('.start', element).hide()
 
     startGame: (element, done) ->

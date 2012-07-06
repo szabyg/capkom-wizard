@@ -9,3 +9,18 @@
 .shortmessage .ui-dialog-titlebar {
     display: none;
 }
+
+.shortmessage.correct {
+    border-color: lightgreen;
+    border-width: 3px;
+}
+
+.shortmessage.wrong {
+    border-color: red;
+    border-width: 3px;
+}
+
+body .ui-widget-overlay {
+    background: repeat-x scroll 0.7 #222;
+    opacity: 0.7;
+}

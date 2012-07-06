@@ -40,6 +40,7 @@ Load the profile and call the callback</p>
         <span class="nx">setProfile</span> <span class="nx">localStorage</span><span class="p">.</span><span class="nx">profile</span>
     <span class="k">else</span></pre></div></td></tr><tr id="section-18"><td class="docs"><div class="pilwrap"><a href="#section-18" class="pilcrow">&#182;</a></div><p>Load default profile from a backend servlet</p>
 </td><td class="code"><div class="highlight"><pre>        <span class="nx">jQuery</span><span class="p">.</span><span class="nx">get</span> <span class="s">&quot;./default-profile.json&quot;</span><span class="p">,</span> <span class="nf">(profile) -&gt;</span> <span class="nx">_</span><span class="p">.</span><span class="nx">defer</span> <span class="o">-&gt;</span>
-            <span class="nx">setProfile</span> <span class="nx">profile</span>
+          <span class="nv">profile.created = </span><span class="k">new</span> <span class="nb">Date</span><span class="p">()</span>
+          <span class="nx">setProfile</span> <span class="nx">profile</span>
 
 </pre></div></td></tr></tbody></table><div id="projectname"><a href="../index.html">Capkom Wizard</a></div></div></body></html>

@@ -27,6 +27,7 @@ jQuery.widget "Capkom.sizedetect"
       clickCount: 5
       timeout: 60
       rootPrefix: ''
+      feedbackPos: ['Good!', 'Great!', 'Perfect!', 'Super!', 'Well done!']
       result: (bestSize, details) ->
         res = "<h2>Results</h2>"
         res += "Measured Sizes (these sizes depend from the screen size)"
@@ -374,3 +375,8 @@ class StopWatch
   clearAndStart: ->
     @clear()
     @start()
+
+jQuery.fn.preload = ->
+  @each ->
+    jQuery('<img/>')[0].src = @
+

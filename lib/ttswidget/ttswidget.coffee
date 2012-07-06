@@ -121,6 +121,7 @@ jQuery.widget "capkom.ttswidget",
             @_trigger 'done'
         hide: "fade"
         width: "500"
+        modal: true
 
       if jQuery.browser.msie # and no
           document.playera.attachEvent "EndOfStream", (state) =>

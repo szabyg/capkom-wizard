@@ -26,6 +26,7 @@ jQuery.widget "Capkom.wordmatch"
       symbolSize: 150
       numberOfQuestions: 3
       rootPrefix: 'img/'
+      feedbackPos: ['Good!', 'Great!', 'Perfect!', 'Super!', 'Well done!']
       questions: [
           question: 'hund.jpg', choices: ['futter.jpg', 'lolli.jpg', 'apfel.jpg'], correct: 'futter.jpg', type: 'su'
         ,
@@ -194,9 +195,10 @@ jQuery.widget "Capkom.wordmatch"
             @currentResultContainer.correct++
             jQuery(e.currentTarget).css
               'border': 'lightgreen 5px solid'
-            @message 'Korrekt!', =>
+            @message @getAPositiveFeedback(), =>
               @buttonsDisabled = false
               @_renderNext()
+            , 'correct'
           else
             @currentResultContainer.wrong++
             jQuery(e.currentTarget).css
@@ -205,22 +207,25 @@ jQuery.widget "Capkom.wordmatch"
               @buttonsDisabled = false
               jQuery(e.currentTarget).css
                 'border': ''
+            , 'wrong'
       @timer.start()
     else
       @finish()
-
-  message: (msg, cb) ->
+  getAPositiveFeedback: ->
+    @options.feedbackPos[Math.floor(@options.feedbackPos.length * Math.random())]
+  message: (msg, cb, styleClass='') ->
     @messageArea.html(msg).dialog
       hide: "fade"
       close: =>
         _.defer =>
           @messageArea.dialog 'destroy'
           cb()
-      dialogClass: 'shortmessage'
+      dialogClass: "shortmessage #{styleClass}"
+      modal: true
     afterWaiting = =>
       @messageArea.dialog('close')
 
-    setTimeout afterWaiting, 1000
+    setTimeout afterWaiting, 1500
   finish: ->
     @playArea.html ''
     @element.css @_savedCSS

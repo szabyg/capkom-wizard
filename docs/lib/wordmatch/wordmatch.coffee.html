@@ -23,6 +23,7 @@ size and to be informed about profile changes.</p>
       <span class="nv">symbolSize: </span><span class="mi">150</span>
       <span class="nv">numberOfQuestions: </span><span class="mi">3</span>
       <span class="nv">rootPrefix: </span><span class="s">&#39;img/&#39;</span>
+      <span class="nv">feedbackPos: </span><span class="p">[</span><span class="s">&#39;Good!&#39;</span><span class="p">,</span> <span class="s">&#39;Great!&#39;</span><span class="p">,</span> <span class="s">&#39;Perfect!&#39;</span><span class="p">,</span> <span class="s">&#39;Super!&#39;</span><span class="p">,</span> <span class="s">&#39;Well done!&#39;</span><span class="p">]</span>
       <span class="nv">questions: </span><span class="p">[</span>
           <span class="nv">question: </span><span class="s">&#39;hund.jpg&#39;</span><span class="p">,</span> <span class="nv">choices: </span><span class="p">[</span><span class="s">&#39;futter.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;lolli.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;apfel.jpg&#39;</span><span class="p">],</span> <span class="nv">correct: </span><span class="s">&#39;futter.jpg&#39;</span><span class="p">,</span> <span class="nv">type: </span><span class="s">&#39;su&#39;</span>
         <span class="p">,</span>
@@ -181,9 +182,10 @@ size and to be informed about profile changes.</p>
             <span class="nx">@currentResultContainer</span><span class="p">.</span><span class="nx">correct</span><span class="o">++</span>
             <span class="nx">jQuery</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">currentTarget</span><span class="p">).</span><span class="nx">css</span>
               <span class="s">&#39;border&#39;</span><span class="o">:</span> <span class="s">&#39;lightgreen 5px solid&#39;</span>
-            <span class="nx">@message</span> <span class="s">&#39;Korrekt!&#39;</span><span class="p">,</span> <span class="o">=&gt;</span>
+            <span class="nx">@message</span> <span class="nx">@getAPositiveFeedback</span><span class="p">(),</span> <span class="o">=&gt;</span>
               <span class="vi">@buttonsDisabled = </span><span class="kc">false</span>
               <span class="nx">@_renderNext</span><span class="p">()</span>
+            <span class="p">,</span> <span class="s">&#39;correct&#39;</span>
           <span class="k">else</span>
             <span class="nx">@currentResultContainer</span><span class="p">.</span><span class="nx">wrong</span><span class="o">++</span>
             <span class="nx">jQuery</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">currentTarget</span><span class="p">).</span><span class="nx">css</span>
@@ -192,22 +194,25 @@ size and to be informed about profile changes.</p>
               <span class="vi">@buttonsDisabled = </span><span class="kc">false</span>
               <span class="nx">jQuery</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">currentTarget</span><span class="p">).</span><span class="nx">css</span>
                 <span class="s">&#39;border&#39;</span><span class="o">:</span> <span class="s">&#39;&#39;</span>
+            <span class="p">,</span> <span class="s">&#39;wrong&#39;</span>
       <span class="nx">@timer</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
     <span class="k">else</span>
       <span class="nx">@finish</span><span class="p">()</span>
-
-  <span class="nv">message: </span><span class="nf">(msg, cb) -&gt;</span>
+  <span class="nv">getAPositiveFeedback: </span><span class="o">-&gt;</span>
+    <span class="nx">@options</span><span class="p">.</span><span class="nx">feedbackPos</span><span class="p">[</span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">@options</span><span class="p">.</span><span class="nx">feedbackPos</span><span class="p">.</span><span class="nx">length</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">())]</span>
+  <span class="nv">message: </span><span class="nf">(msg, cb, styleClass=&#39;&#39;) -&gt;</span>
     <span class="nx">@messageArea</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="nx">msg</span><span class="p">).</span><span class="nx">dialog</span>
       <span class="nv">hide: </span><span class="s">&quot;fade&quot;</span>
       <span class="nv">close: </span><span class="o">=&gt;</span>
         <span class="nx">_</span><span class="p">.</span><span class="nx">defer</span> <span class="o">=&gt;</span>
           <span class="nx">@messageArea</span><span class="p">.</span><span class="nx">dialog</span> <span class="s">&#39;destroy&#39;</span>
           <span class="nx">cb</span><span class="p">()</span>
-      <span class="nv">dialogClass: </span><span class="s">&#39;shortmessage&#39;</span>
+      <span class="nv">dialogClass: </span><span class="s">&quot;shortmessage </span><span class="si">#{</span><span class="nx">styleClass</span><span class="si">}</span><span class="s">&quot;</span>
+      <span class="nv">modal: </span><span class="kc">true</span>
     <span class="nv">afterWaiting = </span><span class="o">=&gt;</span>
       <span class="nx">@messageArea</span><span class="p">.</span><span class="nx">dialog</span><span class="p">(</span><span class="s">&#39;close&#39;</span><span class="p">)</span>
 
-    <span class="nx">setTimeout</span> <span class="nx">afterWaiting</span><span class="p">,</span> <span class="mi">1000</span>
+    <span class="nx">setTimeout</span> <span class="nx">afterWaiting</span><span class="p">,</span> <span class="mi">1500</span>
   <span class="nv">finish: </span><span class="o">-&gt;</span>
     <span class="nx">@playArea</span><span class="p">.</span><span class="nx">html</span> <span class="s">&#39;&#39;</span>
     <span class="nx">@element</span><span class="p">.</span><span class="nx">css</span> <span class="nx">@_savedCSS</span>

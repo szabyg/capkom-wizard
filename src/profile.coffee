@@ -69,5 +69,6 @@ Capkom.loadProfile = (callback) ->
     else
         # Load default profile from a backend servlet
         jQuery.get "./default-profile.json", (profile) -> _.defer ->
-            setProfile profile
+          profile.created = new Date()
+          setProfile profile
 
