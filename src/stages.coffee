@@ -172,7 +172,8 @@ Capkom.stages =
             Capkom.clickNext()
             jQuery(':Capkom-wordmatch.play-area', element).wordmatch 'destroy'
           questions: Capkom.symbolunderstandingQuestions
-          feedbackPos: ['Super!', 'Toll!', 'Perfekt!']
+          numberOfQuestions: 5
+          feedbackPos: ['Super! :-)', 'Toll! :-)', 'Sehr gut! :-)', 'Perfekt! :-)']
         jQuery('.start', element).hide()
 
     startGame: (element, done) ->
@@ -181,12 +182,13 @@ Capkom.stages =
         result: (res) ->
           Capkom.profile.set
             wordmatch: res
-          done()
           Capkom.clickNext()
           jQuery(':Capkom-wordmatch.play-area', element).wordmatch 'destroy'
           jQuery('.start', element).show()
         questions: Capkom.symbolunderstandingQuestions
         numberOfQuestions: 5
+        feedbackPos: ['Super! :-)', 'Toll! :-)', 'Sehr gut! :-)', 'Perfekt! :-)']
+        done()
       jQuery('.start', element).hide()
 
     show: (element) ->
@@ -214,6 +216,7 @@ Capkom.stages =
             Capkom.clickNext()
             jQuery(':Capkom-wordmatch.play-area', element).wordmatch 'destroy'
           questions: Capkom.wordmatchQuestions
+          feedbackPos: ['Super! :-)', 'Toll! :-)', 'Sehr gut! :-)', 'Perfekt! :-)']
         jQuery('.start', element).hide()
 
     startGame: (element, done) ->
@@ -227,6 +230,7 @@ Capkom.stages =
           jQuery(':Capkom-wordmatch.play-area', element).wordmatch 'destroy'
           jQuery('.start', element).show()
         questions: Capkom.wordmatchQuestions
+        feedbackPos: ['Super! :-)', 'Toll! :-)', 'Sehr gut! :-)', 'Perfekt! :-)']
       jQuery('.start', element).hide()
 
     show: (element) ->

@@ -155,7 +155,8 @@
             <span class="nx">Capkom</span><span class="p">.</span><span class="nx">clickNext</span><span class="p">()</span>
             <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;:Capkom-wordmatch.play-area&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">wordmatch</span> <span class="s">&#39;destroy&#39;</span>
           <span class="nv">questions: </span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">symbolunderstandingQuestions</span>
-          <span class="nv">feedbackPos: </span><span class="p">[</span><span class="s">&#39;Super!&#39;</span><span class="p">,</span> <span class="s">&#39;Toll!&#39;</span><span class="p">,</span> <span class="s">&#39;Perfekt!&#39;</span><span class="p">]</span>
+          <span class="nv">numberOfQuestions: </span><span class="mi">5</span>
+          <span class="nv">feedbackPos: </span><span class="p">[</span><span class="s">&#39;Super! :-)&#39;</span><span class="p">,</span> <span class="s">&#39;Toll! :-)&#39;</span><span class="p">,</span> <span class="s">&#39;Sehr gut! :-)&#39;</span><span class="p">,</span> <span class="s">&#39;Perfekt! :-)&#39;</span><span class="p">]</span>
         <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.start&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">hide</span><span class="p">()</span>
 
     <span class="nv">startGame: </span><span class="nf">(element, done) -&gt;</span>
@@ -164,12 +165,13 @@
         <span class="nv">result: </span><span class="nf">(res) -&gt;</span>
           <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">set</span>
             <span class="nv">wordmatch: </span><span class="nx">res</span>
-          <span class="nx">done</span><span class="p">()</span>
           <span class="nx">Capkom</span><span class="p">.</span><span class="nx">clickNext</span><span class="p">()</span>
           <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;:Capkom-wordmatch.play-area&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">wordmatch</span> <span class="s">&#39;destroy&#39;</span>
           <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.start&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">show</span><span class="p">()</span>
         <span class="nv">questions: </span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">symbolunderstandingQuestions</span>
         <span class="nv">numberOfQuestions: </span><span class="mi">5</span>
+        <span class="nv">feedbackPos: </span><span class="p">[</span><span class="s">&#39;Super! :-)&#39;</span><span class="p">,</span> <span class="s">&#39;Toll! :-)&#39;</span><span class="p">,</span> <span class="s">&#39;Sehr gut! :-)&#39;</span><span class="p">,</span> <span class="s">&#39;Perfekt! :-)&#39;</span><span class="p">]</span>
+        <span class="nx">done</span><span class="p">()</span>
       <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.start&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">hide</span><span class="p">()</span>
 
     <span class="nv">show: </span><span class="nf">(element) -&gt;</span>
@@ -197,6 +199,7 @@
             <span class="nx">Capkom</span><span class="p">.</span><span class="nx">clickNext</span><span class="p">()</span>
             <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;:Capkom-wordmatch.play-area&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">wordmatch</span> <span class="s">&#39;destroy&#39;</span>
           <span class="nv">questions: </span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">wordmatchQuestions</span>
+          <span class="nv">feedbackPos: </span><span class="p">[</span><span class="s">&#39;Super! :-)&#39;</span><span class="p">,</span> <span class="s">&#39;Toll! :-)&#39;</span><span class="p">,</span> <span class="s">&#39;Sehr gut! :-)&#39;</span><span class="p">,</span> <span class="s">&#39;Perfekt! :-)&#39;</span><span class="p">]</span>
         <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.start&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">hide</span><span class="p">()</span>
 
     <span class="nv">startGame: </span><span class="nf">(element, done) -&gt;</span>
@@ -210,6 +213,7 @@
           <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;:Capkom-wordmatch.play-area&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">wordmatch</span> <span class="s">&#39;destroy&#39;</span>
           <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.start&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">show</span><span class="p">()</span>
         <span class="nv">questions: </span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">wordmatchQuestions</span>
+        <span class="nv">feedbackPos: </span><span class="p">[</span><span class="s">&#39;Super! :-)&#39;</span><span class="p">,</span> <span class="s">&#39;Toll! :-)&#39;</span><span class="p">,</span> <span class="s">&#39;Sehr gut! :-)&#39;</span><span class="p">,</span> <span class="s">&#39;Perfekt! :-)&#39;</span><span class="p">]</span>
       <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.start&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">hide</span><span class="p">()</span>
 
     <span class="nv">show: </span><span class="nf">(element) -&gt;</span>
