@@ -240,10 +240,10 @@ Capkom.stages =
   "fontsize":
       title: "Schriftgröße"
       image: "http://www.thepartyanimal-blog.org/wp-content/uploads/2010/09/Halloween-Snoopy5.jpg"
-      speech: "Klicke auf die Schriftgröße, die du am besten lesen kannst. Dann klicke auf den Weiter Knopf."
+      speech: "Klicke auf die Schriftgröße, die du am besten lesen kannst. Du kannst diese hier ausprobieren. Wenn du fertig bist, klicke auf den Weiter Knopf."
       html:
           """
-          Klicke auf die Schriftgröße, die du am besten lesen kannst. Dann klicke auf den Weiter Knopf.<br/><br/>
+          Klicke auf die Schriftgröße, die du am besten lesen kannst. Du kannst diese hier ausprobieren. Wenn du fertig bist, klicke auf den Weiter Knopf.<br/><br/>
           <div class='fontsize'></div>
           """
       scriptOnce: (element) ->
