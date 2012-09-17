@@ -4,8 +4,8 @@ appFiles  = [
   'lib/sizedetect/sizedetect.coffee'
   'lib/wordmatch/wordmatch.coffee'
   'lib/capkomsymbolwidget/capkomsymbolwidget.coffee'
-  'src/fontsizewidget.coffee'
 
+  'src/fontsizewidget.coffee'
   'src/symbolset.coffee'
   'src/wizard.coffee'
   'src/symbolsets.coffee'

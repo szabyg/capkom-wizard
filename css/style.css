@@ -24,3 +24,10 @@ body .ui-widget-overlay {
     background: repeat-x scroll 0.7 #222;
     opacity: 0.7;
 }
+button, button img, label[role=button], label[role=button] * {
+    -webkit-user-drag: none;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}

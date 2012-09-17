@@ -163,7 +163,6 @@ Capkom.stages =
     """
     scriptOnce: (element) ->
       jQuery('.start', element).button().click (e) ->
-        debugger
         jQuery('.play-area', element).wordmatch
           rootPrefix: 'lib/wordmatch/img/'
           result: (res) ->

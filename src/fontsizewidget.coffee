@@ -15,7 +15,7 @@ jQuery.widget "capkom.fontsize",
             """
         Capkom.console.log @element, "created."
         # @_setValue @options.value
-        @buttonset = jQuery(@element).buttonset
+        @buttonset = jQuery(@element).ultButtonset
             styleclass: "fontsize-buttons"
         .change (e) =>
             @options.change @options.value = e.target.id.replace "fontsize-s", ""

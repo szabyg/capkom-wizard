@@ -233,3 +233,4 @@ jQuery(document).ready ->
     "#{dir}ballon.jpg", "#{dir}ei.jpg", "#{dir}hund.jpg", "#{dir}pants.gif",
     "#{dir}baum.jpg", "#{dir}erdbeere.jpg", "#{dir}katze.jpg", "#{dir}rose.jpg",
     "#{dir}birne.jpg", "#{dir}flugzeug.jpg", "#{dir}kinderwagen.jpg", "#{dir}schmetterling.jpg"]).preload()
+document.ondragstart = -> false

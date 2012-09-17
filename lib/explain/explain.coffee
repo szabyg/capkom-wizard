@@ -17,7 +17,7 @@ Capkom = this.Capkom ?= {}
 
 # TODO useAudio berücksichtigen
 
-jQuery.widget "Capkom.explain"
+jQuery.widget "Capkom.explain",
   # Options:
   options:
       # By default `Capkom.profile` is used for getting the selected symbolset,
