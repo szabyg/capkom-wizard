@@ -149,7 +149,7 @@ Capkom.stages =
     # only show it if symbols are turned on
     speech: """
       Finde heraus welche Bilder zusammengehören. Zu dem Bild in der ersten Reihe passt immer ein
-      Bildaus der zweiten Reihe.
+      Bild aus der zweiten Reihe.
     """
 
     condition: (profile) ->
@@ -256,12 +256,12 @@ Capkom.stages =
       title: "Aussehen"
       image: "http://www.balloonmaniacs.com/images/snoopygraduateballoon.jpg"
       speech: """
-        Wie soll dein Online-Atelier aussehen. Hier siehst du mehrere Bilder und du kannst sie gleich
-        ausprobieren. dann drücke auf den Knopf. "Weiter".
+        Wie soll dein Online-Atelier aussehen? Hier siehst du mehrere Bilder und du kannst sie gleich
+        ausprobieren. Dann drücke auf den Knopf "Weiter".
       """
       html: """
-        Wie soll dein Online-Atelier aussehen. Hier siehst du mehrere Bilder und du kannst sie gleich
-        ausprobieren. dann drücke auf den Knopf. "Weiter".
+        Wie soll dein Online-Atelier aussehen? Hier siehst du mehrere Bilder und du kannst sie gleich
+        ausprobieren. Dann drücke auf den Knopf "Weiter".
         <br/><br/>
         <span id='themeselector'></span>
       """
@@ -347,7 +347,7 @@ Capkom.stages =
       image: "http://www.gelsenkirchener-geschichten.de/userpix/1208/1208_snoopy006_3.gif"
       speech: "Welche Art von bildern gefällt dier besser. Suche dir eines aus. Später kannst du auch deine eigenen Bilder und Fotos verwenden."
       html: """
-          Welche Art von bildern gefällt dier besser. Suche dir eines aus.<br/>
+          Welche Art von Bildern gefällt dir besser? Suche dir eines aus.<br/>
           <div class='symbolset-symbols'></div>
           Später kannst du auch deine eigenen Bilder und Fotos verwenden.
       """
