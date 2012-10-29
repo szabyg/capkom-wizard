@@ -403,7 +403,7 @@ Capkom.getTestDataId = (cb) ->
     console.info 'view data', data.doc_count
     cb "UT-#{data.doc_count}"
 Capkom.saveTestData = (doc) ->
-  jQuery.couch.urlPrefix = "http://dev.iks-project.eu:8089/dev.iks-project.eu:80/couchdb";
+  jQuery.couch.urlPrefix = "http://dev.iks-project.eu/cors/dev.iks-project.eu:80/couchdb";
   jQuery.couch.info success: (data) ->
   db = jQuery.couch.db('capkom-testresults')
   db.info success: (data) ->

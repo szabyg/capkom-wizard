@@ -373,7 +373,7 @@
     <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;view data&#39;</span><span class="p">,</span> <span class="nx">data</span><span class="p">.</span><span class="nx">doc_count</span>
     <span class="nx">cb</span> <span class="s">&quot;UT-</span><span class="si">#{</span><span class="nx">data</span><span class="p">.</span><span class="nx">doc_count</span><span class="si">}</span><span class="s">&quot;</span>
 <span class="nv">Capkom.saveTestData = </span><span class="nf">(doc) -&gt;</span>
-  <span class="nv">jQuery.couch.urlPrefix = </span><span class="s">&quot;http://dev.iks-project.eu:8089/dev.iks-project.eu:80/couchdb&quot;</span><span class="p">;</span>
+  <span class="nv">jQuery.couch.urlPrefix = </span><span class="s">&quot;http://dev.iks-project.eu/cors/dev.iks-project.eu:80/couchdb&quot;</span><span class="p">;</span>
   <span class="nx">jQuery</span><span class="p">.</span><span class="nx">couch</span><span class="p">.</span><span class="nx">info</span> <span class="nv">success: </span><span class="nf">(data) -&gt;</span>
   <span class="nv">db = </span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">couch</span><span class="p">.</span><span class="nx">db</span><span class="p">(</span><span class="s">&#39;capkom-testresults&#39;</span><span class="p">)</span>
   <span class="nx">db</span><span class="p">.</span><span class="nx">info</span> <span class="nv">success: </span><span class="nf">(data) -&gt;</span>
