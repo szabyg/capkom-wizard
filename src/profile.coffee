@@ -8,6 +8,7 @@ Capkom.Profile = Backbone.Model.extend()
 
 # Capkom.profile contains the profile parameters and takes care of event handling
 Capkom.profile = new Capkom.Profile
+  navigator: _(window.navigator).pick ['appCodeName','appName', 'appVersion', 'language', 'platform', 'product', 'userAgent', 'vendor', 'vendorSub']
 
 # Changing `fontsize` effects the body getting the CSS class `fontsize-[small|medium|large]`
 Capkom.profile.bind "change:fontsize", (profile, fontsize) ->

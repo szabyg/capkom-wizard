@@ -145,6 +145,8 @@ jQuery.widget "Capkom.wordmatch"
     @console.info 'questions', _.map @sequence, (q) -> q.question
     @timer = new StopWatch @console.error
     @_renderNext()
+    @fullgameTimer = new StopWatch @console.error
+    @fullgameTimer.start()
 
   getQuestionTypes: ->
     _.uniq(_.map(@options.questions, (q) -> q.type))
@@ -232,6 +234,7 @@ jQuery.widget "Capkom.wordmatch"
     for type in @getQuestionTypes()
       @results[type].score = @results[type].correct / (@results[type].correct + @results[type].wrong)
       @results[type].times = @results[type].times.getStatistics()
+    @results.fullTime = @fullgameTimer.end()
 
     @message "Gratuliere, das war's schon!", =>
       @options.result @results

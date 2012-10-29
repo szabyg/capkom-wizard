@@ -167,7 +167,7 @@ Capkom.stages =
           rootPrefix: 'lib/wordmatch/img/'
           result: (res) ->
             Capkom.profile.set
-              wordmatch: res
+              symbolunderstanding: res
             Capkom.clickNext()
             jQuery(':Capkom-wordmatch.play-area', element).wordmatch 'destroy'
           questions: Capkom.symbolunderstandingQuestions
@@ -180,7 +180,7 @@ Capkom.stages =
         rootPrefix: 'lib/wordmatch/img/'
         result: (res) ->
           Capkom.profile.set
-            wordmatch: res
+            symbolunderstanding: res
           Capkom.clickNext()
           jQuery(':Capkom-wordmatch.play-area', element).wordmatch 'destroy'
           jQuery('.start', element).show()
@@ -211,7 +211,7 @@ Capkom.stages =
           rootPrefix: 'lib/wordmatch/img/'
           result: (res) ->
             Capkom.profile.set
-              wordmatch: res
+              read: res
             Capkom.clickNext()
             jQuery(':Capkom-wordmatch.play-area', element).wordmatch 'destroy'
           questions: Capkom.wordmatchQuestions
@@ -223,7 +223,7 @@ Capkom.stages =
         rootPrefix: 'lib/wordmatch/img/'
         result: (res) ->
           Capkom.profile.set
-            wordmatch: res
+            read: res
           done()
           Capkom.clickNext()
           jQuery(':Capkom-wordmatch.play-area', element).wordmatch 'destroy'
@@ -384,6 +384,7 @@ Capkom.stages =
       html: """
         Du hast nun dein Online-Atelier so eingestellt, dass du es gut verwenden kannst.
         <br/><br/>
+        Usertest ID: <span id='usertest-id'/>
       """
       scriptOnce: (el) ->
           profileText = -> JSON.stringify(Capkom.profile.toJSON())
@@ -393,6 +394,38 @@ Capkom.stages =
           Capkom.profile.bind "change", (profile) ->
               jQuery("#goodbye #profile").html profileText()
           jQuery("#profile", el).html profileText()
+      startGame: ->
+        if Capkom.allStagesFinished()
+          Capkom.saveTestData Capkom.profile
+Capkom.getTestDataId = (cb) ->
+  db = jQuery.couch.db('capkom-testresults')
+  db.info success: (data) ->
+    console.info 'view data', data.doc_count
+    cb "UT-#{data.doc_count}"
+Capkom.saveTestData = (doc) ->
+  jQuery.couch.urlPrefix = "http://dev.iks-project.eu:8089/dev.iks-project.eu:80/couchdb";
+  jQuery.couch.info success: (data) ->
+  db = jQuery.couch.db('capkom-testresults')
+  db.info success: (data) ->
+    console.info 'db info', data
+    console.info 'couch info', data
+  save = ->
+    db.saveDoc doc.toJSON(), success: (res) ->
+      if res.ok
+        console.info "doc saved", res
+        doc.set _rev: res.rev
+        jQuery('#usertest-id').html "#{doc.get '_id'}"
+      else
+        console.info 'Error saving Usertest document', res
+  if doc.get '_id'
+    save()
+  else
+    Capkom.getTestDataId (id) ->
+      doc.set '_id': id
+      save()
+
+Capkom.allStagesFinished = ->
+  return Capkom.profile.get('read') and Capkom.profile.get('symbolunderstanding') and Capkom.profile.get('symbolsizedetectDetails') # are all filled out
 
 ###
 Get an array of stage objects in the configured order.

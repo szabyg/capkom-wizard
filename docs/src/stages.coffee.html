@@ -150,7 +150,7 @@
           <span class="nv">rootPrefix: </span><span class="s">&#39;lib/wordmatch/img/&#39;</span>
           <span class="nv">result: </span><span class="nf">(res) -&gt;</span>
             <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">set</span>
-              <span class="nv">wordmatch: </span><span class="nx">res</span>
+              <span class="nv">symbolunderstanding: </span><span class="nx">res</span>
             <span class="nx">Capkom</span><span class="p">.</span><span class="nx">clickNext</span><span class="p">()</span>
             <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;:Capkom-wordmatch.play-area&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">wordmatch</span> <span class="s">&#39;destroy&#39;</span>
           <span class="nv">questions: </span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">symbolunderstandingQuestions</span>
@@ -163,7 +163,7 @@
         <span class="nv">rootPrefix: </span><span class="s">&#39;lib/wordmatch/img/&#39;</span>
         <span class="nv">result: </span><span class="nf">(res) -&gt;</span>
           <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">set</span>
-            <span class="nv">wordmatch: </span><span class="nx">res</span>
+            <span class="nv">symbolunderstanding: </span><span class="nx">res</span>
           <span class="nx">Capkom</span><span class="p">.</span><span class="nx">clickNext</span><span class="p">()</span>
           <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;:Capkom-wordmatch.play-area&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">wordmatch</span> <span class="s">&#39;destroy&#39;</span>
           <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.start&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">show</span><span class="p">()</span>
@@ -194,7 +194,7 @@
           <span class="nv">rootPrefix: </span><span class="s">&#39;lib/wordmatch/img/&#39;</span>
           <span class="nv">result: </span><span class="nf">(res) -&gt;</span>
             <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">set</span>
-              <span class="nv">wordmatch: </span><span class="nx">res</span>
+              <span class="nv">read: </span><span class="nx">res</span>
             <span class="nx">Capkom</span><span class="p">.</span><span class="nx">clickNext</span><span class="p">()</span>
             <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;:Capkom-wordmatch.play-area&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">wordmatch</span> <span class="s">&#39;destroy&#39;</span>
           <span class="nv">questions: </span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">wordmatchQuestions</span>
@@ -206,7 +206,7 @@
         <span class="nv">rootPrefix: </span><span class="s">&#39;lib/wordmatch/img/&#39;</span>
         <span class="nv">result: </span><span class="nf">(res) -&gt;</span>
           <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">set</span>
-            <span class="nv">wordmatch: </span><span class="nx">res</span>
+            <span class="nv">read: </span><span class="nx">res</span>
           <span class="nx">done</span><span class="p">()</span>
           <span class="nx">Capkom</span><span class="p">.</span><span class="nx">clickNext</span><span class="p">()</span>
           <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;:Capkom-wordmatch.play-area&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">wordmatch</span> <span class="s">&#39;destroy&#39;</span>
@@ -354,6 +354,7 @@
       <span class="nv">html: </span><span class="s">&quot;&quot;&quot;</span>
 <span class="s">        Du hast nun dein Online-Atelier so eingestellt, dass du es gut verwenden kannst.</span>
 <span class="s">        &lt;br/&gt;&lt;br/&gt;</span>
+<span class="s">        Usertest ID: &lt;span id=&#39;usertest-id&#39;/&gt;</span>
 <span class="s">      &quot;&quot;&quot;</span>
       <span class="nv">scriptOnce: </span><span class="nf">(el) -&gt;</span>
           <span class="nv">profileText = </span><span class="o">-&gt;</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">toJSON</span><span class="p">())</span>
@@ -362,7 +363,39 @@
               <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/&quot;:/g</span><span class="p">,</span> <span class="s">&#39;&quot;: &#39;</span><span class="p">)</span>
           <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">bind</span> <span class="s">&quot;change&quot;</span><span class="p">,</span> <span class="nf">(profile) -&gt;</span>
               <span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;</span><span class="err">#</span><span class="s">goodbye </span><span class="err">#</span><span class="s">profile&quot;</span><span class="p">).</span><span class="nx">html</span> <span class="nx">profileText</span><span class="p">()</span>
-          <span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;</span><span class="err">#</span><span class="s">profile&quot;</span><span class="p">,</span> <span class="nx">el</span><span class="p">).</span><span class="nx">html</span> <span class="nx">profileText</span><span class="p">()</span></pre></div></td></tr><tr id="section-26"><td class="docs"><div class="pilwrap"><a href="#section-26" class="pilcrow">&#182;</a></div><h1>#</h1>
+          <span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;</span><span class="err">#</span><span class="s">profile&quot;</span><span class="p">,</span> <span class="nx">el</span><span class="p">).</span><span class="nx">html</span> <span class="nx">profileText</span><span class="p">()</span>
+      <span class="nv">startGame: </span><span class="o">-&gt;</span>
+        <span class="k">if</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">allStagesFinished</span><span class="p">()</span>
+          <span class="nx">Capkom</span><span class="p">.</span><span class="nx">saveTestData</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span>
+<span class="nv">Capkom.getTestDataId = </span><span class="nf">(cb) -&gt;</span>
+  <span class="nv">db = </span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">couch</span><span class="p">.</span><span class="nx">db</span><span class="p">(</span><span class="s">&#39;capkom-testresults&#39;</span><span class="p">)</span>
+  <span class="nx">db</span><span class="p">.</span><span class="nx">info</span> <span class="nv">success: </span><span class="nf">(data) -&gt;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;view data&#39;</span><span class="p">,</span> <span class="nx">data</span><span class="p">.</span><span class="nx">doc_count</span>
+    <span class="nx">cb</span> <span class="s">&quot;UT-</span><span class="si">#{</span><span class="nx">data</span><span class="p">.</span><span class="nx">doc_count</span><span class="si">}</span><span class="s">&quot;</span>
+<span class="nv">Capkom.saveTestData = </span><span class="nf">(doc) -&gt;</span>
+  <span class="nv">jQuery.couch.urlPrefix = </span><span class="s">&quot;http://dev.iks-project.eu:8089/dev.iks-project.eu:80/couchdb&quot;</span><span class="p">;</span>
+  <span class="nx">jQuery</span><span class="p">.</span><span class="nx">couch</span><span class="p">.</span><span class="nx">info</span> <span class="nv">success: </span><span class="nf">(data) -&gt;</span>
+  <span class="nv">db = </span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">couch</span><span class="p">.</span><span class="nx">db</span><span class="p">(</span><span class="s">&#39;capkom-testresults&#39;</span><span class="p">)</span>
+  <span class="nx">db</span><span class="p">.</span><span class="nx">info</span> <span class="nv">success: </span><span class="nf">(data) -&gt;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;db info&#39;</span><span class="p">,</span> <span class="nx">data</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;couch info&#39;</span><span class="p">,</span> <span class="nx">data</span>
+  <span class="nv">save = </span><span class="o">-&gt;</span>
+    <span class="nx">db</span><span class="p">.</span><span class="nx">saveDoc</span> <span class="nx">doc</span><span class="p">.</span><span class="nx">toJSON</span><span class="p">(),</span> <span class="nv">success: </span><span class="nf">(res) -&gt;</span>
+      <span class="k">if</span> <span class="nx">res</span><span class="p">.</span><span class="nx">ok</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&quot;doc saved&quot;</span><span class="p">,</span> <span class="nx">res</span>
+        <span class="nx">doc</span><span class="p">.</span><span class="nx">set</span> <span class="nv">_rev: </span><span class="nx">res</span><span class="p">.</span><span class="nx">rev</span>
+        <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;#usertest-id&#39;</span><span class="p">).</span><span class="nx">html</span> <span class="s">&quot;</span><span class="si">#{</span><span class="nx">doc</span><span class="p">.</span><span class="nx">get</span> <span class="s">&#39;_id&#39;</span><span class="si">}</span><span class="s">&quot;</span>
+      <span class="k">else</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;Error saving Usertest document&#39;</span><span class="p">,</span> <span class="nx">res</span>
+  <span class="k">if</span> <span class="nx">doc</span><span class="p">.</span><span class="nx">get</span> <span class="s">&#39;_id&#39;</span>
+    <span class="nx">save</span><span class="p">()</span>
+  <span class="k">else</span>
+    <span class="nx">Capkom</span><span class="p">.</span><span class="nx">getTestDataId</span> <span class="nf">(id) -&gt;</span>
+      <span class="nx">doc</span><span class="p">.</span><span class="nx">set</span> <span class="s">&#39;_id&#39;</span><span class="o">:</span> <span class="nx">id</span>
+      <span class="nx">save</span><span class="p">()</span>
+
+<span class="nv">Capkom.allStagesFinished = </span><span class="o">-&gt;</span>
+  <span class="k">return</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s">&#39;read&#39;</span><span class="p">)</span> <span class="o">and</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s">&#39;symbolunderstanding&#39;</span><span class="p">)</span> <span class="o">and</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s">&#39;symbolsizedetectDetails&#39;</span><span class="p">)</span> <span class="c1"># are all filled out</span></pre></div></td></tr><tr id="section-26"><td class="docs"><div class="pilwrap"><a href="#section-26" class="pilcrow">&#182;</a></div><h1>#</h1>
 </td><td class="code"><div class="highlight"><pre><span class="nx">Get</span> <span class="nx">an</span> <span class="nx">array</span> <span class="k">of</span> <span class="nx">stage</span> <span class="nx">objects</span> <span class="k">in</span> <span class="nx">the</span> <span class="nx">configured</span> <span class="nx">order</span><span class="p">.</span></pre></div></td></tr><tr id="section-27"><td class="docs"><div class="pilwrap"><a href="#section-27" class="pilcrow">&#182;</a></div><h1>#</h1>
 </td><td class="code"><div class="highlight"><pre><span class="nv">Capkom.getStages = </span><span class="o">-&gt;</span>
     <span class="nv">res = </span><span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">stagename</span> <span class="k">of</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">order</span>

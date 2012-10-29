@@ -6,7 +6,7 @@
 
 Capkom = this.Capkom ?= {}
 
-# Register async process to be waited for.
+# Register async process to be waited for. Used to make sure that the symbolsets are loaded before
 Capkom.waitForMe = ->
     @_wait ?= []
     i = @_wait.length
@@ -132,93 +132,93 @@ Capkom.getTTSOptions = ->
     Capkom.audioOn()
   active: not Capkom.profile.get "useAudio"
 Capkom.symbolunderstandingQuestions = [
-    question: 'hund.jpg', choices: ['futter.jpg', 'lolli.jpg', 'apfel.jpg'], correct: 'futter.jpg', type: 'su'
+    question: 'hund.jpg', choices: ['futter.jpg', 'lolli.jpg', 'apfel.jpg'], correct: 'futter.jpg', type: 'symbolunderstanding'
   ,
-    question: 'baby.jpg', choices: ['auto.jpg', 'ei.jpg', 'kinderwagen.jpg'], correct: 'kinderwagen.jpg', type: 'su'
+    question: 'baby.jpg', choices: ['auto.jpg', 'ei.jpg', 'kinderwagen.jpg'], correct: 'kinderwagen.jpg', type: 'symbolunderstanding'
   ,
-    question: 'apfel.jpg', choices: ['wasser.jpg', 'birne.jpg', 'kuchen.jpg'], correct: 'birne.jpg', type: 'su'
+    question: 'apfel.jpg', choices: ['wasser.jpg', 'birne.jpg', 'kuchen.jpg'], correct: 'birne.jpg', type: 'symbolunderstanding'
   ,
-    question: 'baum.jpg', choices: ['apfel.jpg', 'dog.jpg', 'auto.jpg'], correct: 'apfel.jpg', type: 'su'
+    question: 'baum.jpg', choices: ['apfel.jpg', 'dog.jpg', 'auto.jpg'], correct: 'apfel.jpg', type: 'symbolunderstanding'
   ,
-    question: 'flugzeug.jpg', choices: ['dog.jpg', 'ballon.jpg', 'cat.jpg'], correct: 'ballon.jpg', type: 'su'
+    question: 'flugzeug.jpg', choices: ['dog.jpg', 'ballon.jpg', 'cat.jpg'], correct: 'ballon.jpg', type: 'symbolunderstanding'
   ]
 Capkom.wordmatchQuestions = [
-      type: 's2w' # symbol to word
+      type: 'symbol2word' # symbol to word
       question: 'tree.jpg'
       choices: ['Baum', 'Haus', 'Hose']
       correct: 'Baum'
     ,
-      type: 's2w' # symbol to word
+      type: 'symbol2word' # symbol to word
       question: 'house.jpg'
       choices: ['Baum', 'Haus', 'Hose']
       correct: 'Haus'
     ,
-      type: 's2w' # symbol to word
+      type: 'symbol2word' # symbol to word
       question: 'pants.gif'
       choices: ['Baum', 'Haus', 'Hose']
       correct: 'Hose'
     ,
-      type: 's2w'
+      type: 'symbol2word'
       question: 'apfel.jpg'
       choices: ['Apfel', 'Hund', 'Erdbeere']
       correct: 'Apfel'
     ,
-      type: 's2w' # symbol to word
+      type: 'symbol2word' # symbol to word
       question: 'auto.jpg'
       choices: ['Hund', 'Erdbeere', 'Auto']
       correct: 'Auto'
     ,
-      type: 's2w' # symbol to word
+      type: 'symbol2word' # symbol to word
       question: 'ei.jpg'
       choices: ['Auto', 'Ei', 'Haus']
       correct: 'Ei'
     ,
-      type: 's2w' # symbol to word
+      type: 'symbol2word' # symbol to word
       question: 'rose.jpg'
       choices: ['Rose', 'Haus', 'Ei']
       correct: 'Rose'
     ,
-      type: 's2w' # symbol to word
+      type: 'symbol2word' # symbol to word
       question: 'erdbeere.jpg'
       choices: ['Katze', 'Erdbeere', 'Auto']
       correct: 'Erdbeere'
     ,
-      type: 'w2s' # word to symbol
+      type: 'word2symbol' # word to symbol
       question: 'Baum'
       choices: ['tree.jpg', 'pants.gif', 'house.jpg']
       correct: 'tree.jpg'
     ,
-      type: 'w2s' # word to symbol
+      type: 'word2symbol' # word to symbol
       question: 'Haus'
       choices: ['tree.jpg', 'pants.gif', 'house.jpg']
       correct: 'house.jpg'
     ,
-      type: 'w2s' # word to symbol
+      type: 'word2symbol' # word to symbol
       question: 'Hose'
       choices: ['tree.jpg', 'pants.gif', 'house.jpg']
       correct: 'pants.gif'
     ,
-      type: 'w2s' # word to symbol
+      type: 'word2symbol' # word to symbol
       question: 'Apfel'
       choices: ['cat.jpg', 'haus.jpg', 'apfel.jpg']
       correct: 'apfel.jpg'
     ,
-      type: 'w2s' # word to symbol
+      type: 'word2symbol' # word to symbol
       question: 'Auto'
       choices: ['tree.jpg', 'pants.gif', 'auto.jpg']
       correct: 'auto.jpg'
     ,
-      type: 'w2s' # word to symbol
+      type: 'word2symbol' # word to symbol
       question: 'Ei'
       choices: ['ei.jpg', 'haus.jpg', 'katze.jpg']
       correct: 'ei.jpg'
     ,
-      type: 'w2s' # word to symbol
+      type: 'word2symbol' # word to symbol
       question: 'Katze'
       choices: ['hund.jpg', 'katze.jpg', 'pants.gif']
       correct: 'katze.jpg'
     ,
-      type: 'w2s' # word to symbol
+      type: 'word2symbol' # word to symbol
       question: 'Schmetterling'
       choices: ['hund.jpg', 'schmetterling.jpg', 'tree.jpg']
       correct: 'schmetterling.jpg'
