@@ -8,6 +8,7 @@ Capkom.order = [
     "fontsize"
     "read"
     "symbolunderstanding"
+    "lookforcorrect"
     "theme"
     # "channels"
     "symbolset"
@@ -159,7 +160,6 @@ Capkom.stages =
       Finde heraus welche Bilder zusammengehören. Zu dem Bild in der ersten Reihe passt immer ein
       Bildaus der zweiten Reihe. Klicke das richtige Bild an!
       <button class='start'>Start</button>
-      <div class='fangspiel-area'></div>
     """
     scriptOnce: (element) ->
       jQuery('.start', element).button().click (e) ->
@@ -174,7 +174,6 @@ Capkom.stages =
           numberOfQuestions: 5
           feedbackPos: ['Super!', 'Toll!', 'Sehr gut!', 'Perfekt!']
         jQuery('.start', element).hide()
-
     startGame: (element, done) ->
       jQuery('.play-area', element).wordmatch
         rootPrefix: 'lib/wordmatch/img/'
@@ -186,6 +185,55 @@ Capkom.stages =
           jQuery('.start', element).show()
         questions: Capkom.symbolunderstandingQuestions
         numberOfQuestions: 5
+        feedbackPos: ['Super!', 'Toll!', 'Sehr gut!', 'Perfekt!']
+        done()
+      jQuery('.start', element).hide()
+
+    show: (element) ->
+    hide: (element) ->
+      jQuery(':Capkom-wordmatch.play-area', element).wordmatch 'destroy'
+  ###
+   Definition of the symbol size selection screen
+  ###
+  "lookforcorrect":
+    title: "Fehlersuche"
+    # only show it if symbols are turned on
+    speech: """
+      Finde das identische Bild heraus.
+    """
+
+    condition: (profile) ->
+      profile.get "useSymbols"
+    image: "http://i.fonts2u.com/sn/mp1_snoopy-dings_1.png"
+    html: """
+      Finde das identische Bild heraus.
+      <button class='start'>Start</button>
+    """
+    scriptOnce: (element) ->
+      jQuery('.start', element).button().click (e) ->
+        jQuery('.play-area', element).wordmatch
+          rootPrefix: 'lib/wordmatch/img/'
+          result: (res) ->
+            Capkom.profile.set
+              lookforcorrect: res
+            Capkom.clickNext()
+            jQuery(':Capkom-wordmatch.play-area', element).wordmatch 'destroy'
+          questions: Capkom.lookforcorrectQuestions
+          numberOfQuestions: 6
+          feedbackPos: ['Super!', 'Toll!', 'Sehr gut!', 'Perfekt!']
+        jQuery('.start', element).hide()
+
+    startGame: (element, done) ->
+      jQuery('.play-area', element).wordmatch
+        rootPrefix: 'lib/wordmatch/img/'
+        result: (res) ->
+          Capkom.profile.set
+            lookforcorrect: res
+          Capkom.clickNext()
+          jQuery(':Capkom-wordmatch.play-area', element).wordmatch 'destroy'
+          jQuery('.start', element).show()
+        questions: Capkom.lookforcorrectQuestions
+        numberOfQuestions: 6
         feedbackPos: ['Super!', 'Toll!', 'Sehr gut!', 'Perfekt!']
         done()
       jQuery('.start', element).hide()

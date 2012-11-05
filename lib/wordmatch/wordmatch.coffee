@@ -185,10 +185,10 @@ jQuery.widget "Capkom.wordmatch"
       @buttonsDisabled = false
       @playArea.find('button')
       .button()
-      .css
+      .css(
         minWidth: @options.symbolSize
         minHeight: @options.symbolSize
-      .click (e) =>
+      ).click (e) =>
         unless @buttonsDisabled
           @buttonsDisabled = true
           attempt = jQuery(e.currentTarget).attr('value')
@@ -216,6 +216,8 @@ jQuery.widget "Capkom.wordmatch"
   getAPositiveFeedback: ->
     @options.feedbackPos[Math.floor(@options.feedbackPos.length * Math.random())]
   message: (msg, cb, styleClass='') ->
+    @messageArea.css
+      'text-align': 'center'
     @messageArea.html("<div style='text-align:center;'>#{msg}</div>").dialog
       hide: "fade"
       close: =>
@@ -228,8 +230,6 @@ jQuery.widget "Capkom.wordmatch"
       @messageArea.dialog('close')
 
     setTimeout afterWaiting, 1500
-    @messageArea.style
-      'text-align': 'center'
 
   finish: ->
     @playArea.html ''

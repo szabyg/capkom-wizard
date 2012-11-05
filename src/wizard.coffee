@@ -223,6 +223,38 @@ Capkom.wordmatchQuestions = [
       choices: ['hund.jpg', 'schmetterling.jpg', 'tree.jpg']
       correct: 'schmetterling.jpg'
     ]
+Capkom.lookforcorrectQuestions = [
+      type: 'color'
+      question: 'dog.jpg'
+      choices: ['dog.jpg', 'mod/dog1.jpg', 'mod/dog2.jpg']
+      correct: 'dog.jpg'
+    ,
+      type: 'b&w'
+      question: 'mod/dogsw.jpg'
+      choices: ['mod/dogsw.jpg', 'mod/dog1sw.jpg', 'mod/dog2sw.jpg']
+      correct: 'mod/dogsw.jpg'
+    ,
+      type: 'color'
+      question: 'flugzeug.jpg'
+      choices: ['flugzeug.jpg', 'mod/flugzeug1.jpg', 'mod/flugzeug2.jpg']
+      correct: 'flugzeug.jpg'
+    ,
+      type: 'b&w'
+      question: 'mod/flugzeugsw.jpg'
+      choices: ['mod/flugzeugsw.jpg', 'mod/flugzeug1sw.jpg', 'mod/flugzeug2sw.jpg']
+      correct: 'mod/flugzeugsw.jpg'
+    ,
+      type: 'color'
+      question: 'rose.jpg'
+      choices: ['rose.jpg', 'mod/rose1.jpg', 'mod/rose2.jpg']
+      correct: 'rose.jpg'
+    ,
+      type: 'b&w'
+      question: 'mod/rosesw.jpg'
+      choices: ['mod/rosesw.jpg', 'mod/rose1sw.jpg', 'mod/rose2sw.jpg']
+      correct: 'mod/rosesw.jpg'
+    ,
+    ]
 jQuery(document).ready ->
   _.defer ->
     jQuery(['lib/sizedetect/aron.png', 'lib/sizedetect/futter.png']).preload()
@@ -233,4 +265,7 @@ jQuery(document).ready ->
     "#{dir}ballon.jpg", "#{dir}ei.jpg", "#{dir}hund.jpg", "#{dir}pants.gif",
     "#{dir}baum.jpg", "#{dir}erdbeere.jpg", "#{dir}katze.jpg", "#{dir}rose.jpg",
     "#{dir}birne.jpg", "#{dir}flugzeug.jpg", "#{dir}kinderwagen.jpg", "#{dir}schmetterling.jpg"]).preload()
+    jQuery(["#{dir}/mod/dogsw.jpg", "#{dir}/mod/dog1sw.jpg", "#{dir}/mod/dog2sw.jpg", "#{dir}/mod/dog1.jpg", "#{dir}/mod/dog2.jpg",
+    "#{dir}/mod/flugzeugsw.jpg", "#{dir}/mod/flugzeug1sw.jpg", "#{dir}/mod/flugzeug2sw.jpg", "#{dir}/mod/flugzeug1.jpg", "#{dir}/mod/flugzeug2.jpg",
+    "#{dir}/mod/rosesw.jpg", "#{dir}/mod/rose1sw.jpg", "#{dir}/mod/rose2sw.jpg", "#{dir}/mod/rose1.jpg", "#{dir}/mod/rose2.jpg", ]).preload
 document.ondragstart = -> false
