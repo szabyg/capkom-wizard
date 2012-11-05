@@ -19,7 +19,7 @@ Capkom.stages =
   # Definition of the welcome screen
   "welcome":
       title: "Willkommen"
-      image: "http://www.greeting-cards-4u.com/tubes/CharlyBrown/snoopy.gif"
+      image: "img/welcome.png"
       speech:
           """
           Hallo im Online-Atelier! Ich helfe dir damit du das Online-Atelier gut verwenden kannst. Lass uns
@@ -95,7 +95,7 @@ Capkom.stages =
 
     condition: (profile) ->
       profile.get "useSymbols"
-    image: "http://i.fonts2u.com/sn/mp1_snoopy-dings_1.png"
+    image: "img/symbolsize.png"
     html: """
       Wir beginnen mit einem Spiel: Füttere den Hund. Ziehe die Futterdose auf das Bild von dem Hund.
       Wenn du es oft schaffst, ist der Hund glücklich und gesund.
@@ -155,7 +155,7 @@ Capkom.stages =
 
     condition: (profile) ->
       profile.get "useSymbols"
-    image: "http://i.fonts2u.com/sn/mp1_snoopy-dings_1.png"
+    image: "img/symbolmatch.png"
     html: """
       Finde heraus welche Bilder zusammengehören. Zu dem Bild in der ersten Reihe passt immer ein
       Bildaus der zweiten Reihe. Klicke das richtige Bild an!
@@ -199,14 +199,14 @@ Capkom.stages =
     title: "Fehlersuche"
     # only show it if symbols are turned on
     speech: """
-      Finde das identische Bild heraus.
+      Suche und klicke auf das gleiche Bild.
     """
 
     condition: (profile) ->
       profile.get "useSymbols"
     image: "http://i.fonts2u.com/sn/mp1_snoopy-dings_1.png"
     html: """
-      Finde das identische Bild heraus.
+      Suche und klicke auf das gleiche Bild.
       <button class='start'>Start</button>
     """
     scriptOnce: (element) ->
@@ -244,7 +244,7 @@ Capkom.stages =
 
   "read":
     title: "Wort-Bild Spiel"
-    image: "http://www.balloonmaniacs.com/images/snoopygraduateballoon.jpg"
+    image: "img/read.png"
     speech: """
       Bei diesem Spiel zeigen wir dir Wörter und Bilder. Klicke das richtige Wort oder Bild an!
     """
@@ -286,7 +286,7 @@ Capkom.stages =
 
   "fontsize":
       title: "Schriftgröße"
-      image: "http://www.thepartyanimal-blog.org/wp-content/uploads/2010/09/Halloween-Snoopy5.jpg"
+      image: "img/fontsize.png"
       speech: "Klicke auf die Schriftgröße, die du am besten lesen kannst. Du kannst diese hier ausprobieren. Wenn du fertig bist, klicke auf den Weiter Knopf."
       html:
           """
@@ -302,7 +302,7 @@ Capkom.stages =
   # Definition of the theme selection screen
   "theme":
       title: "Aussehen"
-      image: "http://www.balloonmaniacs.com/images/snoopygraduateballoon.jpg"
+      image: "img/design.png"
       speech: """
         Wie soll dein Online-Atelier aussehen? Klicke auf ein Bild zum ausprobieren. Wenn Du fertig bist, klicke auf weiter.
       """
@@ -391,7 +391,7 @@ Capkom.stages =
       ###
       condition: (profile) ->
           profile.get "useSymbols"
-      image: "http://www.gelsenkirchener-geschichten.de/userpix/1208/1208_snoopy006_3.gif"
+      image: "img/symbolset.png"
       speech: "Welche Art von bildern gefällt dier besser. Suche dir eines aus. Später kannst du auch deine eigenen Bilder und Fotos verwenden."
       html: """
           Wie siehst Du das Bild besser? Grau oder orange?<br/>
@@ -426,7 +426,7 @@ Capkom.stages =
 
   "goodbye":
       title: "Ende"
-      image: "http://www.slowtrav.com/blog/teachick/snoopy_thankyou_big.gif"
+      image: "img/goodbye.png"
       speech: "Du hast nun dein Online-Atelier so eingestellt, dass du es gut verwenden kannst."
       html: """
         Du hast nun dein Online-Atelier so eingestellt, dass du es gut verwenden kannst.
@@ -450,7 +450,6 @@ Capkom.getTestDataId = (cb) ->
     console.info 'view data', data.doc_count
     cb "UT-#{data.doc_count}"
 Capkom.saveTestData = (doc) ->
-  jQuery.couch.urlPrefix = "http://dev.iks-project.eu/cors/dev.iks-project.eu:80/couchdb"
   jQuery.couch.urlPrefix = "http://dev.iks-project.eu/couchdb"
   jQuery.couch.info success: (data) ->
   db = jQuery.couch.db('capkom-testresults')

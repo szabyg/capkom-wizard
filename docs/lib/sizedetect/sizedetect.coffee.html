@@ -202,13 +202,10 @@ escape keypress</p>
 </td><td class="code"><div class="highlight"><pre>      <span class="nx">@currentLevel</span><span class="p">.</span><span class="nx">push</span> <span class="mi">0</span></pre></div></td></tr><tr id="section-31"><td class="docs"><div class="pilwrap"><a href="#section-31" class="pilcrow">&#182;</a></div><p>After e.g. 5 clicks start a new level or finish game depending the score</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="k">if</span> <span class="nx">@currentLevel</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;=</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">clickCount</span></pre></div></td></tr><tr id="section-32"><td class="docs"><div class="pilwrap"><a href="#section-32" class="pilcrow">&#182;</a></div><p>evaluate current level</p>
 </td><td class="code"><div class="highlight"><pre>      <span class="nx">@evaluateCurrentLevel</span><span class="p">()</span>
-      <span class="k">if</span> <span class="nx">@currentLevel</span><span class="p">.</span><span class="nx">score</span> <span class="o">&gt;=</span> <span class="mi">0</span></pre></div></td></tr><tr id="section-33"><td class="docs"><div class="pilwrap"><a href="#section-33" class="pilcrow">&#182;</a></div><p>High score --> New level</p>
+      <span class="k">if</span> <span class="nx">@currentLevel</span><span class="p">.</span><span class="nx">score</span> <span class="o">&gt;</span> <span class="mf">0.5</span></pre></div></td></tr><tr id="section-33"><td class="docs"><div class="pilwrap"><a href="#section-33" class="pilcrow">&#182;</a></div><p>High score --> New level</p>
 </td><td class="code"><div class="highlight"><pre>        <span class="vi">@goodSize = </span><span class="nx">@size</span>
         <span class="nx">@console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&quot;goodSize is&quot;</span><span class="p">,</span> <span class="nx">@goodSize</span><span class="p">,</span> <span class="nx">@</span>
-        <span class="k">if</span> <span class="nx">@currentLevel</span><span class="p">.</span><span class="nx">moveTimeAverage</span> <span class="o">&lt;</span> <span class="mi">2000</span>
-          <span class="nx">@_newLevel</span> <span class="nx">@level</span> <span class="o">+</span> <span class="mi">2</span>
-        <span class="k">else</span>
-          <span class="nx">@_newLevel</span> <span class="nx">@level</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="nx">@_newLevel</span> <span class="nx">@level</span> <span class="o">+</span> <span class="mi">1</span>
       <span class="k">else</span></pre></div></td></tr><tr id="section-34"><td class="docs"><div class="pilwrap"><a href="#section-34" class="pilcrow">&#182;</a></div><p>Low score --> Finish</p>
 </td><td class="code"><div class="highlight"><pre>        <span class="nx">@finish</span><span class="p">()</span>
     <span class="k">else</span>

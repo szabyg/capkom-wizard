@@ -243,14 +243,11 @@ jQuery.widget "Capkom.sizedetect"
     if @currentLevel.length >= @options.clickCount
       # evaluate current level
       @evaluateCurrentLevel()
-      if @currentLevel.score >= 0
+      if @currentLevel.score > 0.5
         # High score --> New level
         @goodSize = @size
         @console.info "goodSize is", @goodSize, @
-        if @currentLevel.moveTimeAverage < 2000
-          @_newLevel @level + 2
-        else
-          @_newLevel @level + 1
+        @_newLevel @level + 1
       else
         # Low score --> Finish
         @finish()
