@@ -216,7 +216,7 @@ jQuery.widget "Capkom.wordmatch"
   getAPositiveFeedback: ->
     @options.feedbackPos[Math.floor(@options.feedbackPos.length * Math.random())]
   message: (msg, cb, styleClass='') ->
-    @messageArea.html(msg).dialog
+    @messageArea.html("<div style='text-align:center;'>#{msg}</div>").dialog
       hide: "fade"
       close: =>
         _.defer =>
@@ -228,6 +228,9 @@ jQuery.widget "Capkom.wordmatch"
       @messageArea.dialog('close')
 
     setTimeout afterWaiting, 1500
+    @messageArea.style
+      'text-align': 'center'
+
   finish: ->
     @playArea.html ''
     @element.css @_savedCSS

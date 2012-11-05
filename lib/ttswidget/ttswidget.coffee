@@ -167,7 +167,7 @@ jQuery.widget "capkom.ttswidget",
       presets =
           "de-male": [
                   "LOCALE=de"
-                  "VOICE=bits3"
+                  "VOICE=bits3-hsmm"
               ]
           "de-female": [
                   "LOCALE=de"
@@ -240,7 +240,7 @@ jQuery.widget "capkom.ttswidget",
       "effect_JetPilot_default=Default"
       "effect_JetPilot_help=Help"
       "HELP_TEXT="
-      "VOICE_SELECTIONS=bits3%20de%20male%20unitselection%20general"
+      "VOICE_SELECTIONS=bits3-hsmm%20de%20male%20hmm"
       "AUDIO_OUT=WAVE_FILE"
       "AUDIO=WAVE_FILE"
     ]

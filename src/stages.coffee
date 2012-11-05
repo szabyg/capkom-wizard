@@ -172,7 +172,7 @@ Capkom.stages =
             jQuery(':Capkom-wordmatch.play-area', element).wordmatch 'destroy'
           questions: Capkom.symbolunderstandingQuestions
           numberOfQuestions: 5
-          feedbackPos: ['Super! :-)', 'Toll! :-)', 'Sehr gut! :-)', 'Perfekt! :-)']
+          feedbackPos: ['Super!', 'Toll!', 'Sehr gut!', 'Perfekt!']
         jQuery('.start', element).hide()
 
     startGame: (element, done) ->
@@ -186,7 +186,7 @@ Capkom.stages =
           jQuery('.start', element).show()
         questions: Capkom.symbolunderstandingQuestions
         numberOfQuestions: 5
-        feedbackPos: ['Super! :-)', 'Toll! :-)', 'Sehr gut! :-)', 'Perfekt! :-)']
+        feedbackPos: ['Super!', 'Toll!', 'Sehr gut!', 'Perfekt!']
         done()
       jQuery('.start', element).hide()
 
@@ -215,7 +215,7 @@ Capkom.stages =
             Capkom.clickNext()
             jQuery(':Capkom-wordmatch.play-area', element).wordmatch 'destroy'
           questions: Capkom.wordmatchQuestions
-          feedbackPos: ['Super! :-)', 'Toll! :-)', 'Sehr gut! :-)', 'Perfekt! :-)']
+          feedbackPos: ['Super!', 'Toll!', 'Sehr gut!', 'Perfekt!']
         jQuery('.start', element).hide()
 
     startGame: (element, done) ->
@@ -229,7 +229,7 @@ Capkom.stages =
           jQuery(':Capkom-wordmatch.play-area', element).wordmatch 'destroy'
           jQuery('.start', element).show()
         questions: Capkom.wordmatchQuestions
-        feedbackPos: ['Super! :-)', 'Toll! :-)', 'Sehr gut! :-)', 'Perfekt! :-)']
+        feedbackPos: ['Super!', 'Toll!', 'Sehr gut!', 'Perfekt!']
       jQuery('.start', element).hide()
 
     show: (element) ->
@@ -402,7 +402,8 @@ Capkom.getTestDataId = (cb) ->
     console.info 'view data', data.doc_count
     cb "UT-#{data.doc_count}"
 Capkom.saveTestData = (doc) ->
-  jQuery.couch.urlPrefix = "http://dev.iks-project.eu/cors/dev.iks-project.eu:80/couchdb";
+  jQuery.couch.urlPrefix = "http://dev.iks-project.eu/cors/dev.iks-project.eu:80/couchdb"
+  jQuery.couch.urlPrefix = "http://dev.iks-project.eu/couchdb"
   jQuery.couch.info success: (data) ->
   db = jQuery.couch.db('capkom-testresults')
   db.info
