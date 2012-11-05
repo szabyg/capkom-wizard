@@ -21,7 +21,7 @@ Capkom.initNav = ->
           # if audioOn: screenread
           autoread = (stage, panel, done) ->
             if Capkom.autoReadMode()
-              Capkom.timeout.start 2, ->
+              Capkom.timeout.start 1, ->
                 ttswidget = jQuery('.tts', panel)
                 _done = (e) ->
                   d = done.shift()
@@ -36,7 +36,7 @@ Capkom.initNav = ->
           # then, if there's an explanation and audioOn, explain
           autoExplain = (stage, panel, done) ->
             if stage.explain and Capkom.autoReadMode()
-              Capkom.timeout.start 2, ->
+              Capkom.timeout.start 1, ->
                 stage.explain panel, ->
                   d = done.shift()
                   d? stage, panel, done
@@ -46,7 +46,7 @@ Capkom.initNav = ->
           # then, if there's a game to start, start the game
           autoGameStart = (stage, panel, done) ->
             if stage.startGame
-              Capkom.timeout.start 2, ->
+              Capkom.timeout.start 1, ->
                 stage.startGame panel, ->
                   d = done.shift()
                   d stage, panel, done
@@ -56,7 +56,7 @@ Capkom.initNav = ->
           # then, if the person cannot click, go to the next stage automatically
           autoForward = (stage, panel, done) ->
             if Capkom.nonClickMode()
-              Capkom.timeout.start 2, ->
+              Capkom.timeout.start 1, ->
                 Capkom.clickNext()
             _.defer ->
               d = done.shift()

@@ -21,13 +21,13 @@ Capkom.stages =
       image: "http://www.greeting-cards-4u.com/tubes/CharlyBrown/snoopy.gif"
       speech:
           """
-          Hallo im Online-Atelier! Wir helfen dir damit du das Online-Atelier gut verwenden kannst. Lass uns
+          Hallo im Online-Atelier! Ich helfe dir damit du das Online-Atelier gut verwenden kannst. Lass uns
           zuerst spielen!
           """
 
       html:
           """
-          Hallo im Online-Atelier! Wir helfen dir damit du das Online-Atelier gut verwenden kannst. Lass uns
+          Hallo im Online-Atelier! Ich helfe Dir damit Du das Online-Atelier gut verwenden kannst. Lass uns
           zuerst spielen!
           <div class="explain-area"></div>
           """
@@ -149,7 +149,7 @@ Capkom.stages =
     # only show it if symbols are turned on
     speech: """
       Finde heraus welche Bilder zusammengehören. Zu dem Bild in der ersten Reihe passt immer ein
-      Bild aus der zweiten Reihe.
+      Bild aus der zweiten Reihe. Klicke das richtige Bild an!
     """
 
     condition: (profile) ->
@@ -157,7 +157,7 @@ Capkom.stages =
     image: "http://i.fonts2u.com/sn/mp1_snoopy-dings_1.png"
     html: """
       Finde heraus welche Bilder zusammengehören. Zu dem Bild in der ersten Reihe passt immer ein
-      Bildaus der zweiten Reihe.
+      Bildaus der zweiten Reihe. Klicke das richtige Bild an!
       <button class='start'>Start</button>
       <div class='fangspiel-area'></div>
     """
@@ -198,10 +198,10 @@ Capkom.stages =
     title: "Wort-Bild Spiel"
     image: "http://www.balloonmaniacs.com/images/snoopygraduateballoon.jpg"
     speech: """
-      Bei diesem Spiel zeigen wir dir Wörter und Bilder. Wähle das passende Wort oder Bild aus.
+      Bei diesem Spiel zeigen wir dir Wörter und Bilder. Klicke das richtige Wort oder Bild an!
     """
     html: """
-      Bei diesem Spiel zeigen wir dir Wörter und Bilder. Wähle das passende Wort oder Bild aus.
+      Bei diesem Spiel zeigen wir dir Wörter und Bilder. Klicke das richtige Wort / Bild an!
       <br/>
       <button class='start'>Start</button>
     """
@@ -256,12 +256,10 @@ Capkom.stages =
       title: "Aussehen"
       image: "http://www.balloonmaniacs.com/images/snoopygraduateballoon.jpg"
       speech: """
-        Wie soll dein Online-Atelier aussehen? Hier siehst du mehrere Bilder und du kannst sie gleich
-        ausprobieren. Dann drücke auf den Knopf "Weiter".
+        Wie soll dein Online-Atelier aussehen? Klicke auf ein Bild zum ausprobieren. Wenn Du fertig bist, klicke auf weiter.
       """
       html: """
-        Wie soll dein Online-Atelier aussehen? Hier siehst du mehrere Bilder und du kannst sie gleich
-        ausprobieren. Dann drücke auf den Knopf "Weiter".
+        Wie soll dein Online-Atelier aussehen? Klicke auf ein Bild zum ausprobieren. Wenn Du fertig bist, klicke auf weiter.
         <br/><br/>
         <span id='themeselector'></span>
       """
@@ -274,6 +272,7 @@ Capkom.stages =
               onSelect: ->
                   Capkom.profile.set
                       "theme": $.cookie("jquery-ui-theme")
+          jQuery('.plus', element).hide()
 
   "channels":
       title: 'Sprache/Symbole <img src="lib/ttswidget/speaker22.png" width="22" alt="Sprache"/>'
@@ -347,7 +346,7 @@ Capkom.stages =
       image: "http://www.gelsenkirchener-geschichten.de/userpix/1208/1208_snoopy006_3.gif"
       speech: "Welche Art von bildern gefällt dier besser. Suche dir eines aus. Später kannst du auch deine eigenen Bilder und Fotos verwenden."
       html: """
-          Welche Art von Bildern gefällt dir besser? Suche dir eines aus.<br/>
+          Wie siehst Du das Bild besser? Grau oder orange?<br/>
           <div class='symbolset-symbols'></div>
           Später kannst du auch deine eigenen Bilder und Fotos verwenden.
       """
@@ -407,16 +406,16 @@ Capkom.saveTestData = (doc) ->
   jQuery.couch.info success: (data) ->
   db = jQuery.couch.db('capkom-testresults')
   db.info success: (data) ->
-    console.info 'db info', data
-    console.info 'couch info', data
+    Capkom.console.info 'db info', data
+    Capkom.console.info 'couch info', data
   save = ->
     db.saveDoc doc.toJSON(), success: (res) ->
       if res.ok
-        console.info "doc saved", res
+        Capkom.console.info "doc saved", res
         doc.set _rev: res.rev
         jQuery('#usertest-id').html "#{doc.get '_id'}"
       else
-        console.info 'Error saving Usertest document', res
+        Capkom.console.info 'Error saving Usertest document', res
   if doc.get '_id'
     save()
   else
