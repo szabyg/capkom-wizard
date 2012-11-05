@@ -375,17 +375,23 @@
   <span class="nv">jQuery.couch.urlPrefix = </span><span class="s">&quot;http://dev.iks-project.eu/cors/dev.iks-project.eu:80/couchdb&quot;</span><span class="p">;</span>
   <span class="nx">jQuery</span><span class="p">.</span><span class="nx">couch</span><span class="p">.</span><span class="nx">info</span> <span class="nv">success: </span><span class="nf">(data) -&gt;</span>
   <span class="nv">db = </span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">couch</span><span class="p">.</span><span class="nx">db</span><span class="p">(</span><span class="s">&#39;capkom-testresults&#39;</span><span class="p">)</span>
-  <span class="nx">db</span><span class="p">.</span><span class="nx">info</span> <span class="nv">success: </span><span class="nf">(data) -&gt;</span>
-    <span class="nx">Capkom</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;db info&#39;</span><span class="p">,</span> <span class="nx">data</span>
-    <span class="nx">Capkom</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;couch info&#39;</span><span class="p">,</span> <span class="nx">data</span>
+  <span class="nx">db</span><span class="p">.</span><span class="nx">info</span>
+    <span class="nv">success: </span><span class="nf">(data) -&gt;</span>
+      <span class="nx">Capkom</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;db info&#39;</span><span class="p">,</span> <span class="nx">data</span>
+    <span class="nv">error: </span><span class="nf">(jqXhr, message) -&gt;</span>
+      <span class="nx">Capkom</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span> <span class="s">&quot;couchdb info error: </span><span class="si">#{</span><span class="nx">message</span><span class="si">}</span><span class="s">&quot;</span>
+
   <span class="nv">save = </span><span class="o">-&gt;</span>
-    <span class="nx">db</span><span class="p">.</span><span class="nx">saveDoc</span> <span class="nx">doc</span><span class="p">.</span><span class="nx">toJSON</span><span class="p">(),</span> <span class="nv">success: </span><span class="nf">(res) -&gt;</span>
-      <span class="k">if</span> <span class="nx">res</span><span class="p">.</span><span class="nx">ok</span>
-        <span class="nx">Capkom</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&quot;doc saved&quot;</span><span class="p">,</span> <span class="nx">res</span>
-        <span class="nx">doc</span><span class="p">.</span><span class="nx">set</span> <span class="nv">_rev: </span><span class="nx">res</span><span class="p">.</span><span class="nx">rev</span>
-        <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;#usertest-id&#39;</span><span class="p">).</span><span class="nx">html</span> <span class="s">&quot;</span><span class="si">#{</span><span class="nx">doc</span><span class="p">.</span><span class="nx">get</span> <span class="s">&#39;_id&#39;</span><span class="si">}</span><span class="s">&quot;</span>
-      <span class="k">else</span>
-        <span class="nx">Capkom</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;Error saving Usertest document&#39;</span><span class="p">,</span> <span class="nx">res</span>
+    <span class="nx">db</span><span class="p">.</span><span class="nx">saveDoc</span> <span class="nx">doc</span><span class="p">.</span><span class="nx">toJSON</span><span class="p">(),</span>
+      <span class="nv">success: </span><span class="nf">(res) -&gt;</span>
+        <span class="k">if</span> <span class="nx">res</span><span class="p">.</span><span class="nx">ok</span>
+          <span class="nx">Capkom</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&quot;doc saved&quot;</span><span class="p">,</span> <span class="nx">res</span>
+          <span class="nx">doc</span><span class="p">.</span><span class="nx">set</span> <span class="nv">_rev: </span><span class="nx">res</span><span class="p">.</span><span class="nx">rev</span>
+          <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;#usertest-id&#39;</span><span class="p">).</span><span class="nx">html</span> <span class="s">&quot;</span><span class="si">#{</span><span class="nx">doc</span><span class="p">.</span><span class="nx">get</span> <span class="s">&#39;_id&#39;</span><span class="si">}</span><span class="s">&quot;</span>
+        <span class="k">else</span>
+          <span class="nx">Capkom</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;Error saving Usertest document&#39;</span><span class="p">,</span> <span class="nx">res</span>
+      <span class="nv">error: </span><span class="nf">(jqXhr, message) -&gt;</span>
+        <span class="nx">Capkom</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span> <span class="s">&quot;saveDoc error: </span><span class="si">#{</span><span class="nx">message</span><span class="si">}</span><span class="s">&quot;</span>
   <span class="k">if</span> <span class="nx">doc</span><span class="p">.</span><span class="nx">get</span> <span class="s">&#39;_id&#39;</span>
     <span class="nx">save</span><span class="p">()</span>
   <span class="k">else</span>

@@ -30,8 +30,8 @@
             // Store profile in localStorage
             localStorage.profile = JSON.stringify(entity.toJSON());
             if (window.location.href.indexOf('localhost') < 0){
-                var backendBaseUri = "http://www.online-atelier.com/OnlineAtelier/home/capkom?callback=?";
-    //            var backendBaseUri = "http://localhost:3000/?callback=?";
+                var backendBaseUri = "http://www.online-atelier.com/OnlineAtelier/home/capkom"; //?callback=?";
+    //            var backendBaseUri = "http://192.168.56.1:3000/?callback=?";
     //            var backendBaseUri = "test.json";
                 switch(method){
                     case 'create':
@@ -41,13 +41,14 @@
                             data: {
                                 json: JSON.stringify(Capkom.profile)
                             },
-                            dataType: 'json',
+                            dataType: 'jsonp',
+                            contentType: 'json',
                             success: function(res){
                                 Capkom.console.info("successful GET:", res);
                                 options.success(entity);
                             },
                             error: function(jqXHR, textStatus, errorThrown){
-                                Capkom.console.error("couldn't save to ", backendBaseUri, arguments);
+                                Capkom.console.error("couldn't save to " + backendBaseUri + ": " + textStatus, arguments);
                             }
                         });
                         Capkom.console.info("jqXHR", jqXHR);

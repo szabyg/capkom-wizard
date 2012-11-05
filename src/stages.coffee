@@ -405,17 +405,23 @@ Capkom.saveTestData = (doc) ->
   jQuery.couch.urlPrefix = "http://dev.iks-project.eu/cors/dev.iks-project.eu:80/couchdb";
   jQuery.couch.info success: (data) ->
   db = jQuery.couch.db('capkom-testresults')
-  db.info success: (data) ->
-    Capkom.console.info 'db info', data
-    Capkom.console.info 'couch info', data
+  db.info
+    success: (data) ->
+      Capkom.console.info 'db info', data
+    error: (jqXhr, message) ->
+      Capkom.console.error "couchdb info error: #{message}"
+
   save = ->
-    db.saveDoc doc.toJSON(), success: (res) ->
-      if res.ok
-        Capkom.console.info "doc saved", res
-        doc.set _rev: res.rev
-        jQuery('#usertest-id').html "#{doc.get '_id'}"
-      else
-        Capkom.console.info 'Error saving Usertest document', res
+    db.saveDoc doc.toJSON(),
+      success: (res) ->
+        if res.ok
+          Capkom.console.info "doc saved", res
+          doc.set _rev: res.rev
+          jQuery('#usertest-id').html "#{doc.get '_id'}"
+        else
+          Capkom.console.info 'Error saving Usertest document', res
+      error: (jqXhr, message) ->
+        Capkom.console.error "saveDoc error: #{message}"
   if doc.get '_id'
     save()
   else
