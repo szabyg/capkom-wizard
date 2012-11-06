@@ -40,7 +40,7 @@ Capkom.stages =
             read: "Wenn du jetzt spielen willst, dann benütze den Weiter-Knopf um anzufangen"
             useAudio: Capkom.profile.get('useAudio')
             html: """
-              <button class="previousButton demoButton" alt="Zurück" >Zurück <i class = "icon-arrow-left" /></button>&nbsp;<button class="nextButton demoButton" alt="Weiter" >Weiter <i class = "icon-arrow-right" /></button>
+              <button class="previousButton demoButton" alt="Zurück" ><i class = "icon-arrow-left" /> Zurück</button>&nbsp;<button class="nextButton demoButton" alt="Weiter" >Weiter <i class = "icon-arrow-right" /></button>
             """
             script: (element) ->
               jQuery(element).find('button').button()
@@ -428,7 +428,7 @@ Capkom.stages =
 Capkom.getTestDataId = (cb) ->
   db = jQuery.couch.db('capkom-testresults')
   db.info success: (data) ->
-    console.info 'view data', data.doc_count
+    Capkom.console.info 'view data', data.doc_count
     cb "UT-#{data.doc_count}"
 Capkom.saveTestData = (doc) ->
   if jQuery.browser.msie

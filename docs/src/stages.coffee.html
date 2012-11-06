@@ -36,7 +36,7 @@
             <span class="nv">read: </span><span class="s">&quot;Wenn du jetzt spielen willst, dann benütze den Weiter-Knopf um anzufangen&quot;</span>
             <span class="nv">useAudio: </span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s">&#39;useAudio&#39;</span><span class="p">)</span>
             <span class="nv">html: </span><span class="s">&quot;&quot;&quot;</span>
-<span class="s">              &lt;button class=&quot;previousButton demoButton&quot; alt=&quot;Zurück&quot; &gt;Zurück &lt;i class = &quot;icon-arrow-left&quot; /&gt;&lt;/button&gt;&amp;nbsp;&lt;button class=&quot;nextButton demoButton&quot; alt=&quot;Weiter&quot; &gt;Weiter &lt;i class = &quot;icon-arrow-right&quot; /&gt;&lt;/button&gt;</span>
+<span class="s">              &lt;button class=&quot;previousButton demoButton&quot; alt=&quot;Zurück&quot; &gt;&lt;i class = &quot;icon-arrow-left&quot; /&gt; Zurück&lt;/button&gt;&amp;nbsp;&lt;button class=&quot;nextButton demoButton&quot; alt=&quot;Weiter&quot; &gt;Weiter &lt;i class = &quot;icon-arrow-right&quot; /&gt;&lt;/button&gt;</span>
 <span class="s">            &quot;&quot;&quot;</span>
             <span class="nv">script: </span><span class="nf">(element) -&gt;</span>
               <span class="nx">jQuery</span><span class="p">(</span><span class="nx">element</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s">&#39;button&#39;</span><span class="p">).</span><span class="nx">button</span><span class="p">()</span>
@@ -397,7 +397,7 @@
 <span class="nv">Capkom.getTestDataId = </span><span class="nf">(cb) -&gt;</span>
   <span class="nv">db = </span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">couch</span><span class="p">.</span><span class="nx">db</span><span class="p">(</span><span class="s">&#39;capkom-testresults&#39;</span><span class="p">)</span>
   <span class="nx">db</span><span class="p">.</span><span class="nx">info</span> <span class="nv">success: </span><span class="nf">(data) -&gt;</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;view data&#39;</span><span class="p">,</span> <span class="nx">data</span><span class="p">.</span><span class="nx">doc_count</span>
+    <span class="nx">Capkom</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;view data&#39;</span><span class="p">,</span> <span class="nx">data</span><span class="p">.</span><span class="nx">doc_count</span>
     <span class="nx">cb</span> <span class="s">&quot;UT-</span><span class="si">#{</span><span class="nx">data</span><span class="p">.</span><span class="nx">doc_count</span><span class="si">}</span><span class="s">&quot;</span>
 <span class="nv">Capkom.saveTestData = </span><span class="nf">(doc) -&gt;</span>
   <span class="k">if</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">msie</span>
