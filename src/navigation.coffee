@@ -61,7 +61,7 @@ Capkom.initNav = ->
           _.defer ->
             d = done.shift()
             d? stage, panel, done
-        autoread newStage, ui.panel, [autoExplain, autoGameStart, autoForward]
+        autoread newStage, ui.panel, [autoExplain, autoGameStart] #, autoForward]
   ).addClass('ui-tabs-vertical ui-helper-clearfix')
   Capkom.Router = Backbone.Router.extend
     routes:
