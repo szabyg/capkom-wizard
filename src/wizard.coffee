@@ -97,9 +97,11 @@ Capkom.autoReadMode = ->
 
 class Capkom.Timeout
   start: (secs, cb) ->
+    Capkom.console.info "Capkom.Timeout: Wait for #{secs} seconds..."
     @clear()
     run = =>
       @timer = null
+      Capkom.console.info "Capkom.Timeout: Time over, go on."
       cb()
     @timer = setTimeout run, secs*1000
   clear: ->

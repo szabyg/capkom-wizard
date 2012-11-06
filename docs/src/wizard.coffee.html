@@ -77,9 +77,11 @@
 
 <span class="k">class</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">Timeout</span>
   <span class="nv">start: </span><span class="nf">(secs, cb) -&gt;</span>
+    <span class="nx">Capkom</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&quot;Capkom.Timeout: Wait for </span><span class="si">#{</span><span class="nx">secs</span><span class="si">}</span><span class="s"> seconds...&quot;</span>
     <span class="nx">@clear</span><span class="p">()</span>
     <span class="nv">run = </span><span class="o">=&gt;</span>
       <span class="vi">@timer = </span><span class="kc">null</span>
+      <span class="nx">Capkom</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&quot;Capkom.Timeout: Time over, go on.&quot;</span>
       <span class="nx">cb</span><span class="p">()</span>
     <span class="vi">@timer = </span><span class="nx">setTimeout</span> <span class="nx">run</span><span class="p">,</span> <span class="nx">secs</span><span class="o">*</span><span class="mi">1000</span>
   <span class="nv">clear: </span><span class="o">-&gt;</span>

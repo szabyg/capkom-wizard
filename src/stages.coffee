@@ -69,7 +69,7 @@ Capkom.stages =
                 done()
             ttsOptions: Capkom.getTTSOptions()
 
-        Capkom.timeout.start 4, ->
+        Capkom.timeout.start 2, ->
           explainAudioKnopf ->
             Capkom.timeout.start 1, ->
               explainWeiter ->
@@ -89,39 +89,20 @@ Capkom.stages =
     title: "Symbolgröße"
     # only show it if symbols are turned on
     speech: """
-      Wir beginnen mit einem Spiel: Füttere den Hund. Ziehe die Futterdose auf das Bild von dem Hund.
+      Wir beginnen mit einem Spiel: Füttere den Hund. Das Füttern geht so: Klicke mit der linken Maus-Taste auf den Hund.
       Wenn du es oft schaffst, ist der Hund glücklich und gesund.
+
     """
 
     condition: (profile) ->
       profile.get "useSymbols"
     image: "img/symbolsize.png"
     html: """
-      Wir beginnen mit einem Spiel: Füttere den Hund. Ziehe die Futterdose auf das Bild von dem Hund.
+      Wir beginnen mit einem Spiel: Füttere den Hund. Das Füttern geht so: Klicke mit der linken Maus-Taste auf den Hund.
       Wenn du es oft schaffst, ist der Hund glücklich und gesund.
       <button class='start'>Start</button>
       <div class='fangspiel-area'></div>
     """
-    ###
-    explain: (element, done) ->
-      Capkom.timeout.start 4, ->
-        if Capkom.nonClickMode
-          ttswidget = jQuery('.tts', element)
-          _done = (e) ->
-            done()
-            ttswidget.unbind 'ttswidgetdone', _done
-          ttswidget.bind 'ttswidgetdone', _done
-          ttswidget.ttswidget('talk')
-    show: (element, done) ->
-      if Capkom.nonClickMode()
-        Capkom.timeout.start 2, ->
-          jQuery('.fangspiel-area', element).sizedetect
-            rootPrefix: 'lib/sizedetect/'
-            result: (size, details) ->
-              Capkom.profile.set
-                symbolsizeMin: size
-                symbolsizedetectDetails: details
-    ###
     _dont_startGame: (element, done) ->
       jQuery('.fangspiel-area', element).sizedetect
         rootPrefix: 'lib/sizedetect/'
@@ -392,7 +373,7 @@ Capkom.stages =
       condition: (profile) ->
           profile.get "useSymbols"
       image: "img/symbolset.png"
-      speech: "Welche Art von bildern gefällt dier besser. Suche dir eines aus. Später kannst du auch deine eigenen Bilder und Fotos verwenden."
+      speech: "Welche Art von bildern gefällt dir besser. Suche dir eines aus. Später kannst du auch deine eigenen Bilder und Fotos verwenden."
       html: """
           Wie siehst Du das Bild besser? Grau oder orange?<br/>
           <div class='symbolset-symbols'></div>

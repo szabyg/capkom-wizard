@@ -64,13 +64,8 @@ if audioOn: screenread</p>
     <span class="nv">stage: </span><span class="nf">(stage) -&gt;</span>
       <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&quot;stage&quot;</span><span class="p">,</span> <span class="nx">stage</span>
       <span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;.stages&quot;</span><span class="p">).</span><span class="nx">tabs</span> <span class="s">&#39;option&#39;</span><span class="p">,</span> <span class="s">&#39;active&#39;</span><span class="p">,</span> <span class="nx">stage</span>
-    <span class="nv">initialize: </span><span class="o">-&gt;</span>
-      <span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">stage</span> <span class="k">of</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">getStages</span><span class="p">()</span></pre></div></td></tr><tr id="section-6"><td class="docs"><div class="pilwrap"><a href="#section-6" class="pilcrow">&#182;</a></div><h1>#</h1>
-</td><td class="code"><div class="highlight"><pre>        <span class="nx">@route</span> <span class="nx">stage</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="nx">stage</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="o">-&gt;</span>
-          <span class="nx">debugger</span>
-          <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&quot;route&quot;</span></pre></div></td></tr><tr id="section-7"><td class="docs"><div class="pilwrap"><a href="#section-7" class="pilcrow">&#182;</a></div><h1>#</h1>
-</td><td class="code"><div class="highlight"><pre>  <span class="nv">Capkom.router = </span><span class="k">new</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">Router</span>
-  <span class="nx">do</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">history</span><span class="p">.</span><span class="nx">start</span></pre></div></td></tr><tr id="section-8"><td class="docs"><div class="pilwrap"><a href="#section-8" class="pilcrow">&#182;</a></div><p>pushState: true</p>
+  <span class="nv">Capkom.router = </span><span class="k">new</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">Router</span>
+  <span class="nx">do</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">history</span><span class="p">.</span><span class="nx">start</span></pre></div></td></tr><tr id="section-6"><td class="docs"><div class="pilwrap"><a href="#section-6" class="pilcrow">&#182;</a></div><p>pushState: true</p>
 </td><td class="code"><div class="highlight"><pre>  <span class="nv">Capkom.uiLoaded = </span><span class="kc">true</span>
 
 <span class="nv">Capkom.renderStage = </span><span class="nf">(stage, tabsEl, index) -&gt;</span>
