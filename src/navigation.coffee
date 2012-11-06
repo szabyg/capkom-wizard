@@ -49,7 +49,7 @@ Capkom.initNav = ->
             Capkom.timeout.start 1, ->
               stage.startGame panel, ->
                 d = done.shift()
-                d stage, panel, done
+                d? stage, panel, done
           else
             d = done.shift()
             d? stage, panel, done
