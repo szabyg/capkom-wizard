@@ -1,70 +1,81 @@
 # This module initializes the jQuery UI tabs element and its interaction.
 Capkom.initNav = ->
-    _renderStageTitle = (stage) ->
-        "<li><a class='stage-title capkom-label' symbolId='#{stage.name}' href='##{stage.name}'>#{stage.title}</a></li>"
+  _renderStageTitle = (stage) ->
+      "<li><a class='stage-title capkom-label' symbolId='#{stage.name}' href='##{stage.name}'>#{stage.title}</a></li>"
 
-    for i, stage of Capkom.getStages()
-        jQuery(".stages .titles").append jQuery(_renderStageTitle(stage))
-        @renderStage stage, jQuery(".stages")
-    jQuery(".stages").tabs(
-        show: (event, ui) ->
-          jQuery(":capkom-ttswidget").each ->
-            jQuery(@).ttswidget('cancel')
-          window.location.hash = ui.tab.hash
-          Capkom.console.info ui.tab.hash
-          newStage = _.detect Capkom.getStages(), (stage) ->
-            stage.name is ui.tab.hash.substring 1
-          if Capkom.activeStage
-            Capkom.activeStage.hide? jQuery "##{Capkom.activeStage.name}"
-          Capkom.activeStage = newStage
-          # The lifecycle of a stage after activation:
-          # if audioOn: screenread
-          autoread = (stage, panel, done) ->
-            if Capkom.autoReadMode()
-              Capkom.timeout.start 1, ->
-                ttswidget = jQuery('.tts', panel)
-                _done = (e) ->
-                  d = done.shift()
-                  d? stage, panel, done
-                  ttswidget.unbind 'ttswidgetdone', _done
-                ttswidget.bind 'ttswidgetdone', _done
-                ttswidget.ttswidget('talk')
-            else
-              d = done.shift()
-              d? stage, panel, done
+  for i, stage of Capkom.getStages()
+      jQuery(".stages .titles").append jQuery(_renderStageTitle(stage))
+      @renderStage stage, jQuery(".stages")
+  jQuery(".stages").tabs(
+      show: (event, ui) ->
+        jQuery(":capkom-ttswidget").each ->
+          jQuery(@).ttswidget('cancel')
+        window.location.hash = ui.tab.hash
+        Capkom.console.info ui.tab.hash
+        newStage = _.detect Capkom.getStages(), (stage) ->
+          stage.name is ui.tab.hash.substring 1
+        if Capkom.activeStage
+          Capkom.activeStage.hide? jQuery "##{Capkom.activeStage.name}"
+        Capkom.activeStage = newStage
+        # The lifecycle of a stage after activation:
+        # if audioOn: screenread
+        autoread = (stage, panel, done) ->
+          if Capkom.autoReadMode()
+            Capkom.timeout.start 1, ->
+              ttswidget = jQuery('.tts', panel)
+              _done = (e) ->
+                d = done.shift()
+                d? stage, panel, done
+                ttswidget.unbind 'ttswidgetdone', _done
+              ttswidget.bind 'ttswidgetdone', _done
+              ttswidget.ttswidget('talk')
+          else
+            d = done.shift()
+            d? stage, panel, done
 
-          # then, if there's an explanation and audioOn, explain
-          autoExplain = (stage, panel, done) ->
-            if stage.explain and Capkom.autoReadMode()
-              Capkom.timeout.start 1, ->
-                stage.explain panel, ->
-                  d = done.shift()
-                  d? stage, panel, done
-            else
-              d = done.shift()
-              d? stage, panel, done
-          # then, if there's a game to start, start the game
-          autoGameStart = (stage, panel, done) ->
-            if stage.startGame
-              Capkom.timeout.start 1, ->
-                stage.startGame panel, ->
-                  d = done.shift()
-                  d stage, panel, done
-            else
-              d = done.shift()
-              d? stage, panel, done
-          # then, if the person cannot click, go to the next stage automatically
-          autoForward = (stage, panel, done) ->
-            if Capkom.nonClickMode()
-              Capkom.timeout.start 1, ->
-                Capkom.clickNext()
-            _.defer ->
-              d = done.shift()
-              d? stage, panel, done
-          autoread newStage, ui.panel, [autoExplain, autoGameStart, autoForward]
-    ).addClass('ui-tabs-vertical ui-helper-clearfix')
+        # then, if there's an explanation and audioOn, explain
+        autoExplain = (stage, panel, done) ->
+          if stage.explain # and Capkom.autoReadMode()
+            Capkom.timeout.start 1, ->
+              stage.explain panel, ->
+                d = done.shift()
+                d? stage, panel, done
+          else
+            d = done.shift()
+            d? stage, panel, done
+        # then, if there's a game to start, start the game
+        autoGameStart = (stage, panel, done) ->
+          if stage.startGame
+            Capkom.timeout.start 1, ->
+              stage.startGame panel, ->
+                d = done.shift()
+                d stage, panel, done
+          else
+            d = done.shift()
+            d? stage, panel, done
+        # then, if the person cannot click, go to the next stage automatically
+        autoForward = (stage, panel, done) ->
+          if Capkom.nonClickMode()
+            Capkom.timeout.start 1, ->
+              Capkom.clickNext()
+          _.defer ->
+            d = done.shift()
+            d? stage, panel, done
+        autoread newStage, ui.panel, [autoExplain, autoGameStart, autoForward]
+  ).addClass('ui-tabs-vertical ui-helper-clearfix')
+  Capkom.Router = Backbone.Router.extend
+    routes:
+      ':stage': 'stage'
+    stage: (stage) ->
+      console.info "stage", stage
+      jQuery(".stages").tabs 'option', 'active', stage
+    initialize: ->
+      for i, stage of Capkom.getStages()
+  Capkom.router = new Capkom.Router
+  do Backbone.history.start
+    #pushState: true
 
-    Capkom.uiLoaded = true
+  Capkom.uiLoaded = true
 
 Capkom.renderStage = (stage, tabsEl, index) ->
     _renderStage = (stage) ->

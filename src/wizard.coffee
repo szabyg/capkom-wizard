@@ -55,9 +55,6 @@ jQuery(document).ready -> _.defer ->
         .ajaxStop ->
             jQuery(this).hide()
 
-#        Backbone.history.start
-#            pushState: true
-
 # Getter for the name of the actual stage.
 Capkom.getStagename = ->
     window.location.hash.replace /^#/, ""
@@ -256,6 +253,7 @@ Capkom.lookforcorrectQuestions = [
     ,
     ]
 jQuery(document).ready ->
+  # Preload
   _.defer ->
     jQuery(['lib/sizedetect/aron.png', 'lib/sizedetect/futter.png']).preload()
     dir = 'lib/wordmatch/img/'

@@ -110,7 +110,7 @@
               <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">set</span>
                 <span class="nv">symbolsizeMin: </span><span class="nx">size</span>
                 <span class="nv">symbolsizedetectDetails: </span><span class="nx">details</span></pre></div></td></tr><tr id="section-11"><td class="docs"><div class="pilwrap"><a href="#section-11" class="pilcrow">&#182;</a></div><h1>#</h1>
-</td><td class="code"><div class="highlight"><pre>    <span class="nv">startGame: </span><span class="nf">(element, done) -&gt;</span>
+</td><td class="code"><div class="highlight"><pre>    <span class="nv">_dont_startGame: </span><span class="nf">(element, done) -&gt;</span>
       <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.fangspiel-area&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">sizedetect</span>
         <span class="nv">rootPrefix: </span><span class="s">&#39;lib/sizedetect/&#39;</span>
         <span class="nv">result: </span><span class="nf">(size, details) -&gt;</span>
@@ -141,7 +141,7 @@
     <span class="nv">image: </span><span class="s">&quot;img/symbolmatch.png&quot;</span>
     <span class="nv">html: </span><span class="s">&quot;&quot;&quot;</span>
 <span class="s">      Finde heraus welche Bilder zusammengehören. Zu dem Bild in der ersten Reihe passt immer ein</span>
-<span class="s">      Bildaus der zweiten Reihe. Klicke das richtige Bild an!</span>
+<span class="s">      Bild aus der zweiten Reihe. Klicke das richtige Bild an!</span>
 <span class="s">      &lt;button class=&#39;start&#39;&gt;Start&lt;/button&gt;</span>
 <span class="s">    &quot;&quot;&quot;</span>
     <span class="nv">scriptOnce: </span><span class="nf">(element) -&gt;</span>
@@ -417,7 +417,10 @@
     <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;view data&#39;</span><span class="p">,</span> <span class="nx">data</span><span class="p">.</span><span class="nx">doc_count</span>
     <span class="nx">cb</span> <span class="s">&quot;UT-</span><span class="si">#{</span><span class="nx">data</span><span class="p">.</span><span class="nx">doc_count</span><span class="si">}</span><span class="s">&quot;</span>
 <span class="nv">Capkom.saveTestData = </span><span class="nf">(doc) -&gt;</span>
-  <span class="nv">jQuery.couch.urlPrefix = </span><span class="s">&quot;http://dev.iks-project.eu/couchdb&quot;</span>
+  <span class="k">if</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">msie</span>
+    <span class="nv">jQuery.couch.urlPrefix = </span><span class="s">&quot;http://dev.iks-project.eu/couchdb&quot;</span>
+  <span class="k">else</span>
+    <span class="nv">jQuery.couch.urlPrefix = </span><span class="s">&quot;http://dev.iks-project.eu/cors/dev.iks-project.eu:80/couchdb&quot;</span><span class="p">;</span>
   <span class="nx">jQuery</span><span class="p">.</span><span class="nx">couch</span><span class="p">.</span><span class="nx">info</span> <span class="nv">success: </span><span class="nf">(data) -&gt;</span>
   <span class="nv">db = </span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">couch</span><span class="p">.</span><span class="nx">db</span><span class="p">(</span><span class="s">&#39;capkom-testresults&#39;</span><span class="p">)</span>
   <span class="nx">db</span><span class="p">.</span><span class="nx">info</span>

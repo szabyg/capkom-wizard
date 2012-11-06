@@ -122,7 +122,7 @@ Capkom.stages =
                 symbolsizeMin: size
                 symbolsizedetectDetails: details
     ###
-    startGame: (element, done) ->
+    _dont_startGame: (element, done) ->
       jQuery('.fangspiel-area', element).sizedetect
         rootPrefix: 'lib/sizedetect/'
         result: (size, details) ->
@@ -158,7 +158,7 @@ Capkom.stages =
     image: "img/symbolmatch.png"
     html: """
       Finde heraus welche Bilder zusammengehören. Zu dem Bild in der ersten Reihe passt immer ein
-      Bildaus der zweiten Reihe. Klicke das richtige Bild an!
+      Bild aus der zweiten Reihe. Klicke das richtige Bild an!
       <button class='start'>Start</button>
     """
     scriptOnce: (element) ->
@@ -450,7 +450,10 @@ Capkom.getTestDataId = (cb) ->
     console.info 'view data', data.doc_count
     cb "UT-#{data.doc_count}"
 Capkom.saveTestData = (doc) ->
-  jQuery.couch.urlPrefix = "http://dev.iks-project.eu/couchdb"
+  if jQuery.browser.msie
+    jQuery.couch.urlPrefix = "http://dev.iks-project.eu/couchdb"
+  else
+    jQuery.couch.urlPrefix = "http://dev.iks-project.eu/cors/dev.iks-project.eu:80/couchdb";
   jQuery.couch.info success: (data) ->
   db = jQuery.couch.db('capkom-testresults')
   db.info
