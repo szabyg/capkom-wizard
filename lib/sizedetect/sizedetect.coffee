@@ -192,7 +192,8 @@ jQuery.widget "Capkom.sizedetect"
         @cursor.css
           height: @cursorsize
           width: @cursorsize
-        @currentLevel = @details[@size.toString()] = []
+        @currentLevel = []
+        lastLevelResults = @details[@size.toString()] = {}
         @progressBar.progressbar 'value', 0
         @catchme.add('img', @catchme)
         .css
@@ -243,7 +244,7 @@ jQuery.widget "Capkom.sizedetect"
     if @currentLevel.length >= @options.clickCount
       # evaluate current level
       @evaluateCurrentLevel()
-      if @currentLevel.score > 0.5
+      if @lastLevelResults.score > 0.5
         # High score --> New level
         @goodSize = @size
         @console.info "goodSize is", @goodSize, @
@@ -271,13 +272,13 @@ jQuery.widget "Capkom.sizedetect"
 
   evaluateCurrentLevel: ->
     correct = _.filter(@currentLevel, (r) -> r.value is 1)
-    @currentLevel = @details[@size] =
+    @lastLevelResults = @details[@size] =
       score: correct.length / @currentLevel.length
       reactionTimeAverage: Math.round @reactionTimeStat.getAverage()
       moveTimeAverage: Math.round @moveTimeStat.getAverage()
       reactionTimeStDev: @reactionTimeStat.getStandardDeviation()
       moveTimeStDev: @moveTimeStat.getStandardDeviation()
-    @console.info 'level finished', @level, @currentLevel
+    @console.info 'level finished', @level, @lastLevelResults
 
   getInnerWidth: ->
     return jQuery(window).width()
@@ -315,7 +316,7 @@ class Stat
     @options = _.extend options, opts
     @_values = []
   getSamples: ->
-    if @options.dropMargins
+    if @options.dropMargins and @_values.length >= 5
       res = _.sortBy @_values, (v) -> v
       return res.slice 1, -1
     else
@@ -341,6 +342,10 @@ class Stat
     v = v / smpls.length
   getStandardDeviation: ->
     Math.sqrt @getVariance()
+  getStatistics: ->
+    average: @getAverage()
+    variance: @getVariance()
+    standardDeviation: @getStandardDeviation()
 
 # Class for measuring time in milliseconds
 class StopWatch

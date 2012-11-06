@@ -286,7 +286,7 @@ class Stat
     @options = _.extend options, opts
     @_values = []
   getSamples: ->
-    if @options.dropMargins
+    if @options.dropMargins and @_values.length >= 5
       res = _.sortBy @_values, (v) -> v
       return res.slice 1, -1
     else

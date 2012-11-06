@@ -269,7 +269,7 @@ size and to be informed about profile changes.</p>
     <span class="vi">@options = </span><span class="nx">_</span><span class="p">.</span><span class="nx">extend</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">opts</span>
     <span class="vi">@_values = </span><span class="p">[]</span>
   <span class="nv">getSamples: </span><span class="o">-&gt;</span>
-    <span class="k">if</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">dropMargins</span>
+    <span class="k">if</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">dropMargins</span> <span class="o">and</span> <span class="nx">@_values</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;=</span> <span class="mi">5</span>
       <span class="nv">res = </span><span class="nx">_</span><span class="p">.</span><span class="nx">sortBy</span> <span class="nx">@_values</span><span class="p">,</span> <span class="nf">(v) -&gt;</span> <span class="nx">v</span>
       <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">slice</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span>
     <span class="k">else</span>

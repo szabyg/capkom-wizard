@@ -160,7 +160,8 @@ escape keypress</p>
         <span class="nx">@cursor</span><span class="p">.</span><span class="nx">css</span>
           <span class="nv">height: </span><span class="nx">@cursorsize</span>
           <span class="nv">width: </span><span class="nx">@cursorsize</span>
-        <span class="vi">@currentLevel = </span><span class="nx">@details</span><span class="p">[</span><span class="nx">@size</span><span class="p">.</span><span class="nx">toString</span><span class="p">()]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="vi">@currentLevel = </span><span class="p">[]</span>
+        <span class="nv">lastLevelResults = </span><span class="nx">@details</span><span class="p">[</span><span class="nx">@size</span><span class="p">.</span><span class="nx">toString</span><span class="p">()]</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="nx">@progressBar</span><span class="p">.</span><span class="nx">progressbar</span> <span class="s">&#39;value&#39;</span><span class="p">,</span> <span class="mi">0</span>
         <span class="nx">@catchme</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s">&#39;img&#39;</span><span class="p">,</span> <span class="nx">@catchme</span><span class="p">)</span>
         <span class="p">.</span><span class="nx">css</span>
@@ -202,7 +203,7 @@ escape keypress</p>
 </td><td class="code"><div class="highlight"><pre>      <span class="nx">@currentLevel</span><span class="p">.</span><span class="nx">push</span> <span class="mi">0</span></pre></div></td></tr><tr id="section-31"><td class="docs"><div class="pilwrap"><a href="#section-31" class="pilcrow">&#182;</a></div><p>After e.g. 5 clicks start a new level or finish game depending the score</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="k">if</span> <span class="nx">@currentLevel</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;=</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">clickCount</span></pre></div></td></tr><tr id="section-32"><td class="docs"><div class="pilwrap"><a href="#section-32" class="pilcrow">&#182;</a></div><p>evaluate current level</p>
 </td><td class="code"><div class="highlight"><pre>      <span class="nx">@evaluateCurrentLevel</span><span class="p">()</span>
-      <span class="k">if</span> <span class="nx">@currentLevel</span><span class="p">.</span><span class="nx">score</span> <span class="o">&gt;</span> <span class="mf">0.5</span></pre></div></td></tr><tr id="section-33"><td class="docs"><div class="pilwrap"><a href="#section-33" class="pilcrow">&#182;</a></div><p>High score --> New level</p>
+      <span class="k">if</span> <span class="nx">@lastLevelResults</span><span class="p">.</span><span class="nx">score</span> <span class="o">&gt;</span> <span class="mf">0.5</span></pre></div></td></tr><tr id="section-33"><td class="docs"><div class="pilwrap"><a href="#section-33" class="pilcrow">&#182;</a></div><p>High score --> New level</p>
 </td><td class="code"><div class="highlight"><pre>        <span class="vi">@goodSize = </span><span class="nx">@size</span>
         <span class="nx">@console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&quot;goodSize is&quot;</span><span class="p">,</span> <span class="nx">@goodSize</span><span class="p">,</span> <span class="nx">@</span>
         <span class="nx">@_newLevel</span> <span class="nx">@level</span> <span class="o">+</span> <span class="mi">1</span>
@@ -227,13 +228,13 @@ escape keypress</p>
 
   <span class="nv">evaluateCurrentLevel: </span><span class="o">-&gt;</span>
     <span class="nv">correct = </span><span class="nx">_</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">@currentLevel</span><span class="p">,</span> <span class="nf">(r) -&gt;</span> <span class="nx">r</span><span class="p">.</span><span class="nx">value</span> <span class="o">is</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="vi">@currentLevel = </span><span class="nx">@details</span><span class="p">[</span><span class="nx">@size</span><span class="p">]</span> <span class="o">=</span>
+    <span class="vi">@lastLevelResults = </span><span class="nx">@details</span><span class="p">[</span><span class="nx">@size</span><span class="p">]</span> <span class="o">=</span>
       <span class="nv">score: </span><span class="nx">correct</span><span class="p">.</span><span class="nx">length</span> <span class="o">/</span> <span class="nx">@currentLevel</span><span class="p">.</span><span class="nx">length</span>
       <span class="nv">reactionTimeAverage: </span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span> <span class="nx">@reactionTimeStat</span><span class="p">.</span><span class="nx">getAverage</span><span class="p">()</span>
       <span class="nv">moveTimeAverage: </span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span> <span class="nx">@moveTimeStat</span><span class="p">.</span><span class="nx">getAverage</span><span class="p">()</span>
       <span class="nv">reactionTimeStDev: </span><span class="nx">@reactionTimeStat</span><span class="p">.</span><span class="nx">getStandardDeviation</span><span class="p">()</span>
       <span class="nv">moveTimeStDev: </span><span class="nx">@moveTimeStat</span><span class="p">.</span><span class="nx">getStandardDeviation</span><span class="p">()</span>
-    <span class="nx">@console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;level finished&#39;</span><span class="p">,</span> <span class="nx">@level</span><span class="p">,</span> <span class="nx">@currentLevel</span>
+    <span class="nx">@console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;level finished&#39;</span><span class="p">,</span> <span class="nx">@level</span><span class="p">,</span> <span class="nx">@lastLevelResults</span>
 
   <span class="nv">getInnerWidth: </span><span class="o">-&gt;</span>
     <span class="k">return</span> <span class="nx">jQuery</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">width</span><span class="p">()</span>
@@ -268,7 +269,7 @@ escape keypress</p>
     <span class="vi">@options = </span><span class="nx">_</span><span class="p">.</span><span class="nx">extend</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">opts</span>
     <span class="vi">@_values = </span><span class="p">[]</span>
   <span class="nv">getSamples: </span><span class="o">-&gt;</span>
-    <span class="k">if</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">dropMargins</span>
+    <span class="k">if</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">dropMargins</span> <span class="o">and</span> <span class="nx">@_values</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;=</span> <span class="mi">5</span>
       <span class="nv">res = </span><span class="nx">_</span><span class="p">.</span><span class="nx">sortBy</span> <span class="nx">@_values</span><span class="p">,</span> <span class="nf">(v) -&gt;</span> <span class="nx">v</span>
       <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">slice</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span>
     <span class="k">else</span>
@@ -293,7 +294,11 @@ escape keypress</p>
       <span class="nx">v</span> <span class="o">+=</span> <span class="p">(</span><span class="nx">av</span> <span class="o">-</span> <span class="nx">val</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="nx">av</span> <span class="o">-</span> <span class="nx">val</span><span class="p">)</span>
     <span class="nv">v = </span><span class="nx">v</span> <span class="o">/</span> <span class="nx">smpls</span><span class="p">.</span><span class="nx">length</span>
   <span class="nv">getStandardDeviation: </span><span class="o">-&gt;</span>
-    <span class="nb">Math</span><span class="p">.</span><span class="nx">sqrt</span> <span class="nx">@getVariance</span><span class="p">()</span></pre></div></td></tr><tr id="section-38"><td class="docs"><div class="pilwrap"><a href="#section-38" class="pilcrow">&#182;</a></div><p>Class for measuring time in milliseconds</p>
+    <span class="nb">Math</span><span class="p">.</span><span class="nx">sqrt</span> <span class="nx">@getVariance</span><span class="p">()</span>
+  <span class="nv">getStatistics: </span><span class="o">-&gt;</span>
+    <span class="nv">average: </span><span class="nx">@getAverage</span><span class="p">()</span>
+    <span class="nv">variance: </span><span class="nx">@getVariance</span><span class="p">()</span>
+    <span class="nv">standardDeviation: </span><span class="nx">@getStandardDeviation</span><span class="p">()</span></pre></div></td></tr><tr id="section-38"><td class="docs"><div class="pilwrap"><a href="#section-38" class="pilcrow">&#182;</a></div><p>Class for measuring time in milliseconds</p>
 </td><td class="code"><div class="highlight"><pre><span class="k">class</span> <span class="nx">StopWatch</span>
   <span class="nv">constructor: </span><span class="nf">(@error = -&gt; @console.error.apply @console, arguments) -&gt;</span>
     <span class="vi">@elapsed = </span><span class="mi">0</span>
