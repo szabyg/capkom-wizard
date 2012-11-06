@@ -67,7 +67,6 @@ Capkom.initNav = ->
     routes:
       ':stage': 'stage'
     stage: (stage) ->
-      console.info "stage", stage
       jQuery(".stages").tabs 'option', 'active', stage
   Capkom.router = new Capkom.Router
   do Backbone.history.start
