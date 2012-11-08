@@ -33,13 +33,16 @@
                 var backendBaseUri = "http://www.online-atelier.com/OnlineAtelier/home/capkom"; //?callback=?";
     //            var backendBaseUri = "http://192.168.56.1:3000/?callback=?";
     //            var backendBaseUri = "test.json";
+                function filterProfile(profile){
+                    return _(profile).pick("fontsize","symbolsize","useSymbols","symbolSet","useE2r","useAudio","canClick","theme","themeDetails");
+                }
                 switch(method){
                     case 'create':
                         Capkom.console.info('sending profile', JSON.parse(localStorage.profile));
                         var jqXHR = jQuery.ajax({
                             url: backendBaseUri,
                             data: {
-                                json: JSON.stringify(Capkom.profile)
+                                json: JSON.stringify(filterProfile(Capkom.profile.toJSON()))
                             },
                             dataType: 'jsonp',
                             contentType: 'json',
