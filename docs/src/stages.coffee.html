@@ -215,6 +215,7 @@
 <span class="s">      Bei diesem Spiel zeigen wir dir Wörter und Bilder. Klicke das richtige Wort / Bild an!</span>
 <span class="s">      &lt;br/&gt;</span>
 <span class="s">      &lt;button class=&#39;start&#39;&gt;Start&lt;/button&gt;</span>
+<span class="s">      &lt;button class=&#39;skip&#39;&gt;Überspringen&lt;/button&gt;</span>
 <span class="s">    &quot;&quot;&quot;</span>
     <span class="nv">scriptOnce: </span><span class="nf">(element) -&gt;</span>
       <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.start&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">button</span><span class="p">().</span><span class="nx">click</span> <span class="nf">(e) -&gt;</span>
@@ -228,6 +229,26 @@
           <span class="nv">questions: </span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">wordmatchQuestions</span>
           <span class="nv">feedbackPos: </span><span class="p">[</span><span class="s">&#39;Super!&#39;</span><span class="p">,</span> <span class="s">&#39;Toll!&#39;</span><span class="p">,</span> <span class="s">&#39;Sehr gut!&#39;</span><span class="p">,</span> <span class="s">&#39;Perfekt!&#39;</span><span class="p">]</span>
         <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.start&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">hide</span><span class="p">()</span>
+      <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.skip&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">button</span><span class="p">().</span><span class="nx">click</span> <span class="nf">(e) -&gt;</span>
+        <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">set</span>
+          <span class="nv">read:</span>
+            <span class="nv">symbol2word:</span>
+              <span class="nv">correct: </span><span class="mi">0</span>
+              <span class="s">&quot;wrong&quot;</span><span class="o">:</span> <span class="mi">0</span>
+              <span class="s">&quot;times&quot;</span><span class="o">:</span>
+                <span class="s">&quot;average&quot;</span><span class="o">:</span> <span class="mi">0</span>
+                <span class="s">&quot;variance&quot;</span><span class="o">:</span> <span class="mi">0</span>
+                <span class="s">&quot;standardDeviation&quot;</span><span class="o">:</span> <span class="mi">0</span>
+              <span class="s">&quot;score&quot;</span><span class="o">:</span> <span class="mi">0</span>
+            <span class="nv">word2symbol:</span>
+              <span class="s">&quot;correct&quot;</span><span class="o">:</span> <span class="mi">0</span>
+              <span class="s">&quot;wrong&quot;</span><span class="o">:</span> <span class="mi">0</span>
+              <span class="s">&quot;times&quot;</span><span class="o">:</span>
+                <span class="s">&quot;average&quot;</span><span class="o">:</span> <span class="mi">0</span>
+                <span class="s">&quot;variance&quot;</span><span class="o">:</span> <span class="mi">0</span>
+                <span class="s">&quot;standardDeviation&quot;</span><span class="o">:</span> <span class="mi">0</span>
+              <span class="s">&quot;score&quot;</span><span class="o">:</span> <span class="mi">0</span>
+        <span class="nx">Capkom</span><span class="p">.</span><span class="nx">clickNext</span><span class="p">()</span>
 
     <span class="nv">startGame: </span><span class="nf">(element, done) -&gt;</span>
       <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.play-area&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">wordmatch</span>

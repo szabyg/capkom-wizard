@@ -233,6 +233,7 @@ Capkom.stages =
       Bei diesem Spiel zeigen wir dir Wörter und Bilder. Klicke das richtige Wort / Bild an!
       <br/>
       <button class='start'>Start</button>
+      <button class='skip'>Überspringen</button>
     """
     scriptOnce: (element) ->
       jQuery('.start', element).button().click (e) ->
@@ -246,6 +247,26 @@ Capkom.stages =
           questions: Capkom.wordmatchQuestions
           feedbackPos: ['Super!', 'Toll!', 'Sehr gut!', 'Perfekt!']
         jQuery('.start', element).hide()
+      jQuery('.skip', element).button().click (e) ->
+        Capkom.profile.set
+          read:
+            symbol2word:
+              correct: 0
+              "wrong": 0
+              "times":
+                "average": 0
+                "variance": 0
+                "standardDeviation": 0
+              "score": 0
+            word2symbol:
+              "correct": 0
+              "wrong": 0
+              "times":
+                "average": 0
+                "variance": 0
+                "standardDeviation": 0
+              "score": 0
+        Capkom.clickNext()
 
     startGame: (element, done) ->
       jQuery('.play-area', element).wordmatch
