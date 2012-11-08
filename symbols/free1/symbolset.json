@@ -11,6 +11,7 @@
   "nameMap": {
     "mainSymbol": "Willkommen-home",
     "welcome": "Willkommen-home",
+    "lookforcorrect": "fehlersuche",
     "theme": "design",
     "channels": "Sprache-Symbole",
     "text-with-symbols": "Text+Symbole",
@@ -19,5 +20,5 @@
     "read":"Symbole",
     "goodbye": "ende"
   },
-  "symbols": ["back", "design", "ende", "fontsize", "Sprache-Symbole", "Symbole", "symbolsize", "Text", "Text+Symbole", "tts", "weiter", "Willkommen-home"]
+  "symbols": ["back", "design", "ende", "fehlersuche", "fontsize", "Sprache-Symbole", "Symbole", "symbolsize", "Text", "Text+Symbole", "tts", "weiter", "Willkommen-home"]
 }
