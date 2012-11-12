@@ -16,9 +16,9 @@
     "channels": "Sprache-Symbole",
     "text-with-symbols": "Text+Symbole",
     "text-only": "Text",
-    "symbolunderstanding":"wortbild",
+    "symbolunderstanding":"symbolverstand",
     "symbolset": "bildart",
-    "read":"Symbole",
+    "read":"wortbild",
     "goodbye": "ende"
   },
   "symbols": ["back", "bildart", "design", "ende", "fehlersuche", "fontsize", "Sprache-Symbole", "Symbole", "symbolsize", "symbolverstand", "Text", "Text+Symbole", "tts", "weiter", "Willkommen-home",
