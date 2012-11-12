@@ -268,6 +268,14 @@ jQuery(document).ready ->
     jQuery(["#{dir}/mod/dogsw.jpg", "#{dir}/mod/dog1sw.jpg", "#{dir}/mod/dog2sw.jpg", "#{dir}/mod/dog1.jpg", "#{dir}/mod/dog2.jpg",
     "#{dir}/mod/flugzeugsw.jpg", "#{dir}/mod/flugzeug1sw.jpg", "#{dir}/mod/flugzeug2sw.jpg", "#{dir}/mod/flugzeug1.jpg", "#{dir}/mod/flugzeug2.jpg",
     "#{dir}/mod/rosesw.jpg", "#{dir}/mod/rose1sw.jpg", "#{dir}/mod/rose2sw.jpg", "#{dir}/mod/rose1.jpg", "#{dir}/mod/rose2.jpg", ]).preload
+
+    Capkom.console.info("dimensions:", Capkom.getDimensions())
+
 document.ondragstart = -> false
 
-# Capkom.getDimensions
+Capkom.getDimensions = ->
+  r =
+    zoom: DetectZoom.ratios().zoom
+    width: jQuery(document).width()
+    height: jQuery(document).height()
+  r

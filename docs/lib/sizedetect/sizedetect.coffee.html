@@ -40,12 +40,10 @@ size and to be informed about profile changes.</p>
         <span class="nx">res</span> <span class="o">+=</span> <span class="s">&quot;&lt;/ul&gt;&quot;</span>
         <span class="nx">res</span> <span class="o">+=</span> <span class="s">&quot;&lt;p&gt;Minimum size resulted in </span><span class="si">#{</span><span class="nx">bestSize</span><span class="si">}</span><span class="s">&lt;/p&gt;&quot;</span>
         <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;#results&#39;</span><span class="p">).</span><span class="nx">html</span> <span class="nx">res</span>
-        <span class="nx">@console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;ideal size:&#39;</span><span class="p">,</span> <span class="nx">size</span><span class="p">,</span> <span class="s">&#39;detailed results:&#39;</span><span class="p">,</span> <span class="nx">details</span>
-      <span class="nv">noclick: </span><span class="nf">(e) -&gt;</span>
-        <span class="nx">alert</span> <span class="s">&quot;You cannot use the computer with your current devices. Consult with Platus.&quot;</span>
-
-  <span class="nv">_create: </span><span class="o">-&gt;</span>
-    <span class="nx">@_fixConsole</span><span class="p">()</span></pre></div></td></tr><tr id="section-5"><td class="docs"><div class="pilwrap"><a href="#section-5" class="pilcrow">&#182;</a></div><p>widget styling</p>
+        <span class="nx">@console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;ideal size:&#39;</span><span class="p">,</span> <span class="nx">size</span><span class="p">,</span> <span class="s">&#39;detailed results:&#39;</span><span class="p">,</span> <span class="nx">details</span></pre></div></td></tr><tr id="section-5"><td class="docs"><div class="pilwrap"><a href="#section-5" class="pilcrow">&#182;</a></div><p>noclick: (e) ->
+alert "You cannot use the computer with your current devices. Consult with Platus."</p>
+</td><td class="code"><div class="highlight"><pre>  <span class="nv">_create: </span><span class="o">-&gt;</span>
+    <span class="nx">@_fixConsole</span><span class="p">()</span></pre></div></td></tr><tr id="section-6"><td class="docs"><div class="pilwrap"><a href="#section-6" class="pilcrow">&#182;</a></div><p>widget styling</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="nx">@element</span><span class="p">.</span><span class="nx">addClass</span> <span class="s">&#39;sizedetect-container ui-widget-content&#39;</span>
     <span class="vi">@_savedCSS =</span>
       <span class="nv">position: </span><span class="nx">@element</span><span class="p">.</span><span class="nx">css</span> <span class="s">&#39;position&#39;</span>
@@ -61,40 +59,40 @@ size and to be informed about profile changes.</p>
       <span class="nv">top: </span><span class="s">&#39;5px&#39;</span>
       <span class="nv">bottom: </span><span class="s">&#39;5px&#39;</span>
       <span class="nv">left: </span><span class="s">&#39;5px&#39;</span>
-      <span class="nv">right: </span><span class="s">&#39;5px&#39;</span></pre></div></td></tr><tr id="section-6"><td class="docs"><div class="pilwrap"><a href="#section-6" class="pilcrow">&#182;</a></div><p>'background-color': '#fff'</p>
-</td><td class="code"><div class="highlight"><pre>      <span class="s">&#39;z-index&#39;</span><span class="o">:</span> <span class="mi">100</span></pre></div></td></tr><tr id="section-7"><td class="docs"><div class="pilwrap"><a href="#section-7" class="pilcrow">&#182;</a></div><p>test-area {
+      <span class="nv">right: </span><span class="s">&#39;5px&#39;</span></pre></div></td></tr><tr id="section-7"><td class="docs"><div class="pilwrap"><a href="#section-7" class="pilcrow">&#182;</a></div><p>'background-color': '#fff'</p>
+</td><td class="code"><div class="highlight"><pre>      <span class="s">&#39;z-index&#39;</span><span class="o">:</span> <span class="mi">100</span></pre></div></td></tr><tr id="section-8"><td class="docs"><div class="pilwrap"><a href="#section-8" class="pilcrow">&#182;</a></div><p>test-area {
 width: @getInnerWidth() - 30
 height: @getInnerHeight() - 30</p>
-</td><td class="code"><div class="highlight"><pre></pre></div></td></tr><tr id="section-8"><td class="docs"><div class="pilwrap"><a href="#section-8" class="pilcrow">&#182;</a></div><p>Create progress bar</p>
+</td><td class="code"><div class="highlight"><pre></pre></div></td></tr><tr id="section-9"><td class="docs"><div class="pilwrap"><a href="#section-9" class="pilcrow">&#182;</a></div><p>Create progress bar</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="nx">@element</span><span class="p">.</span><span class="nx">append</span> <span class="s">&quot;&lt;div class=&#39;progressBar&#39;&gt;&lt;/div&gt;&quot;</span>
     <span class="vi">@progressBar = </span><span class="nx">@element</span><span class="p">.</span><span class="nx">find</span> <span class="s">&quot;.progressBar&quot;</span>
     <span class="nx">@progressBar</span><span class="p">.</span><span class="nx">css</span>
       <span class="s">&#39;float&#39;</span><span class="o">:</span> <span class="s">&#39;right&#39;</span>
       <span class="s">&#39;width&#39;</span><span class="o">:</span> <span class="s">&#39;50%&#39;</span>
-    <span class="nx">@progressBar</span><span class="p">.</span><span class="nx">progressbar</span><span class="p">()</span></pre></div></td></tr><tr id="section-9"><td class="docs"><div class="pilwrap"><a href="#section-9" class="pilcrow">&#182;</a></div><p>Catchme button and functionality
+    <span class="nx">@progressBar</span><span class="p">.</span><span class="nx">progressbar</span><span class="p">()</span></pre></div></td></tr><tr id="section-10"><td class="docs"><div class="pilwrap"><a href="#section-10" class="pilcrow">&#182;</a></div><p>Catchme button and functionality
 @element.append("<button class='catchme'>#{@options.symbolLabel}</button>")</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="nx">@element</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s">&quot;&lt;button class=&#39;catchme&#39;&gt;&lt;img src=&#39;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">rootPrefix</span><span class="si">}</span><span class="s">aron.png&#39;/&gt;&lt;/button&gt;&quot;</span><span class="p">)</span>
     <span class="vi">@catchme = </span><span class="nx">@element</span><span class="p">.</span><span class="nx">find</span> <span class="s">&#39;.catchme&#39;</span>
     <span class="nx">@console</span><span class="p">.</span><span class="nx">info</span> <span class="nx">@catchme</span><span class="p">.</span><span class="nx">button</span><span class="p">()</span>
 
     <span class="nx">@catchme</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s">&#39;.ui-button-text&#39;</span><span class="p">).</span><span class="nx">css</span>
-      <span class="s">&#39;padding&#39;</span><span class="o">:</span> <span class="mi">0</span></pre></div></td></tr><tr id="section-10"><td class="docs"><div class="pilwrap"><a href="#section-10" class="pilcrow">&#182;</a></div><p>correct click</p>
+      <span class="s">&#39;padding&#39;</span><span class="o">:</span> <span class="mi">0</span></pre></div></td></tr><tr id="section-11"><td class="docs"><div class="pilwrap"><a href="#section-11" class="pilcrow">&#182;</a></div><p>correct click</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="nx">@catchme</span><span class="p">.</span><span class="nx">click</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span>
       <span class="nx">e</span><span class="p">.</span><span class="nx">stopPropagation</span><span class="p">()</span>
-      <span class="nx">@_attempt</span> <span class="kc">true</span></pre></div></td></tr><tr id="section-11"><td class="docs"><div class="pilwrap"><a href="#section-11" class="pilcrow">&#182;</a></div><p>Hide mouse cursor</p>
+      <span class="nx">@_attempt</span> <span class="kc">true</span></pre></div></td></tr><tr id="section-12"><td class="docs"><div class="pilwrap"><a href="#section-12" class="pilcrow">&#182;</a></div><p>Hide mouse cursor</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="nx">@catchme</span><span class="p">.</span><span class="nx">css</span>
       <span class="nv">cursor: </span><span class="s">&quot;url(</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">rootPrefix</span><span class="si">}</span><span class="s">blank.cur), none&quot;</span>
     <span class="nx">@element</span><span class="p">.</span><span class="nx">css</span>
-      <span class="nv">cursor: </span><span class="s">&quot;url(</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">rootPrefix</span><span class="si">}</span><span class="s">blank.cur), none&quot;</span></pre></div></td></tr><tr id="section-12"><td class="docs"><div class="pilwrap"><a href="#section-12" class="pilcrow">&#182;</a></div><p>Create custom cursor</p>
+      <span class="nv">cursor: </span><span class="s">&quot;url(</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">rootPrefix</span><span class="si">}</span><span class="s">blank.cur), none&quot;</span></pre></div></td></tr><tr id="section-13"><td class="docs"><div class="pilwrap"><a href="#section-13" class="pilcrow">&#182;</a></div><p>Create custom cursor</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="nx">@element</span><span class="p">.</span><span class="nx">append</span> <span class="s">&quot;&lt;img class=&#39;custom-cursor&#39; src=&#39;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">rootPrefix</span><span class="si">}</span><span class="s">futter.png&#39;/&gt;&quot;</span>
     <span class="vi">@cursor = </span><span class="nx">jQuery</span> <span class="s">&#39;.custom-cursor&#39;</span><span class="p">,</span> <span class="nx">@element</span>
-    <span class="nx">@cursor</span><span class="p">.</span><span class="nx">css</span></pre></div></td></tr><tr id="section-13"><td class="docs"><div class="pilwrap"><a href="#section-13" class="pilcrow">&#182;</a></div><p>cursor: 'none'
+    <span class="nx">@cursor</span><span class="p">.</span><span class="nx">css</span></pre></div></td></tr><tr id="section-14"><td class="docs"><div class="pilwrap"><a href="#section-14" class="pilcrow">&#182;</a></div><p>cursor: 'none'
 width: '100px'
 height: '100px'</p>
-</td><td class="code"><div class="highlight"><pre>      <span class="nv">position: </span><span class="s">&#39;absolute&#39;</span></pre></div></td></tr><tr id="section-14"><td class="docs"><div class="pilwrap"><a href="#section-14" class="pilcrow">&#182;</a></div><p>display: 'none'</p>
+</td><td class="code"><div class="highlight"><pre>      <span class="nv">position: </span><span class="s">&#39;absolute&#39;</span></pre></div></td></tr><tr id="section-15"><td class="docs"><div class="pilwrap"><a href="#section-15" class="pilcrow">&#182;</a></div><p>display: 'none'</p>
 </td><td class="code"><div class="highlight"><pre>      <span class="nv">top: </span><span class="mi">0</span>
       <span class="nv">left: </span><span class="mi">0</span>
-      <span class="s">&#39;z-index&#39;</span><span class="o">:</span> <span class="mi">10000</span></pre></div></td></tr><tr id="section-15"><td class="docs"><div class="pilwrap"><a href="#section-15" class="pilcrow">&#182;</a></div><p>border: '1px solid red'</p>
+      <span class="s">&#39;z-index&#39;</span><span class="o">:</span> <span class="mi">10000</span></pre></div></td></tr><tr id="section-16"><td class="docs"><div class="pilwrap"><a href="#section-16" class="pilcrow">&#182;</a></div><p>border: '1px solid red'</p>
 </td><td class="code"><div class="highlight"><pre>      <span class="s">&#39;pointer-events&#39;</span><span class="o">:</span> <span class="s">&#39;none&#39;</span>
 
     <span class="nx">@cursor</span><span class="p">.</span><span class="nx">click</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span>
@@ -115,33 +113,34 @@ height: '100px'</p>
     <span class="nx">@element</span><span class="p">.</span><span class="nx">mousemove</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span>
       <span class="nx">@cursor</span><span class="p">.</span><span class="nx">css</span>
         <span class="nv">left: </span><span class="nx">e</span><span class="p">.</span><span class="nx">clientX</span> <span class="o">-</span> <span class="p">(</span><span class="nx">@cursorsize</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="nv">top: </span><span class="nx">e</span><span class="p">.</span><span class="nx">clientY</span> <span class="o">-</span> <span class="p">(</span><span class="nx">@cursorsize</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span></pre></div></td></tr><tr id="section-16"><td class="docs"><div class="pilwrap"><a href="#section-16" class="pilcrow">&#182;</a></div><p>wrong click</p>
+        <span class="nv">top: </span><span class="nx">e</span><span class="p">.</span><span class="nx">clientY</span> <span class="o">-</span> <span class="p">(</span><span class="nx">@cursorsize</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span></pre></div></td></tr><tr id="section-17"><td class="docs"><div class="pilwrap"><a href="#section-17" class="pilcrow">&#182;</a></div><p>wrong click</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="nx">@element</span><span class="p">.</span><span class="nx">click</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span>
-      <span class="nx">@_attempt</span> <span class="kc">false</span></pre></div></td></tr><tr id="section-17"><td class="docs"><div class="pilwrap"><a href="#section-17" class="pilcrow">&#182;</a></div><p>escape keypress</p>
-</td><td class="code"><div class="highlight"><pre>    <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;body&#39;</span><span class="p">).</span><span class="nx">bind</span> <span class="s">&#39;keyup&#39;</span><span class="p">,</span> <span class="nv">widget: </span><span class="nx">@</span><span class="p">,</span> <span class="nx">@_escHandler</span></pre></div></td></tr><tr id="section-18"><td class="docs"><div class="pilwrap"><a href="#section-18" class="pilcrow">&#182;</a></div><p>measure delay before first mouse move (reaction time)</p>
+      <span class="nx">@_attempt</span> <span class="kc">false</span></pre></div></td></tr><tr id="section-18"><td class="docs"><div class="pilwrap"><a href="#section-18" class="pilcrow">&#182;</a></div><p>escape keypress</p>
+</td><td class="code"><div class="highlight"><pre>    <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;body&#39;</span><span class="p">).</span><span class="nx">bind</span> <span class="s">&#39;keyup&#39;</span><span class="p">,</span> <span class="nv">widget: </span><span class="nx">@</span><span class="p">,</span> <span class="nx">@_escHandler</span></pre></div></td></tr><tr id="section-19"><td class="docs"><div class="pilwrap"><a href="#section-19" class="pilcrow">&#182;</a></div><p>measure delay before first mouse move (reaction time)</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="nx">@element</span><span class="p">.</span><span class="nx">mousemove</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span>
       <span class="k">if</span> <span class="nx">@notyetmoved</span>
         <span class="vi">@notyetmoved = </span><span class="kc">false</span>
         <span class="vi">@reactionTime = </span><span class="nx">@reactionTimer</span><span class="p">.</span><span class="nx">end</span><span class="p">()</span>
-        <span class="nx">@moveTimer</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span></pre></div></td></tr><tr id="section-19"><td class="docs"><div class="pilwrap"><a href="#section-19" class="pilcrow">&#182;</a></div><p>jQuery('#reactionTime').html(@reactionTime)</p>
-</td><td class="code"><div class="highlight"><pre></pre></div></td></tr><tr id="section-20"><td class="docs"><div class="pilwrap"><a href="#section-20" class="pilcrow">&#182;</a></div><p>display elements for debug info</p>
+        <span class="nx">@moveTimer</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span></pre></div></td></tr><tr id="section-20"><td class="docs"><div class="pilwrap"><a href="#section-20" class="pilcrow">&#182;</a></div><p>jQuery('#reactionTime').html(@reactionTime)</p>
+</td><td class="code"><div class="highlight"><pre></pre></div></td></tr><tr id="section-21"><td class="docs"><div class="pilwrap"><a href="#section-21" class="pilcrow">&#182;</a></div><p>display elements for debug info</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="nx">@element</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s">&#39;&lt;div id=&quot;moveTime&quot;&gt;&lt;/div&gt;&#39;</span><span class="p">)</span>
-    <span class="nx">@element</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s">&#39;&lt;div id=&quot;reactionTime&quot;&gt;&lt;/div&gt;&#39;</span><span class="p">)</span></pre></div></td></tr><tr id="section-21"><td class="docs"><div class="pilwrap"><a href="#section-21" class="pilcrow">&#182;</a></div><p>@result collects all results of the levels</p>
-</td><td class="code"><div class="highlight"><pre>    <span class="vi">@details = </span><span class="p">{}</span></pre></div></td></tr><tr id="section-22"><td class="docs"><div class="pilwrap"><a href="#section-22" class="pilcrow">&#182;</a></div><p>Set up measurement and statistics counters</p>
+    <span class="nx">@element</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s">&#39;&lt;div id=&quot;reactionTime&quot;&gt;&lt;/div&gt;&#39;</span><span class="p">)</span></pre></div></td></tr><tr id="section-22"><td class="docs"><div class="pilwrap"><a href="#section-22" class="pilcrow">&#182;</a></div><p>@result collects all results of the levels</p>
+</td><td class="code"><div class="highlight"><pre>    <span class="vi">@details = </span><span class="p">{}</span></pre></div></td></tr><tr id="section-23"><td class="docs"><div class="pilwrap"><a href="#section-23" class="pilcrow">&#182;</a></div><p>Set up measurement and statistics counters</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="vi">@moveTimer = </span><span class="k">new</span> <span class="nx">StopWatch</span> <span class="nx">@console</span><span class="p">.</span><span class="nx">error</span>
     <span class="vi">@reactionTimer = </span><span class="k">new</span> <span class="nx">StopWatch</span> <span class="nx">@console</span><span class="p">.</span><span class="nx">error</span>
 
     <span class="vi">@moveTimeStat = </span><span class="k">new</span> <span class="nx">Stat</span>
-    <span class="vi">@reactionTimeStat = </span><span class="k">new</span> <span class="nx">Stat</span></pre></div></td></tr><tr id="section-23"><td class="docs"><div class="pilwrap"><a href="#section-23" class="pilcrow">&#182;</a></div><p>everything set up, begin the game</p>
+    <span class="vi">@reactionTimeStat = </span><span class="k">new</span> <span class="nx">Stat</span></pre></div></td></tr><tr id="section-24"><td class="docs"><div class="pilwrap"><a href="#section-24" class="pilcrow">&#182;</a></div><p>everything set up, begin the game</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="nx">@_beginGame</span><span class="p">()</span>
 
   <span class="nv">_destroy: </span><span class="o">-&gt;</span>
     <span class="nx">@element</span><span class="p">.</span><span class="nx">html</span> <span class="s">&quot;&quot;</span>
     <span class="nx">@element</span><span class="p">.</span><span class="nx">removeClass</span> <span class="s">&#39;sizedetect-container ui-widget-content&#39;</span>
-    <span class="nx">@element</span><span class="p">.</span><span class="nx">css</span> <span class="nx">@_savedCSS</span></pre></div></td></tr><tr id="section-24"><td class="docs"><div class="pilwrap"><a href="#section-24" class="pilcrow">&#182;</a></div><p>width: 'auto'
+    <span class="nx">@element</span><span class="p">.</span><span class="nx">css</span> <span class="nx">@_savedCSS</span></pre></div></td></tr><tr id="section-25"><td class="docs"><div class="pilwrap"><a href="#section-25" class="pilcrow">&#182;</a></div><p>width: 'auto'
 height: 'auto'
 escape keypress</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;body&#39;</span><span class="p">).</span><span class="nx">unbind</span> <span class="s">&#39;keyup&#39;</span><span class="p">,</span> <span class="nx">@_escHandler</span>
+    <span class="nx">@element</span><span class="p">.</span><span class="nx">unbind</span> <span class="s">&#39;click&#39;</span>
     <span class="nx">clearTimeout</span> <span class="nx">@timeoutTimer</span>
 
   <span class="nv">_beginGame: </span><span class="o">-&gt;</span>
@@ -150,7 +149,7 @@ escape keypress</p>
       <span class="nx">level</span><span class="o">++</span>
     <span class="nx">@_newLevel</span> <span class="nx">level</span> <span class="o">-</span> <span class="mi">1</span>
 
-  <span class="nv">_newLevel: </span><span class="nf">(level) -&gt;</span></pre></div></td></tr><tr id="section-25"><td class="docs"><div class="pilwrap"><a href="#section-25" class="pilcrow">&#182;</a></div><p>Set up level specific things</p>
+  <span class="nv">_newLevel: </span><span class="nf">(level) -&gt;</span></pre></div></td></tr><tr id="section-26"><td class="docs"><div class="pilwrap"><a href="#section-26" class="pilcrow">&#182;</a></div><p>Set up level specific things</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="k">if</span> <span class="nx">@size</span> <span class="o">&lt;</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">minSize</span>
         <span class="nx">@finish</span><span class="p">()</span>
     <span class="k">else</span>
@@ -166,10 +165,10 @@ escape keypress</p>
         <span class="nx">@catchme</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s">&#39;img&#39;</span><span class="p">,</span> <span class="nx">@catchme</span><span class="p">)</span>
         <span class="p">.</span><span class="nx">css</span>
           <span class="s">&#39;width&#39;</span><span class="o">:</span> <span class="nx">@size</span>
-          <span class="s">&#39;height&#39;</span><span class="o">:</span> <span class="nx">@size</span></pre></div></td></tr><tr id="section-26"><td class="docs"><div class="pilwrap"><a href="#section-26" class="pilcrow">&#182;</a></div><p>Reset sensors, start stop watches</p>
+          <span class="s">&#39;height&#39;</span><span class="o">:</span> <span class="nx">@size</span></pre></div></td></tr><tr id="section-27"><td class="docs"><div class="pilwrap"><a href="#section-27" class="pilcrow">&#182;</a></div><p>Reset sensors, start stop watches</p>
 </td><td class="code"><div class="highlight"><pre>        <span class="nx">@moveTimeStat</span><span class="p">.</span><span class="nx">clear</span><span class="p">()</span>
         <span class="nx">@reactionTimeStat</span><span class="p">.</span><span class="nx">clear</span><span class="p">()</span>
-        <span class="nx">@console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;new level started with symbol size&#39;</span><span class="p">,</span> <span class="nx">@size</span></pre></div></td></tr><tr id="section-27"><td class="docs"><div class="pilwrap"><a href="#section-27" class="pilcrow">&#182;</a></div><p>Begin level</p>
+        <span class="nx">@console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;new level started with symbol size&#39;</span><span class="p">,</span> <span class="nx">@size</span></pre></div></td></tr><tr id="section-28"><td class="docs"><div class="pilwrap"><a href="#section-28" class="pilcrow">&#182;</a></div><p>Begin level</p>
 </td><td class="code"><div class="highlight"><pre>        <span class="nx">@_newPosition</span><span class="p">()</span>
 
   <span class="nv">_newPosition: </span><span class="o">-&gt;</span>
@@ -187,9 +186,9 @@ escape keypress</p>
     <span class="nx">@finish</span><span class="p">()</span>
 
   <span class="nv">_attempt: </span><span class="nf">(succeeded) -&gt;</span>
-    <span class="nx">clearTimeout</span> <span class="nx">@timeoutTimer</span></pre></div></td></tr><tr id="section-28"><td class="docs"><div class="pilwrap"><a href="#section-28" class="pilcrow">&#182;</a></div><p>If it's a successful click then register the reaction and move times</p>
+    <span class="nx">clearTimeout</span> <span class="nx">@timeoutTimer</span></pre></div></td></tr><tr id="section-29"><td class="docs"><div class="pilwrap"><a href="#section-29" class="pilcrow">&#182;</a></div><p>If it's a successful click then register the reaction and move times</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="k">if</span> <span class="nx">succeeded</span>
-      <span class="nv">moveTime = </span><span class="nx">@moveTimer</span><span class="p">.</span><span class="nx">end</span><span class="p">()</span></pre></div></td></tr><tr id="section-29"><td class="docs"><div class="pilwrap"><a href="#section-29" class="pilcrow">&#182;</a></div><p>jQuery('#moveTime').html(moveTime)</p>
+      <span class="nv">moveTime = </span><span class="nx">@moveTimer</span><span class="p">.</span><span class="nx">end</span><span class="p">()</span></pre></div></td></tr><tr id="section-30"><td class="docs"><div class="pilwrap"><a href="#section-30" class="pilcrow">&#182;</a></div><p>jQuery('#moveTime').html(moveTime)</p>
 </td><td class="code"><div class="highlight"><pre>      <span class="vi">@start = </span><span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">()</span>
       <span class="nx">@console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;success&#39;</span><span class="p">,</span> <span class="nx">@level</span><span class="p">,</span> <span class="s">&#39;reactionTime:&#39;</span><span class="p">,</span> <span class="nx">@reactionTime</span><span class="p">,</span> <span class="s">&#39;moveTime:&#39;</span><span class="p">,</span> <span class="nx">moveTime</span>
 
@@ -199,21 +198,21 @@ escape keypress</p>
         <span class="nv">reactionTime: </span><span class="nx">@reactionTime</span>
       <span class="nx">@reactionTimeStat</span><span class="p">.</span><span class="nx">add</span> <span class="nx">@reactionTime</span>
       <span class="nx">@moveTimeStat</span><span class="p">.</span><span class="nx">add</span> <span class="nx">moveTime</span>
-    <span class="k">else</span></pre></div></td></tr><tr id="section-30"><td class="docs"><div class="pilwrap"><a href="#section-30" class="pilcrow">&#182;</a></div><p>if click failed register failed click</p>
-</td><td class="code"><div class="highlight"><pre>      <span class="nx">@currentLevel</span><span class="p">.</span><span class="nx">push</span> <span class="mi">0</span></pre></div></td></tr><tr id="section-31"><td class="docs"><div class="pilwrap"><a href="#section-31" class="pilcrow">&#182;</a></div><p>After e.g. 5 clicks start a new level or finish game depending the score</p>
-</td><td class="code"><div class="highlight"><pre>    <span class="k">if</span> <span class="nx">@currentLevel</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;=</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">clickCount</span></pre></div></td></tr><tr id="section-32"><td class="docs"><div class="pilwrap"><a href="#section-32" class="pilcrow">&#182;</a></div><p>evaluate current level</p>
+    <span class="k">else</span></pre></div></td></tr><tr id="section-31"><td class="docs"><div class="pilwrap"><a href="#section-31" class="pilcrow">&#182;</a></div><p>if click failed register failed click</p>
+</td><td class="code"><div class="highlight"><pre>      <span class="nx">@currentLevel</span><span class="p">.</span><span class="nx">push</span> <span class="mi">0</span></pre></div></td></tr><tr id="section-32"><td class="docs"><div class="pilwrap"><a href="#section-32" class="pilcrow">&#182;</a></div><p>After e.g. 5 clicks start a new level or finish game depending the score</p>
+</td><td class="code"><div class="highlight"><pre>    <span class="k">if</span> <span class="nx">@currentLevel</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;=</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">clickCount</span></pre></div></td></tr><tr id="section-33"><td class="docs"><div class="pilwrap"><a href="#section-33" class="pilcrow">&#182;</a></div><p>evaluate current level</p>
 </td><td class="code"><div class="highlight"><pre>      <span class="nx">@evaluateCurrentLevel</span><span class="p">()</span>
-      <span class="k">if</span> <span class="nx">@lastLevelResults</span><span class="p">.</span><span class="nx">score</span> <span class="o">&gt;</span> <span class="mf">0.5</span></pre></div></td></tr><tr id="section-33"><td class="docs"><div class="pilwrap"><a href="#section-33" class="pilcrow">&#182;</a></div><p>High score --> New level</p>
+      <span class="k">if</span> <span class="nx">@lastLevelResults</span><span class="p">.</span><span class="nx">score</span> <span class="o">&gt;</span> <span class="mf">0.5</span></pre></div></td></tr><tr id="section-34"><td class="docs"><div class="pilwrap"><a href="#section-34" class="pilcrow">&#182;</a></div><p>High score --> New level</p>
 </td><td class="code"><div class="highlight"><pre>        <span class="vi">@goodSize = </span><span class="nx">@size</span>
         <span class="nx">@console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&quot;goodSize is&quot;</span><span class="p">,</span> <span class="nx">@goodSize</span><span class="p">,</span> <span class="nx">@</span>
         <span class="nx">@_newLevel</span> <span class="nx">@level</span> <span class="o">+</span> <span class="mi">1</span>
-      <span class="k">else</span></pre></div></td></tr><tr id="section-34"><td class="docs"><div class="pilwrap"><a href="#section-34" class="pilcrow">&#182;</a></div><p>Low score --> Finish</p>
+      <span class="k">else</span></pre></div></td></tr><tr id="section-35"><td class="docs"><div class="pilwrap"><a href="#section-35" class="pilcrow">&#182;</a></div><p>Low score --> Finish</p>
 </td><td class="code"><div class="highlight"><pre>        <span class="nx">@finish</span><span class="p">()</span>
     <span class="k">else</span>
       <span class="nv">progress = </span><span class="p">(</span><span class="nx">@currentLevel</span><span class="p">.</span><span class="nx">length</span> <span class="o">/</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">clickCount</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
       <span class="nx">@console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;progress:&#39;</span><span class="p">,</span> <span class="nx">progress</span>
       <span class="nx">@progressBar</span><span class="p">.</span><span class="nx">progressbar</span> <span class="s">&#39;value&#39;</span><span class="p">,</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">progress</span><span class="p">)</span>
-      <span class="k">if</span> <span class="nx">succeeded</span></pre></div></td></tr><tr id="section-35"><td class="docs"><div class="pilwrap"><a href="#section-35" class="pilcrow">&#182;</a></div><p>Next task, same level</p>
+      <span class="k">if</span> <span class="nx">succeeded</span></pre></div></td></tr><tr id="section-36"><td class="docs"><div class="pilwrap"><a href="#section-36" class="pilcrow">&#182;</a></div><p>Next task, same level</p>
 </td><td class="code"><div class="highlight"><pre>        <span class="nx">@reactionTimer</span><span class="p">.</span><span class="nx">clear</span><span class="p">()</span>
         <span class="nx">@moveTimer</span><span class="p">.</span><span class="nx">clear</span><span class="p">()</span>
         <span class="nx">@_newPosition</span><span class="p">()</span>
@@ -224,7 +223,8 @@ escape keypress</p>
       <span class="nx">@options</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">apply</span> <span class="nx">@</span><span class="p">,</span> <span class="p">[</span><span class="nx">@goodSize</span><span class="p">,</span> <span class="nx">@details</span><span class="p">]</span>
     <span class="k">else</span>
       <span class="nx">@_trigger</span> <span class="s">&#39;noclick&#39;</span>
-    <span class="nx">@destroy</span><span class="p">()</span>
+    <span class="nx">_</span><span class="p">.</span><span class="nx">defer</span> <span class="o">=&gt;</span>
+      <span class="nx">jQuery</span><span class="p">(</span><span class="nx">@element</span><span class="p">).</span><span class="nx">sizedetect</span><span class="p">(</span><span class="s">&#39;destroy&#39;</span><span class="p">)</span>
 
   <span class="nv">evaluateCurrentLevel: </span><span class="o">-&gt;</span>
     <span class="nv">correct = </span><span class="nx">_</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">@currentLevel</span><span class="p">,</span> <span class="nf">(r) -&gt;</span> <span class="nx">r</span><span class="p">.</span><span class="nx">value</span> <span class="o">is</span> <span class="mi">1</span><span class="p">)</span>
@@ -260,8 +260,8 @@ escape keypress</p>
         <span class="nv">log: </span><span class="o">-&gt;</span>
 
   <span class="nv">_escHandler: </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span>
-    <span class="k">if</span> <span class="nx">e</span><span class="p">.</span><span class="nx">keyCode</span> <span class="o">is</span> <span class="mi">27</span></pre></div></td></tr><tr id="section-36"><td class="docs"><div class="pilwrap"><a href="#section-36" class="pilcrow">&#182;</a></div><p>e.data.widget.finish()</p>
-</td><td class="code"><div class="highlight"><pre>      <span class="nx">e</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">widget</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span></pre></div></td></tr><tr id="section-37"><td class="docs"><div class="pilwrap"><a href="#section-37" class="pilcrow">&#182;</a></div><p>Class for calculating simple statistical data</p>
+    <span class="k">if</span> <span class="nx">e</span><span class="p">.</span><span class="nx">keyCode</span> <span class="o">is</span> <span class="mi">27</span></pre></div></td></tr><tr id="section-37"><td class="docs"><div class="pilwrap"><a href="#section-37" class="pilcrow">&#182;</a></div><p>e.data.widget.finish()</p>
+</td><td class="code"><div class="highlight"><pre>      <span class="nx">e</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">widget</span><span class="p">.</span><span class="nx">destroy</span><span class="p">()</span></pre></div></td></tr><tr id="section-38"><td class="docs"><div class="pilwrap"><a href="#section-38" class="pilcrow">&#182;</a></div><p>Class for calculating simple statistical data</p>
 </td><td class="code"><div class="highlight"><pre><span class="k">class</span> <span class="nx">Stat</span>
   <span class="nv">constructor: </span><span class="nf">(opts) -&gt;</span>
     <span class="nv">options =</span>
@@ -298,7 +298,7 @@ escape keypress</p>
   <span class="nv">getStatistics: </span><span class="o">-&gt;</span>
     <span class="nv">average: </span><span class="nx">@getAverage</span><span class="p">()</span>
     <span class="nv">variance: </span><span class="nx">@getVariance</span><span class="p">()</span>
-    <span class="nv">standardDeviation: </span><span class="nx">@getStandardDeviation</span><span class="p">()</span></pre></div></td></tr><tr id="section-38"><td class="docs"><div class="pilwrap"><a href="#section-38" class="pilcrow">&#182;</a></div><p>Class for measuring time in milliseconds</p>
+    <span class="nv">standardDeviation: </span><span class="nx">@getStandardDeviation</span><span class="p">()</span></pre></div></td></tr><tr id="section-39"><td class="docs"><div class="pilwrap"><a href="#section-39" class="pilcrow">&#182;</a></div><p>Class for measuring time in milliseconds</p>
 </td><td class="code"><div class="highlight"><pre><span class="k">class</span> <span class="nx">StopWatch</span>
   <span class="nv">constructor: </span><span class="nf">(@error = -&gt; @console.error.apply @console, arguments) -&gt;</span>
     <span class="vi">@elapsed = </span><span class="mi">0</span>

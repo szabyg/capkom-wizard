@@ -413,6 +413,8 @@
           <span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;</span><span class="err">#</span><span class="s">profile&quot;</span><span class="p">,</span> <span class="nx">el</span><span class="p">).</span><span class="nx">html</span> <span class="nx">profileText</span><span class="p">()</span>
       <span class="nv">startGame: </span><span class="o">-&gt;</span>
         <span class="k">if</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">allStagesFinished</span><span class="p">()</span>
+          <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">set</span>
+            <span class="nv">dimensions: </span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">getDimensions</span>
           <span class="nx">Capkom</span><span class="p">.</span><span class="nx">saveTestData</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span>
 <span class="nv">Capkom.getTestDataId = </span><span class="nf">(cb) -&gt;</span>
   <span class="nv">db = </span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">couch</span><span class="p">.</span><span class="nx">db</span><span class="p">(</span><span class="s">&#39;capkom-testresults&#39;</span><span class="p">)</span>

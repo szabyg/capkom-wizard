@@ -444,6 +444,8 @@ Capkom.stages =
           jQuery("#profile", el).html profileText()
       startGame: ->
         if Capkom.allStagesFinished()
+          Capkom.profile.set
+            dimensions: Capkom.getDimensions
           Capkom.saveTestData Capkom.profile
 Capkom.getTestDataId = (cb) ->
   db = jQuery.couch.db('capkom-testresults')

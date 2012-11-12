@@ -44,8 +44,8 @@ jQuery.widget "Capkom.sizedetect"
         res += "<p>Minimum size resulted in #{bestSize}</p>"
         jQuery('#results').html res
         @console.info 'ideal size:', size, 'detailed results:', details
-      noclick: (e) ->
-        alert "You cannot use the computer with your current devices. Consult with Platus."
+      # noclick: (e) ->
+        # alert "You cannot use the computer with your current devices. Consult with Platus."
 
   _create: ->
     @_fixConsole()
@@ -173,6 +173,7 @@ jQuery.widget "Capkom.sizedetect"
       # height: 'auto'
     # escape keypress
     jQuery('body').unbind 'keyup', @_escHandler
+    @element.unbind 'click'
     clearTimeout @timeoutTimer
 
   _beginGame: ->
@@ -268,7 +269,8 @@ jQuery.widget "Capkom.sizedetect"
       @options.result.apply @, [@goodSize, @details]
     else
       @_trigger 'noclick'
-    @destroy()
+    _.defer =>
+      jQuery(@element).sizedetect('destroy')
 
   evaluateCurrentLevel: ->
     correct = _.filter(@currentLevel, (r) -> r.value is 1)
