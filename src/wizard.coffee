@@ -269,3 +269,5 @@ jQuery(document).ready ->
     "#{dir}/mod/flugzeugsw.jpg", "#{dir}/mod/flugzeug1sw.jpg", "#{dir}/mod/flugzeug2sw.jpg", "#{dir}/mod/flugzeug1.jpg", "#{dir}/mod/flugzeug2.jpg",
     "#{dir}/mod/rosesw.jpg", "#{dir}/mod/rose1sw.jpg", "#{dir}/mod/rose2sw.jpg", "#{dir}/mod/rose1.jpg", "#{dir}/mod/rose2.jpg", ]).preload
 document.ondragstart = -> false
+
+# Capkom.getDimensions

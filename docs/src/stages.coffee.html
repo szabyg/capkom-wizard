@@ -364,11 +364,10 @@
 </td><td class="code"><div class="highlight"><pre>      <span class="nv">condition: </span><span class="nf">(profile) -&gt;</span>
           <span class="nx">profile</span><span class="p">.</span><span class="nx">get</span> <span class="s">&quot;useSymbols&quot;</span>
       <span class="nv">image: </span><span class="s">&quot;img/symbolset.png&quot;</span>
-      <span class="nv">speech: </span><span class="s">&quot;Welche Art von bildern gefällt dir besser. Suche dir eines aus. Später kannst du auch deine eigenen Bilder und Fotos verwenden.&quot;</span>
+      <span class="nv">speech: </span><span class="s">&quot;Welches Bild siehst Du besser? Klicke es an!&quot;</span>
       <span class="nv">html: </span><span class="s">&quot;&quot;&quot;</span>
-<span class="s">          Wie siehst Du das Bild besser? Grau oder orange?&lt;br/&gt;</span>
+<span class="s">          Welches Bild siehst Du besser? &lt;/br&gt; Klicke es an!</span>
 <span class="s">          &lt;div class=&#39;symbolset-symbols&#39;&gt;&lt;/div&gt;</span>
-<span class="s">          Später kannst du auch deine eigenen Bilder und Fotos verwenden.</span>
 <span class="s">      &quot;&quot;&quot;</span>
       <span class="nv">scriptOnce: </span><span class="nf">(element) -&gt;</span>
           <span class="nv">symbolSets = </span><span class="nx">_</span><span class="p">.</span><span class="nx">filter</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">symbolSets</span><span class="p">.</span><span class="nx">sets</span><span class="p">,</span> <span class="nf">(symbolSet) -&gt;</span>

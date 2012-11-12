@@ -394,11 +394,10 @@ Capkom.stages =
       condition: (profile) ->
           profile.get "useSymbols"
       image: "img/symbolset.png"
-      speech: "Welche Art von bildern gefällt dir besser. Suche dir eines aus. Später kannst du auch deine eigenen Bilder und Fotos verwenden."
+      speech: "Welches Bild siehst Du besser? Klicke es an!"
       html: """
-          Wie siehst Du das Bild besser? Grau oder orange?<br/>
+          Welches Bild siehst Du besser? </br> Klicke es an!
           <div class='symbolset-symbols'></div>
-          Später kannst du auch deine eigenen Bilder und Fotos verwenden.
       """
       scriptOnce: (element) ->
           symbolSets = _.filter Capkom.symbolSets.sets, (symbolSet) ->
