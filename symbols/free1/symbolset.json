@@ -16,9 +16,11 @@
     "channels": "Sprache-Symbole",
     "text-with-symbols": "Text+Symbole",
     "text-only": "Text",
-    "symbolunderstanding":"Symbole",
+    "symbolunderstanding":"wortbild",
+    "symbolset": "bildart",
     "read":"Symbole",
     "goodbye": "ende"
   },
-  "symbols": ["back", "design", "ende", "fehlersuche", "fontsize", "Sprache-Symbole", "Symbole", "symbolsize", "Text", "Text+Symbole", "tts", "weiter", "Willkommen-home"]
+  "symbols": ["back", "bildart", "design", "ende", "fehlersuche", "fontsize", "Sprache-Symbole", "Symbole", "symbolsize", "symbolverstand", "Text", "Text+Symbole", "tts", "weiter", "Willkommen-home",
+  "wortbild"]
 }
