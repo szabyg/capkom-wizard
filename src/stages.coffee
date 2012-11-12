@@ -6,11 +6,11 @@ Capkom.order = [
     "welcome"
     "symbolsize"
     "fontsize"
-    "symbolset"
+    "theme"
     "read"
     "symbolunderstanding"
     "lookforcorrect"
-    "theme"
+    "symbolset"
     # "channels"
     "goodbye"
 ]
