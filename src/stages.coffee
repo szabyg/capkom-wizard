@@ -432,7 +432,8 @@ Capkom.stages =
       html: """
         Du hast nun dein Online-Atelier so eingestellt, dass du es gut verwenden kannst.
         <br/><br/>
-        Usertest ID: <span id='usertest-id'/>
+        Usertest ID: <span id='usertest-id'/><br/>
+        <span id='log'></span>
       """
       scriptOnce: (el) ->
           profileText = -> JSON.stringify(Capkom.profile.toJSON())
@@ -443,6 +444,8 @@ Capkom.stages =
               jQuery("#goodbye #profile").html profileText()
           jQuery("#profile", el).html profileText()
       startGame: ->
+        Capkom.console.info "Clear log"
+        jQuery('#log').html ''
         if Capkom.allStagesFinished()
           Capkom.profile.set
             dimensions: Capkom.getDimensions()
@@ -454,7 +457,12 @@ Capkom.getTestDataId = (cb) ->
     Capkom.console.info 'view data', data.doc_count
     cb "UT-#{data.doc_count}"
 Capkom.saveTestData = (doc) ->
-  # if jQuery.browser.msie
+  logEl = jQuery('#log')
+  saveErr = (msg) ->
+    logEl.html msg + " Bitte ein Mail mit dieser Fehlermeldung an szaby.gruenwald@salzburgresearch.at zu schicken."
+  unless jQuery.couch
+    saveErr "Fehler: Die Datenbank ist unerreichbar."
+    return
   jQuery.couch.urlPrefix = "http://dev.iks-project.eu/couchdb"
   # else
     # jQuery.couch.urlPrefix = "http://dev.iks-project.eu/cors/dev.iks-project.eu:80/couchdb";
@@ -465,6 +473,7 @@ Capkom.saveTestData = (doc) ->
       Capkom.console.info 'db info', data
     error: (jqXhr, message) ->
       Capkom.console.error "couchdb info error: #{message}"
+      saveErr "Server konnte nicht nicht erreicht werden. #{message}"
 
   save = ->
     db.saveDoc doc.toJSON(),
@@ -477,6 +486,7 @@ Capkom.saveTestData = (doc) ->
           Capkom.console.info 'Error saving Usertest document', res
       error: (jqXhr, message) ->
         Capkom.console.error "saveDoc error: #{message}"
+        saveErr "Die Testdaten konnten nicht gespeichert werden: #{message}"
   if doc.get '_id'
     save()
   else
@@ -485,7 +495,21 @@ Capkom.saveTestData = (doc) ->
       save()
 
 Capkom.allStagesFinished = ->
-  return Capkom.profile.get('read') and Capkom.profile.get('symbolunderstanding') and Capkom.profile.get('symbolsizedetectDetails') # are all filled out
+  missing = []
+  unless Capkom.profile.get('symbolsizedetectDetails')
+    missing.push 'Symbolgröße'
+  unless Capkom.profile.get('read')
+    missing.push 'Wort-Bild-Spiel'
+  unless Capkom.profile.get('symbolunderstanding')
+    missing.push 'Symbolverständnis'
+  unless Capkom.profile.get('lookforcorrect')
+    missing.push 'Fehlersuche'
+  if missing.length
+    logEl=jQuery('#log')
+    logEl.html "Profil nicht vollständig ausgefüllt. Folgende Teile fehlen noch: <b>" + missing.join ', ' + "</b>"
+    return false
+  else
+    return true
 
 ###
 Get an array of stage objects in the configured order.
