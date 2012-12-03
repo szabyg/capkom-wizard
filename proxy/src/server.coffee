@@ -4,12 +4,13 @@ httpProxy = require('http-proxy');
 
 proxyServer = (req, res, proxy) ->
   
-
+  ###
   unless req.headers.origin
     console.log 'req.headers.origin not given'
     res.write('hello https\n');
     res.end();
     return
+  ###
   
     
   if req.headers['access-control-request-headers']
@@ -23,7 +24,7 @@ proxyServer = (req, res, proxy) ->
     'access-control-max-age'           : '86400' # 24 hours
     'access-control-allow-headers'     : headers
     'access-control-allow-credentials' : 'true'
-    'access-control-allow-origin'      : req.headers.origin
+    'access-control-allow-origin'      : req.headers.origin or 'http://localhost/'
   
   
   if req.method is 'OPTIONS'
@@ -35,6 +36,11 @@ proxyServer = (req, res, proxy) ->
   else  
     [ignore, hostname, path] = req.url.match(/\/([^\/]+)(.*)/)
     [host, port] = hostname.split(/:/)
+    unless host and port
+        console.info "Accessing #{req.url}, 404"
+        res.writeHead(404)
+        res.end()
+        return
   
     console.log "proxying to #{hostname}#{path}"
     
@@ -47,8 +53,9 @@ proxyServer = (req, res, proxy) ->
     
     # Put your custom server logic here, then proxy
     proxy.proxyRequest(req, res, {
-      host: host,
+      host: host
       port: port
+      https: port is 443
     });
 
 httpProxy.createServer(proxyServer).listen process.env.PORT || 9292

@@ -188,7 +188,7 @@ jQuery.widget "capkom.ttswidget",
   # Internal method for implementing the audio uri.
   _makeLink: () ->
     _encodeURI = (str) ->
-        encodeURI(str).replace /'/g, "%27"
+        encodeURI(str).replace(/'/g, "%27").replace(/\?/g, "; ")
     text = @_getText()
     uri = @options.backendUri + "/process?"
     params = @preset(@_getLang(), @_getGender())

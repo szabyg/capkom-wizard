@@ -7,7 +7,7 @@ httpProxy = require('http-proxy');
 
 proxyServer = function(req, res, proxy) {
   var cors_headers, header, headers, host, hostname, ignore, key, path, port, value, _i, _len, _ref, _ref1, _ref2;
-  if (!req.headers.origin) {
+  if (!req.headers.origin && false) {
     console.log('req.headers.origin not given');
     res.write('hello https\n');
     res.end();
