@@ -31,7 +31,10 @@
             // Store profile in localStorage
             localStorage.profile = JSON.stringify(entity.toJSON());
             if (window.location.href.indexOf('localhost') < 0){
-                var backendBaseUri = "http://www.online-atelier.com/OnlineAtelier/home/capkom"; //?callback=?";
+                // the URI param saveprofileuri=http%3A%2F%2Fwww.online-atelier.com%2FOnlineAtelier%2Fhome%2Fcapkom causes
+                // the wizard to save the profile using JSONP with the given URI.
+                // var backendBaseUri = "http://www.online-atelier.com/OnlineAtelier/home/capkom"; //?callback=?";
+                var backendBaseUri = Capkom.getUrlParameter('saveprofileuri');
     //            var backendBaseUri = "http://192.168.56.1:3000/?callback=?";
     //            var backendBaseUri = "test.json";
                 function filterProfile(profile){
@@ -39,23 +42,28 @@
                 }
                 switch(method){
                     case 'create':
-                        Capkom.console.info('sending profile', JSON.parse(localStorage.profile));
-                        var jqXHR = jQuery.ajax({
-                            url: backendBaseUri,
-                            data: {
-                                json: JSON.stringify(filterProfile(Capkom.profile.toJSON()))
-                            },
-                            dataType: 'jsonp',
-                            contentType: 'json',
-                            success: function(res){
-                                Capkom.console.info("successful GET:", res);
-                                options.success(entity);
-                            },
-                            error: function(jqXHR, textStatus, errorThrown){
-                                Capkom.console.error("couldn't save to " + backendBaseUri + ": " + textStatus, arguments);
-                            }
-                        });
-                        Capkom.console.info("jqXHR", jqXHR);
+                        if(backendBaseUri){
+                            Capkom.console.info('sending profile', JSON.parse(localStorage.profile), 'to', backendBaseUri);
+                            var jqXHR = jQuery.ajax({
+                                url: backendBaseUri,
+                                data: {
+                                    json: JSON.stringify(filterProfile(Capkom.profile.toJSON()))
+                                },
+                                dataType: 'jsonp',
+                                contentType: 'json',
+                                success: function(res){
+                                    Capkom.console.info("successful GET:", res);
+                                    options.success(entity);
+                                },
+                                error: function(jqXHR, textStatus, errorThrown){
+                                    Capkom.console.error("couldn't save to " + backendBaseUri + ": " + textStatus, arguments);
+                                }
+                            });
+                            Capkom.console.info("jqXHR", jqXHR);
+                        } else {
+                            console.info('The profile has changed:', JSON.parse(localStorage.profile),
+                                    'With a given "saveprofileuri=" URI parameter we would now send a JSONP request to your backend.');
+                        }
                 }
                 Capkom.console.info(entity, arguments);
             }
