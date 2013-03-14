@@ -527,7 +527,11 @@ Capkom.getStages = ->
     Filter out the dependent and not-to-show stages based on `stage.condition`
     ###
     res = _(res).filter (stage) ->
-        true unless stage.condition?(Capkom.profile) is false
+      true unless stage.condition?(Capkom.profile) is false
+    urlhidden = (Capkom.getUrlParameter('hidestages') or null)?.split(',') or []
+    res = _(res).filter (stage) ->
+      true if urlhidden.indexOf(stage.name) is -1
+
 Capkom.showStages = (el) ->
     if Capkom.uiLoaded
         stages = @getStages()

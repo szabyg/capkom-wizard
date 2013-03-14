@@ -116,4 +116,14 @@ if audioOn: screenread</p>
     <span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;.stage-content.tts&quot;</span><span class="p">,</span> <span class="nx">el</span><span class="p">).</span><span class="nx">attr</span> <span class="s">&quot;tts&quot;</span><span class="p">,</span> <span class="nx">stage</span><span class="p">.</span><span class="nx">speech</span> <span class="k">if</span> <span class="nx">stage</span><span class="p">.</span><span class="nx">speech</span>
     <span class="nx">el</span>
 
+<span class="nv">Capkom.getUrlParameter = </span><span class="nf">(name) -&gt;</span>
+  <span class="nv">name = </span><span class="nx">name</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/[\[]/</span><span class="p">,</span> <span class="s">&quot;\\\[&quot;</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/[\]]/</span><span class="p">,</span> <span class="s">&quot;\\\]&quot;</span><span class="p">)</span>
+  <span class="nv">regexS = </span><span class="s">&quot;[\\?&amp;]&quot;</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s">&quot;=([^&amp;</span><span class="err">#</span><span class="s">]*)&quot;</span>
+  <span class="nv">regex = </span><span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="nx">regexS</span><span class="p">)</span>
+  <span class="nv">results = </span><span class="nx">regex</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">)</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">results</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s">&quot;&quot;</span>
+  <span class="k">else</span>
+    <span class="k">return</span> <span class="nb">decodeURIComponent</span><span class="p">(</span><span class="nx">results</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/\+/g</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">))</span>
+
 </pre></div></td></tr></tbody></table><div id="projectname"><a href="../index.html">Capkom Wizard</a></div></div></body></html>
