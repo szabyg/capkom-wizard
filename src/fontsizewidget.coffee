@@ -1,7 +1,7 @@
 jQuery.widget "capkom.fontsize",
     options:
         min: 1
-        max: 8
+        max: 6
         value: 1
         styleClass: "fontsize-widget"
         change: (val) ->
