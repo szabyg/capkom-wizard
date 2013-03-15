@@ -6,7 +6,7 @@ A tool for creating a user profile for a platform for users with cognitive disab
 
 ## URI parameters
 * `returnuri` defines that in the last step (goodbye), if the profile is complete, the browser redirects to the given uri.
-* `saveprofileuri=` URI param to set JSONP endpoint for saving the profile.
+* `saveprofileuri` URI param to set JSONP endpoint for saving the profile.
 * `hidestages` as an URL parameter. Loading the page with `?hidestages=theme,read` loads the wizard without the named stages.
 
 ## Dependencies
