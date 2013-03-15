@@ -456,16 +456,16 @@ Capkom.getTestDataId = (cb) ->
   db.info success: (data) ->
     Capkom.console.info 'view data', data.doc_count
     cb "UT-#{data.doc_count}"
-Capkom.saveTestData = (doc) ->
+Capkom.saveTestData = (doc, cb) ->
   logEl = jQuery('#log')
   saveErr = (msg) ->
     logEl.html msg + " Bitte ein Mail mit dieser Fehlermeldung an szaby.gruenwald@salzburgresearch.at zu schicken."
   unless jQuery.couch
     saveErr "Fehler: Die Datenbank ist unerreichbar."
     return
-  jQuery.couch.urlPrefix = "http://dev.iks-project.eu/couchdb"
+  # jQuery.couch.urlPrefix = "http://dev.iks-project.eu/couchdb"
   # else
-    # jQuery.couch.urlPrefix = "http://dev.iks-project.eu/cors/dev.iks-project.eu:80/couchdb";
+  jQuery.couch.urlPrefix = "http://dev.iks-project.eu/cors/dev.iks-project.eu:80/couchdb";
   jQuery.couch.info success: (data) ->
   db = jQuery.couch.db('capkom-testresults')
   db.info
@@ -474,7 +474,6 @@ Capkom.saveTestData = (doc) ->
     error: (jqXhr, message) ->
       Capkom.console.error "couchdb info error: #{message}"
       saveErr "Server konnte nicht nicht erreicht werden. #{message}"
-
   save = ->
     db.saveDoc doc.toJSON(),
       success: (res) ->
@@ -482,6 +481,14 @@ Capkom.saveTestData = (doc) ->
           Capkom.console.info "doc saved", res
           doc.set _rev: res.rev
           jQuery('#usertest-id').html "#{doc.get '_id'}"
+          returnUri = Capkom.getUrlParameter('returnuri')
+          if returnUri
+            console.info "Forwarding in 2 seconds to", returnUri
+            setTimeout ->
+              window.location = encodeURIComponent returnUri
+            , 2000
+          else
+            console.info "No returnuri= URL param, no forwarding."
         else
           Capkom.console.info 'Error saving Usertest document', res
       error: (jqXhr, message) ->

@@ -425,16 +425,16 @@
   <span class="nx">db</span><span class="p">.</span><span class="nx">info</span> <span class="nv">success: </span><span class="nf">(data) -&gt;</span>
     <span class="nx">Capkom</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;view data&#39;</span><span class="p">,</span> <span class="nx">data</span><span class="p">.</span><span class="nx">doc_count</span>
     <span class="nx">cb</span> <span class="s">&quot;UT-</span><span class="si">#{</span><span class="nx">data</span><span class="p">.</span><span class="nx">doc_count</span><span class="si">}</span><span class="s">&quot;</span>
-<span class="nv">Capkom.saveTestData = </span><span class="nf">(doc) -&gt;</span>
+<span class="nv">Capkom.saveTestData = </span><span class="nf">(doc, cb) -&gt;</span>
   <span class="nv">logEl = </span><span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;#log&#39;</span><span class="p">)</span>
   <span class="nv">saveErr = </span><span class="nf">(msg) -&gt;</span>
     <span class="nx">logEl</span><span class="p">.</span><span class="nx">html</span> <span class="nx">msg</span> <span class="o">+</span> <span class="s">&quot; Bitte ein Mail mit dieser Fehlermeldung an szaby.gruenwald@salzburgresearch.at zu schicken.&quot;</span>
   <span class="nx">unless</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">couch</span>
     <span class="nx">saveErr</span> <span class="s">&quot;Fehler: Die Datenbank ist unerreichbar.&quot;</span>
-    <span class="k">return</span>
-  <span class="nv">jQuery.couch.urlPrefix = </span><span class="s">&quot;http://dev.iks-project.eu/couchdb&quot;</span></pre></div></td></tr><tr id="section-27"><td class="docs"><div class="pilwrap"><a href="#section-27" class="pilcrow">&#182;</a></div><p>else
-jQuery.couch.urlPrefix = "http://dev.iks-project.eu/cors/dev.iks-project.eu:80/couchdb";</p>
-</td><td class="code"><div class="highlight"><pre>  <span class="nx">jQuery</span><span class="p">.</span><span class="nx">couch</span><span class="p">.</span><span class="nx">info</span> <span class="nv">success: </span><span class="nf">(data) -&gt;</span>
+    <span class="k">return</span></pre></div></td></tr><tr id="section-27"><td class="docs"><div class="pilwrap"><a href="#section-27" class="pilcrow">&#182;</a></div><p>jQuery.couch.urlPrefix = "http://dev.iks-project.eu/couchdb"
+else</p>
+</td><td class="code"><div class="highlight"><pre>  <span class="nv">jQuery.couch.urlPrefix = </span><span class="s">&quot;http://dev.iks-project.eu/cors/dev.iks-project.eu:80/couchdb&quot;</span><span class="p">;</span>
+  <span class="nx">jQuery</span><span class="p">.</span><span class="nx">couch</span><span class="p">.</span><span class="nx">info</span> <span class="nv">success: </span><span class="nf">(data) -&gt;</span>
   <span class="nv">db = </span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">couch</span><span class="p">.</span><span class="nx">db</span><span class="p">(</span><span class="s">&#39;capkom-testresults&#39;</span><span class="p">)</span>
   <span class="nx">db</span><span class="p">.</span><span class="nx">info</span>
     <span class="nv">success: </span><span class="nf">(data) -&gt;</span>
@@ -442,7 +442,6 @@ jQuery.couch.urlPrefix = "http://dev.iks-project.eu/cors/dev.iks-project.eu:80/c
     <span class="nv">error: </span><span class="nf">(jqXhr, message) -&gt;</span>
       <span class="nx">Capkom</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span> <span class="s">&quot;couchdb info error: </span><span class="si">#{</span><span class="nx">message</span><span class="si">}</span><span class="s">&quot;</span>
       <span class="nx">saveErr</span> <span class="s">&quot;Server konnte nicht nicht erreicht werden. </span><span class="si">#{</span><span class="nx">message</span><span class="si">}</span><span class="s">&quot;</span>
-
   <span class="nv">save = </span><span class="o">-&gt;</span>
     <span class="nx">db</span><span class="p">.</span><span class="nx">saveDoc</span> <span class="nx">doc</span><span class="p">.</span><span class="nx">toJSON</span><span class="p">(),</span>
       <span class="nv">success: </span><span class="nf">(res) -&gt;</span>
@@ -450,6 +449,14 @@ jQuery.couch.urlPrefix = "http://dev.iks-project.eu/cors/dev.iks-project.eu:80/c
           <span class="nx">Capkom</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&quot;doc saved&quot;</span><span class="p">,</span> <span class="nx">res</span>
           <span class="nx">doc</span><span class="p">.</span><span class="nx">set</span> <span class="nv">_rev: </span><span class="nx">res</span><span class="p">.</span><span class="nx">rev</span>
           <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;#usertest-id&#39;</span><span class="p">).</span><span class="nx">html</span> <span class="s">&quot;</span><span class="si">#{</span><span class="nx">doc</span><span class="p">.</span><span class="nx">get</span> <span class="s">&#39;_id&#39;</span><span class="si">}</span><span class="s">&quot;</span>
+          <span class="nv">returnUri = </span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">getUrlParameter</span><span class="p">(</span><span class="s">&#39;returnuri&#39;</span><span class="p">)</span>
+          <span class="k">if</span> <span class="nx">returnUri</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&quot;Forwarding in 2 seconds to&quot;</span><span class="p">,</span> <span class="nx">returnUri</span>
+            <span class="nx">setTimeout</span> <span class="o">-&gt;</span>
+              <span class="nb">window</span><span class="p">.</span><span class="nv">location = </span><span class="nb">encodeURIComponent</span> <span class="nx">returnUri</span>
+            <span class="p">,</span> <span class="mi">2000</span>
+          <span class="k">else</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&quot;No returnuri= URL param, no forwarding.&quot;</span>
         <span class="k">else</span>
           <span class="nx">Capkom</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;Error saving Usertest document&#39;</span><span class="p">,</span> <span class="nx">res</span>
       <span class="nv">error: </span><span class="nf">(jqXhr, message) -&gt;</span>
