@@ -4,6 +4,10 @@ A tool for creating a user profile for a platform for users with cognitive disab
 ## Goals
 * The wizard is made to be the profile creating "entry test" for a community portal for art enabling collaboration for people with cognitive difficulties.
 
+## URI parameters
+* `returnuri` defines that in the last step (goodbye), if the profile is complete, the browser redirects to the given uri.
+* `saveprofileuri=` URI param to set JSONP endpoint for saving the profile.
+* `hidestages` as an URL parameter. Loading the page with `?hidestages=theme,read` loads the wizard without the named stages.
 
 ## Dependencies
 * jQuery + jQuery UI 1.9m5 - Basic UI widget set providing in-browser Accessibility, Themeability and Usability.
