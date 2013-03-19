@@ -2,7 +2,8 @@
 A tool for creating a user profile for a platform for users with cognitive disabilities.
 
 ## Goals
-* The wizard is made to be the profile creating "entry test" for a community portal for art enabling collaboration for people with cognitive difficulties.
+* The wizard is made to be the profile creating "entry test" for a community portal for art enabling collaboration for
+people with cognitive difficulties.
 
 ## URI parameters
 * `returnuri` defines that in the last step (goodbye), if the profile is complete, the browser redirects to the given uri.
@@ -18,12 +19,8 @@ A tool for creating a user profile for a platform for users with cognitive disab
 ## Development
 Run the following command to keep compiling the coffeescript into javascript. It needs coffeescript installed to run.
 
-    coffee -c -w -o lib src/*.coffee
+    cake watch
 
-or on linux systems alternatively
-
-    cd src
-    watch -n 1 coffee -c -o ../lib/ *.coffee
 
 ## Documentation
 To generate documentation automatically run the following command. It needs docco installed.

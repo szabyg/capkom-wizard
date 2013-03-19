@@ -40,8 +40,8 @@ Capkom.stages =
             read: "Wenn du jetzt spielen willst, dann benütze den Weiter-Knopf um anzufangen"
             useAudio: Capkom.profile.get('useAudio')
             html: """
-              <button class="previousButton demoButton" alt="Zurück" ><i class = "icon-arrow-left" /> Zurück</button>&nbsp;<button class="nextButton demoButton" alt="Weiter" >Weiter <i class = "icon-arrow-right" /></button>
-            """
+                  <button class="nextButton demoButton" alt="Weiter" >Weiter <i class = "icon-arrow-right" /></button>
+                  """
             script: (element) ->
               jQuery(element).find('button').button()
             after: ->
@@ -102,6 +102,7 @@ Capkom.stages =
       Wenn du es oft schaffst, ist der Hund glücklich und gesund.
       <button class='start'>Start</button>
       <div class='fangspiel-area'></div>
+      <div class="explain-area"></div>
     """
     _dont_startGame: (element, done) ->
       jQuery('.fangspiel-area', element).sizedetect
@@ -122,6 +123,28 @@ Capkom.stages =
               symbolsizeMin: size
               symbolsizedetectDetails: details
             Capkom.clickNext()
+
+    explain: (element, done) ->
+      explainArea = jQuery '.explain-area', element
+      explainStart = (done) ->
+        console.info 'Explaining start button'
+        startArea = explainArea.append("<div class='start'></div>").find('.start')
+        startArea.explain
+          read: "Wenn du nun spielen willst, dann benütze den Start Knopf um anzufangen"
+          useAudio: Capkom.profile.get('useAudio')
+          html: """
+                <button class='start'>Start</button>
+                """
+          script: (element) ->
+            jQuery(element).find('button').button()
+          after: ->
+            _.defer ->
+              startArea.remove()
+              done()
+          ttsOptions: Capkom.getTTSOptions()
+      Capkom.timeout.start 1, ->
+        explainStart ->
+          done()
 
   ###
    Definition of the symbol size selection screen
@@ -294,6 +317,7 @@ Capkom.stages =
           """
           Klicke auf die Schriftgröße, die du am besten lesen kannst. Du kannst diese hier ausprobieren. Wenn du fertig bist, klicke auf den Weiter Knopf.<br/><br/>
           <div class='fontsize'></div>
+          <div class="explain-area"></div>
           """
       scriptOnce: (element) ->
           jQuery(".fontsize").fontsize
@@ -301,7 +325,28 @@ Capkom.stages =
               change: (val) ->
                   Capkom.profile.set 'fontsize': "s#{val}"
 
-  # Definition of the theme selection screen
+      explain: (element, done) ->
+        explainArea = jQuery '.explain-area', element
+        explainZurueck = (done) ->
+          zurueckArea = explainArea.append("<div class='zuruck'></div>").find('.zuruck')
+          zurueckArea.explain
+            read: "Wenn du später noch einmal spielen willst, dann drücke den Zurück Knopf"
+            useAudio: Capkom.profile.get('useAudio')
+            html: """
+                  <button class="previousButton demoButton" alt="Zurück" ><i class = "icon-arrow-left" /> Zurück</button>
+                  """
+            script: (element) ->
+              jQuery(element).find('button').button()
+            after: ->
+              _.defer ->
+                zurueckArea.remove()
+                done()
+            ttsOptions: Capkom.getTTSOptions()
+        Capkom.timeout.start 1, ->
+          explainZurueck ->
+            done()
+
+# Definition of the theme selection screen
   "theme":
       title: "Aussehen"
       image: "img/design.png"

@@ -36,8 +36,8 @@
             <span class="nv">read: </span><span class="s">&quot;Wenn du jetzt spielen willst, dann benütze den Weiter-Knopf um anzufangen&quot;</span>
             <span class="nv">useAudio: </span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s">&#39;useAudio&#39;</span><span class="p">)</span>
             <span class="nv">html: </span><span class="s">&quot;&quot;&quot;</span>
-<span class="s">              &lt;button class=&quot;previousButton demoButton&quot; alt=&quot;Zurück&quot; &gt;&lt;i class = &quot;icon-arrow-left&quot; /&gt; Zurück&lt;/button&gt;&amp;nbsp;&lt;button class=&quot;nextButton demoButton&quot; alt=&quot;Weiter&quot; &gt;Weiter &lt;i class = &quot;icon-arrow-right&quot; /&gt;&lt;/button&gt;</span>
-<span class="s">            &quot;&quot;&quot;</span>
+<span class="s">                  &lt;button class=&quot;nextButton demoButton&quot; alt=&quot;Weiter&quot; &gt;Weiter &lt;i class = &quot;icon-arrow-right&quot; /&gt;&lt;/button&gt;</span>
+<span class="s">                  &quot;&quot;&quot;</span>
             <span class="nv">script: </span><span class="nf">(element) -&gt;</span>
               <span class="nx">jQuery</span><span class="p">(</span><span class="nx">element</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s">&#39;button&#39;</span><span class="p">).</span><span class="nx">button</span><span class="p">()</span>
             <span class="nv">after: </span><span class="o">-&gt;</span>
@@ -92,6 +92,7 @@
 <span class="s">      Wenn du es oft schaffst, ist der Hund glücklich und gesund.</span>
 <span class="s">      &lt;button class=&#39;start&#39;&gt;Start&lt;/button&gt;</span>
 <span class="s">      &lt;div class=&#39;fangspiel-area&#39;&gt;&lt;/div&gt;</span>
+<span class="s">      &lt;div class=&quot;explain-area&quot;&gt;&lt;/div&gt;</span>
 <span class="s">    &quot;&quot;&quot;</span>
     <span class="nv">_dont_startGame: </span><span class="nf">(element, done) -&gt;</span>
       <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;.fangspiel-area&#39;</span><span class="p">,</span> <span class="nx">element</span><span class="p">).</span><span class="nx">sizedetect</span>
@@ -110,7 +111,29 @@
             <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">set</span>
               <span class="nv">symbolsizeMin: </span><span class="nx">size</span>
               <span class="nv">symbolsizedetectDetails: </span><span class="nx">details</span>
-            <span class="nx">Capkom</span><span class="p">.</span><span class="nx">clickNext</span><span class="p">()</span></pre></div></td></tr><tr id="section-11"><td class="docs"><div class="pilwrap"><a href="#section-11" class="pilcrow">&#182;</a></div><h1>#</h1>
+            <span class="nx">Capkom</span><span class="p">.</span><span class="nx">clickNext</span><span class="p">()</span>
+
+    <span class="nv">explain: </span><span class="nf">(element, done) -&gt;</span>
+      <span class="nv">explainArea = </span><span class="nx">jQuery</span> <span class="s">&#39;.explain-area&#39;</span><span class="p">,</span> <span class="nx">element</span>
+      <span class="nv">explainStart = </span><span class="nf">(done) -&gt;</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;Explaining start button&#39;</span>
+        <span class="nv">startArea = </span><span class="nx">explainArea</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s">&quot;&lt;div class=&#39;start&#39;&gt;&lt;/div&gt;&quot;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s">&#39;.start&#39;</span><span class="p">)</span>
+        <span class="nx">startArea</span><span class="p">.</span><span class="nx">explain</span>
+          <span class="nv">read: </span><span class="s">&quot;Wenn du nun spielen willst, dann benütze den Start Knopf um anzufangen&quot;</span>
+          <span class="nv">useAudio: </span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s">&#39;useAudio&#39;</span><span class="p">)</span>
+          <span class="nv">html: </span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">                &lt;button class=&#39;start&#39;&gt;Start&lt;/button&gt;</span>
+<span class="s">                &quot;&quot;&quot;</span>
+          <span class="nv">script: </span><span class="nf">(element) -&gt;</span>
+            <span class="nx">jQuery</span><span class="p">(</span><span class="nx">element</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s">&#39;button&#39;</span><span class="p">).</span><span class="nx">button</span><span class="p">()</span>
+          <span class="nv">after: </span><span class="o">-&gt;</span>
+            <span class="nx">_</span><span class="p">.</span><span class="nx">defer</span> <span class="o">-&gt;</span>
+              <span class="nx">startArea</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+              <span class="nx">done</span><span class="p">()</span>
+          <span class="nv">ttsOptions: </span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">getTTSOptions</span><span class="p">()</span>
+      <span class="nx">Capkom</span><span class="p">.</span><span class="nx">timeout</span><span class="p">.</span><span class="nx">start</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-&gt;</span>
+        <span class="nx">explainStart</span> <span class="o">-&gt;</span>
+          <span class="nx">done</span><span class="p">()</span></pre></div></td></tr><tr id="section-11"><td class="docs"><div class="pilwrap"><a href="#section-11" class="pilcrow">&#182;</a></div><h1>#</h1>
 </td><td class="code"><div class="highlight"><pre>   <span class="nx">Definition</span> <span class="k">of</span> <span class="nx">the</span> <span class="nx">symbol</span> <span class="nx">size</span> <span class="nx">selection</span> <span class="nx">screen</span></pre></div></td></tr><tr id="section-12"><td class="docs"><div class="pilwrap"><a href="#section-12" class="pilcrow">&#182;</a></div><h1>#</h1>
 </td><td class="code"><div class="highlight"><pre>  <span class="s">&quot;symbolunderstanding&quot;</span><span class="o">:</span>
     <span class="nv">title: </span><span class="s">&quot;Symbol-Verständnis&quot;</span></pre></div></td></tr><tr id="section-13"><td class="docs"><div class="pilwrap"><a href="#section-13" class="pilcrow">&#182;</a></div><p>only show it if symbols are turned on</p>
@@ -276,12 +299,34 @@
           <span class="s">&quot;&quot;&quot;</span>
 <span class="s">          Klicke auf die Schriftgröße, die du am besten lesen kannst. Du kannst diese hier ausprobieren. Wenn du fertig bist, klicke auf den Weiter Knopf.&lt;br/&gt;&lt;br/&gt;</span>
 <span class="s">          &lt;div class=&#39;fontsize&#39;&gt;&lt;/div&gt;</span>
+<span class="s">          &lt;div class=&quot;explain-area&quot;&gt;&lt;/div&gt;</span>
 <span class="s">          &quot;&quot;&quot;</span>
       <span class="nv">scriptOnce: </span><span class="nf">(element) -&gt;</span>
           <span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;.fontsize&quot;</span><span class="p">).</span><span class="nx">fontsize</span>
               <span class="nv">value: </span><span class="nb">Number</span> <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s">&#39;fontsize&#39;</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
               <span class="nv">change: </span><span class="nf">(val) -&gt;</span>
-                  <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">set</span> <span class="s">&#39;fontsize&#39;</span><span class="o">:</span> <span class="s">&quot;s</span><span class="si">#{</span><span class="nx">val</span><span class="si">}</span><span class="s">&quot;</span></pre></div></td></tr><tr id="section-17"><td class="docs"><div class="pilwrap"><a href="#section-17" class="pilcrow">&#182;</a></div><p>Definition of the theme selection screen</p>
+                  <span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">set</span> <span class="s">&#39;fontsize&#39;</span><span class="o">:</span> <span class="s">&quot;s</span><span class="si">#{</span><span class="nx">val</span><span class="si">}</span><span class="s">&quot;</span>
+
+      <span class="nv">explain: </span><span class="nf">(element, done) -&gt;</span>
+        <span class="nv">explainArea = </span><span class="nx">jQuery</span> <span class="s">&#39;.explain-area&#39;</span><span class="p">,</span> <span class="nx">element</span>
+        <span class="nv">explainZurueck = </span><span class="nf">(done) -&gt;</span>
+          <span class="nv">zurueckArea = </span><span class="nx">explainArea</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s">&quot;&lt;div class=&#39;zuruck&#39;&gt;&lt;/div&gt;&quot;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s">&#39;.zuruck&#39;</span><span class="p">)</span>
+          <span class="nx">zurueckArea</span><span class="p">.</span><span class="nx">explain</span>
+            <span class="nv">read: </span><span class="s">&quot;Wenn du später noch einmal spielen willst, dann drücke den Zurück Knopf&quot;</span>
+            <span class="nv">useAudio: </span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s">&#39;useAudio&#39;</span><span class="p">)</span>
+            <span class="nv">html: </span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">                  &lt;button class=&quot;previousButton demoButton&quot; alt=&quot;Zurück&quot; &gt;&lt;i class = &quot;icon-arrow-left&quot; /&gt; Zurück&lt;/button&gt;</span>
+<span class="s">                  &quot;&quot;&quot;</span>
+            <span class="nv">script: </span><span class="nf">(element) -&gt;</span>
+              <span class="nx">jQuery</span><span class="p">(</span><span class="nx">element</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s">&#39;button&#39;</span><span class="p">).</span><span class="nx">button</span><span class="p">()</span>
+            <span class="nv">after: </span><span class="o">-&gt;</span>
+              <span class="nx">_</span><span class="p">.</span><span class="nx">defer</span> <span class="o">-&gt;</span>
+                <span class="nx">zurueckArea</span><span class="p">.</span><span class="nx">remove</span><span class="p">()</span>
+                <span class="nx">done</span><span class="p">()</span>
+            <span class="nv">ttsOptions: </span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">getTTSOptions</span><span class="p">()</span>
+        <span class="nx">Capkom</span><span class="p">.</span><span class="nx">timeout</span><span class="p">.</span><span class="nx">start</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-&gt;</span>
+          <span class="nx">explainZurueck</span> <span class="o">-&gt;</span>
+            <span class="nx">done</span><span class="p">()</span></pre></div></td></tr><tr id="section-17"><td class="docs"><div class="pilwrap"><a href="#section-17" class="pilcrow">&#182;</a></div><p>Definition of the theme selection screen</p>
 </td><td class="code"><div class="highlight"><pre>  <span class="s">&quot;theme&quot;</span><span class="o">:</span>
       <span class="nv">title: </span><span class="s">&quot;Aussehen&quot;</span>
       <span class="nv">image: </span><span class="s">&quot;img/design.png&quot;</span>
