@@ -62,7 +62,7 @@ Capkom.initNav = ->
             d = done.shift()
             d? stage, panel, done
         _.defer ->
-          autoread newStage, ui.panel, [autoExplain, autoGameStart] #, autoForward]
+          autoread newStage, ui.panel, [autoExplain] #, autoGameStart] #, autoForward]
   ).addClass('ui-tabs-vertical ui-helper-clearfix')
   Capkom.Router = Backbone.Router.extend
     routes:
@@ -107,9 +107,11 @@ Capkom.renderStage = (stage, tabsEl, index) ->
         el = jQuery( _renderStage stage ).insertBefore jQuery(tabsEl.find(".ui-tabs-panel")[index])
     else
         el = jQuery( _renderStage stage ).appendTo tabsEl
-    stage.scriptOnce jQuery(".stage-content", el) if stage.scriptOnce
+    # stage.scriptOnce jQuery(".stage-content", el) if stage.scriptOnce
+    stage.scriptOnce el if stage.scriptOnce
     if stage._first then jQuery(".prevButton", el).hide()
     if stage._last then jQuery(".nextButton", el).hide()
+
     jQuery(".prevButton", el).button()
     .click =>
         Capkom.timeout.clear()

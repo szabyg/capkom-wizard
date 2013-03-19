@@ -122,7 +122,9 @@ Capkom.stages =
             Capkom.profile.set
               symbolsizeMin: size
               symbolsizedetectDetails: details
-            Capkom.clickNext()
+            jQuery('.nextButton', element).show()
+      unless Capkom.profile.get('symbolsizedetectDetails')
+        jQuery('.nextButton', element).hide()
 
     explain: (element, done) ->
       explainArea = jQuery '.explain-area', element
@@ -172,12 +174,14 @@ Capkom.stages =
           result: (res) ->
             Capkom.profile.set
               symbolunderstanding: res
-            Capkom.clickNext()
+            jQuery('.nextButton', element).show()
             jQuery(':Capkom-wordmatch.play-area', element).wordmatch 'destroy'
           questions: Capkom.symbolunderstandingQuestions
           numberOfQuestions: 5
           feedbackPos: ['Super!', 'Toll!', 'Sehr gut!', 'Perfekt!']
-        jQuery('.start', element).hide()
+      unless Capkom.profile.get('symbolunderstanding')
+        jQuery('.nextButton', element).hide()
+
     startGame: (element, done) ->
       jQuery('.play-area', element).wordmatch
         rootPrefix: 'lib/wordmatch/img/'
@@ -191,7 +195,6 @@ Capkom.stages =
         numberOfQuestions: 5
         feedbackPos: ['Super!', 'Toll!', 'Sehr gut!', 'Perfekt!']
         done()
-      jQuery('.start', element).hide()
 
     show: (element) ->
     hide: (element) ->
@@ -210,7 +213,7 @@ Capkom.stages =
       profile.get "useSymbols"
     image: "http://i.fonts2u.com/sn/mp1_snoopy-dings_1.png"
     html: """
-      Suche und klicke auf das gleiche Bild.
+      Suche und klicke auf das gleiche Bild.<br/>
       <button class='start'>Start</button>
     """
     scriptOnce: (element) ->
@@ -220,12 +223,14 @@ Capkom.stages =
           result: (res) ->
             Capkom.profile.set
               lookforcorrect: res
-            Capkom.clickNext()
+            jQuery('.nextButton', element).show()
             jQuery(':Capkom-wordmatch.play-area', element).wordmatch 'destroy'
           questions: Capkom.lookforcorrectQuestions
           numberOfQuestions: 6
           feedbackPos: ['Super!', 'Toll!', 'Sehr gut!', 'Perfekt!']
-        jQuery('.start', element).hide()
+      unless Capkom.profile.get('lookforcorrect')
+        jQuery('.nextButton', element).hide()
+
 
     startGame: (element, done) ->
       jQuery('.play-area', element).wordmatch
@@ -240,7 +245,6 @@ Capkom.stages =
         numberOfQuestions: 6
         feedbackPos: ['Super!', 'Toll!', 'Sehr gut!', 'Perfekt!']
         done()
-      jQuery('.start', element).hide()
 
     show: (element) ->
     hide: (element) ->
@@ -256,7 +260,7 @@ Capkom.stages =
       Bei diesem Spiel zeigen wir dir Wörter und Bilder. Klicke das richtige Wort / Bild an!
       <br/>
       <button class='start'>Start</button>
-      <button class='skip'>Überspringen</button>
+      <button class='skip' style='font-size: 50%;'>Überspringen</button>
     """
     scriptOnce: (element) ->
       jQuery('.start', element).button().click (e) ->
@@ -265,31 +269,38 @@ Capkom.stages =
           result: (res) ->
             Capkom.profile.set
               read: res
-            Capkom.clickNext()
+            jQuery('.nextButton', element).show()
+            # Capkom.clickNext()
             jQuery(':Capkom-wordmatch.play-area', element).wordmatch 'destroy'
           questions: Capkom.wordmatchQuestions
           feedbackPos: ['Super!', 'Toll!', 'Sehr gut!', 'Perfekt!']
-        jQuery('.start', element).hide()
+        jQuery('.skip', element).hide()
       jQuery('.skip', element).button().click (e) ->
-        Capkom.profile.set
-          read:
-            symbol2word:
-              correct: 0
-              "wrong": 0
-              "times":
-                "average": 0
-                "variance": 0
-                "standardDeviation": 0
-              "score": 0
-            word2symbol:
-              "correct": 0
-              "wrong": 0
-              "times":
-                "average": 0
-                "variance": 0
-                "standardDeviation": 0
-              "score": 0
-        Capkom.clickNext()
+        unless Capkom.profile.get 'read'
+          Capkom.profile.set
+            read:
+              symbol2word:
+                correct: 0
+                "wrong": 0
+                "times":
+                  "average": 0
+                  "variance": 0
+                  "standardDeviation": 0
+                "score": 0
+              word2symbol:
+                "correct": 0
+                "wrong": 0
+                "times":
+                  "average": 0
+                  "variance": 0
+                  "standardDeviation": 0
+                "score": 0
+        # Capkom.clickNext()
+        jQuery('.nextButton', element).show()
+      unless Capkom.profile.get('read')
+        jQuery('.nextButton', element).hide()
+      else
+        jQuery('.skip', element).hide()
 
     startGame: (element, done) ->
       jQuery('.play-area', element).wordmatch
@@ -303,7 +314,6 @@ Capkom.stages =
           jQuery('.start', element).show()
         questions: Capkom.wordmatchQuestions
         feedbackPos: ['Super!', 'Toll!', 'Sehr gut!', 'Perfekt!']
-      jQuery('.start', element).hide()
 
     show: (element) ->
     hide: (element) ->
