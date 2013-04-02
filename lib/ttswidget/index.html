@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../jquery/jquery-ui.min.css" />
 
     <script type="text/javascript" src="../jquery/jquery-1.7.1.js"></script>
-    <script type="text/javascript" src="../jquery/jquery-ui.1.9m5.js"></script>
+    <script type="text/javascript" src="../jquery/jquery-ui.1.9.2.js"></script>
     <script type="text/javascript" src="../underscore-min.js"></script>
     <script type="text/javascript" src="../backbone.js"></script>
     <script type="text/javascript" src="../jquery/themeswitcher.js"></script>
@@ -24,7 +24,8 @@
                 gender:"male"
             });
             cleanup_test(usetwice_test);
-            console.info('Test instantiated.');
+            if(console !== undefined)
+                console.info('Test instantiated.');
         })});
         function cleanup_test(done){
             jQuery("#test1").ttswidget({
@@ -34,7 +35,7 @@
                     if (jQuery('body > .ui-dialog').length > 0) {
                         alert('Test error: Dialog still in the dom.')
                     } else {
-                        console.info("Cleanup test passed.");
+                        alert("Cleanup test passed.");
                         if (typeof done == "function") done();
                     }
                 }
@@ -52,11 +53,12 @@
 
                         } catch (e) {
                             alert("Use twice test failed!");
-                            console.error(e);
+                            if(console !== undefined)
+                                console.error(e);
                             jQuery("#test2").ttswidget('talk');
                         }
                     } else {
-                        console.info("Use twice test passed.");
+                        alert("Use twice test passed.");
                         if (typeof done == "function") done();
                     }
                 }
@@ -121,12 +123,12 @@ Test a text
                 $('#ttstest-button')
                 .button()
                 .click(function(){
-                    console.log(123);
                     var span = $('<span>')
                     .attr('tts', $('#tts-test').val())
                     .attr('gender', $('#gender').val())
                     .attr('lang', $('#lang').val());
-                    console.log(span);
+                    if(console !== undefined)
+                        console.log(span);
                     span
                     .ttswidget()
                     .ttswidget('talk')

@@ -50,8 +50,9 @@ jQuery.widget "capkom.ttswidget",
     finished: (e) ->
     manualActivate: (e) ->
     forcedClose: (e) ->
-
-
+    # Hash of prerecorded files in form <text>: <filename>
+    prerecorded:
+      'Test a text': 'test.mp3'
 
   _create: ->
     switch @options.mode
@@ -115,6 +116,8 @@ jQuery.widget "capkom.ttswidget",
         close: (e, ui) =>
           if e.currentTarget
             @_trigger 'forcedClose'
+          if jQuery.browser.msie
+            document.playera.Stop()
           _.defer =>
             @dialog?.dialog('destroy').remove()
             @dialog = null
@@ -151,7 +154,7 @@ jQuery.widget "capkom.ttswidget",
     true
   _getText: ->
       return @element.attr "tts" if @element.attr "tts"
-      return @element.not(@button).text().replace("#{@options.buttonLabel}", "") if @element.text()
+      return jQuery.trim(@element.not(@button).text().replace("#{@options.buttonLabel}", "")) if @element.text()
       return @options.defaultText
   _getLang: ->
       return @element.attr "lang" if @element.attr "lang"
@@ -189,6 +192,10 @@ jQuery.widget "capkom.ttswidget",
   _makeLink: () ->
     _encodeURI = (str) ->
         encodeURI(str).replace(/'/g, "%27").replace(/\?/g, "; ")
+
+    file =  @_getPrerecordedFile()
+    if file
+      return file
     text = @_getText()
     uri = @options.backendUri + "/process?"
     params = @preset(@_getLang(), @_getGender())
@@ -246,3 +253,11 @@ jQuery.widget "capkom.ttswidget",
     ]
     res = uri + params.join '&'
     res
+
+  #
+  _getPrerecordedFile: ->
+    text = jQuery.trim(@_getText())
+    if _(@options.prerecorded).has text
+      return @options.prerecorded[text]
+    else
+      false
