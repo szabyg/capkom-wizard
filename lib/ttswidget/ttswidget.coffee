@@ -53,6 +53,7 @@ jQuery.widget "capkom.ttswidget",
     # Hash of prerecorded files in form <text>: <filename>
     prerecorded:
       'Test a text': 'test.mp3'
+    prerecordedPrefix: ''
 
   _create: ->
     switch @options.mode
@@ -256,8 +257,9 @@ jQuery.widget "capkom.ttswidget",
 
   #
   _getPrerecordedFile: ->
-    text = jQuery.trim(@_getText())
+    text = jQuery.trim(@_getText()).replace("\n", " ")
     if _(@options.prerecorded).has text
-      return @options.prerecorded[text]
+      return @options.prerecordedPrefix + @options.prerecorded[text]
     else
+      console.info 'no audio file for', text
       false

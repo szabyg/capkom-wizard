@@ -129,7 +129,35 @@ Capkom.getTTSOptions = ->
     Capkom.audioOff()
   manualActivate: ->
     Capkom.audioOn()
+  prerecordedPrefix: 'tts/'
+  prerecorded:
+    "Hallo im Online-Atelier! Ich helfe dir damit du das Online-Atelier gut verwenden kannst. Lass uns zuerst spielen!":
+      "welcome.mp3"
+    "Wenn du jetzt spielen willst, dann benütze den Weiter-Knopf um anzufangen":
+      'erklaerung1.mp3'
+    "Wenn du nicht willst das dir der Text vorgelesen wird, dann drücke diesen Knopf. Du kannst diesen Knopf auch später wieder einschalten. Wenn du den Ton eingeschaltet hast ist der Knopf rot umrandet.":
+      'erklaerung2.mp3'
+    "Wenn du nun spielen willst, dann benütze den Start Knopf um anzufangen":
+      'erklaerung3.mp3'
+    "Wir beginnen mit einem Spiel: Füttere den Hund. Das Füttern geht so: Klicke mit der linken Maus-Taste auf den Hund. Wenn du es oft schaffst, ist der Hund glücklich und gesund.":
+      'symbolsize.mp3'
+    "Wenn du später noch einmal spielen willst, dann drücke den Zurück Knopf":
+      'erklaerung4.mp3'
+    "Finde heraus welche Bilder zusammengehören. Zu dem Bild in der ersten Reihe passt immer ein Bild aus der zweiten Reihe. Klicke das richtige Bild an!":
+      'symbolunderstanding.mp3'
+    'Suche und klicke auf das gleiche Bild.': 'lookforcorrect.mp3'
+    "Bei diesem Spiel zeigen wir dir Wörter und Bilder. Klicke das richtige Wort oder Bild an!":
+      'read.mp3'
+    "Klicke auf die Schriftgröße, die du am besten lesen kannst. Du kannst diese hier ausprobieren. Wenn du fertig bist, klicke auf den Weiter Knopf.":
+      'fontsize.mp3'
+    "Wie soll dein Online-Atelier aussehen? Klicke auf ein Bild zum ausprobieren. Wenn Du fertig bist, klicke auf weiter.":
+      'theme.mp3'
+    "Welches Bild siehst Du besser? Klicke es an!":
+      'symbolset.mp3'
+    "Du hast nun dein Online-Atelier so eingestellt, dass du es gut verwenden kannst.":
+      'goodbye.mp3'
   active: not Capkom.profile.get "useAudio"
+
 Capkom.symbolunderstandingQuestions = [
     question: 'hund.jpg', choices: ['futter.jpg', 'lolli.jpg', 'apfel.jpg'], correct: 'futter.jpg', type: 'symbolunderstanding'
   ,

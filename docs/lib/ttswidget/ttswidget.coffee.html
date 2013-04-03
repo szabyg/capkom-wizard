@@ -37,17 +37,18 @@ would read it, it is shown.</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="nv">errorMsg: </span><span class="s">&quot;Error loading audio.&quot;</span></pre></div></td></tr><tr id="section-12"><td class="docs"><div class="pilwrap"><a href="#section-12" class="pilcrow">&#182;</a></div><p>The finished event is trigggered when speaking is over and the panel disappeared.</p>
 </td><td class="code"><div class="highlight"><pre>    <span class="nv">finished: </span><span class="nf">(e) -&gt;</span>
     <span class="nv">manualActivate: </span><span class="nf">(e) -&gt;</span>
-    <span class="nv">forcedClose: </span><span class="nf">(e) -&gt;</span>
-
-
+    <span class="nv">forcedClose: </span><span class="nf">(e) -&gt;</span></pre></div></td></tr><tr id="section-13"><td class="docs"><div class="pilwrap"><a href="#section-13" class="pilcrow">&#182;</a></div><p>Hash of prerecorded files in form <text>: <filename></p>
+</td><td class="code"><div class="highlight"><pre>    <span class="nv">prerecorded:</span>
+      <span class="s">&#39;Test a text&#39;</span><span class="o">:</span> <span class="s">&#39;test.mp3&#39;</span>
+    <span class="nv">prerecordedPrefix: </span><span class="s">&#39;&#39;</span>
 
   <span class="nv">_create: </span><span class="o">-&gt;</span>
     <span class="k">switch</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">mode</span>
-      <span class="k">when</span> <span class="s">&#39;button&#39;</span></pre></div></td></tr><tr id="section-13"><td class="docs"><div class="pilwrap"><a href="#section-13" class="pilcrow">&#182;</a></div><p>Add button to the element</p>
+      <span class="k">when</span> <span class="s">&#39;button&#39;</span></pre></div></td></tr><tr id="section-14"><td class="docs"><div class="pilwrap"><a href="#section-14" class="pilcrow">&#182;</a></div><p>Add button to the element</p>
 </td><td class="code"><div class="highlight"><pre>        <span class="vi">@button = </span><span class="nx">jQuery</span> <span class="s">&quot;&lt;button class=&#39;tts-button&#39; alt=&#39;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">buttonLabel</span><span class="si">}</span><span class="s">&#39;&gt;&lt;i class=&#39;icon-volume-up&#39;/&gt;&lt;/button&gt;&quot;</span>
         <span class="nx">@button</span><span class="p">.</span><span class="nx">prependTo</span> <span class="nx">@element</span>
         <span class="nx">@button</span><span class="p">.</span><span class="nx">button</span>
-          <span class="nv">text: </span><span class="kc">true</span></pre></div></td></tr><tr id="section-14"><td class="docs"><div class="pilwrap"><a href="#section-14" class="pilcrow">&#182;</a></div><pre><code>       icons:
+          <span class="nv">text: </span><span class="kc">true</span></pre></div></td></tr><tr id="section-15"><td class="docs"><div class="pilwrap"><a href="#section-15" class="pilcrow">&#182;</a></div><pre><code>       icons:
            primary: @options.iconClass
 </code></pre>
 </td><td class="code"><div class="highlight"><pre>        <span class="nx">@button</span><span class="p">.</span><span class="nx">click</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span>
@@ -102,6 +103,8 @@ would read it, it is shown.</p>
         <span class="nv">close: </span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">ui</span><span class="p">)</span> <span class="o">=&gt;</span>
           <span class="k">if</span> <span class="nx">e</span><span class="p">.</span><span class="nx">currentTarget</span>
             <span class="nx">@_trigger</span> <span class="s">&#39;forcedClose&#39;</span>
+          <span class="k">if</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">msie</span>
+            <span class="nb">document</span><span class="p">.</span><span class="nx">playera</span><span class="p">.</span><span class="nx">Stop</span><span class="p">()</span>
           <span class="nx">_</span><span class="p">.</span><span class="nx">defer</span> <span class="o">=&gt;</span>
             <span class="nx">@dialog</span><span class="o">?</span><span class="p">.</span><span class="nx">dialog</span><span class="p">(</span><span class="s">&#39;destroy&#39;</span><span class="p">).</span><span class="nx">remove</span><span class="p">()</span>
             <span class="vi">@dialog = </span><span class="kc">null</span>
@@ -115,7 +118,7 @@ would read it, it is shown.</p>
               <span class="nx">@dialog</span><span class="o">?</span><span class="p">.</span><span class="nx">dialog</span> <span class="s">&quot;close&quot;</span>
       <span class="k">else</span>
           <span class="vi">@audioElement = </span><span class="nx">jQuery</span><span class="p">(</span><span class="s">&quot;</span><span class="err">#</span><span class="s">ttswidget-audio&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-          <span class="vi">@audioElement.onabort = </span><span class="nf">() -&gt;</span></pre></div></td></tr><tr id="section-15"><td class="docs"><div class="pilwrap"><a href="#section-15" class="pilcrow">&#182;</a></div><p>console?.error arguments</p>
+          <span class="vi">@audioElement.onabort = </span><span class="nf">() -&gt;</span></pre></div></td></tr><tr id="section-16"><td class="docs"><div class="pilwrap"><a href="#section-16" class="pilcrow">&#182;</a></div><p>console?.error arguments</p>
 </td><td class="code"><div class="highlight"><pre>          <span class="nx">@audioElement</span><span class="p">.</span><span class="nx">load</span><span class="p">()</span>
           <span class="nx">@audioElement</span><span class="p">.</span><span class="nx">play</span><span class="p">()</span>
           <span class="nx">jQuery</span><span class="p">(</span><span class="nx">@audioElement</span><span class="p">).</span><span class="nx">bind</span> <span class="s">&#39;playing&#39;</span><span class="p">,</span> <span class="o">=&gt;</span>
@@ -137,14 +140,14 @@ would read it, it is shown.</p>
     <span class="kc">true</span>
   <span class="nv">_getText: </span><span class="o">-&gt;</span>
       <span class="k">return</span> <span class="nx">@element</span><span class="p">.</span><span class="nx">attr</span> <span class="s">&quot;tts&quot;</span> <span class="k">if</span> <span class="nx">@element</span><span class="p">.</span><span class="nx">attr</span> <span class="s">&quot;tts&quot;</span>
-      <span class="k">return</span> <span class="nx">@element</span><span class="p">.</span><span class="o">not</span><span class="p">(</span><span class="nx">@button</span><span class="p">).</span><span class="nx">text</span><span class="p">().</span><span class="nx">replace</span><span class="p">(</span><span class="s">&quot;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">buttonLabel</span><span class="si">}</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="nx">@element</span><span class="p">.</span><span class="nx">text</span><span class="p">()</span>
+      <span class="k">return</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">trim</span><span class="p">(</span><span class="nx">@element</span><span class="p">.</span><span class="o">not</span><span class="p">(</span><span class="nx">@button</span><span class="p">).</span><span class="nx">text</span><span class="p">().</span><span class="nx">replace</span><span class="p">(</span><span class="s">&quot;</span><span class="si">#{</span><span class="nx">@options</span><span class="p">.</span><span class="nx">buttonLabel</span><span class="si">}</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">))</span> <span class="k">if</span> <span class="nx">@element</span><span class="p">.</span><span class="nx">text</span><span class="p">()</span>
       <span class="k">return</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">defaultText</span>
   <span class="nv">_getLang: </span><span class="o">-&gt;</span>
       <span class="k">return</span> <span class="nx">@element</span><span class="p">.</span><span class="nx">attr</span> <span class="s">&quot;lang&quot;</span> <span class="k">if</span> <span class="nx">@element</span><span class="p">.</span><span class="nx">attr</span> <span class="s">&quot;lang&quot;</span>
       <span class="k">return</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">lang</span> <span class="k">if</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">lang</span>
   <span class="nv">_getGender: </span><span class="o">-&gt;</span>
       <span class="k">return</span> <span class="nx">@element</span><span class="p">.</span><span class="nx">attr</span> <span class="s">&quot;gender&quot;</span> <span class="k">if</span> <span class="nx">@element</span><span class="p">.</span><span class="nx">attr</span> <span class="s">&quot;gender&quot;</span>
-      <span class="k">return</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">gender</span> <span class="k">if</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">gender</span></pre></div></td></tr><tr id="section-16"><td class="docs"><div class="pilwrap"><a href="#section-16" class="pilcrow">&#182;</a></div><p>Can be used in beforeTalk event handler</p>
+      <span class="k">return</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">gender</span> <span class="k">if</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">gender</span></pre></div></td></tr><tr id="section-17"><td class="docs"><div class="pilwrap"><a href="#section-17" class="pilcrow">&#182;</a></div><p>Can be used in beforeTalk event handler</p>
 </td><td class="code"><div class="highlight"><pre>  <span class="nv">getInnerContentElement: </span><span class="nf">(cb) -&gt;</span>
     <span class="nv">innerContent = </span><span class="nx">jQuery</span> <span class="s">&#39;.inner-content&#39;</span><span class="p">,</span> <span class="nx">@dialog</span>
     <span class="nx">cb</span> <span class="nx">innerContent</span>
@@ -168,10 +171,14 @@ would read it, it is shown.</p>
               <span class="p">]</span>
       <span class="nv">res = </span><span class="nx">presets</span><span class="p">[</span><span class="s">&quot;</span><span class="si">#{</span><span class="nx">lang</span><span class="si">}</span><span class="s">-</span><span class="si">#{</span><span class="nx">gender</span><span class="si">}</span><span class="s">&quot;</span><span class="p">]</span>
       <span class="nx">console</span><span class="o">?</span><span class="p">.</span><span class="nx">error</span> <span class="s">&quot;There&#39;s no TTS preset defined for </span><span class="si">#{</span><span class="nx">lang</span><span class="si">}</span><span class="s"> and </span><span class="si">#{</span><span class="nx">gender</span><span class="si">}</span><span class="s">.&quot;</span> <span class="nx">unless</span> <span class="nx">res</span>
-      <span class="k">return</span> <span class="nx">res</span> <span class="o">or</span> <span class="nx">presets</span><span class="p">[</span><span class="s">&quot;de-female&quot;</span><span class="p">]</span></pre></div></td></tr><tr id="section-17"><td class="docs"><div class="pilwrap"><a href="#section-17" class="pilcrow">&#182;</a></div><p>Internal method for implementing the audio uri.</p>
+      <span class="k">return</span> <span class="nx">res</span> <span class="o">or</span> <span class="nx">presets</span><span class="p">[</span><span class="s">&quot;de-female&quot;</span><span class="p">]</span></pre></div></td></tr><tr id="section-18"><td class="docs"><div class="pilwrap"><a href="#section-18" class="pilcrow">&#182;</a></div><p>Internal method for implementing the audio uri.</p>
 </td><td class="code"><div class="highlight"><pre>  <span class="nv">_makeLink: </span><span class="nf">() -&gt;</span>
     <span class="nv">_encodeURI = </span><span class="nf">(str) -&gt;</span>
         <span class="nb">encodeURI</span><span class="p">(</span><span class="nx">str</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/&#39;/g</span><span class="p">,</span> <span class="s">&quot;%27&quot;</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/\?/g</span><span class="p">,</span> <span class="s">&quot;; &quot;</span><span class="p">)</span>
+
+    <span class="nv">file = </span> <span class="nx">@_getPrerecordedFile</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nx">file</span>
+      <span class="k">return</span> <span class="nx">file</span>
     <span class="nv">text = </span><span class="nx">@_getText</span><span class="p">()</span>
     <span class="nv">uri = </span><span class="nx">@options</span><span class="p">.</span><span class="nx">backendUri</span> <span class="o">+</span> <span class="s">&quot;/process?&quot;</span>
     <span class="nv">params = </span><span class="nx">@preset</span><span class="p">(</span><span class="nx">@_getLang</span><span class="p">(),</span> <span class="nx">@_getGender</span><span class="p">())</span>
@@ -228,6 +235,13 @@ would read it, it is shown.</p>
       <span class="s">&quot;AUDIO=WAVE_FILE&quot;</span>
     <span class="p">]</span>
     <span class="nv">res = </span><span class="nx">uri</span> <span class="o">+</span> <span class="nx">params</span><span class="p">.</span><span class="nx">join</span> <span class="s">&#39;&amp;&#39;</span>
-    <span class="nx">res</span>
+    <span class="nx">res</span></pre></div></td></tr><tr id="section-19"><td class="docs"><div class="pilwrap"><a href="#section-19" class="pilcrow">&#182;</a></div>
+</td><td class="code"><div class="highlight"><pre>  <span class="nv">_getPrerecordedFile: </span><span class="o">-&gt;</span>
+    <span class="nv">text = </span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">trim</span><span class="p">(</span><span class="nx">@_getText</span><span class="p">()).</span><span class="nx">replace</span><span class="p">(</span><span class="s">&quot;\n&quot;</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">_</span><span class="p">(</span><span class="nx">@options</span><span class="p">.</span><span class="nx">prerecorded</span><span class="p">).</span><span class="nx">has</span> <span class="nx">text</span>
+      <span class="k">return</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">prerecordedPrefix</span> <span class="o">+</span> <span class="nx">@options</span><span class="p">.</span><span class="nx">prerecorded</span><span class="p">[</span><span class="nx">text</span><span class="p">]</span>
+    <span class="k">else</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&#39;no audio file for&#39;</span><span class="p">,</span> <span class="nx">text</span>
+      <span class="kc">false</span>
 
 </pre></div></td></tr></tbody></table><div id="projectname"><a href="../../index.html">Capkom Wizard</a></div></div></body></html>

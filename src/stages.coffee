@@ -175,7 +175,7 @@ Capkom.stages =
             Capkom.profile.set
               symbolunderstanding: res
             jQuery('.nextButton', element).show()
-            jQuery(':Capkom-wordmatch.play-area', element).wordmatch 'destroy'
+            jQuery(':capkom-wordmatch.play-area', element).wordmatch 'destroy'
           questions: Capkom.symbolunderstandingQuestions
           numberOfQuestions: 5
           feedbackPos: ['Super!', 'Toll!', 'Sehr gut!', 'Perfekt!']
@@ -189,7 +189,7 @@ Capkom.stages =
           Capkom.profile.set
             symbolunderstanding: res
           Capkom.clickNext()
-          jQuery(':Capkom-wordmatch.play-area', element).wordmatch 'destroy'
+          jQuery(':capkom-wordmatch.play-area', element).wordmatch 'destroy'
           jQuery('.start', element).show()
         questions: Capkom.symbolunderstandingQuestions
         numberOfQuestions: 5
@@ -198,7 +198,7 @@ Capkom.stages =
 
     show: (element) ->
     hide: (element) ->
-      jQuery(':Capkom-wordmatch.play-area', element).wordmatch 'destroy'
+      jQuery(':capkom-wordmatch.play-area', element).wordmatch 'destroy'
   ###
    Definition of the symbol size selection screen
   ###
@@ -224,7 +224,7 @@ Capkom.stages =
             Capkom.profile.set
               lookforcorrect: res
             jQuery('.nextButton', element).show()
-            jQuery(':Capkom-wordmatch.play-area', element).wordmatch 'destroy'
+            jQuery(':capkom-wordmatch.play-area', element).wordmatch 'destroy'
           questions: Capkom.lookforcorrectQuestions
           numberOfQuestions: 6
           feedbackPos: ['Super!', 'Toll!', 'Sehr gut!', 'Perfekt!']
@@ -239,7 +239,7 @@ Capkom.stages =
           Capkom.profile.set
             lookforcorrect: res
           Capkom.clickNext()
-          jQuery(':Capkom-wordmatch.play-area', element).wordmatch 'destroy'
+          jQuery(':capkom-wordmatch.play-area', element).wordmatch 'destroy'
           jQuery('.start', element).show()
         questions: Capkom.lookforcorrectQuestions
         numberOfQuestions: 6
@@ -248,7 +248,7 @@ Capkom.stages =
 
     show: (element) ->
     hide: (element) ->
-      jQuery(':Capkom-wordmatch.play-area', element).wordmatch 'destroy'
+      jQuery(':capkom-wordmatch.play-area', element).wordmatch 'destroy'
 
   "read":
     title: "Wort-Bild Spiel"
@@ -271,7 +271,7 @@ Capkom.stages =
               read: res
             jQuery('.nextButton', element).show()
             # Capkom.clickNext()
-            jQuery(':Capkom-wordmatch.play-area', element).wordmatch 'destroy'
+            jQuery(':capkom-wordmatch.play-area', element).wordmatch 'destroy'
           questions: Capkom.wordmatchQuestions
           feedbackPos: ['Super!', 'Toll!', 'Sehr gut!', 'Perfekt!']
         jQuery('.skip', element).hide()
@@ -310,14 +310,14 @@ Capkom.stages =
             read: res
           done()
           Capkom.clickNext()
-          jQuery(':Capkom-wordmatch.play-area', element).wordmatch 'destroy'
+          jQuery(':capkom-wordmatch.play-area', element).wordmatch 'destroy'
           jQuery('.start', element).show()
         questions: Capkom.wordmatchQuestions
         feedbackPos: ['Super!', 'Toll!', 'Sehr gut!', 'Perfekt!']
 
     show: (element) ->
     hide: (element) ->
-      jQuery(':Capkom-wordmatch.play-area', element).wordmatch 'destroy'
+      jQuery(':capkom-wordmatch.play-area', element).wordmatch 'destroy'
 
   "fontsize":
       title: "Schriftgröße"
