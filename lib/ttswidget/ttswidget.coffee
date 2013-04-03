@@ -261,5 +261,5 @@ jQuery.widget "capkom.ttswidget",
     if _(@options.prerecorded).has text
       return @options.prerecordedPrefix + @options.prerecorded[text]
     else
-      console.info 'no audio file for', text
+      console?.info 'no audio file for', text
       false
