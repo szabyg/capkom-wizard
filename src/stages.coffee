@@ -520,7 +520,7 @@ Capkom.saveTestData = (doc, cb) ->
     return
   # jQuery.couch.urlPrefix = "http://dev.iks-project.eu/couchdb"
   # else
-  jQuery.couch.urlPrefix = "http://dev.iks-project.eu/cors/dev.iks-project.eu:80/couchdb";
+  jQuery.couch.urlPrefix = "http://www.corsproxy.com/dev.iks-project.eu/couchdb";
   jQuery.couch.info success: (data) ->
   db = jQuery.couch.db('capkom-testresults')
   db.info
