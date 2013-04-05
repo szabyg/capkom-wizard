@@ -118,7 +118,7 @@ jQuery.widget "capkom.ttswidget",
           if e.currentTarget
             @_trigger 'forcedClose'
           if jQuery.browser.msie
-            document.playera.Stop()
+            document.playera.controls.stop()
           _.defer =>
             @dialog?.dialog('destroy').remove()
             @dialog = null

@@ -104,7 +104,7 @@ would read it, it is shown.</p>
           <span class="k">if</span> <span class="nx">e</span><span class="p">.</span><span class="nx">currentTarget</span>
             <span class="nx">@_trigger</span> <span class="s">&#39;forcedClose&#39;</span>
           <span class="k">if</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">msie</span>
-            <span class="nb">document</span><span class="p">.</span><span class="nx">playera</span><span class="p">.</span><span class="nx">Stop</span><span class="p">()</span>
+            <span class="nb">document</span><span class="p">.</span><span class="nx">playera</span><span class="p">.</span><span class="nx">controls</span><span class="p">.</span><span class="nx">stop</span><span class="p">()</span>
           <span class="nx">_</span><span class="p">.</span><span class="nx">defer</span> <span class="o">=&gt;</span>
             <span class="nx">@dialog</span><span class="o">?</span><span class="p">.</span><span class="nx">dialog</span><span class="p">(</span><span class="s">&#39;destroy&#39;</span><span class="p">).</span><span class="nx">remove</span><span class="p">()</span>
             <span class="vi">@dialog = </span><span class="kc">null</span>
