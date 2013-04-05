@@ -182,7 +182,7 @@ Capkom.stages =
       unless Capkom.profile.get('symbolunderstanding')
         jQuery('.nextButton', element).hide()
 
-    startGame: (element, done) ->
+    _dont_startGame: (element, done) ->
       jQuery('.play-area', element).wordmatch
         rootPrefix: 'lib/wordmatch/img/'
         result: (res) ->
@@ -232,7 +232,7 @@ Capkom.stages =
         jQuery('.nextButton', element).hide()
 
 
-    startGame: (element, done) ->
+    _dont_startGame: (element, done) ->
       jQuery('.play-area', element).wordmatch
         rootPrefix: 'lib/wordmatch/img/'
         result: (res) ->
@@ -302,7 +302,7 @@ Capkom.stages =
       else
         jQuery('.skip', element).hide()
 
-    startGame: (element, done) ->
+    _dont_startGame: (element, done) ->
       jQuery('.play-area', element).wordmatch
         rootPrefix: 'lib/wordmatch/img/'
         result: (res) ->
