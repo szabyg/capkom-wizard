@@ -592,7 +592,7 @@ Capkom.getStages = ->
       true unless stage.condition?(Capkom.profile) is false
     urlhidden = (Capkom.getUrlParameter('hidestages') or null)?.split(',') or []
     res = _(res).filter (stage) ->
-      true if urlhidden.indexOf(stage.name) is -1
+      true if _.indexOf(urlhidden, stage.name) is -1
 
 Capkom.showStages = (el) ->
     if Capkom.uiLoaded
