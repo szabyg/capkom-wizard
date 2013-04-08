@@ -81,9 +81,11 @@ jQuery.widget "capkom.ttswidget",
       @dialog?.dialog('destroy').remove()
       @dialog = null
       audioSnippet = null
-      if jQuery.browser.msie # old: clsid:22D6F312-B0F6-11D0-94AB-0080C74C7E95
+      if jQuery.browser.msie
+        # old: clsid:22D6F312-B0F6-11D0-94AB-0080C74C7E95
+        # new: clsid:6BF52A52-394A-11d3-B153-00C04F79FAA6
         audioSnippet = """
-        <OBJECT id='playera' height='40' width='230' classid='CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6'>
+        <OBJECT id='playera' height='40' width='230' classid='CLSID:22D6F312-B0F6-11D0-94AB-0080C74C7E95'>
           <embed src='#{@_makeLink()}' name='playera' width='230' height='40' pluginspage='http://www.microsoft.com/windows/windowsmedia/' type='application/x-mplayer2' autoplay='true' showcontrols='1' fullScreen='false' DisplaySize='0' autostart='true' controls='All' controller='true'></embed>
           <PARAM NAME='AutoStart' VALUE='True'/>
           <PARAM NAME='Filename' VALUE='#{@_makeLink()}'/>
@@ -118,7 +120,10 @@ jQuery.widget "capkom.ttswidget",
           if e.currentTarget
             @_trigger 'forcedClose'
           if jQuery.browser.msie
-            document.playera.controls.stop()
+            # new
+            # document.playera.controls.stop()
+            # old
+            document.playera.Stop()
           _.defer =>
             @dialog?.dialog('destroy').remove()
             @dialog = null
