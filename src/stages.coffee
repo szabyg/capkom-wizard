@@ -538,12 +538,12 @@ Capkom.saveTestData = (doc, cb) ->
           jQuery('#usertest-id').html "#{doc.get '_id'}"
           returnUri = Capkom.getUrlParameter('returnuri')
           if returnUri
-            console.info "Forwarding in 2 seconds to", returnUri
+            Capkom.console.info "Forwarding in 2 seconds to", returnUri
             setTimeout ->
               window.location = encodeURIComponent returnUri
             , 2000
           else
-            console.info "No returnuri= URL param, no forwarding."
+            Capkom.console.info "No returnuri= URL param, no forwarding."
         else
           Capkom.console.info 'Error saving Usertest document', res
       error: (jqXhr, message) ->
