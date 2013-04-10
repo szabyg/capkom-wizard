@@ -456,6 +456,7 @@
 <span class="s">        &lt;br/&gt;&lt;br/&gt;</span>
 <span class="s">        Usertest ID: &lt;span id=&#39;usertest-id&#39;/&gt;&lt;br/&gt;</span>
 <span class="s">        &lt;span id=&#39;log&#39;&gt;&lt;/span&gt;</span>
+<span class="s">        &lt;div id=&#39;returnButton&#39;&gt;&lt;/div&gt;</span>
 <span class="s">      &quot;&quot;&quot;</span>
       <span class="nv">scriptOnce: </span><span class="nf">(el) -&gt;</span>
           <span class="nv">profileText = </span><span class="o">-&gt;</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">profile</span><span class="p">.</span><span class="nx">toJSON</span><span class="p">())</span>
@@ -504,10 +505,8 @@ else</p>
           <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;#usertest-id&#39;</span><span class="p">).</span><span class="nx">html</span> <span class="s">&quot;</span><span class="si">#{</span><span class="nx">doc</span><span class="p">.</span><span class="nx">get</span> <span class="s">&#39;_id&#39;</span><span class="si">}</span><span class="s">&quot;</span>
           <span class="nv">returnUri = </span><span class="nx">Capkom</span><span class="p">.</span><span class="nx">getUrlParameter</span><span class="p">(</span><span class="s">&#39;returnuri&#39;</span><span class="p">)</span>
           <span class="k">if</span> <span class="nx">returnUri</span>
-            <span class="nx">Capkom</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&quot;Forwarding in 2 seconds to&quot;</span><span class="p">,</span> <span class="nx">returnUri</span>
-            <span class="nx">setTimeout</span> <span class="o">-&gt;</span>
-              <span class="nb">window</span><span class="p">.</span><span class="nv">location = </span><span class="nb">encodeURIComponent</span> <span class="nx">returnUri</span>
-            <span class="p">,</span> <span class="mi">2000</span>
+            <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;#returnButton&#39;</span><span class="p">).</span><span class="nx">html</span> <span class="s">&quot;&lt;button&gt;Zurück zum Online-Atelier&lt;/button&gt;&quot;</span>
+            <span class="nx">jQuery</span><span class="p">(</span><span class="s">&#39;#returnButton button&#39;</span><span class="p">).</span><span class="nx">click</span> <span class="o">-&gt;</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="o">=</span><span class="nx">returnUri</span>
           <span class="k">else</span>
             <span class="nx">Capkom</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span> <span class="s">&quot;No returnuri= URL param, no forwarding.&quot;</span>
         <span class="k">else</span>

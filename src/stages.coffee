@@ -489,6 +489,7 @@ Capkom.stages =
         <br/><br/>
         Usertest ID: <span id='usertest-id'/><br/>
         <span id='log'></span>
+        <div id='returnButton'></div>
       """
       scriptOnce: (el) ->
           profileText = -> JSON.stringify(Capkom.profile.toJSON())
@@ -538,10 +539,8 @@ Capkom.saveTestData = (doc, cb) ->
           jQuery('#usertest-id').html "#{doc.get '_id'}"
           returnUri = Capkom.getUrlParameter('returnuri')
           if returnUri
-            Capkom.console.info "Forwarding in 2 seconds to", returnUri
-            setTimeout ->
-              window.location = encodeURIComponent returnUri
-            , 2000
+            jQuery('#returnButton').html "<button>Zurück zum Online-Atelier</button>"
+            jQuery('#returnButton button').click -> window.location=returnUri
           else
             Capkom.console.info "No returnuri= URL param, no forwarding."
         else
